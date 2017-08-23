@@ -1,0 +1,175 @@
+﻿<Controls:MetroWindow x:Class="StockTicker.Client.WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StockTicker.Client.WPF.Views.Converters"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        mc:Ignorable="d"
+        Title="StockTicker.Client WPF" Height="768" Width="1280">
+    <Window.Resources>
+        <ResourceDictionary>
+            <local:ChangeToColorValueConverter x:Key="cnvBackground"></local:ChangeToColorValueConverter>
+            <local:TotalCalculation x:Key="totalConverter"></local:TotalCalculation>
+            
+            <Style TargetType="Label" x:Key="zoneHeader">
+                <Setter Property="FontSize" Value="32" />
+            </Style>
+            <Style TargetType="Label" x:Key="formLabel">
+                <Setter Property="Margin" Value="0,0,10,0" />
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="FontWeight" Value="Bold" />
+                <Setter Property="VerticalAlignment" Value="Center" />
+            </Style>
+            <Style TargetType="Label" x:Key="tableCell">
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="VerticalAlignment" Value="CenterAndExpand" />
+                <Setter Property="HorizontalAlignment" Value="CenterAndExpand" />
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Window.Content>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="350" />
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0" Margin="20,0,40,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <!--Header with Market State-->
+                <Grid Grid.Row="0" Margin="0,0,0,30">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Label  Grid.Column="0" Style="{StaticResource zoneHeader}"
+                            Content="{Binding MarketStatusMessage}"/>
+                    <Controls:ToggleSwitch Grid.Column="1"
+                            IsChecked="{Binding IsMarketOpen}"/>
+                </Grid>
+                <!-- Stocks table -->
+                <DataGrid x:Name="stockGrid" Grid.Row="1"
+                          ItemsSource="{Binding Stocks}" FontSize="18"
+                          AutoGenerateColumns="False" SelectionChanged="stockGrid_SelectionChanged"
+                          SelectionUnit="FullRow" SelectionMode="Extended" CanUserAddRows="False">
+                    <DataGrid.Resources>
+                        <Style x:Key="QuantityStyle" TargetType="TextBlock">
+                            <Setter
+                                Property="Foreground"
+                                Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}},
+                                                Path = Item.LastChange,
+                                                Converter={StaticResource cnvBackground}}" />
+                        </Style>
+                    </DataGrid.Resources>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Symbol" Binding="{Binding Symbol}" FontWeight="Bold"/>
+                        <DataGridTextColumn Header="Price" Binding="{Binding Price, StringFormat=F2}" ElementStyle="{StaticResource QuantityStyle}"/>
+                        <DataGridTextColumn Header="DayOpen" Binding="{Binding DayOpen, StringFormat=F2}" />
+                        <DataGridTextColumn Header="DayHigh" Binding="{Binding DayHigh, StringFormat=F2}" />
+                        <DataGridTextColumn Header="DayLow" Binding="{Binding DayLow, StringFormat=F2}" />
+                        <DataGridTextColumn Header="LastChange" Binding="{Binding LastChange, StringFormat=F2}" ElementStyle="{StaticResource QuantityStyle}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <!--Portfolio-->
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Style="{StaticResource zoneHeader}" Margin="0,20,0,0">Portfolio</Label>
+                    <Label Grid.Column="1" Style="{StaticResource zoneHeader}" Margin="0,20,0,0">Cash: $</Label>
+                    <Label Grid.Column="2" Style="{StaticResource zoneHeader}" Margin="0,20,0,0"
+                           Content="{Binding Cash, StringFormat=F2}"></Label>
+                    <DataGrid Grid.Row="1" Grid.ColumnSpan="2" FontSize="18"
+                        ItemsSource="{Binding Portfolio}"  AutoGenerateColumns="False" IsReadOnly="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Symbol" Binding="{Binding Symbol}" FontWeight="Bold"/>
+                            <DataGridTextColumn Header="Price" Binding="{Binding Price, StringFormat=F2}" />
+                            <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity, StringFormat=F0}"/>
+                            <DataGridTextColumn Header="Total">
+                                <DataGridTextColumn.Binding>
+                                    <MultiBinding Converter="{StaticResource totalConverter}" Mode="OneWay">
+                                        <Binding Path="."/>
+                                        <Binding RelativeSource="{RelativeSource AncestorType={x:Type DataGrid}}"  Path="ItemsSource"/>
+                                    </MultiBinding>
+                                </DataGridTextColumn.Binding>
+                            </DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </Grid>
+            <!-- Buy / Sell requests -->
+            <StackPanel Grid.Column="1">
+                <Label Style="{StaticResource zoneHeader}" Margin="0,0,0,23">Buy / Sell</Label>
+                <Border Padding="15,15,15,15">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" Grid.Column="0" Style="{StaticResource formLabel}">Symbol</Label>
+                        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Symbol}"/>
+                        <Label Grid.Row="1" Grid.Column="0" Style="{StaticResource formLabel}">Price</Label>
+                        <TextBox Grid.Row="1" Grid.Column="1" PreviewTextInput="NumberOnly" Text="{Binding Price}"/>
+                        <Label Grid.Row="2" Grid.Column="0" Style="{StaticResource formLabel}">Amount</Label>
+                        <TextBox Grid.Row="2" Grid.Column="1" PreviewTextInput="NumberOnly" Text="{Binding Amount}"/>
+                        <Grid Grid.Row="3" Grid.ColumnSpan="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button Grid.Column="0" Content="Buy" Command="{Binding SendBuyRequestCommand}"/>
+                            <Button Grid.Column="1" Content="Sell" Command="{Binding SendSellRequestCommand}" />
+                        </Grid>
+
+                        <Label Grid.Row="4" Grid.Column="0" Style="{StaticResource formLabel}">Timesteps</Label>
+                        <TextBox Grid.Row="4" Grid.Column="1" PreviewTextInput="NumberOnly" Text="{Binding NumTimesteps}"/>
+                        <Grid Grid.Row="5" Grid.ColumnSpan="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label  Grid.Column="0" Style="{StaticResource formLabel}" Content="{Binding Prediction}" />
+                            <Button Grid.Column="1" Content="Predict" Command="{Binding PredictCommand}" />
+                        </Grid>
+                    </Grid>
+                </Border>
+                <Label  Style="{StaticResource zoneHeader}" Margin="0,20,0,0">Buy Orders</Label>
+                <DataGrid ItemsSource="{Binding BuyOrders}" FontSize="18" AutoGenerateColumns="False" IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Symbol" Binding="{Binding Symbol}" FontWeight="Bold"/>
+                        <DataGridTextColumn Header="Price" Binding="{Binding Price, StringFormat=F2}" />
+                        <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity, StringFormat=F0}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <Label  Style="{StaticResource zoneHeader}" Margin="0,20,0,0">Sell Orders</Label>
+                <DataGrid ItemsSource="{Binding SellOrders}" FontSize="18" AutoGenerateColumns="False" IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Symbol" Binding="{Binding Symbol}" FontWeight="Bold"/>
+                        <DataGridTextColumn Header="Price" Binding="{Binding Price, StringFormat=F2}" />
+                        <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity, StringFormat=F0}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+        </Grid>
+    </Window.Content>
+</Controls:MetroWindow>

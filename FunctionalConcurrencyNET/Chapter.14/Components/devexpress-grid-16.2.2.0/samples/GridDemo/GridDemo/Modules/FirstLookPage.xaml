@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+					   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dxg="clr-namespace:DevExpress.Mobile.DataGrid;assembly=DevExpress.Mobile.Grid.v16.2"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+					   x:Class="DevExpress.GridDemo.FirstLookPage">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
+    </ContentPage.Padding>
+    <ContentPage.Content>
+        <dxg:GridControl x:Name="grid" ItemsSource="{Binding Orders}" RowHeight="100" AutoFilterPanelVisibility="true">
+            <dxg:GridControl.RowHeight>
+                <OnIdiom x:TypeArguments="sys:Double" Tablet="100" Phone="50" />
+            </dxg:GridControl.RowHeight>
+            <dxg:GridControl.Columns>
+                <dxg:ImageColumn FieldName="Customer.Photo" Caption="Photo" Width="150">
+                    <dxg:ImageColumn.Width>
+                        <OnIdiom x:TypeArguments="sys:Double" Tablet="100" Phone="50" />
+                    </dxg:ImageColumn.Width>
+                </dxg:ImageColumn>
+
+                <dxg:TextColumn FieldName="Customer.Name" Caption="Name" IsReadOnly="true" AutoFilterValue="a" AutoFilterCondition="Contains" />
+                <dxg:DateColumn FieldName="Date" DisplayFormat="{}{0:d}"/>
+                <dxg:PickerColumn FieldName="Priority" SortOrder="Ascending"/>
+                <dxg:SwitchColumn FieldName="Shipped"/>
+                <dxg:NumberColumn FieldName="Total" IsReadOnly="True" DisplayFormat="{}{0:C2}"/>
+            </dxg:GridControl.Columns>
+
+            <dxg:GridControl.TotalSummaries>
+                <dxg:GridColumnSummary FieldName="Total" Type="Sum" />
+            </dxg:GridControl.TotalSummaries>
+        </dxg:GridControl>
+    </ContentPage.Content>
+</ContentPage>

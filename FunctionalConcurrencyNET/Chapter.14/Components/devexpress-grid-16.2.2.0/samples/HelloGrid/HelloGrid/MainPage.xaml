@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+			 x:Class="HelloGrid.MainPage"
+			 xmlns:dxGrid="clr-namespace:DevExpress.Mobile.DataGrid;assembly=DevExpress.Mobile.Grid.v16.2">
+  	<ContentPage.Padding>
+    	<OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
+    </ContentPage.Padding>
+
+	<dxGrid:GridControl x:Name="grid" ItemsSource="{Binding Orders}" 
+	 					NewItemRowVisibility = "true" 
+						CalculateCustomSummary="OnCalculateCustomSummary" 
+						SortMode = "Multiple" AutoFilterPanelVisibility="true">
+	 	<dxGrid:GridControl.Columns>
+	 		<dxGrid:TextColumn FieldName="Product.Name" Caption = "Product" Width = "170"
+	 						   SortOrder = "Descending" SortIndex = "0"/>
+	 		<dxGrid:NumberColumn FieldName="Product.UnitPrice" Caption = "Price" DisplayFormat="C0"/>
+	 		<dxGrid:NumberColumn FieldName="Quantity" 
+	 							 SortOrder = "Ascending" SortIndex = "1"/>
+	 		<dxGrid:NumberColumn FieldName="Total" 
+	 							 UnboundType="Integer" UnboundExpression="[Quantity] * [Product.UnitPrice]" 
+	 							 DisplayFormat="C0" IsReadOnly="True"/>
+	 		<dxGrid:DateColumn FieldName="Date" DisplayFormat="d"
+	 						   IsGrouped = "true" GroupInterval = "Date"/>
+	 		<dxGrid:SwitchColumn FieldName="Shipped" AllowSort = "False" AllowAutoFilter="false"/>
+	 	</dxGrid:GridControl.Columns>
+	 		
+	 	<dxGrid:GridControl.GroupSummaries>
+			<dxGrid:GridColumnSummary FieldName="Total" Type="Max"/>
+		</dxGrid:GridControl.GroupSummaries>
+
+        <dxGrid:GridControl.TotalSummaries>
+            <dxGrid:GridColumnSummary FieldName="Total" Type="Sum" 
+            						  DisplayFormat= "Total: {0:C0}"/>
+            <dxGrid:GridColumnSummary FieldName="Shipped" Type="Custom" 
+            						  DisplayFormat= "Not Shipped: {0}"/>
+        </dxGrid:GridControl.TotalSummaries>
+	</dxGrid:GridControl>
+</ContentPage>
+	

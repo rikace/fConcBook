@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="highlight.css">
+</head>
+<body class="hl">
+<pre class="hl"><span class="hl kwa">using</span> System<span class="hl opt">;</span>
+<span class="hl kwa">using</span> System<span class="hl opt">.</span>IO<span class="hl opt">;</span>
+<span class="hl kwa">using</span> System<span class="hl opt">.</span>Threading<span class="hl opt">.</span>Tasks<span class="hl opt">;</span>
+<span class="hl kwa">using</span> DevExpress<span class="hl opt">.</span>Export<span class="hl opt">;</span>
+<span class="hl kwa">using</span> DevExpress<span class="hl opt">.</span>Mobile<span class="hl opt">.</span>Core<span class="hl opt">;</span>
+<span class="hl kwa">using</span> DevExpress<span class="hl opt">.</span>Mobile<span class="hl opt">.</span>IO<span class="hl opt">;</span>
+<span class="hl kwa">using</span> Xamarin<span class="hl opt">.</span>Forms<span class="hl opt">;</span>
+
+<span class="hl kwa">namespace</span> DevExpress<span class="hl opt">.</span>GridDemo <span class="hl opt">{</span>
+    <span class="hl kwa">public partial class</span> ExportPage <span class="hl opt">{</span>
+        <span class="hl kwa">public</span> <span class="hl kwd">ExportPage</span><span class="hl opt">() {</span>
+            <span class="hl kwd">InitializeComponent</span><span class="hl opt">();</span>
+            cbExportType<span class="hl opt">.</span>Items<span class="hl opt">.</span><span class="hl kwd">Add</span><span class="hl opt">(</span>ExportTarget<span class="hl opt">.</span>Xlsx<span class="hl opt">.</span><span class="hl kwd">ToString</span><span class="hl opt">());</span>
+            cbExportType<span class="hl opt">.</span>Items<span class="hl opt">.</span><span class="hl kwd">Add</span><span class="hl opt">(</span>ExportTarget<span class="hl opt">.</span>Xls<span class="hl opt">.</span><span class="hl kwd">ToString</span><span class="hl opt">());</span>
+            cbExportType<span class="hl opt">.</span>Items<span class="hl opt">.</span><span class="hl kwd">Add</span><span class="hl opt">(</span>ExportTarget<span class="hl opt">.</span>Csv<span class="hl opt">.</span><span class="hl kwd">ToString</span><span class="hl opt">());</span>
+            cbExportType<span class="hl opt">.</span>SelectedIndex <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span>
+            <span class="hl kwd">BindData</span><span class="hl opt">();</span>
+        <span class="hl opt">}</span>
+        <span class="hl kwa">async</span> <span class="hl kwb">void</span> <span class="hl kwd">BindData</span><span class="hl opt">() {</span>
+            MainPageViewModel model <span class="hl opt">=</span> <span class="hl kwa">await</span> <span class="hl kwd">LoadData</span><span class="hl opt">();</span>
+            BindingContext <span class="hl opt">=</span> model<span class="hl opt">;</span>
+        <span class="hl opt">}</span>
+        Task<span class="hl opt">&lt;</span>MainPageViewModel<span class="hl opt">&gt;</span> <span class="hl kwd">LoadData</span><span class="hl opt">() {</span>
+            <span class="hl kwa">return</span> Task<span class="hl opt">&lt;</span>MainPageViewModel<span class="hl opt">&gt;.</span><span class="hl kwd">Run</span><span class="hl opt">(() =&gt;</span> <span class="hl kwa">new</span> <span class="hl kwd">MainPageViewModel</span><span class="hl opt">(</span><span class="hl kwa">new</span> <span class="hl kwd">DemoOrdersRepository</span><span class="hl opt">()));</span>
+        <span class="hl opt">}</span>
+        ExportTarget <span class="hl kwd">GetCurrentExportType</span><span class="hl opt">() {</span>
+            <span class="hl kwa">return</span> <span class="hl opt">(</span>ExportTarget<span class="hl opt">)</span>Enum<span class="hl opt">.</span><span class="hl kwd">Parse</span><span class="hl opt">(</span><span class="hl kwd">typeof</span><span class="hl opt">(</span>ExportTarget<span class="hl opt">),</span> cbExportType<span class="hl opt">.</span>Items<span class="hl opt">[</span>cbExportType<span class="hl opt">.</span>SelectedIndex<span class="hl opt">]);</span>
+        <span class="hl opt">}</span>
+        <span class="hl kwb">void</span> <span class="hl kwd">OnOpen</span><span class="hl opt">(</span><span class="hl kwb">object</span> sender<span class="hl opt">,</span> EventArgs e<span class="hl opt">) {</span>
+            <span class="hl kwa">if</span><span class="hl opt">(</span>String<span class="hl opt">.</span><span class="hl kwd">IsNullOrEmpty</span><span class="hl opt">(</span>txtPath<span class="hl opt">.</span>Text<span class="hl opt">))</span>
+                <span class="hl kwa">return</span><span class="hl opt">;</span>
+            IShellService shell <span class="hl opt">=</span> GlobalServices<span class="hl opt">.</span>Instance<span class="hl opt">.</span>GetService<span class="hl opt">&lt;</span>IShellService<span class="hl opt">&gt;();</span>
+            <span class="hl kwa">if</span><span class="hl opt">(</span>shell <span class="hl opt">!=</span> <span class="hl kwa">null</span><span class="hl opt">)</span>
+                shell<span class="hl opt">.</span><span class="hl kwd">OpenFile</span><span class="hl opt">(</span>txtPath<span class="hl opt">.</span>Text<span class="hl opt">,</span> btnOpen<span class="hl opt">);</span>
+            <span class="hl kwa">else</span>
+                <span class="hl kwd">DisplayAlert</span><span class="hl opt">(</span><span class="hl str">&quot;GridDemo&quot;</span><span class="hl opt">,</span> <span class="hl str">&quot;Unable to open a file. The Shell service is not found.&quot;</span><span class="hl opt">,</span> <span class="hl str">&quot;Cancel&quot;</span><span class="hl opt">);</span>
+        <span class="hl opt">}</span>
+        <span class="hl kwb">void</span> <span class="hl kwd">OnExport</span><span class="hl opt">(</span><span class="hl kwb">object</span> sender<span class="hl opt">,</span> EventArgs e<span class="hl opt">) {</span>
+            ExportTarget exportType <span class="hl opt">=</span> <span class="hl kwd">GetCurrentExportType</span><span class="hl opt">();</span>
+            <span class="hl kwb">string</span> fileName <span class="hl opt">=</span> <span class="hl str">&quot;grid.&quot;</span> <span class="hl opt">+</span> exportType<span class="hl opt">.</span><span class="hl kwd">ToString</span><span class="hl opt">().</span><span class="hl kwd">ToLower</span><span class="hl opt">();</span>
+            IPathService pathServise <span class="hl opt">=</span> GlobalServices<span class="hl opt">.</span>Instance<span class="hl opt">.</span>GetService<span class="hl opt">&lt;</span>IPathService<span class="hl opt">&gt;();</span>
+            <span class="hl kwa">if</span><span class="hl opt">(</span>pathServise <span class="hl opt">==</span> <span class="hl kwa">null</span><span class="hl opt">)</span>
+                <span class="hl kwa">return</span><span class="hl opt">;</span>
+            
+            <span class="hl kwb">string</span> filePath <span class="hl opt">=</span> pathServise<span class="hl opt">.</span><span class="hl kwd">GetAbsolutePath</span><span class="hl opt">(</span>fileName<span class="hl opt">);</span>
+            pathServise<span class="hl opt">.</span><span class="hl kwd">EnsurePathExists</span><span class="hl opt">(</span>filePath<span class="hl opt">);</span>
+
+            <span class="hl kwa">using</span><span class="hl opt">(</span>FileStream stream <span class="hl opt">=</span> <span class="hl kwa">new</span> <span class="hl kwd">FileStream</span><span class="hl opt">(</span>filePath<span class="hl opt">,</span> FileMode<span class="hl opt">.</span>Create<span class="hl opt">,</span> FileAccess<span class="hl opt">.</span>Write<span class="hl opt">,</span> FileShare<span class="hl opt">.</span>Read<span class="hl opt">)) {</span>
+                <span class="hl kwa">if</span><span class="hl opt">(</span>grid<span class="hl opt">.</span><span class="hl kwd">ExportToExcel</span><span class="hl opt">(</span>stream<span class="hl opt">,</span> exportType<span class="hl opt">))</span>
+                    txtPath<span class="hl opt">.</span>Text <span class="hl opt">=</span> stream<span class="hl opt">.</span>AbsolutePath<span class="hl opt">;</span>
+                <span class="hl kwa">else</span> <span class="hl opt">{</span>
+                    txtPath<span class="hl opt">.</span>Text <span class="hl opt">=</span> String<span class="hl opt">.</span>Empty<span class="hl opt">;</span>
+                    <span class="hl kwd">DisplayAlert</span><span class="hl opt">(</span><span class="hl str">&quot;GridDemo&quot;</span><span class="hl opt">,</span> <span class="hl str">&quot;Make sure you have an application for opening &quot;</span> <span class="hl opt">+</span> exportType<span class="hl opt">.</span><span class="hl kwd">ToString</span><span class="hl opt">() +</span> <span class="hl str">&quot; files.&quot;</span><span class="hl opt">,</span> <span class="hl str">&quot;Cancel&quot;</span><span class="hl opt">);</span>
+                <span class="hl opt">}</span>
+            <span class="hl opt">}</span>
+        <span class="hl opt">}</span>
+    <span class="hl opt">}</span>
+<span class="hl opt">}</span>
+</pre>
+</body>
+</html>

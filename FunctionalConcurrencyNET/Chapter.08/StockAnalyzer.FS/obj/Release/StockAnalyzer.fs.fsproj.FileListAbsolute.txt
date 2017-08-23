@@ -1,0 +1,16 @@
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Chapter.08\StockAnalyzer.fs\bin\Release\StockAnalyzer.FS.exe.config
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Chapter.08\StockAnalyzer.fs\bin\Release\StockAnalyzer.FS.XML
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Chapter.08\StockAnalyzer.fs\bin\Release\StockAnalyzer.FS.exe
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Chapter.08\StockAnalyzer.fs\bin\Release\StockAnalyzer.FS.pdb
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Chapter.08\StockAnalyzer.fs\bin\Release\FSharp.Charting.dll
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Chapter.08\StockAnalyzer.fs\bin\Release\FSharp.Core.dll
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Chapter.08\StockAnalyzer.fs\bin\Release\Functional.fs.dll
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Chapter.08\StockAnalyzer.fs\bin\Release\Functional.fs.pdb
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Chapter.08\StockAnalyzer.fs\bin\Release\Functional.fs.xml
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Chapter.08\StockAnalyzer.fs\bin\Release\FSharp.Charting.pdb
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Chapter.08\StockAnalyzer.fs\bin\Release\FSharp.Charting.xml
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Chapter.08\StockAnalyzer.fs\obj\Release\StockAnalyzer.fs.fsprojResolveAssemblyReference.cache
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Chapter.08\StockAnalyzer.fs\obj\Release\StockAnalyzer.fs.fsproj.StockAnalyzer.FS.exe.config
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Chapter.08\StockAnalyzer.fs\obj\Release\StockAnalyzer.fs.fsproj.CoreCompileInputs.cache
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Chapter.08\StockAnalyzer.fs\obj\Release\StockAnalyzer.FS.exe
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Chapter.08\StockAnalyzer.fs\obj\Release\StockAnalyzer.FS.pdb

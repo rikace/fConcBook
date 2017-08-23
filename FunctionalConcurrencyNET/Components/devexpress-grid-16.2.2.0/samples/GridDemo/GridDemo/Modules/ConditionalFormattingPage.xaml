@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+					   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dxg="clr-namespace:DevExpress.Mobile.DataGrid;assembly=DevExpress.Mobile.Grid.v16.2"
+             xmlns:dxex="clr-namespace:DevExpress.Mobile.Export;assembly=DevExpress.Mobile.Core.v16.2"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+					   x:Class="DevExpress.GridDemo.ConditionalFormattingPage">
+  <ContentPage.Padding>
+    <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
+  </ContentPage.Padding>
+  <ContentPage.Content>
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="*" />
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+      <dxg:GridControl x:Name="grid" ItemsSource="{Binding Orders}" AutoFilterPanelVisibility="true" Grid.Row="0">
+        <dxg:GridControl.Columns>
+          <dxg:TextColumn FieldName="Customer.Name" Caption="Name" IsReadOnly="true" />
+          <dxg:DateColumn FieldName="Date" DisplayFormat="d" />
+          <dxg:PickerColumn FieldName="Priority" SortOrder="Ascending" />
+          <dxg:SwitchColumn FieldName="Shipped" />
+          <dxg:NumberColumn FieldName="Total" IsReadOnly="True" DisplayFormat="C2"/>
+        </dxg:GridControl.Columns>
+      
+        <dxg:GridControl.TotalSummaries>
+          <dxg:GridColumnSummary FieldName="Total" Type="Sum" />
+        </dxg:GridControl.TotalSummaries>
+      </dxg:GridControl>
+      <Grid Grid.Row="1">
+      	<Grid.Padding>
+      		<OnPlatform x:TypeArguments="Thickness" iOS="3,3,3,10" />
+      	</Grid.Padding>
+      	<Grid.ColumnDefinitions>
+        	<ColumnDefinition Width="Auto" />
+        	<ColumnDefinition Width="*" />
+      	</Grid.ColumnDefinitions>
+      	<Label Text="Format:" VerticalOptions="Center" Grid.Column="0" />
+      	<Picker x:Name="cbConditionalFormatting" Grid.Column="1" SelectedIndexChanged="OnConditionalFormattingSelectedIndexChanged" HorizontalOptions="FillAndExpand" />
+      </Grid>
+    </Grid>
+  </ContentPage.Content>
+</ContentPage>

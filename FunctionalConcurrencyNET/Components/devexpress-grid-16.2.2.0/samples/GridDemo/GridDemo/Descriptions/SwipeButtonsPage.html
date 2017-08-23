@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link href="default.css" rel="stylesheet" type="text/css">
+    <title>Swipe buttons</title>
+</head>
+<body>
+    <p class="header">Swipe Buttons</p>
+    <p>
+        In the GridControl, you can create additional buttons to be shown when an end-user swipes left to right, or right to left, over a data row &mdash; Swipe Buttons. 
+        Each button can be associated with a custom action. 
+        Thus, this feature allows you to extend the grid’s default UI and allow it to meet the requirements of your end-users completely.
+    </p>
+    <p>
+        A Swipe Button is specified by a <span class="ident">SwipeButtonInfo</span> object added to the grid's <span class="ident">RightSwipeButtons</span> or <span class="ident">LeftSwipeButtons</span> collection. 
+        For each button, a name, caption, color and width can be specified. To set a custom action for a button, handle the grid's <span class="ident">SwipeButtonClick</span> event, or define an action in a view model and then bind it to a button using the <span class="ident">SwipeButtonCommand</span> property in XAML markup. 
+        To specify when buttons should be available for end-users, handle the <span class="ident">SwipeButtonShowing</span> event.
+    </p>
+    <p>
+        In this demo, data rows are accompanied with one button on the left and one button on the right. 
+        Tapping any of these buttons displays the corresponding alert. 
+        For even data rows, one more button (Delete) is shown additionally on the right.
+    </p>
+    <p class="header">Related APIs:</p>
+
+    <p><a href="http://help.devexpress.com/#Xamarin/DevExpressMobileDataGridGridControl_RightSwipeButtonstopic">GridControl.RightSwipeButtons</a></p>
+    <p><a href="http://help.devexpress.com/#Xamarin/DevExpressMobileDataGridGridControl_LeftSwipeButtonstopic">GridControl.LeftSwipeButtons</a></p>
+    <p><a href="http://help.devexpress.com/#Xamarin/DevExpressMobileDataGridGridControl_SwipeButtonClicktopic">GridControl.SwipeButtonClick</a></p>
+    <p><a href="http://help.devexpress.com/#Xamarin/DevExpressMobileDataGridGridControl_SwipeButtonCommandtopic">GridControl.SwipeButtonCommand</a></p>
+    <p><a href="http://help.devexpress.com/#Xamarin/DevExpressMobileDataGridGridControl_SwipeButtonShowingtopic">GridControl.SwipeButtonShowing</a></p>
+
+</body>
+</html>

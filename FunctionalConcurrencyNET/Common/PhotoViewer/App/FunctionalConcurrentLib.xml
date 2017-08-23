@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+<assembly><name>FunctionalConcurrentLib</name></assembly>
+<members>
+<member name="M:AsyncEx.Async.op_LessEqualsLess``3(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Control.FSharpAsync{``1}})">
+<summary>
+ Right-to-left Kleisli composition
+</summary>
+</member>
+<member name="M:Partitioner.splitByPartitionCountRange(System.Int32,System.Int64,System.Int64)">
+ <summary>
+     partitions an array into a predetermined number of uniformly sized chunks.
+ </summary>
+ <param name="partitions">number of partitions.</param>
+ <param name="input">Input array.</param>
+</member>
+</members>
+</doc>

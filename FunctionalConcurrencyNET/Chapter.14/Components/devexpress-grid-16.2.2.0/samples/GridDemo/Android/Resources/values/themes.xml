@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- the theme applied to the application or activity -->
+    <style name="DemoTheme"
+           parent="@android:style/Theme.Holo">
+        <item name="android:actionBarStyle">@style/DemoActionBar</item>
+		<item name="android:listViewStyle">@style/DemoListView</item>
+    </style>
+
+    <!-- ActionBar styles -->
+    <style name="DemoActionBar"
+           parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
+        <item name="android:background">#1A1F21</item>
+		<item name="android:titleTextStyle">@style/MyActionBarTitleText</item>
+    </style>
+    <style name="MyActionBarTitleText"
+           parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+	<style name="DemoListView"
+		   parent="@android:style/Widget.ListView">
+		   <item name="android:background">#1A1F21</item>
+		   <item name="android:choiceMode">singleChoice</item>
+		   <item name="android:fastScrollEnabled">true</item>
+		   <item name="android:listSelector">@drawable/list_selector_pressed</item>
+	</style>
+</resources>

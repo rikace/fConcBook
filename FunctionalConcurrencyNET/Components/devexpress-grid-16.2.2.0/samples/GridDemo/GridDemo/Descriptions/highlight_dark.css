@@ -1,0 +1,17 @@
+body.hl	{ background-color:#303030; }
+pre.hl	{ color:#DCDCDC; background-color:#303030; font-size:10pt; font-family:'Courier New',monospace;}
+.hl.num { color:#FF0000; }
+.hl.esc { color:#D69D85; }
+.hl.str { color:#D69D85; }
+.hl.pps { color:#5F95FA; }
+.hl.slc { color:#008000; }
+.hl.com { color:#008000; }
+.hl.ppc { color:#5F95FA; }
+.hl.opt { color:#DCDCDC; }
+.hl.ipl { color:#D69D85; }
+.hl.lin { color:#2b91af; }
+.hl.kwa { color:#5F95FA; }
+.hl.kwb { color:#5F95FA; }
+.hl.kwc { color:#2b91af; }
+.hl.kwd { color:#4EC9B0; }
+

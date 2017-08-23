@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="highlight.css">
+</head>
+<body class="hl">
+<pre class="hl"><span class="hl kwa">using</span> System<span class="hl opt">;</span>
+<span class="hl kwa">using</span> System<span class="hl opt">.</span>Collections<span class="hl opt">.</span>ObjectModel<span class="hl opt">;</span>
+<span class="hl kwa">using</span> System<span class="hl opt">.</span>Windows<span class="hl opt">.</span>Input<span class="hl opt">;</span>
+<span class="hl kwa">using</span> DevExpress<span class="hl opt">.</span>Mobile<span class="hl opt">.</span>DataGrid<span class="hl opt">;</span>
+<span class="hl kwa">using</span> Xamarin<span class="hl opt">.</span>Forms<span class="hl opt">;</span>
+
+<span class="hl kwa">namespace</span> DevExpress<span class="hl opt">.</span>GridDemo <span class="hl opt">{</span>
+    <span class="hl kwa">public partial class</span> PullToRefreshPage <span class="hl opt">{</span>
+    <span class="hl kwa">public static readonly</span> BindableProperty OrdersProperty <span class="hl opt">=</span> BindableProperty<span class="hl opt">.</span><span class="hl kwd">Create</span><span class="hl opt">(</span><span class="hl str">&quot;Orders&quot;</span><span class="hl opt">,</span> <span class="hl kwd">typeof</span><span class="hl opt">(</span>ObservableCollection<span class="hl opt">&lt;</span>Order<span class="hl opt">&gt;),</span> <span class="hl kwd">typeof</span><span class="hl opt">(</span>PullToRefreshPage<span class="hl opt">),</span> <span class="hl kwa">null</span><span class="hl opt">);</span>
+    <span class="hl kwa">public static readonly</span> BindableProperty RefreshCommandProperty <span class="hl opt">=</span> BindableProperty<span class="hl opt">.</span><span class="hl kwd">Create</span><span class="hl opt">(</span><span class="hl str">&quot;PullToRefreshCommand&quot;</span><span class="hl opt">,</span> <span class="hl kwd">typeof</span><span class="hl opt">(</span>ICommand<span class="hl opt">),</span> <span class="hl kwd">typeof</span><span class="hl opt">(</span>PullToRefreshPage<span class="hl opt">),</span> <span class="hl kwa">null</span><span class="hl opt">);</span>
+        
+        OrdersRepository repository<span class="hl opt">;</span>
+
+        <span class="hl kwa">public</span> Command PullToRefreshCommand <span class="hl opt">{</span>
+            <span class="hl kwa">get</span> <span class="hl opt">{</span> <span class="hl kwa">return</span> <span class="hl opt">(</span>Command<span class="hl opt">)</span><span class="hl kwd">GetValue</span><span class="hl opt">(</span>RefreshCommandProperty<span class="hl opt">); }</span>
+            <span class="hl kwa">set</span> <span class="hl opt">{</span> <span class="hl kwd">SetValue</span><span class="hl opt">(</span>RefreshCommandProperty<span class="hl opt">,</span> <span class="hl kwa">value</span><span class="hl opt">); }</span>
+        <span class="hl opt">}</span>
+
+        <span class="hl kwa">public</span> ObservableCollection<span class="hl opt">&lt;</span>Order<span class="hl opt">&gt;</span> Orders <span class="hl opt">{</span>
+            <span class="hl kwa">get</span> <span class="hl opt">{</span> <span class="hl kwa">return</span> <span class="hl opt">(</span>ObservableCollection<span class="hl opt">&lt;</span>Order<span class="hl opt">&gt;)</span><span class="hl kwd">GetValue</span><span class="hl opt">(</span>OrdersProperty<span class="hl opt">); }</span>
+            <span class="hl kwa">set</span> <span class="hl opt">{</span> <span class="hl kwd">SetValue</span><span class="hl opt">(</span>OrdersProperty<span class="hl opt">,</span> <span class="hl kwa">value</span><span class="hl opt">); }</span>
+        <span class="hl opt">}</span>
+
+        <span class="hl kwa">public</span> <span class="hl kwd">PullToRefreshPage</span><span class="hl opt">() {</span>
+            <span class="hl kwd">InitializeComponent</span><span class="hl opt">();</span>
+            <span class="hl kwd">BindData</span><span class="hl opt">();</span>
+        <span class="hl opt">}</span>
+
+        <span class="hl kwb">void</span> <span class="hl kwd">BindData</span><span class="hl opt">() {</span>
+            BindingContext <span class="hl opt">=</span> <span class="hl kwa">this</span><span class="hl opt">;</span>
+            <span class="hl kwa">this</span><span class="hl opt">.</span>repository <span class="hl opt">=</span> <span class="hl kwa">new</span> <span class="hl kwd">DemoOrdersRepository</span><span class="hl opt">();</span>
+            <span class="hl kwa">this</span><span class="hl opt">.</span>Orders <span class="hl opt">=</span> repository<span class="hl opt">.</span>Orders<span class="hl opt">;</span>
+            PullToRefreshCommand <span class="hl opt">=</span> <span class="hl kwa">new</span> <span class="hl kwd">Command</span><span class="hl opt">(</span>ExecutePullToRefreshCommand<span class="hl opt">);</span>
+        <span class="hl opt">}</span>
+
+        <span class="hl kwb">void</span> <span class="hl kwd">ExecutePullToRefreshCommand</span><span class="hl opt">() {</span>
+            repository<span class="hl opt">.</span><span class="hl kwd">RefreshOrders</span><span class="hl opt">();</span>
+            Orders <span class="hl opt">=</span> repository<span class="hl opt">.</span>Orders<span class="hl opt">;</span>
+        <span class="hl opt">}</span>
+    <span class="hl opt">}</span>
+<span class="hl opt">}</span>
+</pre>
+</body>
+</html>

@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+<assembly><name>Utilities</name></assembly>
+<members>
+<member name="T:AttributeHelpers.AttributeHelpers.ModuleAttribute">
+<summary>
+ This attribute is used to adjust the runtime representation for a module.
+ Note: this may affect how a module is compiled.
+</summary>
+</member>
+<member name="T:AttributeHelpers.AttributeHelpers.QualifiedAttribute">
+<summary>
+ This attribute is used to indicate that references to the elements of
+ a module, record, or union type require explicit qualified access.
+</summary>
+</member>
+<member name="P:AttributeHelpers.AttributeHelpers.Suffix">
+<summary>
+ This value may be combined with the `ModuleAttribute` to have the compiler append the
+ word &quot;Module&quot; to the end of a type. Use with caution.
+</summary>
+</member>
+<member name="M:Utilities.Interop.Funcs.Untuple``4(System.Action{System.Tuple{``0,``1,``2,``3}})">
+<summary>
+ Converts an action taking a 4-tuple into an action with 4 parameters
+</summary>
+</member>
+<member name="M:Utilities.Interop.Funcs.Untuple``3(System.Action{System.Tuple{``0,``1,``2}})">
+<summary>
+ /// Converts an action taking a 3-tuple into an action with 3 parameters
+</summary>
+</member>
+<member name="M:Utilities.Interop.Funcs.Untuple``2(System.Action{System.Tuple{``0,``1}})">
+<summary>
+ Converts an action taking a 2-tuple into an action with 2 parameters
+</summary>
+</member>
+<member name="M:Utilities.Interop.Funcs.Tuple``4(System.Action{``0,``1,``2,``3})">
+<summary>
+ Converts an action with 4 arguments into an action taking a 4-tuple
+</summary>
+</member>
+<member name="M:Utilities.Interop.Funcs.Tuple``3(System.Action{``0,``1,``2})">
+<summary>
+ Converts an action with 3 arguments into an action taking a 3-tuple
+</summary>
+</member>
+<member name="M:Utilities.Interop.Funcs.Tuple``2(System.Action{``0,``1})">
+<summary>
+ Converts an action with 2 arguments into an action taking a 2-tuple
+</summary>
+</member>
+<member name="M:Utilities.Interop.Funcs.ToFunc``3(System.Action{``0,``1,``2})">
+<summary>
+ Converts an action to a function returning Unit
+</summary>
+</member>
+<member name="M:Utilities.Interop.Funcs.ToFunc``2(System.Action{``0,``1})">
+<summary>
+ Converts an action to a function returning Unit
+</summary>
+</member>
+<member name="M:Utilities.Interop.Funcs.ToFunc``1(System.Action{``0})">
+<summary>
+ Converts an action to a function returning Unit
+</summary>
+</member>
+<member name="M:Utilities.Interop.Funcs.ToFunc(System.Action)">
+<summary>
+ Converts an action to a function returning Unit
+</summary>
+</member>
+<member name="M:Utilities.Interop.Funcs.Curry``4(System.Func{``0,``1,``2,``3})">
+<summary>
+ Converts an uncurried function to a curried function
+</summary>
+</member>
+<member name="M:Utilities.Interop.Funcs.Curry``3(System.Func{``0,``1,``2})">
+<summary>
+ Converts an uncurried function to a curried function
+</summary>
+</member>
+<member name="M:Utilities.Interop.Funcs.Compose``3(System.Func{``0,``1},System.Func{``2,``0})">
+<summary>
+ Composes two functions.
+ Mathematically: f . g
+</summary>
+</member>
+<member name="M:Utilities.Interop.Funcs.AndThen``3(System.Func{``0,``1},System.Func{``1,``2})">
+<summary>
+ Composes two functions (forward composition).
+ Mathematically: g . f
+</summary>
+</member>
+<member name="T:Utilities.Interop.Funcs">
+<summary>
+ Extensions around Actions and Funcs
+</summary>
+</member>
+<member name="M:Utilities.Interop.FSharpFunc.FromFunc``3(System.Func{``0,``1,``2})">
+<summary>
+ Convert a Func into an F# function
+</summary>
+</member>
+<member name="M:Utilities.Interop.FSharpFunc.FromFunc``2(System.Func{``0,``1})">
+<summary>
+ Convert a Func into an F# function
+</summary>
+</member>
+<member name="M:Utilities.Interop.FSharpFunc.FromFunc``1(System.Func{``0})">
+<summary>
+ Convert a Func into an F# function
+</summary>
+</member>
+<member name="M:Utilities.Interop.FSharpFunc.FromAction``3(System.Action{``0,``1,``2})">
+<summary>
+ Convert an Action into an F# function returning unit
+</summary>
+</member>
+<member name="M:Utilities.Interop.FSharpFunc.FromAction``2(System.Action{``0,``1})">
+<summary>
+ Convert an Action into an F# function returning unit
+</summary>
+</member>
+<member name="M:Utilities.Interop.FSharpFunc.FromAction``1(System.Action{``0})">
+<summary>
+ Convert an Action into an F# function returning unit
+</summary>
+</member>
+<member name="M:Utilities.Interop.FSharpFunc.FromAction(System.Action)">
+<summary>
+ Convert an Action into an F# function returning unit
+</summary>
+</member>
+<member name="M:Utilities.Utils.dispose``1(``0)">
+<summary>
+ Safely invokes `.Dispose()` on instances of `IDisposable`
+</summary>
+</member>
+<member name="M:Utilities.Utils.op_BarGreaterBang``2(``0,Microsoft.FSharp.Core.FSharpFunc{``0,``1})">
+<summary>
+ Custom operator for `tee`: Given a value, apply a function to it, ignore the result, then return the original value.
+</summary>
+</member>
+<member name="M:Utilities.Utils.tee``2(Microsoft.FSharp.Core.FSharpFunc{``0,``1},``0)">
+<summary>
+ Given a value, apply a function to it, ignore the result, then return the original value.
+</summary>
+</member>
+<member name="M:Utilities.Utils.op_Concatenate``2">
+<summary>
+ Sequencing operator like Haskell&apos;s ($). Has better precedence than (&lt;|) due to the
+ first character used in the symbol.
+</summary>
+</member>
+<member name="M:Utilities.Utils.flip``3(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``1,``2}},``1,``0)">
+<summary>
+ Transforms a function by flipping the order of its arguments.
+</summary>
+</member>
+<member name="M:FuzzyMatch.JaroWinklerModule.existsInWindow``2(System.Char,System.String,``0,``1)">
+<summary>
+ Given an offset and a radius from that office, does mChar exist in that part of str?
+</summary>
+</member>
+<member name="M:FunInterop.FSharpOptionExtensions.ToOption``1(System.Nullable{``0})">
+<summary>
+ Given a `Nullable&lt;&apos;T&gt;`, returns `Some value` if `Nullable&lt;&apos;T&gt;` has a value, otherwise returns `None`
+</summary>
+</member>
+<member name="M:FunInterop.FSharpOptionExtensions.ToOption``1(``0)">
+<summary>
+ Given a value, returns `Some value` if the value is not null, otherwise returns `None`
+</summary>
+</member>
+<member name="M:FunInterop.FSharpOptionExtensions.Match``2(Microsoft.FSharp.Core.FSharpOption{``0},System.Func{``0,``1},System.Func{``1})">
+<summary>
+ For `Some value`, applies the value to `withSome`; Otherwise, invokes `withNone`
+</summary>
+</member>
+<member name="M:FunInterop.FSharpOptionExtensions.Match``1(Microsoft.FSharp.Core.FSharpOption{``0},System.Action{``0},System.Action)">
+<summary>
+ For `Some value`, applies the value to `withSome`; Otherwise, invokes `withNone`
+</summary>
+</member>
+<member name="M:FunInterop.FSharpOptionExtensions.GetValueOrDefault``1(Microsoft.FSharp.Core.FSharpOption{``0})">
+<summary>
+ For `Some value`, returns the value, otherwise returns `default(T)`
+</summary>
+</member>
+<member name="M:FunInterop.FSharpOptionExtensions.GetValueOrDefault``1(Microsoft.FSharp.Core.FSharpOption{``0},``0)">
+<summary>
+ For `Some value`, returns the value, otherwise returns `defaultValue`
+</summary>
+</member>
+<member name="M:FunInterop.FSharpOptionExtensions.GetValueOrDefault``1(Microsoft.FSharp.Core.FSharpOption{``0},System.Func{``0})">
+<summary>
+ For `Some value`, returns the value, otherwise returns the value of `getDefault`
+</summary>
+</member>
+<member name="T:FunInterop.FSharpOptionExtensions">
+<summary>
+ Provides helpers for working with `FSharpOption&lt;&apos;T&gt;` from languages other than F#
+</summary>
+</member>
+<member name="M:FunInterop.Fun.Of``3(System.Action{``0,``1,``2})">
+<summary>
+ Converts `Action` of 3 arguments into an F# function
+</summary>
+</member>
+<member name="M:FunInterop.Fun.Of``2(System.Action{``0,``1})">
+<summary>
+ Converts `Action` of 2 arguments into an F# function
+</summary>
+</member>
+<member name="M:FunInterop.Fun.Of``1(System.Action{``0})">
+<summary>
+ Converts `Action` of 1 argument into an F# function
+</summary>
+</member>
+<member name="M:FunInterop.Fun.Of(System.Action)">
+<summary>
+ Converts `Action` of no arguments into an F# function
+</summary>
+</member>
+<member name="M:FunInterop.Fun.Of``4(System.Func{``0,``1,``2,``3})">
+<summary>
+ Converts `Func` of 3 arguments into an F# function
+</summary>
+</member>
+<member name="M:FunInterop.Fun.Of``3(System.Func{``0,``1,``2})">
+<summary>
+ Converts `Func` of 2 arguments into an F# function
+</summary>
+</member>
+<member name="M:FunInterop.Fun.Of``2(System.Func{``0,``1})">
+<summary>
+ Converts `Func` of 1 argument into an F# function
+</summary>
+</member>
+<member name="M:FunInterop.Fun.Of``1(System.Func{``0})">
+<summary>
+ Converts `Func` of no arguments into an F# function
+</summary>
+</member>
+<member name="T:FunInterop.Fun">
+<summary>
+ Provides helpers for converting CLR delegates (`Func` and `Action`) into F# functions
+</summary>
+</member>
+<member name="M:FSharpOptionExtensions.FSharpOptionExtensions.ToOption``1(System.Nullable{``0})">
+<summary>
+ Given a `Nullable&lt;&apos;T&gt;`, returns `Some value` if `Nullable&lt;&apos;T&gt;` has a value, otherwise returns `None`
+</summary>
+</member>
+<member name="M:FSharpOptionExtensions.FSharpOptionExtensions.ToOption``1(``0)">
+<summary>
+ Given a value, returns `Some value` if the value is not null, otherwise returns `None`
+</summary>
+</member>
+<member name="M:FSharpOptionExtensions.FSharpOptionExtensions.Match``2(Microsoft.FSharp.Core.FSharpOption{``0},System.Func{``0,``1},System.Func{``1})">
+<summary>
+ For `Some value`, applies the value to `withSome`; Otherwise, invokes `withNone`
+</summary>
+</member>
+<member name="M:FSharpOptionExtensions.FSharpOptionExtensions.Match``1(Microsoft.FSharp.Core.FSharpOption{``0},System.Action{``0},System.Action)">
+<summary>
+ For `Some value`, applies the value to `withSome`; Otherwise, invokes `withNone`
+</summary>
+</member>
+<member name="M:FSharpOptionExtensions.FSharpOptionExtensions.GetValueOrDefault``1(Microsoft.FSharp.Core.FSharpOption{``0})">
+<summary>
+ For `Some value`, returns the value, otherwise returns `default(T)`
+</summary>
+</member>
+<member name="M:FSharpOptionExtensions.FSharpOptionExtensions.GetValueOrDefault``1(Microsoft.FSharp.Core.FSharpOption{``0},``0)">
+<summary>
+ For `Some value`, returns the value, otherwise returns `defaultValue`
+</summary>
+</member>
+<member name="M:FSharpOptionExtensions.FSharpOptionExtensions.GetValueOrDefault``1(Microsoft.FSharp.Core.FSharpOption{``0},System.Func{``0})">
+<summary>
+ For `Some value`, returns the value, otherwise returns the value of `getDefault`
+</summary>
+</member>
+<member name="T:FSharpOptionExtensions.FSharpOptionExtensions">
+<summary>
+ Provides helpers for working with `FSharpOption&lt;&apos;T&gt;` from languages other than F#
+</summary>
+</member>
+<member name="M:ResultEx.ResultExModule.lift3``5(Microsoft.FSharp.Core.FSharpFunc{``0,``1},Microsoft.FSharp.Core.FSharpResult{``0,Microsoft.FSharp.Collections.FSharpList{``2}},Microsoft.FSharp.Core.FSharpResult{Microsoft.FSharp.Core.FSharpFunc{``1,``3},Microsoft.FSharp.Collections.FSharpList{``2}},Microsoft.FSharp.Core.FSharpResult{Microsoft.FSharp.Core.FSharpFunc{``3,``4},Microsoft.FSharp.Collections.FSharpList{``2}})">
+<summary>
+ Lift a three parameter function to use Result parameters
+</summary>
+</member>
+<member name="M:ResultEx.ResultExModule.lift2``4(Microsoft.FSharp.Core.FSharpFunc{``0,``1},Microsoft.FSharp.Core.FSharpResult{``0,Microsoft.FSharp.Collections.FSharpList{``2}},Microsoft.FSharp.Core.FSharpResult{Microsoft.FSharp.Core.FSharpFunc{``1,``3},Microsoft.FSharp.Collections.FSharpList{``2}})">
+<summary>
+ Lift a two parameter function to use Result parameters
+</summary>
+</member>
+</members>
+</doc>

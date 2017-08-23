@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="highlight.css">
+</head>
+<body class="hl">
+<pre class="hl"><span class="hl kwa">&lt;?xml</span> <span class="hl kwb">version</span>=<span class="hl str">&quot;1.0&quot;</span> <span class="hl kwb">encoding</span>=<span class="hl str">&quot;utf-8&quot;</span> <span class="hl kwa">?&gt;</span>
+<span class="hl kwa">&lt;ContentPage</span> <span class="hl kwb">xmlns</span>=<span class="hl str">&quot;http://xamarin.com/schemas/2014/forms&quot;</span>
+             xmlns:<span class="hl kwb">x</span>=<span class="hl str">&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;</span>
+             xmlns:<span class="hl kwb">dxg</span>=<span class="hl str">&quot;clr-namespace:DevExpress.Mobile.DataGrid;assembly=DevExpress.Mobile.Grid.v16.2&quot;</span>
+             xmlns:<span class="hl kwb">dxex</span>=<span class="hl str">&quot;clr-namespace:DevExpress.Mobile.Export;assembly=DevExpress.Mobile.Core.v16.2&quot;</span>
+             xmlns:<span class="hl kwb">sys</span>=<span class="hl str">&quot;clr-namespace:System;assembly=mscorlib&quot;</span>
+             x:<span class="hl kwb">Class</span>=<span class="hl str">&quot;DevExpress.GridDemo.ExportPage&quot;</span><span class="hl kwa">&gt;</span>
+  <span class="hl kwa">&lt;ContentPage</span>.Padding<span class="hl kwa">&gt;</span>
+    <span class="hl kwa">&lt;OnPlatform</span> x:<span class="hl kwb">TypeArguments</span>=<span class="hl str">&quot;Thickness&quot;</span> <span class="hl kwb">iOS</span>=<span class="hl str">&quot;0, 20, 0, 0&quot;</span> <span class="hl kwa">/&gt;</span>
+  <span class="hl kwa">&lt;/ContentPage</span>.Padding<span class="hl kwa">&gt;</span>
+  <span class="hl kwa">&lt;ContentPage</span>.Content<span class="hl kwa">&gt;</span>
+    <span class="hl kwa">&lt;Grid&gt;</span>
+      <span class="hl kwa">&lt;Grid</span>.RowDefinitions<span class="hl kwa">&gt;</span>
+        <span class="hl kwa">&lt;RowDefinition</span> <span class="hl kwb">Height</span>=<span class="hl str">&quot;*&quot;</span> <span class="hl kwa">/&gt;</span>
+        <span class="hl kwa">&lt;RowDefinition</span> <span class="hl kwb">Height</span>=<span class="hl str">&quot;Auto&quot;</span> <span class="hl kwa">/&gt;</span>
+        <span class="hl kwa">&lt;RowDefinition</span> <span class="hl kwb">Height</span>=<span class="hl str">&quot;Auto&quot;</span> <span class="hl kwa">/&gt;</span>
+      <span class="hl kwa">&lt;/Grid</span>.RowDefinitions<span class="hl kwa">&gt;</span>
+      <span class="hl kwa">&lt;Grid</span>.ColumnDefinitions<span class="hl kwa">&gt;</span>
+        <span class="hl kwa">&lt;ColumnDefinition</span> <span class="hl kwb">Width</span>=<span class="hl str">&quot;Auto&quot;</span> <span class="hl kwa">/&gt;</span>
+        <span class="hl kwa">&lt;ColumnDefinition</span> <span class="hl kwb">Width</span>=<span class="hl str">&quot;*&quot;</span> <span class="hl kwa">/&gt;</span>
+        <span class="hl kwa">&lt;ColumnDefinition</span> <span class="hl kwb">Width</span>=<span class="hl str">&quot;Auto&quot;</span> <span class="hl kwa">/&gt;</span>
+      <span class="hl kwa">&lt;/Grid</span>.ColumnDefinitions<span class="hl kwa">&gt;</span>
+      <span class="hl kwa">&lt;dxg:GridControl</span> x:<span class="hl kwb">Name</span>=<span class="hl str">&quot;grid&quot;</span> <span class="hl kwb">ItemsSource</span>=<span class="hl str">&quot;{Binding Orders}&quot;</span> <span class="hl kwb">RowHeight</span>=<span class="hl str">&quot;100&quot;</span> <span class="hl kwb">AutoFilterPanelVisibility</span>=<span class="hl str">&quot;true&quot;</span> Grid.<span class="hl kwb">Row</span>=<span class="hl str">&quot;0&quot;</span> Grid.<span class="hl kwb">ColumnSpan</span>=<span class="hl str">&quot;3&quot;</span><span class="hl kwa">&gt;</span>
+        <span class="hl kwa">&lt;dxg:GridControl</span>.RowHeight<span class="hl kwa">&gt;</span>
+          <span class="hl kwa">&lt;OnIdiom</span> x:<span class="hl kwb">TypeArguments</span>=<span class="hl str">&quot;sys:Double&quot;</span> <span class="hl kwb">Tablet</span>=<span class="hl str">&quot;100&quot;</span> <span class="hl kwb">Phone</span>=<span class="hl str">&quot;50&quot;</span> <span class="hl kwa">/&gt;</span>
+        <span class="hl kwa">&lt;/dxg:GridControl</span>.RowHeight<span class="hl kwa">&gt;</span>
+        <span class="hl kwa">&lt;dxg:GridControl</span>.OptionsExportXlsx<span class="hl kwa">&gt;</span>
+          <span class="hl kwa">&lt;dxex:XlsxExportOptions</span> <span class="hl kwb">ShowColumnHeaders</span>=<span class="hl str">&quot;True&quot;</span> <span class="hl kwb">ShowGroupSummaries</span>=<span class="hl str">&quot;True&quot;</span> <span class="hl kwb">ShowTotalSummaries</span>=<span class="hl str">&quot;True&quot;</span> <span class="hl kwb">GroupState</span>=<span class="hl str">&quot;ExpandAll&quot;</span> <span class="hl kwb">AllowGrouping</span>=<span class="hl str">&quot;True&quot;</span> <span class="hl kwa">/&gt;</span>
+        <span class="hl kwa">&lt;/dxg:GridControl</span>.OptionsExportXlsx<span class="hl kwa">&gt;</span>
+        <span class="hl kwa">&lt;dxg:GridControl</span>.OptionsExportXls<span class="hl kwa">&gt;</span>
+          <span class="hl kwa">&lt;dxex:XlsExportOptions</span> <span class="hl kwb">ShowColumnHeaders</span>=<span class="hl str">&quot;True&quot;</span> <span class="hl kwb">ShowGroupSummaries</span>=<span class="hl str">&quot;True&quot;</span> <span class="hl kwb">ShowTotalSummaries</span>=<span class="hl str">&quot;True&quot;</span> <span class="hl kwb">GroupState</span>=<span class="hl str">&quot;ExpandAll&quot;</span> <span class="hl kwb">AllowGrouping</span>=<span class="hl str">&quot;True&quot;</span> <span class="hl kwa">/&gt;</span>
+        <span class="hl kwa">&lt;/dxg:GridControl</span>.OptionsExportXls<span class="hl kwa">&gt;</span>
+        <span class="hl kwa">&lt;dxg:GridControl</span>.OptionsExportCsv<span class="hl kwa">&gt;</span>
+          <span class="hl kwa">&lt;dxex:CsvExportOptions</span> <span class="hl kwb">Separator</span>=<span class="hl str">&quot;,&quot;</span> <span class="hl kwa">/&gt;</span>
+        <span class="hl kwa">&lt;/dxg:GridControl</span>.OptionsExportCsv<span class="hl kwa">&gt;</span>
+        <span class="hl kwa">&lt;dxg:GridControl</span>.Columns<span class="hl kwa">&gt;</span>
+          <span class="hl kwa">&lt;dxg:ImageColumn</span> <span class="hl kwb">FieldName</span>=<span class="hl str">&quot;Customer.Photo&quot;</span> <span class="hl kwb">Caption</span>=<span class="hl str">&quot;Photo&quot;</span><span class="hl kwa">&gt;</span>
+            <span class="hl kwa">&lt;dxg:ImageColumn</span>.Width<span class="hl kwa">&gt;</span>
+              <span class="hl kwa">&lt;OnIdiom</span> x:<span class="hl kwb">TypeArguments</span>=<span class="hl str">&quot;sys:Double&quot;</span> <span class="hl kwb">Tablet</span>=<span class="hl str">&quot;100&quot;</span> <span class="hl kwb">Phone</span>=<span class="hl str">&quot;50&quot;</span> <span class="hl kwa">/&gt;</span>
+            <span class="hl kwa">&lt;/dxg:ImageColumn</span>.Width<span class="hl kwa">&gt;</span>
+          <span class="hl kwa">&lt;/dxg:ImageColumn&gt;</span>
+          
+          <span class="hl kwa">&lt;dxg:TextColumn</span> <span class="hl kwb">FieldName</span>=<span class="hl str">&quot;Customer.Name&quot;</span> <span class="hl kwb">Caption</span>=<span class="hl str">&quot;Name&quot;</span> <span class="hl kwb">IsReadOnly</span>=<span class="hl str">&quot;true&quot;</span> <span class="hl kwa">/&gt;</span>
+          <span class="hl kwa">&lt;dxg:DateColumn</span> <span class="hl kwb">FieldName</span>=<span class="hl str">&quot;Date&quot;</span> <span class="hl kwb">DisplayFormat</span>=<span class="hl str">&quot;{}{0:d}&quot;</span> <span class="hl kwa">/&gt;</span>
+          <span class="hl kwa">&lt;dxg:PickerColumn</span> <span class="hl kwb">FieldName</span>=<span class="hl str">&quot;Priority&quot;</span> <span class="hl kwb">SortOrder</span>=<span class="hl str">&quot;Ascending&quot;</span> <span class="hl kwa">/&gt;</span>
+          <span class="hl kwa">&lt;dxg:SwitchColumn</span> <span class="hl kwb">FieldName</span>=<span class="hl str">&quot;Shipped&quot;</span> <span class="hl kwa">/&gt;</span>
+          <span class="hl kwa">&lt;dxg:NumberColumn</span> <span class="hl kwb">FieldName</span>=<span class="hl str">&quot;Total&quot;</span> <span class="hl kwb">IsReadOnly</span>=<span class="hl str">&quot;True&quot;</span> <span class="hl kwb">DisplayFormat</span>=<span class="hl str">&quot;{}{0:C2}&quot;</span><span class="hl kwa">/&gt;</span>
+        <span class="hl kwa">&lt;/dxg:GridControl</span>.Columns<span class="hl kwa">&gt;</span>
+      
+        <span class="hl kwa">&lt;dxg:GridControl</span>.TotalSummaries<span class="hl kwa">&gt;</span>
+          <span class="hl kwa">&lt;dxg:GridColumnSummary</span> <span class="hl kwb">FieldName</span>=<span class="hl str">&quot;Total&quot;</span> <span class="hl kwb">Type</span>=<span class="hl str">&quot;Sum&quot;</span> <span class="hl kwa">/&gt;</span>
+        <span class="hl kwa">&lt;/dxg:GridControl</span>.TotalSummaries<span class="hl kwa">&gt;</span>
+      <span class="hl kwa">&lt;/dxg:GridControl&gt;</span>
+      <span class="hl kwa">&lt;Label</span> <span class="hl kwb">Text</span>=<span class="hl str">&quot;Format:&quot;</span> <span class="hl kwb">VerticalOptions</span>=<span class="hl str">&quot;Center&quot;</span> Grid.<span class="hl kwb">Row</span>=<span class="hl str">&quot;1&quot;</span> Grid.<span class="hl kwb">Column</span>=<span class="hl str">&quot;0&quot;</span> <span class="hl kwa">/&gt;</span>
+      <span class="hl kwa">&lt;Picker</span> x:<span class="hl kwb">Name</span>=<span class="hl str">&quot;cbExportType&quot;</span> Grid.<span class="hl kwb">Row</span>=<span class="hl str">&quot;1&quot;</span> Grid.<span class="hl kwb">Column</span>=<span class="hl str">&quot;1&quot;</span> <span class="hl kwa">/&gt;</span>
+      <span class="hl kwa">&lt;Button</span> x:<span class="hl kwb">Name</span>=<span class="hl str">&quot;btnExport&quot;</span> <span class="hl kwb">Text</span>=<span class="hl str">&quot;Export&quot;</span> <span class="hl kwb">Clicked</span>=<span class="hl str">&quot;OnExport&quot;</span> Grid.<span class="hl kwb">Row</span>=<span class="hl str">&quot;1&quot;</span> Grid.<span class="hl kwb">Column</span>=<span class="hl str">&quot;2&quot;</span> <span class="hl kwa">/&gt;</span>
+      <span class="hl kwa">&lt;Label</span> <span class="hl kwb">Text</span>=<span class="hl str">&quot;Saved as:&quot;</span> <span class="hl kwb">VerticalOptions</span>=<span class="hl str">&quot;Center&quot;</span> Grid.<span class="hl kwb">Row</span>=<span class="hl str">&quot;2&quot;</span> Grid.<span class="hl kwb">Column</span>=<span class="hl str">&quot;0&quot;</span> <span class="hl kwa">/&gt;</span>
+      <span class="hl kwa">&lt;Label</span> x:<span class="hl kwb">Name</span>=<span class="hl str">&quot;txtPath&quot;</span> <span class="hl kwb">VerticalOptions</span>=<span class="hl str">&quot;Center&quot;</span> Grid.<span class="hl kwb">Row</span>=<span class="hl str">&quot;2&quot;</span> Grid.<span class="hl kwb">Column</span>=<span class="hl str">&quot;1&quot;</span> <span class="hl kwa">/&gt;</span>
+      <span class="hl kwa">&lt;Button</span> x:<span class="hl kwb">Name</span>=<span class="hl str">&quot;btnOpen&quot;</span> <span class="hl kwb">Text</span>=<span class="hl str">&quot;Open&quot;</span> <span class="hl kwb">Clicked</span>=<span class="hl str">&quot;OnOpen&quot;</span> Grid.<span class="hl kwb">Row</span>=<span class="hl str">&quot;2&quot;</span> Grid.<span class="hl kwb">Column</span>=<span class="hl str">&quot;2&quot;</span> <span class="hl kwa">/&gt;</span>
+    <span class="hl kwa">&lt;/Grid&gt;</span>
+  <span class="hl kwa">&lt;/ContentPage</span>.Content<span class="hl kwa">&gt;</span>
+<span class="hl kwa">&lt;/ContentPage&gt;</span>
+</pre>
+</body>
+</html>

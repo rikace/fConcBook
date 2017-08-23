@@ -1,0 +1,13 @@
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Common\Functional.fs\bin\Release\Functional.fs.XML
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Common\Functional.fs\bin\Release\Functional.fs.dll
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Common\Functional.fs\bin\Release\Functional.fs.pdb
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Common\Functional.fs\bin\Release\FSharp.Core.dll
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Common\Functional.fs\bin\Release\FSharp.PowerPack.dll
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Common\Functional.fs\bin\Release\FSharp.PowerPack.Parallel.Seq.dll
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Common\Functional.fs\bin\Release\System.ValueTuple.dll
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Common\Functional.fs\bin\Release\FSharp.PowerPack.xml
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Common\Functional.fs\bin\Release\FSharp.PowerPack.Parallel.Seq.xml
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Common\Functional.fs\bin\Release\FSharp.Core.xml
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Common\Functional.fs\obj\Release\Functional.fs.fsproj.CoreCompileInputs.cache
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Common\Functional.fs\obj\Release\Functional.fs.dll
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Common\Functional.fs\obj\Release\Functional.fs.pdb

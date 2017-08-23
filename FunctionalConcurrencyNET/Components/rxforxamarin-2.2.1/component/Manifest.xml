@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<component format="1" id="rxforxamarin">
+  <name>Reactive Extensions (Rx) for Xamarin</name>
+  <publisher>Xamarin, Inc.</publisher>
+  <publisher-url>https://rx.codeplex.com</publisher-url>
+  <version>2.2.1</version>
+  <summary>Create async and event based apps using observable sequences &amp; LINQstyle queries</summary>
+  <samples>
+    <sample id="ReactiveAndroidSample">
+      <name>Touch Event Observable Android Sample</name>
+      <summary>Touch Event Observable Android Sample</summary>
+    </sample>
+    <sample id="ReactiveExtensionsGithubClientSample">
+      <name>GitHub API client Android</name>
+      <summary>GitHub API client Android</summary>
+    </sample>
+    <sample id="iOSRxSample-Classic">
+      <name>iOS Rx Event Observable Sample</name>
+      <summary>iOS Rx Event Observable Sample</summary>
+    </sample>
+    <sample id="iOSRxSample">
+      <name>iOS unified Rx Event Observable Sample</name>
+      <summary>iOS unified Rx Event Observable Sample</summary>
+    </sample>
+  </samples>
+</component>

@@ -1,0 +1,635 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectGuid>{BA7A6553-65BD-4704-A4B9-1814FBFC6197}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>DevExpress.GridDemo</RootNamespace>
+    <AssemblyName>GridDemoApp</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Profile259</TargetFrameworkProfile>
+    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
+    <DevInstrumentationEnabled>True</DevInstrumentationEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="AboutPage.xaml.cs">
+      <DependentUpon>AboutPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="App.cs" />
+    <Compile Include="BusinessModel\Quote.cs" />
+    <Compile Include="CodeViewerPage.xaml.cs">
+      <DependentUpon>CodeViewerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DemoContentPage.cs" />
+    <Compile Include="MainPage.cs" />
+    <Compile Include="HtmlViewerPage.xaml.cs">
+      <DependentUpon>HtmlViewerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\CellTemplatePage.xaml.cs">
+      <DependentUpon>CellTemplatePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\ColumnChooserPage.xaml.cs">
+      <DependentUpon>ColumnChooserPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\ColumnsAutoGeneratePage.xaml.cs">
+      <DependentUpon>ColumnsAutoGeneratePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DemoListPage.xaml.cs">
+      <DependentUpon>DemoListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\ConditionalFormattingPage.xaml.cs">
+      <DependentUpon>ConditionalFormattingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\CustomizeCellPage.xaml.cs">
+      <DependentUpon>CustomizeCellPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\RowEditModePage.xaml.cs">
+      <DependentUpon>RowEditModePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\ExportPage.xaml.cs">
+      <DependentUpon>ExportPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\FilterAutoFilterPage.xaml.cs">
+      <DependentUpon>FilterAutoFilterPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\FilterPage.xaml.cs">
+      <DependentUpon>FilterPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\FirstLookPage.xaml.cs">
+      <DependentUpon>FirstLookPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\GroupDatesPage.xaml.cs">
+      <DependentUpon>GroupDatesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\GroupPage.xaml.cs">
+      <DependentUpon>GroupPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\LargeDataSourcePage.xaml.cs">
+      <DependentUpon>LargeDataSourcePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\LocalizationPage.xaml.cs">
+      <DependentUpon>LocalizationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\RealTimeDataPage.xaml.cs">
+      <DependentUpon>RealTimeDataPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\RowDetailsPage.xaml.cs">
+      <DependentUpon>RowDetailsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\SaveLoadStatePage.xaml.cs">
+      <DependentUpon>SaveLoadStatePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\SearchHighlightCellPage.xaml.cs">
+      <DependentUpon>SearchHighlightCellPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessModel\Order.cs" />
+    <Compile Include="Modules\NewItemRowPage.xaml.cs">
+      <DependentUpon>NewItemRowPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\LoadMorePage.xaml.cs">
+      <DependentUpon>LoadMorePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\PullToRefreshPage.xaml.cs">
+      <DependentUpon>PullToRefreshPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\RestrictionsPage.xaml.cs">
+      <DependentUpon>RestrictionsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\SortMultiColumnPage.xaml.cs">
+      <DependentUpon>SortMultiColumnPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\SortPage.xaml.cs">
+      <DependentUpon>SortPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\SummaryCustomPage.xaml.cs">
+      <DependentUpon>SummaryCustomPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\SummaryGroupPage.xaml.cs">
+      <DependentUpon>SummaryGroupPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\SummaryTotalPage.xaml.cs">
+      <DependentUpon>SummaryTotalPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\ThemesPage.xaml.cs">
+      <DependentUpon>ThemesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\UnboundColumnsPage.xaml.cs">
+      <DependentUpon>UnboundColumnsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Utils.cs" />
+    <Compile Include="ViewModels\MainPageViewModel.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="BusinessModel\Customer.cs" />
+    <Compile Include="BusinessModel\OrderEntry.cs" />
+    <Compile Include="BusinessModel\Commodity.cs" />
+    <Compile Include="BusinessModel\ModelObject.cs" />
+    <Compile Include="BusinessModel\OrdersRepository.cs" />
+    <Compile Include="BusinessModel\DemoOrdersRepository.cs" />
+    <Compile Include="BusinessModel\RandomData.cs" />
+    <EmbeddedResource Include="Localization\GridLocalizationRes.de.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Localization\GridLocalizationRes.es.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Localization\GridLocalizationRes.fr.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Localization\GridLocalizationRes.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Localization\GridLocalizationRes.ru.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Localization\LocalizationPageRes.de.resx" />
+    <EmbeddedResource Include="Localization\LocalizationPageRes.es.resx" />
+    <EmbeddedResource Include="Localization\LocalizationPageRes.fr.resx" />
+    <EmbeddedResource Include="Localization\LocalizationPageRes.resx" />
+    <EmbeddedResource Include="Localization\LocalizationPageRes.ru.resx" />
+    <EmbeddedResource Include="Modules\SwipeButtonsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <Compile Include="Modules\SwipeButtonsPage.xaml.cs">
+      <DependentUpon>SwipeButtonsPage.xaml</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Modules\MenuCustomizationPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <Compile Include="Modules\MenuCustomizationPage.xaml.cs">
+      <DependentUpon>MenuCustomizationPage.xaml</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Descriptions\MenuCustomizationPage.html" />
+    <EmbeddedResource Include="Modules\HorizontalScrollingPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <Compile Include="Modules\HorizontalScrollingPage.xaml.cs">
+      <DependentUpon>HorizontalScrollingPage.xaml</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Sources\HorizontalScrollingPage.xaml.htm" />
+    <EmbeddedResource Include="Sources\HorizontalScrollingPage.xaml.code.htm" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <Import Project="..\packages\Xamarin.Forms.2.3.1.114\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.1.114\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
+  <ItemGroup>
+    <Reference Include="DevExpress.Mobile.Core.v16.2">
+      <HintPath>..\..\..\lib\pcl\DevExpress.Mobile.Core.v16.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Mobile.Grid.v16.2">
+      <HintPath>..\..\..\lib\pcl\DevExpress.Mobile.Grid.v16.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Core">
+      <HintPath>..\packages\Xamarin.Forms.2.3.3.180\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Platform">
+      <HintPath>..\packages\Xamarin.Forms.2.3.3.180\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Xaml">
+      <HintPath>..\packages\Xamarin.Forms.2.3.3.180\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.Xaml.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DemoListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Modules\SortPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Modules\SortMultiColumnPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Modules\GroupPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Modules\GroupDatesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Modules\SummaryTotalPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Modules\SummaryGroupPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Modules\SummaryCustomPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Modules\FilterPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Modules\FilterAutoFilterPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Modules\ColumnsAutoGeneratePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Modules\NewItemRowPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Modules\PullToRefreshPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Modules\RestrictionsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CodeViewerPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Modules\ThemesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Modules\UnboundColumnsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Modules\CustomizeCellPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Modules\LoadMorePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="HtmlViewerPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Descriptions\SortPage.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Descriptions\SortMultiColumnPage.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Descriptions\GroupPage.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Descriptions\GroupDatesPage.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Descriptions\SummaryTotalPage.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Descriptions\SummaryGroupPage.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Descriptions\SummaryCustomPage.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Descriptions\FilterPage.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Descriptions\FilterAutoFilterPage.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Descriptions\ColumnsAutoGeneratePage.html" />
+    <EmbeddedResource Include="Descriptions\NewItemRowPage.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Descriptions\RestrictionsPage.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Descriptions\UnboundColumnsPage.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Descriptions\CustomizeCellPage.html" />
+    <EmbeddedResource Include="Descriptions\PullToRefreshPage.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Descriptions\SwipeButtonsPage.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Descriptions\ThemesPage.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Sources\ColumnsAutoGeneratePage.xaml.code.htm" />
+    <EmbeddedResource Include="Sources\CustomizeCellPage.xaml.code.htm" />
+    <EmbeddedResource Include="Sources\FilterAutoFilterPage.xaml.code.htm" />
+    <EmbeddedResource Include="Sources\FilterPage.xaml.code.htm" />
+    <EmbeddedResource Include="Sources\GroupDatesPage.xaml.code.htm" />
+    <EmbeddedResource Include="Sources\GroupPage.xaml.code.htm" />
+    <EmbeddedResource Include="Sources\NewItemRowPage.xaml.code.htm" />
+    <EmbeddedResource Include="Sources\RestrictionsPage.xaml.code.htm" />
+    <EmbeddedResource Include="Sources\SortMultiColumnPage.xaml.code.htm" />
+    <EmbeddedResource Include="Sources\SortPage.xaml.code.htm" />
+    <EmbeddedResource Include="Sources\SummaryCustomPage.xaml.code.htm" />
+    <EmbeddedResource Include="Sources\SummaryGroupPage.xaml.code.htm" />
+    <EmbeddedResource Include="Sources\SummaryTotalPage.xaml.code.htm" />
+    <EmbeddedResource Include="Sources\SwipeButtonsPage.xaml.code.htm" />
+    <EmbeddedResource Include="Sources\ThemesPage.xaml.code.htm" />
+    <EmbeddedResource Include="Sources\UnboundColumnsPage.xaml.code.htm" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Sources\ColumnsAutoGeneratePage.xaml.htm" />
+    <EmbeddedResource Include="Sources\CustomizeCellPage.xaml.htm" />
+    <EmbeddedResource Include="Sources\FilterAutoFilterPage.xaml.htm" />
+    <EmbeddedResource Include="Sources\FilterPage.xaml.htm" />
+    <EmbeddedResource Include="Sources\GroupDatesPage.xaml.htm" />
+    <EmbeddedResource Include="Sources\GroupPage.xaml.htm" />
+    <EmbeddedResource Include="Sources\NewItemRowPage.xaml.htm" />
+    <EmbeddedResource Include="Sources\RestrictionsPage.xaml.htm" />
+    <EmbeddedResource Include="Sources\SortMultiColumnPage.xaml.htm" />
+    <EmbeddedResource Include="Sources\SortPage.xaml.htm" />
+    <EmbeddedResource Include="Sources\SummaryCustomPage.xaml.htm" />
+    <EmbeddedResource Include="Sources\SummaryGroupPage.xaml.htm" />
+    <EmbeddedResource Include="Sources\SummaryTotalPage.xaml.htm" />
+    <EmbeddedResource Include="Sources\SwipeButtonsPage.xaml.htm" />
+    <EmbeddedResource Include="Sources\ThemesPage.xaml.htm" />
+    <EmbeddedResource Include="Sources\UnboundColumnsPage.xaml.htm" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Descriptions\default.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Modules\SearchHighlightCellPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Descriptions\LoadMorePage.html" />
+    <EmbeddedResource Include="Descriptions\SearchHighlightCellPage.html" />
+    <EmbeddedResource Include="Sources\SearchHighlightCellPage.xaml.code.htm" />
+    <EmbeddedResource Include="Sources\SearchHighlightCellPage.xaml.htm" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Modules\LocalizationPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Descriptions\LocalizationPage.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Sources\LocalizationPage.xaml.code.htm" />
+    <EmbeddedResource Include="Sources\LocalizationPage.xaml.htm" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Sources\PullToRefreshPage.xaml.code.htm" />
+    <EmbeddedResource Include="Sources\PullToRefreshPage.xaml.htm" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Sources\LoadMorePage.xaml.code.htm" />
+    <EmbeddedResource Include="Sources\LoadMorePage.xaml.htm" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\Andrew_Fuller.jpg">
+      <LogicalName>AndrewFuller</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\Anne_Dodsworth.jpg">
+      <LogicalName>AnneDodsworth</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\Janet_Leverling.jpg">
+      <LogicalName>JanetLeverling</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\Laura_Callahan.jpg">
+      <LogicalName>LauraCallahan</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\Margaret_Peacock.jpg">
+      <LogicalName>MargaretPeacock</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\Michael_Suyama.jpg">
+      <LogicalName>MichaelSuyama</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\Nancy_Davolio.jpg">
+      <LogicalName>NancyDavolio</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\Robert_King.jpg">
+      <LogicalName>RobertKing</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\Steven_Buchanan.jpg">
+      <LogicalName>StevenBuchanan</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Modules\FirstLookPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Sources\FirstLookPage.xaml.code.htm" />
+    <EmbeddedResource Include="Sources\FirstLookPage.xaml.htm" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Descriptions\FirstLookPage.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Modules\ColumnChooserPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Descriptions\ColumnChooserPage.html" />
+    <EmbeddedResource Include="Sources\ColumnChooserPage.xaml.code.htm" />
+    <EmbeddedResource Include="Sources\ColumnChooserPage.xaml.htm" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Descriptions\RowDetailsPage.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Modules\RowDetailsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Sources\RowDetailsPage.xaml.code.htm" />
+    <EmbeddedResource Include="Sources\RowDetailsPage.xaml.htm" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Modules\CellTemplatePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Descriptions\CellTemplatePage.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Sources\CellTemplatePage.xaml.code.htm" />
+    <EmbeddedResource Include="Sources\CellTemplatePage.xaml.htm" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Modules\RealTimeDataPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Descriptions\RealTimeDataPage.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Sources\RealTimeDataPage.xaml.code.htm" />
+    <EmbeddedResource Include="Sources\RealTimeDataPage.xaml.htm" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Modules\LargeDataSourcePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Sources\LargeDataSourcePage.xaml.code.htm" />
+    <EmbeddedResource Include="Sources\LargeDataSourcePage.xaml.htm" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Descriptions\LargeDataSourcePage.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Descriptions\default_dark.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Descriptions\highlight.css" />
+    <EmbeddedResource Include="Descriptions\highlight_dark.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AboutPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Modules\ExportPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Sources\ExportPage.xaml.code.htm" />
+    <EmbeddedResource Include="Sources\ExportPage.xaml.htm" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Descriptions\ExportPage.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Descriptions\SaveLoadStatePage.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Modules\SaveLoadStatePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="compact_state.xml" />
+    <EmbeddedResource Include="default_state.xml" />
+    <EmbeddedResource Include="grouped_state.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Sources\SaveLoadStatePage.xaml.code.htm" />
+    <EmbeddedResource Include="Sources\SaveLoadStatePage.xaml.htm" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Sources\MenuCustomizationPage.xaml.code.htm" />
+    <EmbeddedResource Include="Sources\MenuCustomizationPage.xaml.htm" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Sources\ConditionalFormattingPage.xaml.code.htm" />
+    <EmbeddedResource Include="Sources\ConditionalFormattingPage.xaml.htm" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Modules\RowEditModePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Descriptions\RowEditModePage.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Modules\ConditionalFormattingPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Descriptions\ConditionalFormattingPage.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Sources\RowEditModePage.xaml.code.htm" />
+    <EmbeddedResource Include="Sources\RowEditModePage.xaml.htm" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Descriptions\HorizontalScrollingPage.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="..\packages\Xamarin.Forms.2.3.3.180\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.3.180\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
+</Project>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="highlight.css">
+</head>
+<body class="hl">
+<pre class="hl"><span class="hl kwa">using</span> System<span class="hl opt">;</span>
+<span class="hl kwa">using</span> System<span class="hl opt">.</span>Collections<span class="hl opt">.</span>Generic<span class="hl opt">;</span>
+
+<span class="hl kwa">using</span> Xamarin<span class="hl opt">.</span>Forms<span class="hl opt">;</span>
+<span class="hl kwa">using</span> System<span class="hl opt">.</span>Threading<span class="hl opt">.</span>Tasks<span class="hl opt">;</span>
+<span class="hl kwa">using</span> DevExpress<span class="hl opt">.</span>Mobile<span class="hl opt">.</span>DataGrid<span class="hl opt">;</span>
+<span class="hl kwa">using</span> DevExpress<span class="hl opt">.</span>Mobile<span class="hl opt">.</span>Core<span class="hl opt">;</span>
+
+<span class="hl kwa">namespace</span> DevExpress<span class="hl opt">.</span>GridDemo <span class="hl opt">{</span>
+  <span class="hl kwa">public partial class</span> MenuCustomizationPage <span class="hl opt">:</span> ContentPage <span class="hl opt">{</span>
+    <span class="hl kwb">int</span> menuRowHandle <span class="hl opt">=</span> GridControl<span class="hl opt">.</span>InvalidRowHandle<span class="hl opt">;</span>
+
+    <span class="hl kwa">public</span> <span class="hl kwd">MenuCustomizationPage</span><span class="hl opt">() {</span>
+      <span class="hl kwd">InitializeComponent</span><span class="hl opt">();</span>
+
+      <span class="hl kwd">BindData</span><span class="hl opt">();</span>
+    <span class="hl opt">}</span>
+    <span class="hl kwb">void</span> <span class="hl kwd">OnPopupMenuCustomization</span><span class="hl opt">(</span><span class="hl kwb">object</span> sender<span class="hl opt">,</span> DevExpress<span class="hl opt">.</span>Mobile<span class="hl opt">.</span>DataGrid<span class="hl opt">.</span>PopupMenuEventArgs e<span class="hl opt">) {</span>
+      <span class="hl kwa">switch</span><span class="hl opt">(</span>e<span class="hl opt">.</span>MenuType<span class="hl opt">) {</span>
+        <span class="hl kwa">case</span> GridPopupMenuType<span class="hl opt">.</span>DataRow<span class="hl opt">:</span>
+          e<span class="hl opt">.</span>Menu<span class="hl opt">.</span>Items<span class="hl opt">.</span><span class="hl kwd">Clear</span><span class="hl opt">();</span>
+          PopupMenuItem item <span class="hl opt">=</span> <span class="hl kwa">new</span> <span class="hl kwd">PopupMenuItem</span><span class="hl opt">();</span>
+          item<span class="hl opt">.</span>Caption <span class="hl opt">=</span> <span class="hl str">&quot;Send Email&quot;</span><span class="hl opt">;</span>
+          item<span class="hl opt">.</span>Click <span class="hl opt">+=</span> ItemClick<span class="hl opt">;</span>
+          menuRowHandle <span class="hl opt">=</span> e<span class="hl opt">.</span>RowHandle<span class="hl opt">;</span>
+          e<span class="hl opt">.</span>Menu<span class="hl opt">.</span>Items<span class="hl opt">.</span><span class="hl kwd">Insert</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">,</span> item<span class="hl opt">);</span>
+          <span class="hl kwa">break</span><span class="hl opt">;</span>
+
+        <span class="hl kwa">case</span> GridPopupMenuType<span class="hl opt">.</span>Header<span class="hl opt">:</span>
+          e<span class="hl opt">.</span>Menu<span class="hl opt">.</span>Items<span class="hl opt">.</span><span class="hl kwd">RemoveRange</span><span class="hl opt">(</span><span class="hl num">2</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
+          <span class="hl kwa">break</span><span class="hl opt">;</span>
+
+        <span class="hl kwa">case</span> GridPopupMenuType<span class="hl opt">.</span>TotalSummary<span class="hl opt">:</span>
+          e<span class="hl opt">.</span>Menu<span class="hl opt">.</span>Items<span class="hl opt">.</span><span class="hl kwd">RemoveAt</span><span class="hl opt">(</span><span class="hl num">3</span><span class="hl opt">);</span>
+          e<span class="hl opt">.</span>Menu<span class="hl opt">.</span>Items<span class="hl opt">.</span><span class="hl kwd">RemoveAt</span><span class="hl opt">(</span><span class="hl num">1</span><span class="hl opt">);</span>
+          e<span class="hl opt">.</span>Menu<span class="hl opt">.</span>Items<span class="hl opt">.</span><span class="hl kwd">RemoveAt</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">);</span>
+          <span class="hl kwa">break</span><span class="hl opt">;</span>
+
+        <span class="hl kwa">default</span><span class="hl opt">:</span>
+          <span class="hl kwa">break</span><span class="hl opt">;</span>
+      <span class="hl opt">}</span>
+    <span class="hl opt">}</span>
+    <span class="hl kwb">void</span> <span class="hl kwd">ItemClick</span><span class="hl opt">(</span><span class="hl kwb">object</span> sender<span class="hl opt">,</span> EventArgs e<span class="hl opt">) {</span>
+      <span class="hl kwa">if</span><span class="hl opt">(</span>menuRowHandle <span class="hl opt">==</span> GridControl<span class="hl opt">.</span>InvalidRowHandle<span class="hl opt">)</span>
+        <span class="hl kwa">return</span><span class="hl opt">;</span>
+      
+      IRowData rowData <span class="hl opt">=</span> grid<span class="hl opt">.</span><span class="hl kwd">GetRow</span><span class="hl opt">(</span>menuRowHandle<span class="hl opt">);</span>
+      Customer selectedCustomer <span class="hl opt">=</span> rowData<span class="hl opt">.</span>DataObject as Customer<span class="hl opt">;</span>
+      menuRowHandle <span class="hl opt">=</span> GridControl<span class="hl opt">.</span>InvalidRowHandle<span class="hl opt">;</span>
+      <span class="hl kwa">try</span> <span class="hl opt">{</span>
+        Device<span class="hl opt">.</span><span class="hl kwd">OpenUri</span><span class="hl opt">(</span><span class="hl kwa">new</span> <span class="hl kwd">Uri</span><span class="hl opt">(</span><span class="hl str">&quot;mailto:&quot;</span> <span class="hl opt">+</span> selectedCustomer<span class="hl opt">.</span>Email<span class="hl opt">));</span>
+      <span class="hl opt">}</span> <span class="hl kwa">catch</span> <span class="hl opt">{</span>
+      <span class="hl opt">}</span>
+    <span class="hl opt">}</span>
+    <span class="hl kwa">async</span> <span class="hl kwb">void</span> <span class="hl kwd">BindData</span><span class="hl opt">() {</span>
+      BindingContext <span class="hl opt">=</span> <span class="hl kwa">await</span> <span class="hl kwd">LoadData</span><span class="hl opt">();</span>
+    <span class="hl opt">}</span>
+    Task<span class="hl opt">&lt;</span>MainPageViewModel<span class="hl opt">&gt;</span> <span class="hl kwd">LoadData</span><span class="hl opt">() {</span>
+      <span class="hl kwa">return</span> Task<span class="hl opt">&lt;</span>MainPageViewModel<span class="hl opt">&gt;.</span><span class="hl kwd">Run</span><span class="hl opt">(() =&gt;</span> <span class="hl kwa">new</span> <span class="hl kwd">MainPageViewModel</span><span class="hl opt">(</span><span class="hl kwa">new</span> <span class="hl kwd">DemoOrdersRepository</span><span class="hl opt">()));</span>
+    <span class="hl opt">}</span>
+  <span class="hl opt">}</span>
+<span class="hl opt">}</span>
+
+</pre>
+</body>
+</html>

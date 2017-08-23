@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+					   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dxg="clr-namespace:DevExpress.Mobile.DataGrid;assembly=DevExpress.Mobile.Grid.v16.2"
+             xmlns:local="clr-namespace:DevExpress.GridDemo;assembly=GridDemoApp"
+             xmlns:dxe="clr-namespace:DevExpress.Mobile.Core;assembly=DevExpress.Mobile.Core.v16.2"
+					   x:Class="DevExpress.GridDemo.AboutPage">
+  <ContentPage.Padding>
+    <OnPlatform x:TypeArguments="Thickness" iOS="5, 20, 5, 5" Android="5,5,5,5" />
+  </ContentPage.Padding>
+  <ContentPage.Content>
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+      <Label Text="About" Font="Large, Bold" Grid.Row="0" />
+      <Label Text="{Binding Name}" Font="Medium, Bold" Grid.Row="1" />
+      <Label Text="{Binding Description}" Grid.Row="2" />
+      <Label Text="{Binding Version}" Grid.Row="3" />
+      <Label Text="Contact us" Font="Medium, Bold" Grid.Row="4" />
+      <dxe:HyperlinkEdit EditValue="http://www.devexpress.com" Grid.Row="5" />
+      <dxe:HyperlinkEdit EditValue="mailto:support@devexpress.com" Text="support@devexpress.com" Grid.Row="6" />
+      <Label Text="+ 1 (818) 844 3383" Font="Medium" Grid.Row="7" />
+      <Label Text="{Binding Copyright}" Grid.Row="8" />
+    </Grid>
+    <!--<dxg:GridControl x:Name="grid" ItemsSource="{Binding Orders}" RowHeight="105">
+      <dxg:GridControl.Columns>
+        <dxg:TemplateColumn FieldName="Customer" Caption="Customer" IsReadOnly="true" AllowGroup="False" AllowSort ="False">
+          <dxg:TemplateColumn.DisplayTemplate>
+            <DataTemplate>
+              <ContentView BackgroundColor="{Binding Path=IsSelected, Converter={StaticResource colorConverter}}">
+                <Grid BindingContext="{Binding Value}" Padding="0,4,0,4">
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="0.3*" />
+                    <ColumnDefinition Width="0.7*" />
+                  </Grid.ColumnDefinitions>
+                  <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                  </Grid.RowDefinitions>
+                  <Image Source="{Binding Photo}" Grid.RowSpan="3" VerticalOptions="Start" Aspect="AspectFit" />
+                  <Label Text="{Binding Name}" Grid.Column="1" Grid.Row="0" Font="Bold, Small"/>
+                  <Label Text="{Binding Position}" Grid.Column="1" Grid.Row="1" Font="Small"/>
+                  <Label Text="{Binding Phone}" Grid.Column="1" Grid.Row="2" Font="Small"/>
+                  <Label Text="{Binding Notes}" Grid.Column="2" Grid.Row="0" Grid.RowSpan="3" Font="10"/>
+                </Grid>
+              </ContentView>
+            </DataTemplate>
+          </dxg:TemplateColumn.DisplayTemplate>
+        </dxg:TemplateColumn>
+        <dxg:NumberColumn FieldName="Total" IsReadOnly="True" DisplayFormat="{}{0:C2}" Width="150" />
+      </dxg:GridControl.Columns>
+    </dxg:GridControl>-->
+  </ContentPage.Content>
+</ContentPage>

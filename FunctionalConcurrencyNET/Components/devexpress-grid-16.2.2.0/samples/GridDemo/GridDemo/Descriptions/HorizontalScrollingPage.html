@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link href="default.css" rel="stylesheet" type="text/css">
+    <title>Horizontal Scrolling</title>
+</head>
+<body>
+    <p class="header">Horizontal Scrolling</p>
+    <p>
+       If the number of GridControl columns is large and the total width of the columns exceeds the grid's width, you can enable horizontal scrolling. 
+       For this, set the <span class="ident">GridControl.ColumnsAutoWidth</span> property to <span class="ident">false</span> to disable the auto-column width feature. 
+       In this case, the grid will display a few columns only, and the other columns will appear when an end-user scrolls the grid. 
+    </p>
+    <p>
+    	Also, you can anchor (fix) certain columns either to the left or right edge of the grid to prevent them from being horizontally scrolled. 
+    	In this demo, the <span class="ident">Photo</span> and <span class="ident">Name</span> columns are fixed on the left, 
+    	and the <span class="ident">Total</span> column is fixed on the right. The rest of the columns can be scrolled.
+    </p>
+    <p>
+    	Note that new context menu items are available for column headers in the demo. These items allow an end-user to change the fixed style for a column. 
+    	To invoke the context menu, tap and hold a desired column header. The set of menu items depends on the column type and its fixed style. 
+    </p>
+    <p>
+    	To disable the horizontal scrolling feature, clear the <span class="ident">Horizontal Scrolling</span> check box below the grid. 
+    	It forces the grid to recalculate the columns' width and make all the columns visible on the screen. 
+    </p>
+    <p class="header">Related APIs:</p>
+    <p><a href="http://help.devexpress.com/#Xamarin/DevExpressMobileDataGridGridControl_ColumnsAutoWidthtopic">GridControl.ColumnsAutoWidth</a></p>
+    <p><a href="http://help.devexpress.com/#Xamarin/DevExpressMobileDataGridGridColumn_FixedStyletopic">GridColumn.FixedStyle</a></p>
+</body>
+</html>

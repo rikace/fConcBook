@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dxg="clr-namespace:DevExpress.Mobile.DataGrid;assembly=DevExpress.Mobile.Grid.v16.2"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             x:Class="DevExpress.GridDemo.RowDetailsPage">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
+    </ContentPage.Padding>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <dxg:GridControl x:Name="grid" ItemsSource="{Binding Customers}" Grid.Row="0">
+                <dxg:GridControl.Columns>
+                    <dxg:TextColumn FieldName="Name" />
+                </dxg:GridControl.Columns>
+            </dxg:GridControl>
+
+            <Grid Grid.Row="1" IsClippedToBounds="true" BindingContext="{x:Reference Name=grid}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="200" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+			        <ColumnDefinition>
+			          <ColumnDefinition.Width>
+			            <OnIdiom x:TypeArguments="GridLength" Tablet="200" Phone="100" />
+			          </ColumnDefinition.Width>
+			        </ColumnDefinition>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Image Grid.Column="0" Source="{Binding Path=SelectedDataObject.Photo}" />
+                <Grid Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <!--padding column-->
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Column="0" Grid.Row="0" Text="Name:">
+                      <Label.Font>
+                        <OnIdiom x:TypeArguments="Font" Tablet="Medium" Phone="Small" />
+                      </Label.Font>
+                    </Label>
+                    <Label Grid.Column="2" Grid.Row="0" Text="{Binding Path=SelectedDataObject.Name}">
+                      <Label.Font>
+                        <OnIdiom x:TypeArguments="Font" Tablet="Medium" Phone="Small" />
+                      </Label.Font>
+                    </Label>
+
+                    <Label Grid.Column="0" Grid.Row="1" Text="Position:">
+                      <Label.Font>
+                        <OnIdiom x:TypeArguments="Font" Tablet="Medium" Phone="Small" />
+                      </Label.Font>
+                    </Label>
+                    <Label Grid.Column="2" Grid.Row="1" Text="{Binding Path=SelectedDataObject.Position}">
+                      <Label.Font>
+                        <OnIdiom x:TypeArguments="Font" Tablet="Medium" Phone="Small" />
+                      </Label.Font>
+                    </Label>
+
+                    <Label Grid.Column="0" Grid.Row="2" Text="Hired At:">
+                      <Label.Font>
+                        <OnIdiom x:TypeArguments="Font" Tablet="Medium" Phone="Small" />
+                      </Label.Font>
+                    </Label>
+                    <Label Grid.Column="2" Grid.Row="2" Text="{Binding Path=SelectedDataObject.HireDate, StringFormat='{0:d}'}">
+                      <Label.Font>
+                        <OnIdiom x:TypeArguments="Font" Tablet="Medium" Phone="Small" />
+                      </Label.Font>
+                    </Label>
+
+                    <Label Grid.Column="0" Grid.Row="3" Text="Phone:">
+                      <Label.Font>
+                        <OnIdiom x:TypeArguments="Font" Tablet="Medium" Phone="Small" />
+                      </Label.Font>
+                    </Label>
+                    <Label Grid.Column="2" Grid.Row="3" Text="{Binding Path=SelectedDataObject.Phone}">
+                      <Label.Font>
+                        <OnIdiom x:TypeArguments="Font" Tablet="Medium" Phone="Small" />
+                      </Label.Font>
+                    </Label>
+
+                    <Label Grid.Column="0" Grid.Row="4" Text="Notes:">
+                      <Label.Font>
+                        <OnIdiom x:TypeArguments="Font" Tablet="Medium" Phone="Small" />
+                      </Label.Font>
+                    </Label>
+                    <ScrollView Grid.Column="2" Grid.Row="4" Orientation="Vertical">
+                      <Label Text="{Binding Path=SelectedDataObject.Notes}">
+                          <Label.Font>
+                           <OnIdiom x:TypeArguments="Font" Tablet="Medium" Phone="Small" />
+                          </Label.Font>
+                        </Label>
+                    </ScrollView>
+                </Grid>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

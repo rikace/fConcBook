@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="highlight.css">
+</head>
+<body class="hl">
+<pre class="hl"><span class="hl kwa">&lt;?xml</span> <span class="hl kwb">version</span>=<span class="hl str">&quot;1.0&quot;</span> <span class="hl kwb">encoding</span>=<span class="hl str">&quot;utf-8&quot;</span> <span class="hl kwa">?&gt;</span>
+<span class="hl kwa">&lt;ContentPage</span> <span class="hl kwb">xmlns</span>=<span class="hl str">&quot;http://xamarin.com/schemas/2014/forms&quot;</span>
+             xmlns:<span class="hl kwb">x</span>=<span class="hl str">&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;</span>
+             xmlns:<span class="hl kwb">dxg</span>=<span class="hl str">&quot;clr-namespace:DevExpress.Mobile.DataGrid;assembly=DevExpress.Mobile.Grid.v16.2&quot;</span>
+             xmlns:<span class="hl kwb">dxgi</span>=<span class="hl str">&quot;clr-namespace:DevExpress.Mobile.DataGrid.Internal;assembly=DevExpress.Mobile.Grid.v16.2&quot;</span>
+             x:<span class="hl kwb">Class</span>=<span class="hl str">&quot;DevExpress.GridDemo.ThemesPage&quot;</span><span class="hl kwa">&gt;</span>
+  <span class="hl kwa">&lt;ContentPage</span>.Padding<span class="hl kwa">&gt;</span>
+    <span class="hl kwa">&lt;OnPlatform</span> x:<span class="hl kwb">TypeArguments</span>=<span class="hl str">&quot;Thickness&quot;</span> <span class="hl kwb">iOS</span>=<span class="hl str">&quot;0, 20, 0, 0&quot;</span> <span class="hl kwa">/&gt;</span>
+  <span class="hl kwa">&lt;/ContentPage</span>.Padding<span class="hl kwa">&gt;</span>
+  <span class="hl kwa">&lt;ContentPage</span>.Content<span class="hl kwa">&gt;</span>
+    <span class="hl kwa">&lt;Grid&gt;</span>
+      <span class="hl kwa">&lt;Grid</span>.ColumnDefinitions<span class="hl kwa">&gt;</span>
+        <span class="hl kwa">&lt;ColumnDefinition</span> <span class="hl kwb">Width</span>=<span class="hl str">&quot;*&quot;</span><span class="hl kwa">/&gt;</span>
+        <span class="hl kwa">&lt;ColumnDefinition&gt;</span>
+          <span class="hl kwa">&lt;ColumnDefinition</span>.Width<span class="hl kwa">&gt;</span>
+            <span class="hl kwa">&lt;OnIdiom</span> x:<span class="hl kwb">TypeArguments</span>=<span class="hl str">&quot;GridLength&quot;</span> <span class="hl kwb">Tablet</span>=<span class="hl str">&quot;250&quot;</span> <span class="hl kwb">Phone</span>=<span class="hl str">&quot;125&quot;</span> <span class="hl kwa">/&gt;</span>
+          <span class="hl kwa">&lt;/ColumnDefinition</span>.Width<span class="hl kwa">&gt;</span>
+        <span class="hl kwa">&lt;/ColumnDefinition&gt;</span>
+      <span class="hl kwa">&lt;/Grid</span>.ColumnDefinitions<span class="hl kwa">&gt;</span>
+      <span class="hl kwa">&lt;dxg:GridControl</span> x:<span class="hl kwb">Name</span>=<span class="hl str">&quot;grid&quot;</span> <span class="hl kwb">ItemsSource</span>=<span class="hl str">&quot;{Binding Orders}&quot;</span> Grid.<span class="hl kwb">Column</span>=<span class="hl str">&quot;0&quot;</span><span class="hl kwa">&gt;</span>
+        <span class="hl kwa">&lt;dxg:GridControl</span>.Columns<span class="hl kwa">&gt;</span>
+          <span class="hl kwa">&lt;dxg:TextColumn</span> <span class="hl kwb">FieldName</span>=<span class="hl str">&quot;Customer.Name&quot;</span> <span class="hl kwb">Caption</span>=<span class="hl str">&quot;Name&quot;</span> <span class="hl kwb">IsReadOnly</span>=<span class="hl str">&quot;true&quot;</span> <span class="hl kwa">/&gt;</span>
+          <span class="hl kwa">&lt;dxg:DateColumn</span> <span class="hl kwb">FieldName</span>=<span class="hl str">&quot;Date&quot;</span> <span class="hl kwb">DisplayFormat</span>=<span class="hl str">&quot;{}{0:d}&quot;</span> <span class="hl kwa">/&gt;</span>
+          <span class="hl kwa">&lt;dxg:NumberColumn</span> <span class="hl kwb">FieldName</span>=<span class="hl str">&quot;Total&quot;</span> <span class="hl kwb">IsReadOnly</span>=<span class="hl str">&quot;True&quot;</span> <span class="hl kwb">DisplayFormat</span>=<span class="hl str">&quot;{}{0:C2}&quot;</span><span class="hl kwa">/&gt;</span>
+        <span class="hl kwa">&lt;/dxg:GridControl</span>.Columns<span class="hl kwa">&gt;</span>
+      <span class="hl kwa">&lt;/dxg:GridControl&gt;</span>
+      <span class="hl kwa">&lt;StackLayout</span> Grid.<span class="hl kwb">Column</span>=<span class="hl str">&quot;1&quot;</span><span class="hl kwa">&gt;</span>
+        <span class="hl kwa">&lt;Button</span> <span class="hl kwb">Text</span>=<span class="hl str">&quot;Dark&quot;</span> Grid.<span class="hl kwb">Column</span>=<span class="hl str">&quot;1&quot;</span> Grid.<span class="hl kwb">Row</span>=<span class="hl str">&quot;0&quot;</span> <span class="hl kwb">Clicked</span>=<span class="hl str">&quot;OnDarkTheme&quot;</span> <span class="hl kwa">/&gt;</span>
+        <span class="hl kwa">&lt;Button</span> <span class="hl kwb">Text</span>=<span class="hl str">&quot;Light&quot;</span> Grid.<span class="hl kwb">Column</span>=<span class="hl str">&quot;1&quot;</span> Grid.<span class="hl kwb">Row</span>=<span class="hl str">&quot;1&quot;</span> <span class="hl kwb">Clicked</span>=<span class="hl str">&quot;OnLightTheme&quot;</span> <span class="hl kwa">/&gt;</span>
+      <span class="hl kwa">&lt;/StackLayout&gt;</span>
+    <span class="hl kwa">&lt;/Grid&gt;</span>
+  <span class="hl kwa">&lt;/ContentPage</span>.Content<span class="hl kwa">&gt;</span>
+<span class="hl kwa">&lt;/ContentPage&gt;</span>
+</pre>
+</body>
+</html>

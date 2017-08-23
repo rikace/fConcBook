@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+					   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dxg="clr-namespace:DevExpress.Mobile.DataGrid;assembly=DevExpress.Mobile.Grid.v16.2"
+             xmlns:local="clr-namespace:DevExpress.GridDemo;assembly=GridDemoApp"
+             xmlns:controls="clr-namespace:DevExpress.Mobile.DataGrid.Internal;assembly=DevExpress.Mobile.Grid.v16.2"
+					   x:Class="DevExpress.GridDemo.RestrictionsPage">
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <local:VisibilityStateToBoolValueConverter x:Key="visibilityToBoolConverter" />
+    </ResourceDictionary>
+  </ContentPage.Resources>
+  <ContentPage.Padding>
+    <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
+  </ContentPage.Padding>
+  <ContentPage.Content>
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="*"/>
+      </Grid.RowDefinitions>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="250"/>
+      </Grid.ColumnDefinitions>
+      <dxg:GridControl x:Name="grid" ItemsSource="{Binding Orders}" Grid.Column="0" AutoFilterPanelVisibility="true">
+        <dxg:GridControl.Columns>
+          <dxg:TextColumn FieldName="Customer.Name" Caption="Name" IsReadOnly="true" AutoFilterValue="ann" AutoFilterCondition="Contains" />
+          <dxg:DateColumn FieldName="Date" DisplayFormat="{}{0:d}" />
+          <dxg:NumberColumn FieldName="Total" IsReadOnly="True" DisplayFormat="{}{0:C2}"/>
+        </dxg:GridControl.Columns>
+
+        <dxg:GridControl.TotalSummaries>
+          <dxg:GridColumnSummary FieldName="Total" Type="Sum" DisplayFormat="{}{0:C2}" />
+        </dxg:GridControl.TotalSummaries>
+        
+      </dxg:GridControl>
+        <ScrollView Grid.Column="1">
+          <Grid >
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto"/>
+              <RowDefinition Height="Auto"/>
+              <RowDefinition Height="Auto"/>
+              <RowDefinition Height="Auto"/>
+              <RowDefinition Height="Auto"/>
+              <RowDefinition Height="Auto"/>
+              <RowDefinition Height="Auto"/>
+              <RowDefinition Height="Auto"/>
+              <RowDefinition Height="Auto"/>
+              <RowDefinition Height="Auto"/>
+              <RowDefinition Height="Auto"/>
+              <RowDefinition Height="Auto"/>
+              <RowDefinition Height="Auto"/>
+              <RowDefinition Height="Auto"/>
+              <RowDefinition Height="Auto"/>
+              <RowDefinition Height="Auto"/>
+              <RowDefinition Height="Auto"/>
+              <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto"/>
+              <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <controls:CheckEdit BindingContext="{x:Reference Name=grid}" IsChecked="{Binding IsReadOnly, Mode=TwoWay}" Grid.Column="0" Grid.Row="0" />
+            <Label Text="Read Only" Grid.Column="1" Grid.Row="0" VerticalOptions="Center">
+              <Label.Font>
+                <OnIdiom x:TypeArguments="Font" Tablet="Medium" Phone="Small" />
+              </Label.Font>
+			      </Label>
+
+            <controls:CheckEdit BindingContext="{x:Reference Name=grid}" IsChecked="{Binding NewItemRowVisibility, Mode=TwoWay}" Grid.Column="0" Grid.Row="1" />
+            <Label Text="Allow Insert Rows" Grid.Column="1" Grid.Row="1" VerticalOptions="Center">
+              <Label.Font>
+                <OnIdiom x:TypeArguments="Font" Tablet="Medium" Phone="Small" />
+              </Label.Font>
+            </Label>
+
+            <controls:CheckEdit BindingContext="{x:Reference Name=grid}" IsChecked="{Binding AllowEditRows, Mode=TwoWay}" Grid.Column="0" Grid.Row="2" />
+            <Label Text="Allow Edit Rows" Grid.Column="1" Grid.Row="2" VerticalOptions="Center">
+              <Label.Font>
+                <OnIdiom x:TypeArguments="Font" Tablet="Medium" Phone="Small" />
+              </Label.Font>
+            </Label>
+
+            <controls:CheckEdit BindingContext="{x:Reference Name=grid}" IsChecked="{Binding AllowDeleteRows, Mode=TwoWay}" Grid.Column="0" Grid.Row="3" />
+            <Label Text="Allow Delete Rows" Grid.Column="1" Grid.Row="3" VerticalOptions="Center">
+              <Label.Font>
+                <OnIdiom x:TypeArguments="Font" Tablet="Medium" Phone="Small" />
+              </Label.Font>
+            </Label>
+
+            <controls:CheckEdit BindingContext="{x:Reference Name=grid}" IsChecked="{Binding AllowResizeColumns, Mode=TwoWay}" Grid.Column="0" Grid.Row="4" />
+            <Label Text="Allow Resize Columns" Grid.Column="1" Grid.Row="4" VerticalOptions="Center">
+              <Label.Font>
+                <OnIdiom x:TypeArguments="Font" Tablet="Medium" Phone="Small" />
+              </Label.Font>
+            </Label>
+
+            <controls:CheckEdit BindingContext="{x:Reference Name=grid}" IsChecked="{Binding AllowSort, Mode=TwoWay}" Grid.Column="0" Grid.Row="5" />
+            <Label Text="Allow Sort" Grid.Column="1" Grid.Row="5" VerticalOptions="Center">
+              <Label.Font>
+                <OnIdiom x:TypeArguments="Font" Tablet="Medium" Phone="Small" />
+              </Label.Font>
+            </Label>
+
+            <controls:CheckEdit BindingContext="{x:Reference Name=grid}" IsChecked="{Binding AllowGroup, Mode=TwoWay}" Grid.Column="0" Grid.Row="6" />
+            <Label Text="Allow Group" Grid.Column="1" Grid.Row="6" VerticalOptions="Center">
+              <Label.Font>
+                <OnIdiom x:TypeArguments="Font" Tablet="Medium" Phone="Small" />
+              </Label.Font>
+            </Label>
+
+            <controls:CheckEdit BindingContext="{x:Reference Name=grid}" IsChecked="{Binding AllowGroupCollapse, Mode=TwoWay}" Grid.Column="0" Grid.Row="7" />
+            <Label Text="Allow Group Collapse" Grid.Column="1" Grid.Row="7" VerticalOptions="Center">
+              <Label.Font>
+                <OnIdiom x:TypeArguments="Font" Tablet="Medium" Phone="Small" />
+              </Label.Font>
+            </Label>
+
+            <controls:CheckEdit BindingContext="{x:Reference Name=grid}" IsChecked="{Binding AutoFilterPanelVisibility, Mode=TwoWay}" Grid.Column="0" Grid.Row="8" />
+            <Label Text="Allow Auto Filter" Grid.Column="1" Grid.Row="8" VerticalOptions="Center">
+              <Label.Font>
+                <OnIdiom x:TypeArguments="Font" Tablet="Medium" Phone="Small" />
+              </Label.Font>
+            </Label>
+
+            <controls:CheckEdit BindingContext="{x:Reference Name=grid}" IsChecked="{Binding ColumnHeadersVisibility, Mode=TwoWay}" Grid.Column="0" Grid.Row="9" />
+            <Label Text="Column Headers" Grid.Column="1" Grid.Row="9" VerticalOptions="Center">
+              <Label.Font>
+                <OnIdiom x:TypeArguments="Font" Tablet="Medium" Phone="Small" />
+              </Label.Font>
+            </Label>
+
+            <controls:CheckEdit BindingContext="{x:Reference Name=grid}" IsChecked="{Binding FilterPanelVisibility, Mode=TwoWay, Converter={StaticResource visibilityToBoolConverter}}" Grid.Column="0" Grid.Row="10" />
+            <Label Text="Filter Panel" Grid.Column="1" Grid.Row="10" VerticalOptions="Center">
+              <Label.Font>
+                <OnIdiom x:TypeArguments="Font" Tablet="Medium" Phone="Small" />
+              </Label.Font>
+            </Label>
+
+            <controls:CheckEdit BindingContext="{x:Reference Name=grid}" IsChecked="{Binding TotalSummaryVisibility, Mode=TwoWay, Converter={StaticResource visibilityToBoolConverter}}" Grid.Column="0" Grid.Row="11" />
+            <Label Text="Total Summary Panel" Grid.Column="1" Grid.Row="11" VerticalOptions="Center">
+              <Label.Font>
+                <OnIdiom x:TypeArguments="Font" Tablet="Medium" Phone="Small" />
+              </Label.Font>
+            </Label>
+
+            <controls:CheckEdit BindingContext="{x:Reference Name=grid}" IsChecked="{Binding IsRowCellMenuEnabled, Mode=TwoWay}" Grid.Column="0" Grid.Row="12" />
+            <Label Text="Row Cell Menu" Grid.Column="1" Grid.Row="12" VerticalOptions="Center">
+              <Label.Font>
+                <OnIdiom x:TypeArguments="Font" Tablet="Medium" Phone="Small" />
+              </Label.Font>
+            </Label>
+        
+            <controls:CheckEdit BindingContext="{x:Reference Name=grid}" IsChecked="{Binding IsColumnMenuEnabled, Mode=TwoWay}" Grid.Column="0" Grid.Row="13" />
+            <Label Text="Column Header Menu" Grid.Column="1" Grid.Row="13" VerticalOptions="Center">
+              <Label.Font>
+                <OnIdiom x:TypeArguments="Font" Tablet="Medium" Phone="Small" />
+              </Label.Font>
+            </Label>
+
+            <controls:CheckEdit BindingContext="{x:Reference Name=grid}" IsChecked="{Binding IsGroupRowMenuEnabled, Mode=TwoWay}" Grid.Column="0" Grid.Row="14" />
+            <Label Text="Group Row Menu" Grid.Column="1" Grid.Row="14" VerticalOptions="Center">
+              <Label.Font>
+                <OnIdiom x:TypeArguments="Font" Tablet="Medium" Phone="Small" />
+              </Label.Font>
+            </Label>
+
+            <controls:CheckEdit BindingContext="{x:Reference Name=grid}" IsChecked="{Binding IsTotalSummaryMenuEnabled, Mode=TwoWay}" Grid.Column="0" Grid.Row="15" />
+            <Label Text="Total Summary Menu" Grid.Column="1" Grid.Row="15" VerticalOptions="Center">
+              <Label.Font>
+                <OnIdiom x:TypeArguments="Font" Tablet="Medium" Phone="Small" />
+              </Label.Font>
+            </Label>
+
+            <controls:CheckEdit BindingContext="{x:Reference Name=grid}" IsChecked="{Binding HighlightMenuTargetElements, Mode=TwoWay}" Grid.Column="0" Grid.Row="16" />
+            <Label Text="Highlight Menu Target" Grid.Column="1" Grid.Row="16" VerticalOptions="Center">
+              <Label.Font>
+                <OnIdiom x:TypeArguments="Font" Tablet="Medium" Phone="Small" />
+              </Label.Font>
+            </Label>
+
+            <controls:CheckEdit BindingContext="{x:Reference Name=grid}" IsChecked="{Binding HighlightMenuTargetElements, Mode=TwoWay}" Grid.Column="0" Grid.Row="16" />
+            <Label Text="Highlight Menu Target" Grid.Column="1" Grid.Row="16" VerticalOptions="Center">
+              <Label.Font>
+                <OnIdiom x:TypeArguments="Font" Tablet="Medium" Phone="Small" />
+              </Label.Font>
+            </Label>
+
+            <!---<Label Text="" Grid.Column="1" Grid.Row="17" VerticalOptions="Center" />-->
+          </Grid>
+      </ScrollView>
+    </Grid>
+  </ContentPage.Content>
+</ContentPage>

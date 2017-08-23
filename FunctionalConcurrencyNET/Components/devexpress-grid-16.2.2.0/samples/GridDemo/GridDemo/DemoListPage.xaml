@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+					   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:DevExpress.GridDemo;assembly=GridDemoApp"
+					   x:Class="DevExpress.GridDemo.DemoListPage"
+             Title="DXGrid Features">
+  <ContentPage.Padding>
+    <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
+  </ContentPage.Padding>
+  <local:DemoListView x:Name="listView" IsGroupingEnabled="true" GroupDisplayBinding="{Binding Title}" GroupShortNameBinding="{Binding ShortTitle}">
+  <!--<ListView x:Name="listView" HasUnevenRows="true" IsGroupingEnabled="true" GroupDisplayBinding="{Binding Title}">-->
+    <ListView.HasUnevenRows>
+      <OnPlatform x:TypeArguments="x:Boolean" iOS="false" Android="true" />
+    </ListView.HasUnevenRows>
+    <ListView.ItemTemplate>
+      <DataTemplate>
+        <local:DemoListCell>
+          <local:DemoListCellView VerticalOptions="StartAndExpand">
+            <Grid.Padding>
+              <OnPlatform x:TypeArguments="Thickness" iOS="20,8,20,8" Android="40,8,20,8" WinPhone="0,8,0,8"/>
+            </Grid.Padding>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto" />
+              <!--<RowDefinition Height="Auto" />-->
+            </Grid.RowDefinitions>
+            <Label Text="{Binding Title}" YAlign="Center" IsVisible="{Binding IsVisible}" Font="Medium" HorizontalOptions="StartAndExpand" Grid.Row="0" />
+            <!--<Label Text="{Binding Title}" YAlign="Center" IsVisible="{Binding IsVisible}" Font="Large" HorizontalOptions="StartAndExpand" Grid.Row="0" />
+            <Label Text="{Binding ShortDescription}" YAlign="Center" IsVisible="{Binding IsVisible}" Font="Small" HorizontalOptions="StartAndExpand" Grid.Row="1" />-->
+          </local:DemoListCellView>
+        </local:DemoListCell>
+      </DataTemplate>
+    </ListView.ItemTemplate>
+    <ListView.GroupHeaderTemplate>
+      <OnPlatform x:TypeArguments="DataTemplate">
+        <OnPlatform.Android>
+          <DataTemplate>
+            <local:DemoListCell>
+              <local:DemoListCellView VerticalOptions="StartAndExpand" Padding="40,30,0,10">
+                <local:HeaderLabel Text="{Binding Title}" Font="Large" />
+              </local:DemoListCellView>
+            </local:DemoListCell>
+          </DataTemplate>
+        </OnPlatform.Android>
+      </OnPlatform>
+    </ListView.GroupHeaderTemplate>
+  </local:DemoListView>
+</ContentPage>

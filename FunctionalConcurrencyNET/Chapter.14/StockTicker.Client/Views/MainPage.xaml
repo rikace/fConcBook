@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:StockTicker.Client.Views.Converters"
+			 xmlns:dxGrid="clr-namespace:DevExpress.Mobile.DataGrid;assembly=DevExpress.Mobile.Grid.v16.2"
+             x:Class="StockTicker.Client.MainPage"
+			 >
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness"
+                    iOS="20, 40, 20, 20"
+                    Android="20, 20, 20, 20"
+                    WinPhone="20, 20, 20, 20" />
+    </ContentPage.Padding>
+	<ContentPage.Resources>
+        <ResourceDictionary>
+            <local:ChangeToColorValueConverter x:Key="cnvBackground"></local:ChangeToColorValueConverter>
+
+			<Style TargetType="Label" x:Key="zoneHeader">
+				<Setter Property="FontSize" Value="32" />
+			</Style>
+			<Style TargetType="Label" x:Key="formLabel">
+				<Setter Property="Margin" Value="0,0,10,0" />
+				<Setter Property="FontSize" Value="18" />
+				<Setter Property="FontAttributes" Value="Bold" />
+				<Setter Property="VerticalTextAlignment" Value="Center" />
+			</Style>
+            <Style TargetType="Label" x:Key="tableCell">
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+            </Style>
+        </ResourceDictionary>
+	</ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="350" />
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0" Padding="20,0,40,0" RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <!--Header with Market State-->
+                <Grid Grid.Row="0" Padding="0,0,0,30">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Label  Grid.Column="0" Style="{StaticResource zoneHeader}"
+                            Text="{Binding MarketStatusMessage}"/>
+                    <Switch Grid.Column="1" VerticalOptions="Center" Scale="1.3"
+                            IsToggled="{Binding IsMarketOpen}"/>
+                </Grid>
+                <!-- Stocks table -->
+                <dxGrid:GridControl x:Name="stockGrid" Grid.Row="1" ColumnSpacing="0"
+                                    ItemsSource="{Binding Stocks}" IsReadOnly="True"
+                                    SelectionChanged="stockGrid_SelectionChanged">
+				    <dxGrid:GridControl.Columns>
+                        <!--<dxGrid:TextColumn   FieldName="Symbol"     Caption = "Symbol" />
+                        <dxGrid:NumberColumn FieldName="Price"      Caption = "Price"       DisplayFormat="F2"/>
+                        <dxGrid:NumberColumn FieldName="DayOpen"    Caption = "DayOpen"     DisplayFormat="F2"/>
+                        <dxGrid:NumberColumn FieldName="DayHigh"    Caption = "DayHigh"     DisplayFormat="F2"/>
+                        <dxGrid:NumberColumn FieldName="DayLow"     Caption = "DayLow"      DisplayFormat="F2"/>
+                        <dxGrid:NumberColumn FieldName="LastChange" Caption = "LastChange"  DisplayFormat="F2"/>-->
+
+                        <dxGrid:TemplateColumn Caption="Symbol">
+                            <dxGrid:TemplateColumn.DisplayTemplate>
+                                <DataTemplate>
+                                    <Label BindingContext="{Binding Source}" Style="{StaticResource tableCell}"
+                                            Text="{Binding Symbol}" />
+                                </DataTemplate>
+                            </dxGrid:TemplateColumn.DisplayTemplate>
+                        </dxGrid:TemplateColumn>
+                        <dxGrid:TemplateColumn Caption="Price">
+                            <dxGrid:TemplateColumn.DisplayTemplate>
+                                <DataTemplate>
+                                    <Label BindingContext="{Binding Source}" Style="{StaticResource tableCell}"
+                                            TextColor="{Binding LastChange, Converter={StaticResource cnvBackground}}"
+                                            Text="{Binding Price, StringFormat='{0:F2}'}" />
+                                </DataTemplate>
+                            </dxGrid:TemplateColumn.DisplayTemplate>
+                        </dxGrid:TemplateColumn>
+                        <dxGrid:TemplateColumn Caption="DayOpen">
+                            <dxGrid:TemplateColumn.DisplayTemplate>
+                                <DataTemplate>
+                                    <Label BindingContext="{Binding Source}" Style="{StaticResource tableCell}"
+                                            Text="{Binding DayOpen, StringFormat='{0:F2}'}" />
+                                </DataTemplate>
+                            </dxGrid:TemplateColumn.DisplayTemplate>
+                        </dxGrid:TemplateColumn>
+                        <dxGrid:TemplateColumn Caption="DayHigh">
+                            <dxGrid:TemplateColumn.DisplayTemplate>
+                                <DataTemplate>
+                                    <Label BindingContext="{Binding Source}" Style="{StaticResource tableCell}"
+                                            Text="{Binding DayHigh, StringFormat='{0:F2}'}" />
+                                </DataTemplate>
+                            </dxGrid:TemplateColumn.DisplayTemplate>
+                        </dxGrid:TemplateColumn>
+                        <dxGrid:TemplateColumn Caption="DayLow">
+                            <dxGrid:TemplateColumn.DisplayTemplate>
+                                <DataTemplate>
+                                    <Label BindingContext="{Binding Source}" Style="{StaticResource tableCell}"
+                                            Text="{Binding DayLow, StringFormat='{0:F2}'}" />
+                                </DataTemplate>
+                            </dxGrid:TemplateColumn.DisplayTemplate>
+                        </dxGrid:TemplateColumn>
+                        <dxGrid:TemplateColumn Caption="LastChange">
+                            <dxGrid:TemplateColumn.DisplayTemplate>
+                                <DataTemplate>
+                                    <Label BindingContext="{Binding Source}" Style="{StaticResource tableCell}"
+                                            TextColor="{Binding LastChange, Converter={StaticResource cnvBackground}}"
+                                            Text="{Binding LastChange, StringFormat='{0:F2}'}" />
+                                </DataTemplate>
+                            </dxGrid:TemplateColumn.DisplayTemplate>
+                        </dxGrid:TemplateColumn>
+                    </dxGrid:GridControl.Columns>
+                </dxGrid:GridControl>
+                <!--Portfolio-->
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Style="{StaticResource zoneHeader}" Margin="0,20,0,0">Portfolio</Label>
+                    <Label Grid.Column="1" Style="{StaticResource zoneHeader}" Margin="0,20,0,0"
+                           Text="{Binding Cash, StringFormat='Cash: {0:F2}'}"></Label>
+                    <dxGrid:GridControl Grid.Row="1" Grid.ColumnSpan="2"
+                                        ItemsSource="{Binding Portfolio}" IsReadOnly="True">
+                        <dxGrid:GridControl.Columns>
+                            <dxGrid:TextColumn   FieldName="Symbol"     Caption = "Symbol" />
+                            <dxGrid:NumberColumn FieldName="Price"      Caption = "Price"       DisplayFormat="F2"/>
+                            <dxGrid:NumberColumn FieldName="Quantity"   Caption = "Quantity"    DisplayFormat="F0"/>
+                        </dxGrid:GridControl.Columns>
+                    </dxGrid:GridControl>
+                </Grid>
+            </Grid>
+            <!-- Buy / Sell requests -->
+            <StackLayout Grid.Column="1">
+                <Label Style="{StaticResource zoneHeader}" Margin="0,0,0,23">Buy / Sell</Label>
+				<Frame Padding="15,15,15,15">
+	                <Grid>
+	                    <Grid.ColumnDefinitions>
+	                        <ColumnDefinition Width="Auto" />
+	                        <ColumnDefinition Width="*"/>
+	                    </Grid.ColumnDefinitions>
+	                    <Grid.RowDefinitions>
+	                        <RowDefinition Height="*"/>
+	                        <RowDefinition Height="*"/>
+	                        <RowDefinition Height="*"/>
+	                        <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+	                    </Grid.RowDefinitions>
+	                    <Label Grid.Row="0" Grid.Column="0" Style="{StaticResource formLabel}">Symbol</Label>
+	                    <Entry Grid.Row="0" Grid.Column="1" Keyboard="Text" Text="{Binding Symbol}"/>
+	                    <Label Grid.Row="1" Grid.Column="0" Style="{StaticResource formLabel}">Price</Label>
+	                    <Entry Grid.Row="1" Grid.Column="1" Keyboard="Numeric" Text="{Binding Price}"/>
+	                    <Label Grid.Row="2" Grid.Column="0" Style="{StaticResource formLabel}">Amount</Label>
+                        <Entry Grid.Row="2" Grid.Column="1" Keyboard="Numeric" Text="{Binding Amount}"/>
+	                    <Grid Grid.Row="3" Grid.ColumnSpan="2">
+	                        <Grid.ColumnDefinitions>
+	                            <ColumnDefinition Width="*"/>
+	                            <ColumnDefinition Width="*"/>
+	                        </Grid.ColumnDefinitions>
+	                        <Button Grid.Column="0" Text="Buy" Command="{Binding SendBuyRequestCommand}"/>
+	                        <Button Grid.Column="1" Text="Sell" Command="{Binding SendSellRequestCommand}" />
+	                    </Grid>
+
+                        <Label Grid.Row="4" Grid.Column="0" Style="{StaticResource formLabel}">Timesteps</Label>
+                        <Entry Grid.Row="4" Grid.Column="1" Keyboard="Numeric" Text="{Binding NumTimesteps}"/>
+                        <Grid Grid.Row="5" Grid.ColumnSpan="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Label  Grid.Column="0" Style="{StaticResource formLabel}" Text="{Binding Prediction}" />
+                            <Button Grid.Column="1" Text="Predict" Command="{Binding PredictCommand}" />
+                        </Grid>
+                    </Grid>
+				</Frame>
+                <Label  Style="{StaticResource zoneHeader}" Margin="0,20,0,0">Buy Orders</Label>
+                <dxGrid:GridControl ItemsSource="{Binding BuyOrders}" IsReadOnly="True">
+                    <dxGrid:GridControl.Columns>
+                        <dxGrid:TextColumn   FieldName="Symbol"     Caption = "Symbol" />
+                        <dxGrid:NumberColumn FieldName="Price"      Caption = "Price"       DisplayFormat="F2"/>
+                        <dxGrid:NumberColumn FieldName="Quantity"   Caption = "Quantity"    DisplayFormat="F0"/>
+                    </dxGrid:GridControl.Columns>
+                </dxGrid:GridControl>
+                <Label  Style="{StaticResource zoneHeader}" Margin="0,20,0,0">Sell Orders</Label>
+                <dxGrid:GridControl ItemsSource="{Binding SellOrders}" IsReadOnly="True">
+                    <dxGrid:GridControl.Columns>
+                        <dxGrid:TextColumn   FieldName="Symbol"     Caption = "Symbol" />
+                        <dxGrid:NumberColumn FieldName="Price"      Caption = "Price"       DisplayFormat="F2"/>
+                        <dxGrid:NumberColumn FieldName="Quantity"   Caption = "Quantity"    DisplayFormat="F0"/>
+                    </dxGrid:GridControl.Columns>
+                </dxGrid:GridControl>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

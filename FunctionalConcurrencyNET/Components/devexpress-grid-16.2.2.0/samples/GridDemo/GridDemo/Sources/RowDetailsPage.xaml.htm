@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="highlight.css">
+</head>
+<body class="hl">
+<pre class="hl"><span class="hl kwa">&lt;?xml</span> <span class="hl kwb">version</span>=<span class="hl str">&quot;1.0&quot;</span> <span class="hl kwb">encoding</span>=<span class="hl str">&quot;utf-8&quot;</span> <span class="hl kwa">?&gt;</span>
+<span class="hl kwa">&lt;ContentPage</span> <span class="hl kwb">xmlns</span>=<span class="hl str">&quot;http://xamarin.com/schemas/2014/forms&quot;</span>
+             xmlns:<span class="hl kwb">x</span>=<span class="hl str">&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;</span>
+             xmlns:<span class="hl kwb">dxg</span>=<span class="hl str">&quot;clr-namespace:DevExpress.Mobile.DataGrid;assembly=DevExpress.Mobile.Grid.v16.2&quot;</span>
+             xmlns:<span class="hl kwb">sys</span>=<span class="hl str">&quot;clr-namespace:System;assembly=mscorlib&quot;</span>
+             x:<span class="hl kwb">Class</span>=<span class="hl str">&quot;DevExpress.GridDemo.RowDetailsPage&quot;</span><span class="hl kwa">&gt;</span>
+    <span class="hl kwa">&lt;ContentPage</span>.Padding<span class="hl kwa">&gt;</span>
+        <span class="hl kwa">&lt;OnPlatform</span> x:<span class="hl kwb">TypeArguments</span>=<span class="hl str">&quot;Thickness&quot;</span> <span class="hl kwb">iOS</span>=<span class="hl str">&quot;0, 20, 0, 0&quot;</span> <span class="hl kwa">/&gt;</span>
+    <span class="hl kwa">&lt;/ContentPage</span>.Padding<span class="hl kwa">&gt;</span>
+    <span class="hl kwa">&lt;ContentPage</span>.Content<span class="hl kwa">&gt;</span>
+        <span class="hl kwa">&lt;Grid&gt;</span>
+            <span class="hl kwa">&lt;Grid</span>.RowDefinitions<span class="hl kwa">&gt;</span>
+                <span class="hl kwa">&lt;RowDefinition</span> <span class="hl kwb">Height</span>=<span class="hl str">&quot;*&quot;</span><span class="hl kwa">/&gt;</span>
+                <span class="hl kwa">&lt;RowDefinition</span> <span class="hl kwb">Height</span>=<span class="hl str">&quot;Auto&quot;</span><span class="hl kwa">/&gt;</span>
+            <span class="hl kwa">&lt;/Grid</span>.RowDefinitions<span class="hl kwa">&gt;</span>
+            <span class="hl kwa">&lt;dxg:GridControl</span> x:<span class="hl kwb">Name</span>=<span class="hl str">&quot;grid&quot;</span> <span class="hl kwb">ItemsSource</span>=<span class="hl str">&quot;{Binding Customers}&quot;</span> Grid.<span class="hl kwb">Row</span>=<span class="hl str">&quot;0&quot;</span><span class="hl kwa">&gt;</span>
+                <span class="hl kwa">&lt;dxg:GridControl</span>.Columns<span class="hl kwa">&gt;</span>
+                    <span class="hl kwa">&lt;dxg:TextColumn</span> <span class="hl kwb">FieldName</span>=<span class="hl str">&quot;Name&quot;</span> <span class="hl kwa">/&gt;</span>
+                <span class="hl kwa">&lt;/dxg:GridControl</span>.Columns<span class="hl kwa">&gt;</span>
+            <span class="hl kwa">&lt;/dxg:GridControl&gt;</span>
+
+            <span class="hl kwa">&lt;Grid</span> Grid.<span class="hl kwb">Row</span>=<span class="hl str">&quot;1&quot;</span> <span class="hl kwb">IsClippedToBounds</span>=<span class="hl str">&quot;true&quot;</span> <span class="hl kwb">BindingContext</span>=<span class="hl str">&quot;{x:Reference Name=grid}&quot;</span><span class="hl kwa">&gt;</span>
+                <span class="hl kwa">&lt;Grid</span>.RowDefinitions<span class="hl kwa">&gt;</span>
+                    <span class="hl kwa">&lt;RowDefinition</span> <span class="hl kwb">Height</span>=<span class="hl str">&quot;200&quot;</span> <span class="hl kwa">/&gt;</span>
+                <span class="hl kwa">&lt;/Grid</span>.RowDefinitions<span class="hl kwa">&gt;</span>
+                <span class="hl kwa">&lt;Grid</span>.ColumnDefinitions<span class="hl kwa">&gt;</span>
+              <span class="hl kwa">&lt;ColumnDefinition&gt;</span>
+                <span class="hl kwa">&lt;ColumnDefinition</span>.Width<span class="hl kwa">&gt;</span>
+                  <span class="hl kwa">&lt;OnIdiom</span> x:<span class="hl kwb">TypeArguments</span>=<span class="hl str">&quot;GridLength&quot;</span> <span class="hl kwb">Tablet</span>=<span class="hl str">&quot;200&quot;</span> <span class="hl kwb">Phone</span>=<span class="hl str">&quot;100&quot;</span> <span class="hl kwa">/&gt;</span>
+                <span class="hl kwa">&lt;/ColumnDefinition</span>.Width<span class="hl kwa">&gt;</span>
+              <span class="hl kwa">&lt;/ColumnDefinition&gt;</span>
+                    <span class="hl kwa">&lt;ColumnDefinition</span> <span class="hl kwb">Width</span>=<span class="hl str">&quot;*&quot;</span><span class="hl kwa">/&gt;</span>
+                <span class="hl kwa">&lt;/Grid</span>.ColumnDefinitions<span class="hl kwa">&gt;</span>
+
+                <span class="hl kwa">&lt;Image</span> Grid.<span class="hl kwb">Column</span>=<span class="hl str">&quot;0&quot;</span> <span class="hl kwb">Source</span>=<span class="hl str">&quot;{Binding Path=SelectedDataObject.Photo}&quot;</span> <span class="hl kwa">/&gt;</span>
+                <span class="hl kwa">&lt;Grid</span> Grid.<span class="hl kwb">Column</span>=<span class="hl str">&quot;1&quot;</span><span class="hl kwa">&gt;</span>
+                    <span class="hl kwa">&lt;Grid</span>.ColumnDefinitions<span class="hl kwa">&gt;</span>
+                        <span class="hl kwa">&lt;ColumnDefinition</span> <span class="hl kwb">Width</span>=<span class="hl str">&quot;auto&quot;</span><span class="hl kwa">/&gt;</span>
+                        &lt;!--padding column--<span class="hl kwa">&gt;</span>
+                        <span class="hl kwa">&lt;ColumnDefinition</span> <span class="hl kwb">Width</span>=<span class="hl str">&quot;5&quot;</span><span class="hl kwa">/&gt;</span>
+                        <span class="hl kwa">&lt;ColumnDefinition</span> <span class="hl kwb">Width</span>=<span class="hl str">&quot;*&quot;</span><span class="hl kwa">/&gt;</span>
+                    <span class="hl kwa">&lt;/Grid</span>.ColumnDefinitions<span class="hl kwa">&gt;</span>
+                    <span class="hl kwa">&lt;Grid</span>.RowDefinitions<span class="hl kwa">&gt;</span>
+                        <span class="hl kwa">&lt;RowDefinition</span> <span class="hl kwb">Height</span>=<span class="hl str">&quot;auto&quot;</span><span class="hl kwa">/&gt;</span>
+                        <span class="hl kwa">&lt;RowDefinition</span> <span class="hl kwb">Height</span>=<span class="hl str">&quot;auto&quot;</span><span class="hl kwa">/&gt;</span>
+                        <span class="hl kwa">&lt;RowDefinition</span> <span class="hl kwb">Height</span>=<span class="hl str">&quot;auto&quot;</span><span class="hl kwa">/&gt;</span>
+                        <span class="hl kwa">&lt;RowDefinition</span> <span class="hl kwb">Height</span>=<span class="hl str">&quot;auto&quot;</span><span class="hl kwa">/&gt;</span>
+                        <span class="hl kwa">&lt;RowDefinition</span> <span class="hl kwb">Height</span>=<span class="hl str">&quot;*&quot;</span><span class="hl kwa">/&gt;</span>
+                    <span class="hl kwa">&lt;/Grid</span>.RowDefinitions<span class="hl kwa">&gt;</span>
+
+                    <span class="hl kwa">&lt;Label</span> Grid.<span class="hl kwb">Column</span>=<span class="hl str">&quot;0&quot;</span> Grid.<span class="hl kwb">Row</span>=<span class="hl str">&quot;0&quot;</span> <span class="hl kwb">Text</span>=<span class="hl str">&quot;Name:&quot;</span><span class="hl kwa">&gt;</span>
+                      <span class="hl kwa">&lt;Label</span>.Font<span class="hl kwa">&gt;</span>
+                        <span class="hl kwa">&lt;OnIdiom</span> x:<span class="hl kwb">TypeArguments</span>=<span class="hl str">&quot;Font&quot;</span> <span class="hl kwb">Tablet</span>=<span class="hl str">&quot;Medium&quot;</span> <span class="hl kwb">Phone</span>=<span class="hl str">&quot;Small&quot;</span> <span class="hl kwa">/&gt;</span>
+                      <span class="hl kwa">&lt;/Label</span>.Font<span class="hl kwa">&gt;</span>
+                    <span class="hl kwa">&lt;/Label&gt;</span>
+                    <span class="hl kwa">&lt;Label</span> Grid.<span class="hl kwb">Column</span>=<span class="hl str">&quot;2&quot;</span> Grid.<span class="hl kwb">Row</span>=<span class="hl str">&quot;0&quot;</span> <span class="hl kwb">Text</span>=<span class="hl str">&quot;{Binding Path=SelectedDataObject.Name}&quot;</span><span class="hl kwa">&gt;</span>
+                      <span class="hl kwa">&lt;Label</span>.Font<span class="hl kwa">&gt;</span>
+                        <span class="hl kwa">&lt;OnIdiom</span> x:<span class="hl kwb">TypeArguments</span>=<span class="hl str">&quot;Font&quot;</span> <span class="hl kwb">Tablet</span>=<span class="hl str">&quot;Medium&quot;</span> <span class="hl kwb">Phone</span>=<span class="hl str">&quot;Small&quot;</span> <span class="hl kwa">/&gt;</span>
+                      <span class="hl kwa">&lt;/Label</span>.Font<span class="hl kwa">&gt;</span>
+                    <span class="hl kwa">&lt;/Label&gt;</span>
+
+                    <span class="hl kwa">&lt;Label</span> Grid.<span class="hl kwb">Column</span>=<span class="hl str">&quot;0&quot;</span> Grid.<span class="hl kwb">Row</span>=<span class="hl str">&quot;1&quot;</span> <span class="hl kwb">Text</span>=<span class="hl str">&quot;Position:&quot;</span><span class="hl kwa">&gt;</span>
+                      <span class="hl kwa">&lt;Label</span>.Font<span class="hl kwa">&gt;</span>
+                        <span class="hl kwa">&lt;OnIdiom</span> x:<span class="hl kwb">TypeArguments</span>=<span class="hl str">&quot;Font&quot;</span> <span class="hl kwb">Tablet</span>=<span class="hl str">&quot;Medium&quot;</span> <span class="hl kwb">Phone</span>=<span class="hl str">&quot;Small&quot;</span> <span class="hl kwa">/&gt;</span>
+                      <span class="hl kwa">&lt;/Label</span>.Font<span class="hl kwa">&gt;</span>
+                    <span class="hl kwa">&lt;/Label&gt;</span>
+                    <span class="hl kwa">&lt;Label</span> Grid.<span class="hl kwb">Column</span>=<span class="hl str">&quot;2&quot;</span> Grid.<span class="hl kwb">Row</span>=<span class="hl str">&quot;1&quot;</span> <span class="hl kwb">Text</span>=<span class="hl str">&quot;{Binding Path=SelectedDataObject.Position}&quot;</span><span class="hl kwa">&gt;</span>
+                      <span class="hl kwa">&lt;Label</span>.Font<span class="hl kwa">&gt;</span>
+                        <span class="hl kwa">&lt;OnIdiom</span> x:<span class="hl kwb">TypeArguments</span>=<span class="hl str">&quot;Font&quot;</span> <span class="hl kwb">Tablet</span>=<span class="hl str">&quot;Medium&quot;</span> <span class="hl kwb">Phone</span>=<span class="hl str">&quot;Small&quot;</span> <span class="hl kwa">/&gt;</span>
+                      <span class="hl kwa">&lt;/Label</span>.Font<span class="hl kwa">&gt;</span>
+                    <span class="hl kwa">&lt;/Label&gt;</span>
+
+                    <span class="hl kwa">&lt;Label</span> Grid.<span class="hl kwb">Column</span>=<span class="hl str">&quot;0&quot;</span> Grid.<span class="hl kwb">Row</span>=<span class="hl str">&quot;2&quot;</span> <span class="hl kwb">Text</span>=<span class="hl str">&quot;Hired At:&quot;</span><span class="hl kwa">&gt;</span>
+                      <span class="hl kwa">&lt;Label</span>.Font<span class="hl kwa">&gt;</span>
+                        <span class="hl kwa">&lt;OnIdiom</span> x:<span class="hl kwb">TypeArguments</span>=<span class="hl str">&quot;Font&quot;</span> <span class="hl kwb">Tablet</span>=<span class="hl str">&quot;Medium&quot;</span> <span class="hl kwb">Phone</span>=<span class="hl str">&quot;Small&quot;</span> <span class="hl kwa">/&gt;</span>
+                      <span class="hl kwa">&lt;/Label</span>.Font<span class="hl kwa">&gt;</span>
+                    <span class="hl kwa">&lt;/Label&gt;</span>
+                    <span class="hl kwa">&lt;Label</span> Grid.<span class="hl kwb">Column</span>=<span class="hl str">&quot;2&quot;</span> Grid.<span class="hl kwb">Row</span>=<span class="hl str">&quot;2&quot;</span> <span class="hl kwb">Text</span>=<span class="hl str">&quot;{Binding Path=SelectedDataObject.HireDate, StringFormat='{0:d}'}&quot;</span><span class="hl kwa">&gt;</span>
+                      <span class="hl kwa">&lt;Label</span>.Font<span class="hl kwa">&gt;</span>
+                        <span class="hl kwa">&lt;OnIdiom</span> x:<span class="hl kwb">TypeArguments</span>=<span class="hl str">&quot;Font&quot;</span> <span class="hl kwb">Tablet</span>=<span class="hl str">&quot;Medium&quot;</span> <span class="hl kwb">Phone</span>=<span class="hl str">&quot;Small&quot;</span> <span class="hl kwa">/&gt;</span>
+                      <span class="hl kwa">&lt;/Label</span>.Font<span class="hl kwa">&gt;</span>
+                    <span class="hl kwa">&lt;/Label&gt;</span>
+
+                    <span class="hl kwa">&lt;Label</span> Grid.<span class="hl kwb">Column</span>=<span class="hl str">&quot;0&quot;</span> Grid.<span class="hl kwb">Row</span>=<span class="hl str">&quot;3&quot;</span> <span class="hl kwb">Text</span>=<span class="hl str">&quot;Phone:&quot;</span><span class="hl kwa">&gt;</span>
+                      <span class="hl kwa">&lt;Label</span>.Font<span class="hl kwa">&gt;</span>
+                        <span class="hl kwa">&lt;OnIdiom</span> x:<span class="hl kwb">TypeArguments</span>=<span class="hl str">&quot;Font&quot;</span> <span class="hl kwb">Tablet</span>=<span class="hl str">&quot;Medium&quot;</span> <span class="hl kwb">Phone</span>=<span class="hl str">&quot;Small&quot;</span> <span class="hl kwa">/&gt;</span>
+                      <span class="hl kwa">&lt;/Label</span>.Font<span class="hl kwa">&gt;</span>
+                    <span class="hl kwa">&lt;/Label&gt;</span>
+                    <span class="hl kwa">&lt;Label</span> Grid.<span class="hl kwb">Column</span>=<span class="hl str">&quot;2&quot;</span> Grid.<span class="hl kwb">Row</span>=<span class="hl str">&quot;3&quot;</span> <span class="hl kwb">Text</span>=<span class="hl str">&quot;{Binding Path=SelectedDataObject.Phone}&quot;</span><span class="hl kwa">&gt;</span>
+                      <span class="hl kwa">&lt;Label</span>.Font<span class="hl kwa">&gt;</span>
+                        <span class="hl kwa">&lt;OnIdiom</span> x:<span class="hl kwb">TypeArguments</span>=<span class="hl str">&quot;Font&quot;</span> <span class="hl kwb">Tablet</span>=<span class="hl str">&quot;Medium&quot;</span> <span class="hl kwb">Phone</span>=<span class="hl str">&quot;Small&quot;</span> <span class="hl kwa">/&gt;</span>
+                      <span class="hl kwa">&lt;/Label</span>.Font<span class="hl kwa">&gt;</span>
+                    <span class="hl kwa">&lt;/Label&gt;</span>
+
+                    <span class="hl kwa">&lt;Label</span> Grid.<span class="hl kwb">Column</span>=<span class="hl str">&quot;0&quot;</span> Grid.<span class="hl kwb">Row</span>=<span class="hl str">&quot;4&quot;</span> <span class="hl kwb">Text</span>=<span class="hl str">&quot;Notes:&quot;</span><span class="hl kwa">&gt;</span>
+                      <span class="hl kwa">&lt;Label</span>.Font<span class="hl kwa">&gt;</span>
+                        <span class="hl kwa">&lt;OnIdiom</span> x:<span class="hl kwb">TypeArguments</span>=<span class="hl str">&quot;Font&quot;</span> <span class="hl kwb">Tablet</span>=<span class="hl str">&quot;Medium&quot;</span> <span class="hl kwb">Phone</span>=<span class="hl str">&quot;Small&quot;</span> <span class="hl kwa">/&gt;</span>
+                      <span class="hl kwa">&lt;/Label</span>.Font<span class="hl kwa">&gt;</span>
+                    <span class="hl kwa">&lt;/Label&gt;</span>
+                    <span class="hl kwa">&lt;ScrollView</span> Grid.<span class="hl kwb">Column</span>=<span class="hl str">&quot;2&quot;</span> Grid.<span class="hl kwb">Row</span>=<span class="hl str">&quot;4&quot;</span> <span class="hl kwb">Orientation</span>=<span class="hl str">&quot;Vertical&quot;</span><span class="hl kwa">&gt;</span>
+                      <span class="hl kwa">&lt;Label</span> <span class="hl kwb">Text</span>=<span class="hl str">&quot;{Binding Path=SelectedDataObject.Notes}&quot;</span><span class="hl kwa">&gt;</span>
+                          <span class="hl kwa">&lt;Label</span>.Font<span class="hl kwa">&gt;</span>
+                           <span class="hl kwa">&lt;OnIdiom</span> x:<span class="hl kwb">TypeArguments</span>=<span class="hl str">&quot;Font&quot;</span> <span class="hl kwb">Tablet</span>=<span class="hl str">&quot;Medium&quot;</span> <span class="hl kwb">Phone</span>=<span class="hl str">&quot;Small&quot;</span> <span class="hl kwa">/&gt;</span>
+                          <span class="hl kwa">&lt;/Label</span>.Font<span class="hl kwa">&gt;</span>
+                        <span class="hl kwa">&lt;/Label&gt;</span>
+                    <span class="hl kwa">&lt;/ScrollView&gt;</span>
+                <span class="hl kwa">&lt;/Grid&gt;</span>
+            <span class="hl kwa">&lt;/Grid&gt;</span>
+        <span class="hl kwa">&lt;/Grid&gt;</span>
+    <span class="hl kwa">&lt;/ContentPage</span>.Content<span class="hl kwa">&gt;</span>
+<span class="hl kwa">&lt;/ContentPage&gt;</span>
+</pre>
+</body>
+</html>

@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+					   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+					   x:Class="DevExpress.GridDemo.HtmlViewerPage"
+					   xmlns:dxgi="clr-namespace:DevExpress.Mobile.DataGrid.Internal;assembly=DevExpress.Mobile.Grid.v16.2">
+  <ContentPage.Padding>
+    <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
+  </ContentPage.Padding>
+  <ContentPage.Content>
+    <dxgi:HTMLView Source="{Binding Source}" />
+  </ContentPage.Content>
+</ContentPage>

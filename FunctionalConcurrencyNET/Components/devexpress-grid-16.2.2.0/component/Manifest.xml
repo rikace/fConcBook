@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<component format="1" id="devexpress-grid">
+  <name>DevExpress Grid</name>
+  <publisher>DevExpress</publisher>
+  <publisher-url>https://www.devexpress.com/Products/Xamarin</publisher-url>
+  <version>16.2.2.0</version>
+  <summary>The FREE DevExpress Grid for Xamarin ships with dozens of high-impact Microsoft Outlook-inspired capabilities for your next iOS, Android &amp; Windows Phone app.</summary>
+  <packages>
+    <package id="Xamarin.Forms" version="2.3.3.180" framework="ios-unified" />
+    <package id="Xamarin.Forms" version="2.3.3.180" framework="android" />
+  </packages>
+  <screenshots>
+    <img src="screenshots/Slide1.png" title="Slide1" />
+    <img src="screenshots/Slide2.png" title="Slide2" />
+    <img src="screenshots/Slide3.png" title="Slide3" />
+    <img src="screenshots/Slide4.png" title="Slide4" />
+    <img src="screenshots/Slide5.png" title="Slide5" />
+    <img src="screenshots/Slide6.png" title="Slide6" />
+    <img src="screenshots/Slide7.png" title="Slide7" />
+    <img src="screenshots/Slide8.png" title="Slide8" />
+  </screenshots>
+  <samples>
+    <sample id="HelloGrid">
+      <name>Getting Started.</name>
+      <summary>Your first simple application with the DevExpress Grid.</summary>
+    </sample>
+    <sample id="GridDemo">
+      <name>Grid Feature Demos.</name>
+      <summary>A set of demos providing an overview of all features available in the DevExpress Grid.</summary>
+    </sample>
+  </samples>
+</component>

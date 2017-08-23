@@ -1,0 +1,12 @@
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Chapter.07\ImageProcessing.fs\bin\Release\GinevraBenci.jpg
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Chapter.07\ImageProcessing.fs\bin\Release\LadyErmine.jpg
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Chapter.07\ImageProcessing.fs\bin\Release\MonaLisa.jpg
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Chapter.07\ImageProcessing.fs\bin\Release\App.config
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Chapter.07\ImageProcessing.fs\bin\Release\ImageProcessing.exe.config
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Chapter.07\ImageProcessing.fs\bin\Release\_3DImageEffect.FSharp.XML
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Chapter.07\ImageProcessing.fs\bin\Release\ImageProcessing.exe
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Chapter.07\ImageProcessing.fs\bin\Release\ImageProcessing.pdb
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Chapter.07\ImageProcessing.fs\bin\Release\FSharp.Core.dll
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Chapter.07\ImageProcessing.fs\obj\Release\ImageProcessing.fs.fsproj.CoreCompileInputs.cache
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Chapter.07\ImageProcessing.fs\obj\Release\ImageProcessing.exe
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Chapter.07\ImageProcessing.fs\obj\Release\ImageProcessing.pdb

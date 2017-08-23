@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+					   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dxg="clr-namespace:DevExpress.Mobile.DataGrid;assembly=DevExpress.Mobile.Grid.v16.2"
+					   x:Class="DevExpress.GridDemo.SearchHighlightCellPage">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
+    </ContentPage.Padding>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <SearchBar Grid.Row="0" Grid.Column="0" Placeholder ="Enter a value for search" x:Name="searchBar" TextChanged="OnSearchTextChanged"/>
+            <dxg:GridControl Grid.Row="1" Grid.Column="0" x:Name="grid" ItemsSource="{Binding Orders}" CustomizeCell="OnCustomizeCell">
+                <dxg:GridControl.Columns>
+                    <dxg:TextColumn FieldName="Customer.Name" Caption="Name" IsReadOnly="true" />
+                    <dxg:DateColumn FieldName="Date" DisplayFormat="{}{0:d}" />
+                    <dxg:NumberColumn FieldName="Total" IsReadOnly="True" DisplayFormat="{}{0:C2}"/>
+                </dxg:GridControl.Columns>
+            </dxg:GridControl>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

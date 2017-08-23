@@ -1,0 +1,11 @@
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Common\Interop\bin\Release\Interop.dll.config
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Common\Interop\bin\Release\Interop.dll
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Common\Interop\bin\Release\Interop.pdb
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Common\Interop\bin\Release\FSharp.Core.dll
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Common\Interop\bin\Release\Functional.dll
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Common\Interop\bin\Release\Functional.pdb
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Common\Interop\bin\Release\Functional.dll.config
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Common\Interop\obj\Release\Interop.csproj.CoreCompileInputs.cache
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Common\Interop\obj\Release\Interop.dll
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Common\Interop\obj\Release\Interop.pdb
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Common\Interop\obj\Release\Interop.csprojResolveAssemblyReference.cache

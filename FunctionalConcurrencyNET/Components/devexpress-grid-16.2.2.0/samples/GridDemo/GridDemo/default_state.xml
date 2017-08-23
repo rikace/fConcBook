@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<XtraSerializer version="1.0" application="">
+  <property name="RowHeight">50</property>
+  <property name="Columns" iskey="true" value="6">
+    <property name="Item1" isnull="true" iskey="true">
+      <property name="Width">50</property>
+      <property name="AllowSort">False</property>
+      <property name="IsReadOnly">true</property>
+      <property name="Caption">Photo</property>
+      <property name="FieldName">Customer.Photo</property>
+      <property name="AllowAutoFilter">false</property>
+      <property name="SerializationTypeName">DevExpress.Mobile.DataGrid.ImageColumn</property>
+      <property name="AllowGroup">False</property>
+    </property>
+    <property name="Item2" isnull="true" iskey="true">
+      <property name="IsReadOnly">true</property>
+      <property name="Caption">Name</property>
+      <property name="FieldName">Customer.Name</property>
+      <property name="SerializationTypeName">DevExpress.Mobile.DataGrid.TextColumn</property>
+    </property>
+    <property name="Item3" isnull="true" iskey="true">
+      <property name="DisplayFormat">d</property>
+      <property name="FieldName">Date</property>
+      <property name="SerializationTypeName">DevExpress.Mobile.DataGrid.DateColumn</property>
+    </property>
+    <property name="Item4" isnull="true" iskey="true">
+      <property name="SortOrder">Ascending</property>
+      <property name="FieldName">Priority</property>
+      <property name="SortIndex">1</property>
+      <property name="SerializationTypeName">DevExpress.Mobile.DataGrid.PickerColumn</property>
+    </property>
+    <property name="Item5" isnull="true" iskey="true">
+      <property name="ContentAlignment">Center</property>
+      <property name="FieldName">Shipped</property>
+      <property name="SerializationTypeName">DevExpress.Mobile.DataGrid.SwitchColumn</property>
+    </property>
+    <property name="Item6" isnull="true" iskey="true">
+      <property name="ContentAlignment">End</property>
+      <property name="IsReadOnly">true</property>
+      <property name="DisplayFormat">C2</property>
+      <property name="FieldName">Total</property>
+      <property name="SerializationTypeName">DevExpress.Mobile.DataGrid.NumberColumn</property>
+    </property>
+  </property>
+  <property name="GroupSummaries" iskey="true" value="0" />
+  <property name="AutoFilterPanelVisibility">true</property>
+  <property name="TotalSummaries" iskey="true" value="1">
+    <property name="Item1" isnull="true" iskey="true">
+      <property name="FieldName">Total</property>
+      <property name="Type">Sum</property>
+    </property>
+  </property>
+</XtraSerializer>

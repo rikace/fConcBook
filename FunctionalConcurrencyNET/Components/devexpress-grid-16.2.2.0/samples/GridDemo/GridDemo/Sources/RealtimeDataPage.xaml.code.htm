@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="highlight.css">
+</head>
+<body class="hl">
+<pre class="hl"><span class="hl kwa">using</span> System<span class="hl opt">;</span>
+<span class="hl kwa">using</span> System<span class="hl opt">.</span>Collections<span class="hl opt">.</span>Generic<span class="hl opt">;</span>
+<span class="hl kwa">using</span> System<span class="hl opt">.</span>Globalization<span class="hl opt">;</span>
+<span class="hl kwa">using</span> System<span class="hl opt">.</span>Threading<span class="hl opt">.</span>Tasks<span class="hl opt">;</span>
+<span class="hl kwa">using</span> DevExpress<span class="hl opt">.</span>Mobile<span class="hl opt">.</span>Core<span class="hl opt">;</span>
+<span class="hl kwa">using</span> DevExpress<span class="hl opt">.</span>Mobile<span class="hl opt">.</span>DataGrid<span class="hl opt">.</span>Localization<span class="hl opt">;</span>
+<span class="hl kwa">using</span> Xamarin<span class="hl opt">.</span>Forms<span class="hl opt">;</span>
+<span class="hl kwa">using</span> System<span class="hl opt">.</span>ComponentModel<span class="hl opt">;</span>
+<span class="hl kwa">using</span> DevExpress<span class="hl opt">.</span>Mobile<span class="hl opt">.</span>DataGrid<span class="hl opt">.</span>Theme<span class="hl opt">;</span>
+
+<span class="hl kwa">namespace</span> DevExpress<span class="hl opt">.</span>GridDemo <span class="hl opt">{</span>
+    <span class="hl kwa">public partial class</span> RealTimeDataPage <span class="hl opt">:</span> ISupportsStartFinish <span class="hl opt">{</span>
+        MainPageViewModel model<span class="hl opt">;</span>
+        <span class="hl kwb">const string</span> TriangleNegativeFileName <span class="hl opt">=</span> <span class="hl str">&quot;Triangle_Negative.png&quot;</span><span class="hl opt">;</span>
+        <span class="hl kwb">const string</span> TrianglePositiveFileName <span class="hl opt">=</span> <span class="hl str">&quot;Triangle_Positive.png&quot;</span><span class="hl opt">;</span>
+
+        <span class="hl kwa">public</span> <span class="hl kwd">RealTimeDataPage</span><span class="hl opt">() {</span>
+            <span class="hl kwd">InitializeComponent</span><span class="hl opt">();</span>
+
+            <span class="hl kwd">SetCulture</span><span class="hl opt">(</span><span class="hl kwa">new</span> <span class="hl kwd">CultureInfo</span><span class="hl opt">(</span><span class="hl str">&quot;en-US&quot;</span><span class="hl opt">));</span>
+            <span class="hl kwd">BindData</span><span class="hl opt">();</span>
+        <span class="hl opt">}</span>
+
+        <span class="hl kwb">void</span> <span class="hl kwd">SetCulture</span><span class="hl opt">(</span>CultureInfo culture<span class="hl opt">) {</span>
+            IGlobalizationService service <span class="hl opt">=</span> GlobalServices<span class="hl opt">.</span>Instance<span class="hl opt">.</span>GetService<span class="hl opt">&lt;</span>IGlobalizationService<span class="hl opt">&gt;();</span>
+            <span class="hl kwa">if</span><span class="hl opt">(</span>service <span class="hl opt">==</span> <span class="hl kwa">null</span><span class="hl opt">)</span>
+                <span class="hl kwa">return</span><span class="hl opt">;</span>
+
+            <span class="hl kwa">if</span><span class="hl opt">(</span>culture <span class="hl opt">==</span> <span class="hl kwa">null</span><span class="hl opt">)</span>
+                culture <span class="hl opt">=</span> service<span class="hl opt">.</span>CurrentOSCulture<span class="hl opt">;</span>
+
+            service<span class="hl opt">.</span>CurrentCulture <span class="hl opt">=</span> culture<span class="hl opt">;</span>
+            service<span class="hl opt">.</span>CurrentUICulture <span class="hl opt">=</span> culture<span class="hl opt">;</span>
+
+            GridLocalizer<span class="hl opt">.</span><span class="hl kwd">ResetCache</span><span class="hl opt">();</span>
+            grid<span class="hl opt">.</span><span class="hl kwd">Redraw</span><span class="hl opt">(</span><span class="hl kwa">true</span><span class="hl opt">);</span>
+        <span class="hl opt">}</span>
+        <span class="hl kwa">async</span> <span class="hl kwb">void</span> <span class="hl kwd">BindData</span><span class="hl opt">() {</span>
+            <span class="hl kwa">this</span><span class="hl opt">.</span>model <span class="hl opt">=</span> <span class="hl kwa">await</span> <span class="hl kwd">LoadData</span><span class="hl opt">();</span>
+            BindingContext <span class="hl opt">=</span> model<span class="hl opt">;</span>
+        <span class="hl opt">}</span>
+        <span class="hl kwa">protected override</span> <span class="hl kwb">void</span> <span class="hl kwd">OnBindingContextChanged</span><span class="hl opt">() {</span>
+            <span class="hl kwa">base</span><span class="hl opt">.</span><span class="hl kwd">OnBindingContextChanged</span><span class="hl opt">();</span>
+            ISupportsStartFinish startFinish <span class="hl opt">=</span> <span class="hl kwa">this</span><span class="hl opt">;</span>
+            startFinish<span class="hl opt">.</span><span class="hl kwd">Start</span><span class="hl opt">();</span>
+        <span class="hl opt">}</span>
+        Task<span class="hl opt">&lt;</span>MainPageViewModel<span class="hl opt">&gt;</span> <span class="hl kwd">LoadData</span><span class="hl opt">() {</span>
+            <span class="hl kwa">return</span> Task<span class="hl opt">&lt;</span>MainPageViewModel<span class="hl opt">&gt;.</span><span class="hl kwd">Run</span><span class="hl opt">(() =&gt;</span> <span class="hl kwa">new</span> <span class="hl kwd">MainPageViewModel</span><span class="hl opt">(</span><span class="hl kwa">new</span> <span class="hl kwd">DemoOrdersRepository</span><span class="hl opt">()));</span>
+        <span class="hl opt">}</span>
+
+        <span class="hl kwb">void</span> ISupportsStartFinish<span class="hl opt">.</span><span class="hl kwd">Start</span><span class="hl opt">() {</span>
+            <span class="hl kwa">if</span><span class="hl opt">(</span>model <span class="hl opt">==</span> <span class="hl kwa">null</span><span class="hl opt">)</span>
+                <span class="hl kwa">return</span><span class="hl opt">;</span>
+
+            model<span class="hl opt">.</span><span class="hl kwd">StartMarketSimulation</span><span class="hl opt">();</span>
+        <span class="hl opt">}</span>
+
+        <span class="hl kwb">void</span> ISupportsStartFinish<span class="hl opt">.</span><span class="hl kwd">Finish</span><span class="hl opt">() {</span>
+            <span class="hl kwa">if</span><span class="hl opt">(</span>model <span class="hl opt">==</span> <span class="hl kwa">null</span><span class="hl opt">)</span>
+                <span class="hl kwa">return</span><span class="hl opt">;</span>
+
+            <span class="hl kwa">this</span><span class="hl opt">.</span>model<span class="hl opt">.</span><span class="hl kwd">StopMarketSimulation</span><span class="hl opt">();</span>
+            <span class="hl kwa">this</span><span class="hl opt">.</span>model <span class="hl opt">=</span> <span class="hl kwa">null</span><span class="hl opt">;</span>
+        <span class="hl opt">}</span>
+
+        Label lastChangedLabel<span class="hl opt">;</span>
+        <span class="hl kwb">double</span> labelPreviousValue<span class="hl opt">;</span>
+
+        <span class="hl kwb">void</span> <span class="hl kwd">OnLabelPropertyChanging</span><span class="hl opt">(</span><span class="hl kwb">object</span> sender<span class="hl opt">,</span> PropertyChangingEventArgs e<span class="hl opt">) {</span>
+            <span class="hl kwa">if</span><span class="hl opt">(!(</span>sender is Label<span class="hl opt">))</span>
+                <span class="hl kwa">return</span><span class="hl opt">;</span>
+
+            <span class="hl kwa">if</span><span class="hl opt">(</span>e<span class="hl opt">.</span>PropertyName <span class="hl opt">==</span> <span class="hl str">&quot;Text&quot;</span><span class="hl opt">)</span>
+                <span class="hl kwd">OnLabelTextChanging</span><span class="hl opt">(</span>sender as Label<span class="hl opt">);</span>
+        <span class="hl opt">}</span>
+
+        <span class="hl kwb">void</span> <span class="hl kwd">OnLabelPropertyChanged</span><span class="hl opt">(</span><span class="hl kwb">object</span> sender<span class="hl opt">,</span> PropertyChangedEventArgs e<span class="hl opt">) {</span>
+            <span class="hl kwa">if</span><span class="hl opt">(!(</span>sender is Label<span class="hl opt">))</span>
+                <span class="hl kwa">return</span><span class="hl opt">;</span>
+
+            <span class="hl kwa">if</span><span class="hl opt">(</span>e<span class="hl opt">.</span>PropertyName <span class="hl opt">==</span> <span class="hl str">&quot;Text&quot;</span><span class="hl opt">)</span>
+                <span class="hl kwd">OnLabelTextChanged</span><span class="hl opt">(</span>sender as Label<span class="hl opt">);</span>
+            <span class="hl kwa">else if</span><span class="hl opt">(</span>e<span class="hl opt">.</span>PropertyName <span class="hl opt">==</span> <span class="hl str">&quot;Renderer&quot;</span><span class="hl opt">)</span>
+                <span class="hl kwd">ApplyThemeToLabel</span><span class="hl opt">(</span>sender as Label<span class="hl opt">);</span>
+        <span class="hl opt">}</span>
+
+        <span class="hl kwb">void</span> <span class="hl kwd">OnLabelTextChanging</span><span class="hl opt">(</span>Label label<span class="hl opt">) {</span>
+            <span class="hl kwb">double</span> <span class="hl kwa">value</span> <span class="hl opt">=</span> <span class="hl kwd">GetLabelValue</span><span class="hl opt">(</span>label<span class="hl opt">);</span>
+            <span class="hl kwa">if</span><span class="hl opt">(!</span>Double<span class="hl opt">.</span><span class="hl kwd">IsNaN</span><span class="hl opt">(</span><span class="hl kwa">value</span><span class="hl opt">)) {</span>
+                lastChangedLabel <span class="hl opt">=</span> label<span class="hl opt">;</span>
+                labelPreviousValue <span class="hl opt">=</span> <span class="hl kwa">value</span><span class="hl opt">;</span>
+            <span class="hl opt">}</span>
+        <span class="hl opt">}</span>
+
+        <span class="hl kwb">void</span> <span class="hl kwd">OnLabelTextChanged</span><span class="hl opt">(</span>Label label<span class="hl opt">) {</span>
+            <span class="hl kwa">if</span><span class="hl opt">(</span>label <span class="hl opt">==</span> lastChangedLabel<span class="hl opt">) {</span>
+                <span class="hl kwb">double</span> currentValue <span class="hl opt">=</span> <span class="hl kwd">GetLabelValue</span><span class="hl opt">(</span>label<span class="hl opt">);</span>
+                <span class="hl kwa">if</span><span class="hl opt">(!</span>Double<span class="hl opt">.</span><span class="hl kwd">IsNaN</span><span class="hl opt">(</span>currentValue<span class="hl opt">)) {</span>
+                    <span class="hl kwa">if</span><span class="hl opt">(</span>currentValue <span class="hl opt">!=</span> labelPreviousValue<span class="hl opt">) {</span>
+                        Image image <span class="hl opt">=</span> <span class="hl kwd">GetLabelImageSibling</span><span class="hl opt">(</span>label<span class="hl opt">);</span>
+                        <span class="hl kwa">if</span><span class="hl opt">(</span>image <span class="hl opt">!=</span> <span class="hl kwa">null</span><span class="hl opt">)</span>
+                            image<span class="hl opt">.</span>Source <span class="hl opt">=</span> currentValue <span class="hl opt">&gt;</span> labelPreviousValue <span class="hl opt">?</span> TrianglePositiveFileName <span class="hl opt">:</span> TriangleNegativeFileName<span class="hl opt">;</span>
+                        label<span class="hl opt">.</span>TextColor <span class="hl opt">=</span> currentValue <span class="hl opt">&gt;</span> labelPreviousValue <span class="hl opt">?</span> Color<span class="hl opt">.</span>Green <span class="hl opt">:</span> Color<span class="hl opt">.</span>Red<span class="hl opt">;</span>
+                    <span class="hl opt">}</span>
+                <span class="hl opt">}</span>
+            <span class="hl opt">}</span>
+        <span class="hl opt">}</span>
+
+        <span class="hl kwb">double</span> <span class="hl kwd">GetLabelValue</span><span class="hl opt">(</span>Label label<span class="hl opt">) {</span>
+            <span class="hl kwb">double</span> <span class="hl kwa">value</span><span class="hl opt">;</span>
+            <span class="hl kwa">if</span> <span class="hl opt">(!</span>String<span class="hl opt">.</span><span class="hl kwd">IsNullOrEmpty</span><span class="hl opt">(</span>label<span class="hl opt">.</span>Text<span class="hl opt">) &amp;&amp; (</span>Double<span class="hl opt">.</span><span class="hl kwd">TryParse</span><span class="hl opt">(</span>label<span class="hl opt">.</span>Text<span class="hl opt">,</span> out <span class="hl kwa">value</span><span class="hl opt">) ||</span> Double<span class="hl opt">.</span><span class="hl kwd">TryParse</span><span class="hl opt">(</span>label<span class="hl opt">.</span>Text<span class="hl opt">,</span> NumberStyles<span class="hl opt">.</span>Currency<span class="hl opt">,</span> CultureInfo<span class="hl opt">.</span>CurrentCulture<span class="hl opt">,</span> out <span class="hl kwa">value</span><span class="hl opt">)))</span>
+                <span class="hl kwa">return value</span><span class="hl opt">;</span>
+            <span class="hl kwa">else</span>
+                <span class="hl kwa">return</span> Double<span class="hl opt">.</span>NaN<span class="hl opt">;</span>
+        <span class="hl opt">}</span>
+
+        Image <span class="hl kwd">GetLabelImageSibling</span><span class="hl opt">(</span>Label label<span class="hl opt">) {</span>
+            <span class="hl kwa">if</span><span class="hl opt">(</span>label<span class="hl opt">.</span>Parent is Grid<span class="hl opt">)</span>
+                <span class="hl kwa">foreach</span><span class="hl opt">(</span>View gridChild <span class="hl kwa">in</span> <span class="hl opt">(</span>label<span class="hl opt">.</span>Parent as Grid<span class="hl opt">).</span>Children<span class="hl opt">)</span>
+                    <span class="hl kwa">if</span><span class="hl opt">(</span>gridChild is Image<span class="hl opt">)</span>
+                        <span class="hl kwa">return</span> gridChild as Image<span class="hl opt">;</span>
+            <span class="hl kwa">return null</span><span class="hl opt">;</span>
+        <span class="hl opt">}</span>
+
+        <span class="hl kwb">void</span> <span class="hl kwd">ApplyThemeToLabel</span><span class="hl opt">(</span>Label label<span class="hl opt">) {</span>
+            <span class="hl kwa">if</span><span class="hl opt">(</span>label<span class="hl opt">.</span>FontSize <span class="hl opt">!=</span> ThemeManager<span class="hl opt">.</span>Theme<span class="hl opt">.</span>CellCustomizer<span class="hl opt">.</span>Font<span class="hl opt">.</span>Size<span class="hl opt">)</span>
+                label<span class="hl opt">.</span>FontSize <span class="hl opt">=</span> ThemeManager<span class="hl opt">.</span>Theme<span class="hl opt">.</span>CellCustomizer<span class="hl opt">.</span>Font<span class="hl opt">.</span>Size<span class="hl opt">;</span>
+        <span class="hl opt">}</span>
+    <span class="hl opt">}</span>
+<span class="hl opt">}</span>
+</pre>
+</body>
+</html>

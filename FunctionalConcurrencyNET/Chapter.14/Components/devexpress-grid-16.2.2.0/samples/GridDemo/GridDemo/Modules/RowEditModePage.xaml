@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+					   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dxg="clr-namespace:DevExpress.Mobile.DataGrid;assembly=DevExpress.Mobile.Grid.v16.2"
+					   x:Class="DevExpress.GridDemo.RowEditModePage">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
+    </ContentPage.Padding>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <dxg:GridControl x:Name="grid" ItemsSource="{Binding Orders}" NewItemRowVisibility="true" InitNewRow="OnInitNewRow" RowEditMode="Popup" Grid.ColumnSpan="2">
+                <dxg:GridControl.Columns>
+                    <dxg:PickerColumn FieldName="Customer" DisplayMember="Name" x:Name="colCustomer" Caption="Name" />
+                    <dxg:DateColumn FieldName="Date" DisplayFormat="d" />
+                    <dxg:NumberColumn FieldName="Total" IsReadOnly="True" DisplayFormat="C2"/>
+                </dxg:GridControl.Columns>
+            </dxg:GridControl>
+            <ContentView Padding="8, 8, 8, 8" VerticalOptions="Center" Grid.Row="1" Grid.Column="0" >
+                <Label Text="Row Edit Mode:"/>
+            </ContentView>
+            <ContentView Padding="0, 8, 8, 8" Grid.Row="1" Grid.Column="1" >
+                <Picker x:Name="cbRowEditMode" SelectedIndexChanged="OnRowEditModeChanged"/>
+            </ContentView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

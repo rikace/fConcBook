@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+					   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dxg="clr-namespace:DevExpress.Mobile.DataGrid;assembly=DevExpress.Mobile.Grid.v16.2"
+					   x:Class="DevExpress.GridDemo.SummaryCustomPage">
+  <ContentPage.Padding>
+    <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
+  </ContentPage.Padding>
+  <ContentPage.Content>
+    <dxg:GridControl x:Name="grid" ItemsSource="{Binding Orders}" CalculateCustomSummary="OnCalculateCustomSummary" IsTotalSummaryMenuEnabled="false" TotalSummaryVisibility="Always">
+
+      <dxg:GridControl.Columns>
+        <dxg:TextColumn FieldName="Customer.Name" Caption="Name" IsReadOnly="true" />
+        <dxg:DateColumn FieldName="Date" DisplayFormat="{}{0:d}" />
+        <dxg:NumberColumn FieldName="Total" IsReadOnly="True" DisplayFormat="{}{0:C2}" />
+      </dxg:GridControl.Columns>
+
+      <dxg:GridControl.TotalSummaries>
+        <dxg:GridColumnSummary FieldName="Total" Type="Custom" DisplayFormat="Value={0:C2}" />
+      </dxg:GridControl.TotalSummaries>
+
+    </dxg:GridControl>
+  </ContentPage.Content>
+  
+</ContentPage>

@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:dxg="clr-namespace:DevExpress.Mobile.DataGrid;assembly=DevExpress.Mobile.Grid.v16.2"
+			 x:Class="DevExpress.GridDemo.MenuCustomizationPage">
+  <ContentPage.Padding>
+    <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
+  </ContentPage.Padding>
+	<ContentPage.Content>
+	  <dxg:GridControl x:Name="grid" IsReadOnly="true" ItemsSource="{Binding Customers}" PopupMenuCustomization="OnPopupMenuCustomization">
+        <dxg:GridControl.Columns>
+          <dxg:TextColumn FieldName="Name" Width="200"/>
+          <dxg:DateColumn FieldName="BirthDate" DisplayFormat="{}{0:d}" Width="150" />
+          <dxg:TextColumn FieldName="Email" Width="300"/>
+        </dxg:GridControl.Columns>
+
+        <dxg:GridControl.TotalSummaries>
+          <dxg:GridColumnSummary FieldName="Total" Type="Count"/>
+        </dxg:GridControl.TotalSummaries>
+        
+      </dxg:GridControl>
+	</ContentPage.Content>
+</ContentPage>

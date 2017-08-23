@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="highlight.css">
+</head>
+<body class="hl">
+<pre class="hl"><span class="hl kwa">using</span> System<span class="hl opt">;</span>
+<span class="hl kwa">using</span> System<span class="hl opt">.</span>Collections<span class="hl opt">.</span>Generic<span class="hl opt">;</span>
+<span class="hl kwa">using</span> System<span class="hl opt">.</span>Linq<span class="hl opt">;</span>
+<span class="hl kwa">using</span> System<span class="hl opt">.</span>Text<span class="hl opt">;</span>
+<span class="hl kwa">using</span> System<span class="hl opt">.</span>Threading<span class="hl opt">.</span>Tasks<span class="hl opt">;</span>
+<span class="hl kwa">using</span> DevExpress<span class="hl opt">.</span>Mobile<span class="hl opt">.</span>DataGrid<span class="hl opt">;</span>
+<span class="hl kwa">using</span> Xamarin<span class="hl opt">.</span>Forms<span class="hl opt">;</span>
+
+<span class="hl kwa">namespace</span> DevExpress<span class="hl opt">.</span>GridDemo <span class="hl opt">{</span>
+    <span class="hl kwa">public partial class</span> CustomizeCellPage <span class="hl opt">{</span>
+        <span class="hl kwa">public</span> <span class="hl kwd">CustomizeCellPage</span><span class="hl opt">() {</span>
+            <span class="hl kwd">InitializeComponent</span><span class="hl opt">();</span>
+
+            <span class="hl kwd">BindData</span><span class="hl opt">();</span>
+        <span class="hl opt">}</span>
+        <span class="hl kwb">void</span> <span class="hl kwd">OnCustomizeCell</span><span class="hl opt">(</span>CustomizeCellEventArgs e<span class="hl opt">) {</span>
+            <span class="hl kwa">if</span> <span class="hl opt">(</span>e<span class="hl opt">.</span>FieldName <span class="hl opt">==</span> <span class="hl str">&quot;Total&quot;</span> <span class="hl opt">&amp;&amp; !</span>e<span class="hl opt">.</span>IsSelected<span class="hl opt">) {</span>
+                <span class="hl kwb">decimal</span> total <span class="hl opt">=</span> Convert<span class="hl opt">.</span><span class="hl kwd">ToDecimal</span><span class="hl opt">(</span>e<span class="hl opt">.</span>Value<span class="hl opt">);</span>
+                <span class="hl kwa">if</span> <span class="hl opt">(</span>total <span class="hl opt">&lt;</span> <span class="hl num">100</span><span class="hl opt">)</span>
+                    e<span class="hl opt">.</span>BackgroundColor <span class="hl opt">=</span> Color<span class="hl opt">.</span>Red<span class="hl opt">;</span>
+                <span class="hl kwa">else if</span> <span class="hl opt">(</span>total <span class="hl opt">&gt;</span> <span class="hl num">500</span><span class="hl opt">)</span>
+                    e<span class="hl opt">.</span>BackgroundColor <span class="hl opt">=</span> Color<span class="hl opt">.</span>Green<span class="hl opt">;</span>
+                e<span class="hl opt">.</span>Handled <span class="hl opt">=</span> <span class="hl kwa">true</span><span class="hl opt">;</span>
+            <span class="hl opt">}</span>
+        <span class="hl opt">}</span>
+
+        <span class="hl kwa">async</span> <span class="hl kwb">void</span> <span class="hl kwd">BindData</span><span class="hl opt">() {</span>
+            BindingContext <span class="hl opt">=</span> <span class="hl kwa">await</span> <span class="hl kwd">LoadData</span><span class="hl opt">();</span>
+        <span class="hl opt">}</span>
+        Task<span class="hl opt">&lt;</span>MainPageViewModel<span class="hl opt">&gt;</span> <span class="hl kwd">LoadData</span><span class="hl opt">() {</span>
+            <span class="hl kwa">return</span> Task<span class="hl opt">&lt;</span>MainPageViewModel<span class="hl opt">&gt;.</span><span class="hl kwd">Run</span><span class="hl opt">(() =&gt;</span> <span class="hl kwa">new</span> <span class="hl kwd">MainPageViewModel</span><span class="hl opt">(</span><span class="hl kwa">new</span> <span class="hl kwd">DemoOrdersRepository</span><span class="hl opt">()));</span>
+        <span class="hl opt">}</span>
+    <span class="hl opt">}</span>
+<span class="hl opt">}</span>
+</pre>
+</body>
+</html>

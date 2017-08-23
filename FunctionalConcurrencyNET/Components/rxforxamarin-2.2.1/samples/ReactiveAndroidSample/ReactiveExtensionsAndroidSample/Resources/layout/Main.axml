@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <View
+        android:id="@+id/theToucheable"
+        android:layout_width="fill_parent"
+        android:layout_height="440.7dp"
+        android:layout_marginBottom="0.0dp" />
+    <TextView
+        android:id="@+id/theText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="(touch corrdinates shown here)" />
+</LinearLayout>

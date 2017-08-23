@@ -1,0 +1,12 @@
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Chapter.08\Asynchronous.cs\bin\Release\Asynchronous.cs.exe.config
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Chapter.08\Asynchronous.cs\bin\Release\Asynchronous.cs.exe
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Chapter.08\Asynchronous.cs\bin\Release\Asynchronous.cs.pdb
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Chapter.08\Asynchronous.cs\bin\Release\Functional.dll
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Chapter.08\Asynchronous.cs\bin\Release\FSharp.Core.dll
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Chapter.08\Asynchronous.cs\bin\Release\Functional.pdb
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Chapter.08\Asynchronous.cs\bin\Release\Functional.dll.config
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Chapter.08\Asynchronous.cs\bin\Release\FSharp.Core.xml
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Chapter.08\Asynchronous.cs\obj\Release\Asynchronous.cs.csprojResolveAssemblyReference.cache
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Chapter.08\Asynchronous.cs\obj\Release\Asynchronous.cs.csproj.CoreCompileInputs.cache
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Chapter.08\Asynchronous.cs\obj\Release\Asynchronous.cs.exe
+E:\GitHub\bookcode\FunctionalConcurrencyNET\Chapter.08\Asynchronous.cs\obj\Release\Asynchronous.cs.pdb

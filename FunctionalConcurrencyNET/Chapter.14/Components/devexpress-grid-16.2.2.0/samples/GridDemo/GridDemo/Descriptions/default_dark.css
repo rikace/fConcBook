@@ -1,0 +1,13 @@
+body {
+	background-color: #303030;
+	color: #DCDCDC;
+	font-family: HelveticaNeue; font-size: 13pt; font-style: normal; text-align: justify; margin: 30pt;
+}
+p { }
+.ident { 
+	font-weight: bold;
+	margin-left: -0.5px;
+	margin-right: -0.5px;
+}
+p.header { font-family: HelveticaNeue-Medium; font-size: 15pt; }
+a:link {font-family: helvetica; text-decoration: none; font-size: 13pt; color: #007aff; }

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="highlight.css">
+</head>
+<body class="hl">
+<pre class="hl"><span class="hl kwa">using</span> System<span class="hl opt">;</span>
+<span class="hl kwa">using</span> System<span class="hl opt">.</span>Collections<span class="hl opt">.</span>ObjectModel<span class="hl opt">;</span>
+<span class="hl kwa">using</span> System<span class="hl opt">.</span>Threading<span class="hl opt">.</span>Tasks<span class="hl opt">;</span>
+<span class="hl kwa">using</span> System<span class="hl opt">.</span>Windows<span class="hl opt">.</span>Input<span class="hl opt">;</span>
+<span class="hl kwa">using</span> Xamarin<span class="hl opt">.</span>Forms<span class="hl opt">;</span>
+
+<span class="hl kwa">namespace</span> DevExpress<span class="hl opt">.</span>GridDemo <span class="hl opt">{</span>
+    <span class="hl kwa">public partial class</span> LoadMorePage <span class="hl opt">{</span>
+    <span class="hl kwa">public static readonly</span> BindableProperty OrdersProperty <span class="hl opt">=</span> BindableProperty<span class="hl opt">.</span><span class="hl kwd">Create</span><span class="hl opt">(</span><span class="hl str">&quot;Orders&quot;</span><span class="hl opt">,</span> <span class="hl kwd">typeof</span><span class="hl opt">(</span>ObservableCollection<span class="hl opt">&lt;</span>Order<span class="hl opt">&gt;),</span> <span class="hl kwd">typeof</span><span class="hl opt">(</span>LoadMorePage<span class="hl opt">),</span> <span class="hl kwa">null</span><span class="hl opt">);</span>
+    <span class="hl kwa">public static readonly</span> BindableProperty LoadMoreCommandProperty <span class="hl opt">=</span> BindableProperty<span class="hl opt">.</span><span class="hl kwd">Create</span><span class="hl opt">(</span><span class="hl str">&quot;LoadMoreCommand&quot;</span><span class="hl opt">,</span> <span class="hl kwd">typeof</span><span class="hl opt">(</span>LoadMoreDataCommand<span class="hl opt">),</span> <span class="hl kwd">typeof</span><span class="hl opt">(</span>LoadMorePage<span class="hl opt">),</span> <span class="hl kwa">null</span><span class="hl opt">);</span>
+
+        OrdersRepository repository<span class="hl opt">;</span>
+
+        <span class="hl kwa">public</span> LoadMoreDataCommand LoadMoreCommand <span class="hl opt">{</span>
+            <span class="hl kwa">get</span> <span class="hl opt">{</span> <span class="hl kwa">return</span> <span class="hl opt">(</span>LoadMoreDataCommand<span class="hl opt">)</span><span class="hl kwd">GetValue</span><span class="hl opt">(</span>LoadMoreCommandProperty<span class="hl opt">); }</span>
+            <span class="hl kwa">set</span> <span class="hl opt">{</span> <span class="hl kwd">SetValue</span><span class="hl opt">(</span>LoadMoreCommandProperty<span class="hl opt">,</span> <span class="hl kwa">value</span><span class="hl opt">); }</span>
+        <span class="hl opt">}</span>
+
+        <span class="hl kwa">public</span> ObservableCollection<span class="hl opt">&lt;</span>Order<span class="hl opt">&gt;</span> Orders <span class="hl opt">{</span>
+            <span class="hl kwa">get</span> <span class="hl opt">{</span> <span class="hl kwa">return</span> <span class="hl opt">(</span>ObservableCollection<span class="hl opt">&lt;</span>Order<span class="hl opt">&gt;)</span><span class="hl kwd">GetValue</span><span class="hl opt">(</span>OrdersProperty<span class="hl opt">); }</span>
+            <span class="hl kwa">set</span> <span class="hl opt">{</span> <span class="hl kwd">SetValue</span><span class="hl opt">(</span>OrdersProperty<span class="hl opt">,</span> <span class="hl kwa">value</span><span class="hl opt">); }</span>
+        <span class="hl opt">}</span>
+
+        <span class="hl kwa">public</span> <span class="hl kwd">LoadMorePage</span><span class="hl opt">() {</span>
+            <span class="hl kwd">InitializeComponent</span><span class="hl opt">();</span>
+            <span class="hl kwd">BindData</span><span class="hl opt">();</span>
+        <span class="hl opt">}</span>
+
+        <span class="hl kwb">void</span> <span class="hl kwd">BindData</span><span class="hl opt">() {</span>
+            BindingContext <span class="hl opt">=</span> <span class="hl kwa">this</span><span class="hl opt">;</span>
+            <span class="hl kwa">this</span><span class="hl opt">.</span>repository <span class="hl opt">=</span> <span class="hl kwa">new</span> <span class="hl kwd">DemoOrdersRepository</span><span class="hl opt">();</span>
+            <span class="hl kwa">this</span><span class="hl opt">.</span>Orders <span class="hl opt">=</span> repository<span class="hl opt">.</span>Orders<span class="hl opt">;</span>
+            LoadMoreCommand <span class="hl opt">=</span> <span class="hl kwa">new</span> <span class="hl kwd">LoadMoreDataCommand</span><span class="hl opt">(</span>ExecuteLoadMoreCommand<span class="hl opt">);</span>
+        <span class="hl opt">}</span>
+
+        <span class="hl kwb">void</span> <span class="hl kwd">ExecuteLoadMoreCommand</span><span class="hl opt">() {</span>
+            repository<span class="hl opt">.</span><span class="hl kwd">LoadMoreOrders</span><span class="hl opt">();</span>
+            Orders <span class="hl opt">=</span> repository<span class="hl opt">.</span>Orders<span class="hl opt">;</span>
+        <span class="hl opt">}</span>
+    <span class="hl opt">}</span>
+
+    <span class="hl kwa">public class</span> LoadMoreDataCommand <span class="hl opt">:</span> ICommand <span class="hl opt">{</span>
+        <span class="hl kwa">readonly</span> Action execute<span class="hl opt">;</span>
+
+        <span class="hl kwb">int</span> numOfLoadMore<span class="hl opt">;</span>
+        <span class="hl kwa">public event</span> EventHandler CanExecuteChanged<span class="hl opt">;</span>
+        <span class="hl kwb">bool</span> canExecute <span class="hl opt">=</span> <span class="hl kwa">true</span><span class="hl opt">;</span>
+
+        <span class="hl kwa">public</span> <span class="hl kwd">LoadMoreDataCommand</span><span class="hl opt">(</span>Action execute<span class="hl opt">) {</span>
+            <span class="hl kwa">this</span><span class="hl opt">.</span>execute <span class="hl opt">=</span> execute<span class="hl opt">;</span>
+        <span class="hl opt">}</span>
+
+        <span class="hl kwa">public</span> <span class="hl kwb">bool</span> <span class="hl kwd">CanExecute</span><span class="hl opt">(</span><span class="hl kwb">object</span> parameter<span class="hl opt">) {</span>
+            <span class="hl kwa">return</span> canExecute<span class="hl opt">;</span>
+        <span class="hl opt">}</span>
+
+        <span class="hl kwa">public</span> <span class="hl kwb">void</span> <span class="hl kwd">Execute</span><span class="hl opt">(</span><span class="hl kwb">object</span> parameter<span class="hl opt">) {</span>
+            numOfLoadMore<span class="hl opt">++;</span>
+            <span class="hl kwa">if</span> <span class="hl opt">(</span>numOfLoadMore <span class="hl opt">&lt;</span> <span class="hl num">3</span><span class="hl opt">) {</span>
+                <span class="hl kwd">ChangeCanExecute</span><span class="hl opt">(</span><span class="hl kwa">true</span><span class="hl opt">);</span>
+                <span class="hl kwa">this</span><span class="hl opt">.</span><span class="hl kwd">execute</span><span class="hl opt">();</span>
+            <span class="hl opt">}</span> <span class="hl kwa">else</span> <span class="hl opt">{</span>
+                <span class="hl kwd">ChangeCanExecute</span><span class="hl opt">(</span><span class="hl kwa">false</span><span class="hl opt">);</span>
+                <span class="hl kwd">TryDownloadAgain</span><span class="hl opt">();</span>
+            <span class="hl opt">}</span>
+        <span class="hl opt">}</span>
+
+        <span class="hl kwa">async</span> <span class="hl kwb">void</span> <span class="hl kwd">TryDownloadAgain</span><span class="hl opt">() {</span>
+            <span class="hl kwa">await</span> Task<span class="hl opt">.</span><span class="hl kwd">Delay</span><span class="hl opt">(</span><span class="hl num">5000</span><span class="hl opt">);</span>
+            numOfLoadMore <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span>
+            <span class="hl kwd">ChangeCanExecute</span><span class="hl opt">(</span><span class="hl kwa">true</span><span class="hl opt">);</span>
+        <span class="hl opt">}</span>
+        <span class="hl kwb">void</span> <span class="hl kwd">ChangeCanExecute</span><span class="hl opt">(</span><span class="hl kwb">bool</span> canExecute<span class="hl opt">) {</span>
+            <span class="hl kwa">this</span><span class="hl opt">.</span>canExecute <span class="hl opt">=</span> canExecute<span class="hl opt">;</span>
+            <span class="hl kwa">if</span> <span class="hl opt">(</span>CanExecuteChanged <span class="hl opt">!=</span> <span class="hl kwa">null</span><span class="hl opt">)</span>
+                <span class="hl kwd">CanExecuteChanged</span><span class="hl opt">(</span><span class="hl kwa">this</span><span class="hl opt">,</span> <span class="hl kwa">new</span> <span class="hl kwd">EventArgs</span><span class="hl opt">());</span>
+        <span class="hl opt">}</span>
+    <span class="hl opt">}</span>
+<span class="hl opt">}</span>
+</pre>
+</body>
+</html>

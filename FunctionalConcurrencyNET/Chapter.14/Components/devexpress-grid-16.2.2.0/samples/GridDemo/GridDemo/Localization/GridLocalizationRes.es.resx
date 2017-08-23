@@ -1,0 +1,777 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="GridStringId.Caption_All" xml:space="preserve">
+    <value>(Todos)</value>
+  </data>
+  <data name="GridStringId.Caption_Off" xml:space="preserve">
+    <value>OFF</value>
+  </data>
+  <data name="GridStringId.Caption_On" xml:space="preserve">
+    <value> ON </value>
+  </data>
+  <data name="GridStringId.Caption_SummaryAverage" xml:space="preserve">
+    <value>AVG</value>
+  </data>
+  <data name="GridStringId.Caption_SummaryCount" xml:space="preserve">
+    <value>COUNT</value>
+  </data>
+  <data name="GridStringId.Caption_SummaryCustom" xml:space="preserve">
+    <value>VAL</value>
+  </data>
+  <data name="GridStringId.Caption_SummaryMax" xml:space="preserve">
+    <value>MAX</value>
+  </data>
+  <data name="GridStringId.Caption_SummaryMin" xml:space="preserve">
+    <value>MIN</value>
+  </data>
+  <data name="GridStringId.Caption_SummaryNone" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="GridStringId.Caption_SummarySum" xml:space="preserve">
+    <value>SUM</value>
+  </data>
+  <data name="GridStringId.Caption_Undefined" xml:space="preserve">
+    <value>  0  </value>
+  </data>
+  <data name="GridStringId.ColumnChooserDlg_LabelCaption" xml:space="preserve">
+    <value>Elegir Columnas</value>
+  </data>
+  <data name="GridStringId.EditingRow_ButtonApply" xml:space="preserve">
+    <value>Aplicar</value>
+  </data>
+  <data name="GridStringId.EditingRow_ButtonCancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="GridStringId.GridOutlookIntervals" xml:space="preserve">
+    <value>Antigüos;Mes pasado;Mas antiguos este mes;Hace tres semanas;Hace dos semanas;Semana pasada;;;;;;;;Ayer;Hoy;Mañana;;;;;;;;Próxima semana;Próximas 2 semanas;Próximas 3 semanas;Mas adelante este mes;Mes que viene;Futuros;</value>
+  </data>
+  <data name="GridStringId.GroupCaptionDisplayFormat" xml:space="preserve">
+    <value>{0}: {1}</value>
+  </data>
+  <data name="GridStringId.GroupIntervalMonthDisplayFormat" xml:space="preserve">
+    <value>{0}, {1}</value>
+  </data>
+  <data name="GridStringId.GroupIntervalQuarterDisplayFormat" xml:space="preserve">
+    <value>Q {0}, {1}</value>
+  </data>
+  <data name="GridStringId.GroupIntervalYearDisplayFormat" xml:space="preserve">
+    <value>{0}</value>
+  </data>
+  <data name="GridStringId.GroupNameNull" xml:space="preserve">
+    <value>(null)</value>
+  </data>
+  <data name="GridStringId.GroupSummaryDisplayFormat" xml:space="preserve">
+    <value>{1}: {0}={2}</value>
+  </data>
+  <data name="GridStringId.GroupSummaryShortDisplayFormat" xml:space="preserve">
+    <value>{0}: {1}</value>
+  </data>
+  <data name="GridStringId.MenuCmd_ColumnGroup" xml:space="preserve">
+    <value>Agrupados por '{0}'</value>
+  </data>
+  <data name="GridStringId.MenuCmd_ColumnGroupDescription" xml:space="preserve">
+    <value>Agrupados por '{0}'.</value>
+  </data>
+  <data name="GridStringId.MenuCmd_ColumnGroupNone" xml:space="preserve">
+    <value>Quitar la agrupación</value>
+  </data>
+  <data name="GridStringId.MenuCmd_ColumnGroupNoneDescription" xml:space="preserve">
+    <value>Retire la agrupación.</value>
+  </data>
+  <data name="GridStringId.MenuCmd_ColumnGroupSummaryAverage" xml:space="preserve">
+    <value>Media</value>
+  </data>
+  <data name="GridStringId.MenuCmd_ColumnGroupSummaryAverageDescription" xml:space="preserve">
+    <value>Promedio.</value>
+  </data>
+  <data name="GridStringId.MenuCmd_ColumnGroupSummaryCount" xml:space="preserve">
+    <value>Conde</value>
+  </data>
+  <data name="GridStringId.MenuCmd_ColumnGroupSummaryCountDescription" xml:space="preserve">
+    <value>Conde.</value>
+  </data>
+  <data name="GridStringId.MenuCmd_ColumnGroupSummaryMax" xml:space="preserve">
+    <value>Max</value>
+  </data>
+  <data name="GridStringId.MenuCmd_ColumnGroupSummaryMaxDescription" xml:space="preserve">
+    <value>Max.</value>
+  </data>
+  <data name="GridStringId.MenuCmd_ColumnGroupSummaryMin" xml:space="preserve">
+    <value>Min</value>
+  </data>
+  <data name="GridStringId.MenuCmd_ColumnGroupSummaryMinDescription" xml:space="preserve">
+    <value>Min.</value>
+  </data>
+  <data name="GridStringId.MenuCmd_ColumnGroupSummaryNone" xml:space="preserve">
+    <value>Ninguno</value>
+  </data>
+  <data name="GridStringId.MenuCmd_ColumnGroupSummaryNoneDescription" xml:space="preserve">
+    <value>Ninguno.</value>
+  </data>
+  <data name="GridStringId.MenuCmd_ColumnGroupSummarySum" xml:space="preserve">
+    <value>Suma</value>
+  </data>
+  <data name="GridStringId.MenuCmd_ColumnGroupSummarySumDescription" xml:space="preserve">
+    <value>Suma.</value>
+  </data>
+  <data name="GridStringId.MenuCmd_ColumnSortAscending" xml:space="preserve">
+    <value>Ordenar ascendente</value>
+  </data>
+  <data name="GridStringId.MenuCmd_ColumnSortAscendingDescription" xml:space="preserve">
+    <value>Tipo ascendente.</value>
+  </data>
+  <data name="GridStringId.MenuCmd_ColumnSortDescending" xml:space="preserve">
+    <value>Tipo descendente</value>
+  </data>
+  <data name="GridStringId.MenuCmd_ColumnSortDescendingDescription" xml:space="preserve">
+    <value>Tipo descendente.</value>
+  </data>
+  <data name="GridStringId.MenuCmd_ColumnSortNone" xml:space="preserve">
+    <value>Ningún tipo</value>
+  </data>
+  <data name="GridStringId.MenuCmd_ColumnSortNoneDescription" xml:space="preserve">
+    <value>Ninguna especie.</value>
+  </data>
+  <data name="GridStringId.MenuCmd_ColumnTotalSummaryAverage" xml:space="preserve">
+    <value>Media</value>
+  </data>
+  <data name="GridStringId.MenuCmd_ColumnTotalSummaryAverageDescription" xml:space="preserve">
+    <value>Promedio.</value>
+  </data>
+  <data name="GridStringId.MenuCmd_ColumnTotalSummaryCount" xml:space="preserve">
+    <value>Conde</value>
+  </data>
+  <data name="GridStringId.MenuCmd_ColumnTotalSummaryCountDescription" xml:space="preserve">
+    <value>Conde.</value>
+  </data>
+  <data name="GridStringId.MenuCmd_ColumnTotalSummaryMax" xml:space="preserve">
+    <value>Max</value>
+  </data>
+  <data name="GridStringId.MenuCmd_ColumnTotalSummaryMaxDescription" xml:space="preserve">
+    <value>Max.</value>
+  </data>
+  <data name="GridStringId.MenuCmd_ColumnTotalSummaryMin" xml:space="preserve">
+    <value>Min</value>
+  </data>
+  <data name="GridStringId.MenuCmd_ColumnTotalSummaryMinDescription" xml:space="preserve">
+    <value>Min.</value>
+  </data>
+  <data name="GridStringId.MenuCmd_ColumnTotalSummaryNone" xml:space="preserve">
+    <value>Ninguno</value>
+  </data>
+  <data name="GridStringId.MenuCmd_ColumnTotalSummaryNoneDescription" xml:space="preserve">
+    <value>Ninguno.</value>
+  </data>
+  <data name="GridStringId.MenuCmd_ColumnTotalSummarySum" xml:space="preserve">
+    <value>Suma</value>
+  </data>
+  <data name="GridStringId.MenuCmd_ColumnTotalSummarySumDescription" xml:space="preserve">
+    <value>Suma.</value>
+  </data>
+  <data name="GridStringId.MenuCmd_DataRowDelete" xml:space="preserve">
+    <value>Eliminar fila</value>
+  </data>
+  <data name="GridStringId.MenuCmd_DataRowDeleteDescription" xml:space="preserve">
+    <value>Eliminar fila.</value>
+  </data>
+  <data name="GridStringId.MenuCmd_DataRowEdit" xml:space="preserve">
+    <value>Editar fila</value>
+  </data>
+  <data name="GridStringId.MenuCmd_DataRowEditDescription" xml:space="preserve">
+    <value>Editar la fila.</value>
+  </data>
+  <data name="GridStringId.MenuCmd_GroupsCollapseAll" xml:space="preserve">
+    <value>Contraer todos los grupos</value>
+  </data>
+  <data name="GridStringId.MenuCmd_GroupsCollapseAllDescription" xml:space="preserve">
+    <value>Colapso de todos los grupos.</value>
+  </data>
+  <data name="GridStringId.MenuCmd_GroupsExpandAll" xml:space="preserve">
+    <value>Expandir todos los grupos</value>
+  </data>
+  <data name="GridStringId.MenuCmd_GroupsExpandAllDescription" xml:space="preserve">
+    <value>Expandir todos los grupos.</value>
+  </data>
+  <data name="GridStringId.MenuCmd_None" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="GridStringId.MenuCmd_ShowColumnChooser" xml:space="preserve">
+    <value>Mostrar columna selector</value>
+  </data>
+  <data name="GridStringId.MenuCmd_ShowColumnChooserDescription" xml:space="preserve">
+    <value>Mostrar columna selector.</value>
+  </data>
+  <data name="GridStringId.Msg_ErrorInternalError" xml:space="preserve">
+    <value>Se ha producido el error interno.</value>
+  </data>
+  <data name="GridStringId.NewItemRowCaption" xml:space="preserve">
+    <value>Pulse aquí para añadir una nueva fila</value>
+  </data>
+  <data name="GridStringId.TotalSummaryDisplayFormat" xml:space="preserve">
+    <value>{0}={2}</value>
+  </data>
+  <data name="GridStringId.FilterExpression_GroupOperator_And" xml:space="preserve">
+    <value>Y</value>
+  </data>
+  <data name="GridStringId.FilterExpression_GroupOperator_Or" xml:space="preserve">
+    <value>O</value>
+  </data>
+  <data name="GridStringId.FilterExpression_UnaryOperator_BitwiseNot" xml:space="preserve">
+    <value>~</value>
+  </data>
+  <data name="GridStringId.FilterExpression_UnaryOperator_IsNull" xml:space="preserve">
+    <value>Es Nulo</value>
+  </data>
+  <data name="GridStringId.FilterExpression_UnaryOperator_Minus" xml:space="preserve">
+    <value>-</value>
+  </data>
+  <data name="GridStringId.FilterExpression_UnaryOperator_Not" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="GridStringId.FilterExpression_UnaryOperator_Plus" xml:space="preserve">
+    <value>+</value>
+  </data>
+  <data name="GridStringId.FilterExpression_BinaryOperator_BitwiseAnd" xml:space="preserve">
+    <value>&amp;</value>
+  </data>
+  <data name="GridStringId.FilterExpression_BinaryOperator_BitwiseOr" xml:space="preserve">
+    <value>|</value>
+  </data>
+  <data name="GridStringId.FilterExpression_BinaryOperator_BitwiseXor" xml:space="preserve">
+    <value>^</value>
+  </data>
+  <data name="GridStringId.FilterExpression_BinaryOperator_Divide" xml:space="preserve">
+    <value>/</value>
+  </data>
+  <data name="GridStringId.FilterExpression_BinaryOperator_Equal" xml:space="preserve">
+    <value>=</value>
+  </data>
+  <data name="GridStringId.FilterExpression_BinaryOperator_Greater" xml:space="preserve">
+    <value>&gt;</value>
+  </data>
+  <data name="GridStringId.FilterExpression_BinaryOperator_GreaterOrEqual" xml:space="preserve">
+    <value>&gt;=</value>
+  </data>
+  <data name="GridStringId.FilterExpression_BinaryOperator_Less" xml:space="preserve">
+    <value>&lt;</value>
+  </data>
+  <data name="GridStringId.FilterExpression_BinaryOperator_LessOrEqual" xml:space="preserve">
+    <value>&lt;=</value>
+  </data>
+  <data name="GridStringId.FilterExpression_BinaryOperator_Like" xml:space="preserve">
+    <value>Como</value>
+  </data>
+  <data name="GridStringId.FilterExpression_BinaryOperator_Minus" xml:space="preserve">
+    <value>-</value>
+  </data>
+  <data name="GridStringId.FilterExpression_BinaryOperator_Modulo" xml:space="preserve">
+    <value>%</value>
+  </data>
+  <data name="GridStringId.FilterExpression_BinaryOperator_Multiply" xml:space="preserve">
+    <value>*</value>
+  </data>
+  <data name="GridStringId.FilterExpression_BinaryOperator_NotEqual" xml:space="preserve">
+    <value>&lt;&gt;</value>
+  </data>
+  <data name="GridStringId.FilterExpression_BinaryOperator_Plus" xml:space="preserve">
+    <value>+</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Between" xml:space="preserve">
+    <value>Entre</value>
+  </data>
+  <data name="GridStringId.FilterExpression_In" xml:space="preserve">
+    <value>En</value>
+  </data>
+  <data name="GridStringId.FilterExpression_IsNotNull" xml:space="preserve">
+    <value>No es Nulo</value>
+  </data>
+  <data name="GridStringId.FilterExpression_NotLike" xml:space="preserve">
+    <value>No Como</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_None" xml:space="preserve">
+    <value>Ninguno</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_Custom" xml:space="preserve">
+    <value>Personalizado</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_Iif" xml:space="preserve">
+    <value>Si</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_IsNull" xml:space="preserve">
+    <value>EsNulo</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_Trim" xml:space="preserve">
+    <value>Recortar</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_Len" xml:space="preserve">
+    <value>Longitud</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_Substring" xml:space="preserve">
+    <value>Substring</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_Upper" xml:space="preserve">
+    <value>Mayúsculas</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_Lower" xml:space="preserve">
+    <value>Minúsculas</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_Concat" xml:space="preserve">
+    <value>Concat</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_LocalDateTimeThisYear" xml:space="preserve">
+    <value>ÉsteAño</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_LocalDateTimeThisMonth" xml:space="preserve">
+    <value>ÉsteMes</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_LocalDateTimeLastWeek" xml:space="preserve">
+    <value>SemanaPasada</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_LocalDateTimeThisWeek" xml:space="preserve">
+    <value>ÉstaSemana</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_LocalDateTimeYesterday" xml:space="preserve">
+    <value>Ayer</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_LocalDateTimeToday" xml:space="preserve">
+    <value>Hoy</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_LocalDateTimeNow" xml:space="preserve">
+    <value>Ahora</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_LocalDateTimeTomorrow" xml:space="preserve">
+    <value>Mañana</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_LocalDateTimeDayAfterTomorrow" xml:space="preserve">
+    <value>PasadoMañana</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_LocalDateTimeNextWeek" xml:space="preserve">
+    <value>SemanaPróxima</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_LocalDateTimeTwoWeeksAway" xml:space="preserve">
+    <value>DentroDeDosSemanas</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_LocalDateTimeNextMonth" xml:space="preserve">
+    <value>PróximoMes</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_LocalDateTimeNextYear" xml:space="preserve">
+    <value>PróximoAño</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_IsOutlookIntervalBeyondThisYear" xml:space="preserve">
+    <value>EsMásAlláDeÉsteAño</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_IsOutlookIntervalLaterThisYear" xml:space="preserve">
+    <value>EsMásTardeÉsteAño</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_IsOutlookIntervalLaterThisMonth" xml:space="preserve">
+    <value>EsMásTardeÉsteMes</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_IsOutlookIntervalNextWeek" xml:space="preserve">
+    <value>EsLaSemanaPróxima</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_IsOutlookIntervalLaterThisWeek" xml:space="preserve">
+    <value>EsMásTardeÉstaSemana</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_IsOutlookIntervalTomorrow" xml:space="preserve">
+    <value>EsMañana</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_IsOutlookIntervalToday" xml:space="preserve">
+    <value>EsHoy</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_IsOutlookIntervalYesterday" xml:space="preserve">
+    <value>EsAyer</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_IsOutlookIntervalEarlierThisWeek" xml:space="preserve">
+    <value>EsMásTempranoÉstaSemana</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_IsOutlookIntervalLastWeek" xml:space="preserve">
+    <value>EsLaSemanaPasada</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_IsOutlookIntervalEarlierThisMonth" xml:space="preserve">
+    <value>EsMásTempranoÉsteMes</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_IsOutlookIntervalEarlierThisYear" xml:space="preserve">
+    <value>EsMásTempranoÉsteAño</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_IsOutlookIntervalPriorThisYear" xml:space="preserve">
+    <value>EsAnteriorÉsteAño</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_CustomNonDeterministic" xml:space="preserve">
+    <value>Personalizado no determinante</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_IsNullOrEmpty" xml:space="preserve">
+    <value>Es nulo o vacío</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_Ascii" xml:space="preserve">
+    <value>Ascii</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_Char" xml:space="preserve">
+    <value>Char</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_ToInt" xml:space="preserve">
+    <value>A Entero</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_ToLong" xml:space="preserve">
+    <value>A Entero Largo</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_ToFloat" xml:space="preserve">
+    <value>A Simple</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_ToDouble" xml:space="preserve">
+    <value>A Doble</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_ToDecimal" xml:space="preserve">
+    <value>A decimal</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_ToStr" xml:space="preserve">
+    <value>To str</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_Replace" xml:space="preserve">
+    <value>Reemplazar</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_Reverse" xml:space="preserve">
+    <value>Al Revés</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_Insert" xml:space="preserve">
+    <value>Insertar</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_CharIndex" xml:space="preserve">
+    <value>Índice Char</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_Remove" xml:space="preserve">
+    <value>Quitar</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_Abs" xml:space="preserve">
+    <value>Abs</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_Sqr" xml:space="preserve">
+    <value>Sqr</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_Cos" xml:space="preserve">
+    <value>Cos</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_Sin" xml:space="preserve">
+    <value>Sin</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_Atn" xml:space="preserve">
+    <value>Atn</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_Exp" xml:space="preserve">
+    <value>Exp</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_Log" xml:space="preserve">
+    <value>Log</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_Rnd" xml:space="preserve">
+    <value>Rnd</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_Tan" xml:space="preserve">
+    <value>Tan</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_Power" xml:space="preserve">
+    <value>Power</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_Sign" xml:space="preserve">
+    <value>Sign</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_Round" xml:space="preserve">
+    <value>Round</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_Ceiling" xml:space="preserve">
+    <value>Ceiling</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_Floor" xml:space="preserve">
+    <value>Floor</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_Max" xml:space="preserve">
+    <value>Máx</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_Min" xml:space="preserve">
+    <value>Mín</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_Acos" xml:space="preserve">
+    <value>Acos</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_Asin" xml:space="preserve">
+    <value>Asin</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_Atn2" xml:space="preserve">
+    <value>Atn2</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_BigMul" xml:space="preserve">
+    <value>Big mul</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_Cosh" xml:space="preserve">
+    <value>Cosh</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_Log10" xml:space="preserve">
+    <value>Log10</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_Sinh" xml:space="preserve">
+    <value>Sinh</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_Tanh" xml:space="preserve">
+    <value>Tanh</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_PadLeft" xml:space="preserve">
+    <value>Rellenar a la izquierda</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_PadRight" xml:space="preserve">
+    <value>Rellenar a la derecha</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_DateDiffTick" xml:space="preserve">
+    <value>Fecha dif pasos</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_DateDiffSecond" xml:space="preserve">
+    <value>Fecha dif segundo</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_DateDiffMilliSecond" xml:space="preserve">
+    <value>Fecha dif milisegundo</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_DateDiffMinute" xml:space="preserve">
+    <value>Fecha dif minuto</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_DateDiffHour" xml:space="preserve">
+    <value>Fecha dif hora</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_DateDiffDay" xml:space="preserve">
+    <value>Fecha dif día</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_DateDiffMonth" xml:space="preserve">
+    <value>Fecha dif mes</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_DateDiffYear" xml:space="preserve">
+    <value>Fecha dif año</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_GetDate" xml:space="preserve">
+    <value>Obtener fecha</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_GetMilliSecond" xml:space="preserve">
+    <value>Obtener milisegundo</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_GetSecond" xml:space="preserve">
+    <value>Obtener segundo</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_GetMinute" xml:space="preserve">
+    <value>Obtener minuto</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_GetHour" xml:space="preserve">
+    <value>Obtener hora</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_GetDay" xml:space="preserve">
+    <value>Obtener día</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_GetMonth" xml:space="preserve">
+    <value>Obtener mes</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_GetYear" xml:space="preserve">
+    <value>Obtener año</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_GetDayOfWeek" xml:space="preserve">
+    <value>Obtener día de la semana</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_GetDayOfYear" xml:space="preserve">
+    <value>Obtener día del año</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_GetTimeOfDay" xml:space="preserve">
+    <value>Obtener hora del día</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_Now" xml:space="preserve">
+    <value>Ahora</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_UtcNow" xml:space="preserve">
+    <value>Utc ahora</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_Today" xml:space="preserve">
+    <value>Hoy</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_AddTimeSpan" xml:space="preserve">
+    <value>Añadir rango</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_AddTicks" xml:space="preserve">
+    <value>Añadir pasos</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_AddMilliSeconds" xml:space="preserve">
+    <value>Añadir milisegundos</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_AddSeconds" xml:space="preserve">
+    <value>Añadir segundos</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_AddMinutes" xml:space="preserve">
+    <value>Añadir minutos</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_AddHours" xml:space="preserve">
+    <value>Añadir horas</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_AddDays" xml:space="preserve">
+    <value>Añadir días</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_AddMonths" xml:space="preserve">
+    <value>Añadir meses</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_AddYears" xml:space="preserve">
+    <value>Añadir años</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_StartsWith" xml:space="preserve">
+    <value>Comienza por</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_EndsWith" xml:space="preserve">
+    <value>Acaba con</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_Contains" xml:space="preserve">
+    <value>Contiene</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Aggregate_Avg" xml:space="preserve">
+    <value>Prom</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Aggregate_Count" xml:space="preserve">
+    <value>Recuento</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Aggregate_Exists" xml:space="preserve">
+    <value>Existe</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Aggregate_Max" xml:space="preserve">
+    <value>Máx</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Aggregate_Min" xml:space="preserve">
+    <value>Mín</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Aggregate_Sum" xml:space="preserve">
+    <value>Suma</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_IsThisMonth" xml:space="preserve">
+    <value>En este mes</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_IsThisWeek" xml:space="preserve">
+    <value>En esta semana</value>
+  </data>
+  <data name="GridStringId.FilterExpression_Function_IsThisYear" xml:space="preserve">
+    <value>En este año</value>
+  </data>
+  <data name="GridStringId.DialogForm_ButtonCancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="GridStringId.DialogForm_ButtonOk" xml:space="preserve">
+    <value>Bueno</value>
+  </data>
+  <data name="GridStringId.EditingForm_LabelCaption" xml:space="preserve">
+    <value>Editar Valores</value>
+  </data>
+</root>

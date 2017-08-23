@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+					   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dxg="clr-namespace:DevExpress.Mobile.DataGrid;assembly=DevExpress.Mobile.Grid.v16.2"
+             xmlns:dxgi="clr-namespace:DevExpress.Mobile.DataGrid.Internal;assembly=DevExpress.Mobile.Grid.v16.2"
+             xmlns:local="clr-namespace:DevExpress.GridDemo;assembly=GridDemoApp"
+             x:Class="DevExpress.GridDemo.LocalizationPage">
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <local:DemoStringIdLocalizer x:Key="localizer" />
+    </ResourceDictionary>
+  </ContentPage.Resources>
+  <ContentPage.Padding>
+    <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
+  </ContentPage.Padding>
+  <ContentPage.Content>
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="*"/>
+      </Grid.RowDefinitions>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition>
+          <ColumnDefinition.Width>
+            <OnPlatform  x:TypeArguments="GridLength">
+              <OnPlatform.Android>
+                <OnIdiom x:TypeArguments="GridLength" Tablet="250" Phone="125" />
+              </OnPlatform.Android>
+              <OnPlatform.iOS>
+                <OnIdiom x:TypeArguments="GridLength" Tablet="250" Phone="125" />
+              </OnPlatform.iOS>
+              <OnPlatform.WinPhone>
+                <OnIdiom x:TypeArguments="GridLength" Tablet="250" Phone="200" />
+              </OnPlatform.WinPhone>
+            </OnPlatform>
+          </ColumnDefinition.Width>
+        </ColumnDefinition>
+      </Grid.ColumnDefinitions>
+      <dxg:GridControl x:Name="grid" ItemsSource="{Binding Orders}" NewItemRowVisibility="true" InitNewRow="OnInitNewRow" Grid.Row="0" Grid.RowSpan="2">
+        <dxg:GridControl.Columns>
+          <dxg:TextColumn FieldName="Customer.Name" IsReadOnly="true" Caption="{Binding Path=CultureName, Source={StaticResource localizer}, Converter={StaticResource localizer}, ConverterParameter=Caption_ColumnName}"  AutoFilterValue="ann" AutoFilterCondition="Contains" />
+          <dxg:DateColumn FieldName="Date" DisplayFormat="{}{0:d}" Caption="{Binding Path=CultureName, Source={StaticResource localizer}, Converter={StaticResource localizer}, ConverterParameter=Caption_ColumnDate}" />
+          <dxg:NumberColumn FieldName="Total" IsReadOnly="True" DisplayFormat="{}{0:C2}" Caption="{Binding Path=CultureName, Source={StaticResource localizer}, Converter={StaticResource localizer}, ConverterParameter=Caption_ColumnTotal}" />
+        </dxg:GridControl.Columns>
+        <dxg:GridControl.TotalSummaries>
+          <dxg:GridColumnSummary FieldName="Total" Type="Sum" />
+        </dxg:GridControl.TotalSummaries>
+      </dxg:GridControl>
+      <ScrollView Grid.Column="1" Padding="5,0,5,0">
+        <Grid>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+          </Grid.RowDefinitions>
+          <Button Text="Default"  Grid.Row="0" Clicked="OnDefaultCulture" />
+          <Button Text="English"  Grid.Row="1" Clicked="OnEnglishCulture" />
+          <Button Text="Français" Grid.Row="2" Clicked="OnFrenchCulture" />
+          <Button Text="Deutsch"  Grid.Row="3" Clicked="OnGermanCulture" />
+          <Button Text="Español"  Grid.Row="4" Clicked="OnSpanishCulture" />
+          <Button Text="Русский"  Grid.Row="5" Clicked="OnRussianCulture" />
+          <Label Text="Current Culture:" Grid.Row="6" HorizontalOptions="Center" />
+          <Label x:Name="currentCultureName" Text="" Grid.Row="7" HorizontalOptions="Center" />
+        </Grid>
+      </ScrollView>
+    </Grid>
+  </ContentPage.Content>
+</ContentPage>

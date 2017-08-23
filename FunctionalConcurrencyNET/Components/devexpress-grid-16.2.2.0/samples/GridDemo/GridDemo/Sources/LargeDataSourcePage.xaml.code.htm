@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="highlight.css">
+</head>
+<body class="hl">
+<pre class="hl"><span class="hl kwa">using</span> System<span class="hl opt">;</span>
+<span class="hl kwa">using</span> System<span class="hl opt">.</span>Collections<span class="hl opt">.</span>Generic<span class="hl opt">;</span>
+<span class="hl kwa">using</span> System<span class="hl opt">.</span>Linq<span class="hl opt">;</span>
+<span class="hl kwa">using</span> System<span class="hl opt">.</span>Text<span class="hl opt">;</span>
+<span class="hl kwa">using</span> System<span class="hl opt">.</span>Threading<span class="hl opt">.</span>Tasks<span class="hl opt">;</span>
+<span class="hl kwa">using</span> Xamarin<span class="hl opt">.</span>Forms<span class="hl opt">;</span>
+
+<span class="hl kwa">namespace</span> DevExpress<span class="hl opt">.</span>GridDemo <span class="hl opt">{</span>
+    <span class="hl kwa">public partial class</span> LargeDataSourcePage <span class="hl opt">{</span>
+        <span class="hl kwa">public</span> <span class="hl kwd">LargeDataSourcePage</span><span class="hl opt">() {</span>
+            <span class="hl kwd">InitializeComponent</span><span class="hl opt">();</span>
+
+            activityIndicator<span class="hl opt">.</span>IsRunning <span class="hl opt">=</span> <span class="hl kwa">true</span><span class="hl opt">;</span>
+            activityIndicator<span class="hl opt">.</span>IsVisible <span class="hl opt">=</span> <span class="hl kwa">true</span><span class="hl opt">;</span>
+            loadingLabel<span class="hl opt">.</span>IsVisible <span class="hl opt">=</span> <span class="hl kwa">true</span><span class="hl opt">;</span>
+
+            <span class="hl kwd">BindData</span><span class="hl opt">();</span>
+        <span class="hl opt">}</span>
+
+        <span class="hl kwa">async</span> <span class="hl kwb">void</span> <span class="hl kwd">BindData</span><span class="hl opt">() {</span>
+            BindingContext <span class="hl opt">=</span> <span class="hl kwa">await</span> <span class="hl kwd">LoadData</span><span class="hl opt">();</span>
+            activityIndicator<span class="hl opt">.</span>IsRunning <span class="hl opt">=</span> <span class="hl kwa">false</span><span class="hl opt">;</span>
+            activityIndicator<span class="hl opt">.</span>IsVisible <span class="hl opt">=</span> <span class="hl kwa">false</span><span class="hl opt">;</span>
+            loadingLabel<span class="hl opt">.</span>IsVisible <span class="hl opt">=</span> <span class="hl kwa">false</span><span class="hl opt">;</span>
+        <span class="hl opt">}</span>
+        <span class="hl kwb">void</span> <span class="hl kwd">OrderChange</span><span class="hl opt">(</span><span class="hl kwb">int</span> currentPercent<span class="hl opt">) {</span>
+            loadingLabel<span class="hl opt">.</span>Text <span class="hl opt">=</span> <span class="hl kwb">string</span><span class="hl opt">.</span><span class="hl kwd">Format</span><span class="hl opt">(</span><span class="hl str">&quot;Loading data...</span> <span class="hl ipl">{0}</span><span class="hl str">%&quot;</span><span class="hl opt">,</span> currentPercent<span class="hl opt">);</span>
+        <span class="hl opt">}</span>
+        Task<span class="hl opt">&lt;</span>MainPageViewModel<span class="hl opt">&gt;</span> <span class="hl kwd">LoadData</span><span class="hl opt">() {</span>
+            <span class="hl kwa">return</span> Task<span class="hl opt">&lt;</span>MainPageViewModel<span class="hl opt">&gt;.</span><span class="hl kwd">Run</span><span class="hl opt">(() =&gt;</span> <span class="hl kwa">new</span> <span class="hl kwd">MainPageViewModel</span><span class="hl opt">(</span><span class="hl kwa">new</span> <span class="hl kwd">DemoOrdersRepository</span><span class="hl opt">(</span><span class="hl num">100000</span><span class="hl opt">,</span> OrderChange<span class="hl opt">)));</span>
+        <span class="hl opt">}</span>
+    <span class="hl opt">}</span>
+<span class="hl opt">}</span>
+</pre>
+</body>
+</html>

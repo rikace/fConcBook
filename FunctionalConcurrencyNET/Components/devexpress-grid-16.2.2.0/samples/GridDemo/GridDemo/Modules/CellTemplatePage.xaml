@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+					   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dxg="clr-namespace:DevExpress.Mobile.DataGrid;assembly=DevExpress.Mobile.Grid.v16.2"
+             xmlns:local="clr-namespace:DevExpress.GridDemo;assembly=GridDemoApp"
+					   x:Class="DevExpress.GridDemo.CellTemplatePage">
+  <ContentPage.Padding>
+    <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
+  </ContentPage.Padding>
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <local:IsSelectedToCellTextColorValueConverter x:Key="labelTextColorConverter" />
+    </ResourceDictionary>
+  </ContentPage.Resources>
+  <ContentPage.Content>
+    <dxg:GridControl x:Name="grid" ItemsSource="{Binding Orders}" RowHeight="105">
+      <dxg:GridControl.Columns>
+        <dxg:TemplateColumn FieldName="Customer" Caption="Customer" IsReadOnly="true" AllowGroup="False" AllowSort ="False">
+          <dxg:TemplateColumn.DisplayTemplate>
+            <DataTemplate>
+                <Grid Padding="0,4,0,4">
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="0.3*" />
+                    <ColumnDefinition Width="0.7*" />
+                  </Grid.ColumnDefinitions>
+                  <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                  </Grid.RowDefinitions>
+                  <Image Source="{Binding Value.Photo}" Grid.RowSpan="3" VerticalOptions="Start" Aspect="AspectFit" />
+                  <Label Text="{Binding Value.Name}" TextColor="{Binding Path=IsSelected, Converter={StaticResource labelTextColorConverter}}" Grid.Column="1" Grid.Row="0" Font="Bold, Small"/>
+                  <Label Text="{Binding Value.Position}" TextColor="{Binding Path=IsSelected, Converter={StaticResource labelTextColorConverter}}" Grid.Column="1" Grid.Row="1" Font="Small"/>
+                  <Label Text="{Binding Value.Phone}" TextColor="{Binding Path=IsSelected, Converter={StaticResource labelTextColorConverter}}" Grid.Column="1" Grid.Row="2" Font="Small"/>
+                  <Label Text="{Binding Value.Notes}" TextColor="{Binding Path=IsSelected, Converter={StaticResource labelTextColorConverter}}" Grid.Column="2" Grid.Row="0" Grid.RowSpan="3" Font="10"/>
+                </Grid>
+            </DataTemplate>
+          </dxg:TemplateColumn.DisplayTemplate>
+        </dxg:TemplateColumn>
+        <dxg:NumberColumn FieldName="Total" IsReadOnly="True" DisplayFormat="{}{0:C2}" Width="150" />
+      </dxg:GridControl.Columns>
+    </dxg:GridControl>
+  </ContentPage.Content>
+</ContentPage>
