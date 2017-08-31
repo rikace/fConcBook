@@ -26,3 +26,16 @@ E:\Temp\FunctionalConcurrencyNET\Common\Functional.fs\obj\Debug\Functional.fs.fs
 E:\Temp\FunctionalConcurrencyNET\Common\Functional.fs\obj\Debug\Functional.fs.fsproj.CoreCompileInputs.cache
 E:\Temp\FunctionalConcurrencyNET\Common\Functional.fs\obj\Debug\Functional.fs.dll
 E:\Temp\FunctionalConcurrencyNET\Common\Functional.fs\obj\Debug\Functional.fs.pdb
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Common\Functional.fs\bin\Debug\Functional.fs.XML
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Common\Functional.fs\bin\Debug\Functional.fs.dll
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Common\Functional.fs\bin\Debug\Functional.fs.pdb
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Common\Functional.fs\bin\Debug\FSharp.Core.dll
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Common\Functional.fs\bin\Debug\FSharp.PowerPack.dll
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Common\Functional.fs\bin\Debug\FSharp.PowerPack.Parallel.Seq.dll
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Common\Functional.fs\bin\Debug\System.ValueTuple.dll
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Common\Functional.fs\bin\Debug\FSharp.PowerPack.xml
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Common\Functional.fs\bin\Debug\FSharp.PowerPack.Parallel.Seq.xml
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Common\Functional.fs\bin\Debug\FSharp.Core.xml
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Common\Functional.fs\obj\Debug\Functional.fs.fsproj.CoreCompileInputs.cache
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Common\Functional.fs\obj\Debug\Functional.fs.dll
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Common\Functional.fs\obj\Debug\Functional.fs.pdb

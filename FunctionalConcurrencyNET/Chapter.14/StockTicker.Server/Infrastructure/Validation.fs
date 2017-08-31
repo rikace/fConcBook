@@ -11,7 +11,7 @@ module Validation =
      // The infix operator >>= is an alias of bind function.
     let inline (>>=) f1 f2 = Result.bind f1 f2
 
-    
+
     let validateTicker  (input : TradingRecord) : Result<TradingRecord, string> =
         if input.Symbol = "" then Result.Error "Ticket must not be blank"
         else Result.Ok input
@@ -26,7 +26,7 @@ module Validation =
 
     let tradingdValidation =
         validateTicker >> Result.bind validatePrice >> Result.bind validateQuantity
-        
+
 
     let validateTickerRequestSymbol (input : TickerRecord) =
         if input.Symbol = "" then Result.Error "Ticket must not be blank"
@@ -42,4 +42,3 @@ module Validation =
 
     let tickerRequestValidation =
         validateTickerRequestSymbol >> Result.bind validateTickerRequestPriceMin >> Result.bind validateTickerRequestPriceMax
-        

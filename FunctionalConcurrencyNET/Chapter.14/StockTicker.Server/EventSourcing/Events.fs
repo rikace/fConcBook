@@ -24,14 +24,14 @@ module Events =
                     sprintf "Item Id %A - Ticker %s sold at $ %f - quantity %d" id trading.Symbol trading.Price trading.Quantity
 
             | StocksSoldEvent(id, trading) ->
-                    sprintf "Item Id %A - Ticker %s buyed at $ %f - quantity %d" id trading.Symbol trading.Price trading.Quantity
-            
+                    sprintf "Item Id %A - Ticker %s bought at $ %f - quantity %d" id trading.Symbol trading.Price trading.Quantity
+
             | ErrorSubmitingOrder(id, trading, e) ->
                    sprintf "Item Id %A - Ticker %s - Error Message : %s" id trading.Symbol e.Message
-                    
+
         static member Create (id:Guid, eventData:Event) = EventDescriptor(id, eventData)
 
-    // Container to capsulate events
+    // Container to encapsulate events
     and EventDescriptor(id:Guid, eventData:Event) =
         member this.Id = id
         member this.EventData = eventData

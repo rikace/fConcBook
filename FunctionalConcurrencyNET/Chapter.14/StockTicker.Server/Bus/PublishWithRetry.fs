@@ -12,13 +12,13 @@ type SendMessageWith<'a> =
     | SendMessageWith of string * 'a
 
 
-    // Computation expressions in F# provide a convenient syntax for writing
-    // computations that can be sequenced and combined using control flow constructs
-    // and bindings. They can be used to provide a convenient syntax for monads,
-    // a functional programming feature that can be used to manage data, control,
-    // and side effects in functional programs.
-    // Computation expressions in F# provide a convenient syntax for writing computations
-    // that can be sequenced and combined using control flow constructs and bindings.
+//Computation expressions in F# provide a convenient syntax for writing
+//computations that can be sequenced and combined using control flow constructs
+//and bindings. They can be used to provide a convenient syntax for monads,
+//a functional programming feature that can be used to manage data, control,
+//and side effects in functional programs.
+//Computation expressions in F# provide a convenient syntax for writing computations
+//that can be sequenced and combined using control flow constructs and bindings.
 
 [<AutoOpenAttribute>]
 module RetryPublishMonad =
@@ -43,9 +43,3 @@ module RetryPublishMonad =
         member this.Bind(task:Async<'a>, continuation:'a -> Async<'b>) = retry max task continuation // #H
         member this.Bind(task : Task<'T>, continuation : 'T -> Async<'R>) : Async<'R> = this.Bind(Async.AwaitTask task, continuation)
         member this.Zero() = this.Return()
-
-
-
-    
-
-

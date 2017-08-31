@@ -9,10 +9,10 @@ open StockTicker.Validation
 open StockTicker.Commands
 open System.Reactive.Subjects
 open StockTicker.Core
-open StockTicker.Core
 open StockTicker.Logging
 open StockTicker.Logging.Message
 
+//Listing 14.1 Web-API trading controller
 [<RoutePrefix("api/trading")>]
 type TradingController() =
     inherit ApiController()
@@ -46,9 +46,9 @@ type TradingController() =
 
     let publish connectionId cmd =   // #G
         match cmd with
-        | Result.Ok(cmd) ->     // #B       
-            CommandWrapper.CreateTrading connectionId cmd    // #C
-            |> subject.OnNext      // #A
+        | Result.Ok(cmd) ->         // #B
+            CommandWrapper.CreateTrading connectionId cmd// #C
+            |> subject.OnNext       // #A
         | Result.Error(e) -> subject.OnError(exn (e))    // #B
         cmd
 
@@ -64,19 +64,19 @@ type TradingController() =
         async {
             do! logUserRequest "sell" tr
 
-            let connectionId = tr.ConnectionID    // #E
-            return 
+            let connectionId = tr.ConnectionID  // #E
+            return
                 {   Symbol = tr.Symbol.ToUpper()
                     Quantity = tr.Quantity
                     Price = tr.Price
                     Trading = TradingType.Sell }
                 // validation using function composition
-                |> tradingdValidation     // #F
+                |> tradingdValidation           // #F
                 |> log
-                |> publish connectionId     // #G
-                |> toResponse this.Request    // #D
+                |> publish connectionId         // #G
+                |> toResponse this.Request      // #D
         // can easily make asynchronous controller methods.
-        } |> Async.StartAsTask // #H
+        } |> Async.StartAsTask                  // #H
 
     [<Route("buy"); HttpPost>]
     member this.PostBuy([<FromBody>] tr : TradingRequest) =
@@ -97,8 +97,8 @@ type TradingController() =
         } |> Async.StartAsTask // can easily make asynchronous controller methods.
 
     // The controller behaves as Observable publisher and it can be register
-    interface IObservable<CommandWrapper> with     // #A
-        member this.Subscribe observer = subject.Subscribe observer
+    interface IObservable<CommandWrapper> with
+        member this.Subscribe observer = subject.Subscribe observer  // #A
 
     override this.Dispose disposing =
         if disposing then subject.Dispose()

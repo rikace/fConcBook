@@ -10,3 +10,15 @@ E:\GitHub\bookcode\FunctionalConcurrencyNET\Chapter.07\ImageProcessing.fs\bin\De
 E:\GitHub\bookcode\FunctionalConcurrencyNET\Chapter.07\ImageProcessing.fs\obj\Debug\ImageProcessing.fs.fsproj.CoreCompileInputs.cache
 E:\GitHub\bookcode\FunctionalConcurrencyNET\Chapter.07\ImageProcessing.fs\obj\Debug\ImageProcessing.exe
 E:\GitHub\bookcode\FunctionalConcurrencyNET\Chapter.07\ImageProcessing.fs\obj\Debug\ImageProcessing.pdb
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.07\ImageProcessing.fs\bin\Debug\GinevraBenci.jpg
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.07\ImageProcessing.fs\bin\Debug\LadyErmine.jpg
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.07\ImageProcessing.fs\bin\Debug\MonaLisa.jpg
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.07\ImageProcessing.fs\bin\Debug\App.config
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.07\ImageProcessing.fs\bin\Debug\ImageProcessing.exe.config
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.07\ImageProcessing.fs\bin\Debug\_3DImageEffect.FSharp.XML
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.07\ImageProcessing.fs\bin\Debug\ImageProcessing.exe
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.07\ImageProcessing.fs\bin\Debug\ImageProcessing.pdb
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.07\ImageProcessing.fs\bin\Debug\FSharp.Core.dll
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.07\ImageProcessing.fs\obj\Debug\ImageProcessing.fs.fsproj.CoreCompileInputs.cache
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.07\ImageProcessing.fs\obj\Debug\ImageProcessing.exe
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.07\ImageProcessing.fs\obj\Debug\ImageProcessing.pdb

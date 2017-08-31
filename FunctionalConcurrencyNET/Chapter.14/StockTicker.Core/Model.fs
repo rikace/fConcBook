@@ -38,7 +38,7 @@ module Models =
           Quantity : int
           Price : float
           Trading : TradingType }
-    
+
     type TradingCommand =
         | BuyStockCommand  of connectionId : string * tradingRecord : TradingRecord
         | SellStockCommand of connectionId : string * tradingRecord : TradingRecord
@@ -86,10 +86,10 @@ module Models =
               DayLow = 0.
               DayHigh = 0.
               Index = index }
-            
+
         // For Demo purpose
         static member InitialStocks() =
-            [| ("MSFT", 58.68)  
+            [| ("MSFT", 58.68)
                ("APPL", 92.08)
                ("AMZN", 380.15)
                ("GOOG", 543.01)
@@ -99,7 +99,7 @@ module Models =
                ("FB", 78.97) |]
             |> Array.mapi(fun index (ticker, price) -> Stock.Create ticker price index)
 
-        static member InitialStocks(stockTicker:string list) = 
+        static member InitialStocks(stockTicker:string list) =
             let getStockIndex index ticker = async {
                     let url = sprintf "http://download.finance.yahoo.com/d/quotes.csv?s=%s&f=snl1" ticker
                     let req = WebRequest.Create(url)

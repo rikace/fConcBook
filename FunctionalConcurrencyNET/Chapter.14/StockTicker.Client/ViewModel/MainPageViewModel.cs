@@ -15,6 +15,7 @@ using static StockTicker.Core.Models;
 
 namespace StockTicker.Client
 {
+    // Listing 14.12 Client side – mobile application using Xamarin.Forms
     public class MainPageViewModel : ModelObject, IStockTickerHubClient
     {
         public MainPageViewModel(Page page)
@@ -22,17 +23,17 @@ namespace StockTicker.Client
             Stocks = new ObservableCollection<StockModelObject>();
             Portfolio = new ObservableCollection<Models.OrderRecord>();
             BuyOrders = new ObservableCollection<Models.OrderRecord>();
-            SellOrders = new ObservableCollection<Models.OrderRecord>();
+            SellOrders = new ObservableCollection<Models.OrderRecord>(); // #A
 
             SendBuyRequestCommand = new Command(async () => await SendBuyRequest());
-            SendSellRequestCommand = new Command(async () => await SendSellRequest());
+            SendSellRequestCommand = new Command(async () => await SendSellRequest()); // #B
             PredictCommand = new Command(async () => await Predict());
 
-            stockTickerHub = DependencyService.Get<IStockTickerHub>();
+            stockTickerHub = DependencyService.Get<IStockTickerHub>(); // #C
             hostPage = page;
 
             var hostBase = "http://localhost:8735/";
-            stockTickerHub
+            stockTickerHub                  // #C
                 .Init(hostBase, this)
                 .ContinueWith(async x =>
                 {
@@ -46,14 +47,14 @@ namespace StockTicker.Client
 
                     // Request stock prices
                     await stockTickerHub.GetAllStocks();
-                }, TaskScheduler.FromCurrentSynchronizationContext());
+                }, TaskScheduler.FromCurrentSynchronizationContext()); // #D
 
             // Initialize WebClient
             client = new HttpClient();
             client.BaseAddress = new Uri(hostBase);
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
+                new MediaTypeWithQualityHeaderValue("application/json")); // #E
         }
 
         // StockTicker SignalR Hub
@@ -62,11 +63,11 @@ namespace StockTicker.Client
         private HttpClient client;
         private Page hostPage;
 
-        public ObservableCollection<StockModelObject> Stocks { get; }
+        public ObservableCollection<StockModelObject> Stocks { get; } // #A
 
         // Command for event bindings from UI
         public Command SendBuyRequestCommand { get; }
-        public Command SendSellRequestCommand { get; }
+        public Command SendSellRequestCommand { get; } // #B
         public Command PredictCommand { get; }
 
         private bool isMarketOpen;
@@ -97,9 +98,9 @@ namespace StockTicker.Client
                 return $"StockTicker Market is {status}.";
             }
         }
-        
+
         private string symbol;
-        public string Symbol
+        public string Symbol // #F
         {
             get => symbol; set
             {
@@ -158,7 +159,7 @@ namespace StockTicker.Client
             }
         }
 
-        private async Task SendTradingRequest(string url)
+        private async Task SendTradingRequest(string url) // #G
         {
             if(await Validate())
             {
@@ -188,9 +189,9 @@ namespace StockTicker.Client
             else return true;
         }
 
-        private async Task SendBuyRequest() =>  await SendTradingRequest("/api/trading/buy");
+        private async Task SendBuyRequest() =>  await SendTradingRequest("/api/trading/buy"); // #G
 
-        private async Task SendSellRequest() => await SendTradingRequest("/api/trading/sell");
+        private async Task SendSellRequest() => await SendTradingRequest("/api/trading/sell"); // #G
 
         private async Task Predict()
         {
@@ -258,9 +259,9 @@ namespace StockTicker.Client
                 Stocks.Add(new StockModelObject(value));
         }
 
-        public void UpdateOrderBuy(Models.OrderRecord value) => BuyOrders.Add(value);
+        public void UpdateOrderBuy(Models.OrderRecord value) => BuyOrders.Add(value); // #H
 
-        public void UpdateOrderSell(Models.OrderRecord value) => SellOrders.Add(value);
+        public void UpdateOrderSell(Models.OrderRecord value) => SellOrders.Add(value); // #H
 
         public void UpdateAsset(Models.Asset value)
         {

@@ -18,9 +18,9 @@ module AgentModel =
 
     let startAgent (agent: Agent<_>) = agent.Start()
 
-    // simple Supervisor that hanlde exception thrown from
-    // other agent. Not very useful here but more sofisticated
-    // logic can be implemeted
+    // simple Supervisor that handle exception thrown from
+    // other agent. Not very useful here but more sophisticated
+    // logic can be implemented
     let supervisor =
        Agent<string * System.Exception>.Start(fun inbox ->
          async { while true do
@@ -33,16 +33,7 @@ module ThreadSafeRandom =
     let private rand = new Random((int) DateTime.Now.Ticks)
     let locker = obj()
 
-    let private agent = Agent.Start(fun inbox ->
-            let rnd = new Random((int) DateTime.Now.Ticks)
-            let rec loop() = async {
-                let! (reply:AsyncReplyChannel<_>) = inbox.Receive()
-                reply.Reply(rnd.NextDouble())
-                return! loop()
-            }
-            loop() )
-
-    let getThreadSafeRandom = //agent.PostAndReply(fun ch -> ch)
+    let getThreadSafeRandom =
         fun () -> lock locker rand.NextDouble
 
 [<AutoOpenAttribute>]
@@ -73,7 +64,7 @@ module HelperFunctions =
         orders
 
     let createOrder symbol trading (orderType:TradingType) = {Symbol = symbol; Quantity = trading.Quantity; Price = trading.Price; OrderType = orderType}
-    
+
     let updatePortfolioBySell symbol (portfolio:Portfolio) (sellOrders:Treads) price =
         let tikcerStockInPortfolio = portfolio |> tryGetValues symbol
         let ordersStockToSell = sellOrders |> tryGetValues symbol
@@ -81,7 +72,7 @@ module HelperFunctions =
         match ordersStockToSell, tikcerStockInPortfolio with
         | Some(orderItems), Some(portfolioItem) ->
 
-            orderItems 
+            orderItems
             |> Seq.tryFind (fun t -> t.Price <= price)
             |> Option.map(fun orderToSell ->
                 let quantityToSell =
@@ -114,7 +105,7 @@ module HelperFunctions =
         let ordersStockToBuy = buyOrders |> tryGetValues symbol
         match ordersStockToBuy with
         | Some(orderItems) when cash >= price ->
-            orderItems 
+            orderItems
             |> Seq.tryFind (fun t -> t.Price >= price)
             |> Option.map(fun trading ->
                 let quantityToBuy =
@@ -151,7 +142,7 @@ module HelperFunctions =
 
     let updatePortfolio cash (stock:Stock) (portfolio:Portfolio) (trades:Treads) (tradeType:TradingType) =
         match tradeType with
-        | TradingType.Buy -> 
+        | TradingType.Buy ->
             let updatedPortfolio =
                 updatePortfolioByBuy stock.Symbol portfolio trades cash stock.Price
             match updatedPortfolio with
@@ -163,7 +154,7 @@ module HelperFunctions =
             match updatedPortfolio with
             | None -> cash, portfolio, trades
             | Some(r, p, s) -> (cash + r), p, s
-                            
+
     let getUpdatedAsset (portfolio:Portfolio) (sellOrders:Treads)  (buyOrders:Treads) cash =
         let portafolioAssets = portfolio |> Seq.map(fun item -> {OrderRecord.Symbol = item.Key; Quantity=item.Value.Quantity; Price=item.Value.Price; OrderType = item.Value.TradingType})
         let buyOrdersAsset = buyOrders |> Seq.collect(fun item ->  item.Value |> Seq.map(fun v -> {OrderRecord.Symbol = item.Key ; Price = v.Price; Quantity = v.Quantity; OrderType = TradingType.Buy}))
@@ -208,7 +199,7 @@ module HelperFunctions =
     let updateStocks (stock : Stock) (stocks: Stock array) =
         let changedStock = updateStock stock
         if fst changedStock = true then
-                stocks 
+                stocks
                 |> Seq.tryFindIndex (fun s -> s.Symbol = stock.Symbol)
                 |> Option.map(fun idx -> stocks.[idx] <- snd changedStock
                                          snd changedStock)

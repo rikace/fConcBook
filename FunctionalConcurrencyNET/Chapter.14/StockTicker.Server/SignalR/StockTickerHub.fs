@@ -20,19 +20,20 @@ open StockTicker.Logging.Message
 
 let logger = Log.create "StockTicker.Hub"
 
- // Hub with "Stock Market" operations
- // It is responsible to update the stock-ticker
- // to each client registered
-[<HubName("stockTicker")>]
+// Listing 14.10 Stock Ticker SignalR hub
+// Hub with "Stock Market" operations
+// It is responsible to update the stock-ticker
+// to each client registered
+[<HubName("stockTicker")>] // #A
 type StockTickerHub() as this =
-    inherit Hub<IStockTickerHubClient>()
+    inherit Hub<IStockTickerHubClient>() // #B
 
     static let userCount = ref 0
 
-    let stockMarket : StockMarket = StockMarket.Instance()
-    let tradingCoordinator : TradingCoordinator = TradingCoordinator.Instance()
+    let stockMarket : StockMarket = StockMarket.Instance() // #C
+    let tradingCoordinator : TradingCoordinator = TradingCoordinator.Instance() // #C
 
-    let logUserEvent eventName connId =        
+    let logUserEvent eventName connId =
         logger.logWithAck Info (
            eventX "{logger} event {event}!\t User {connId}. There are {total} connected users."
            >> setField "logger" (sprintf "%A" logger.name)
@@ -48,26 +49,26 @@ type StockTickerHub() as this =
            >> setField "methodName" methodName )
         |> Async.StartImmediate
 
-    override x.OnConnected() =
+    override x.OnConnected() = // #D
         ignore <| System.Threading.Interlocked.Increment(userCount)
         let connId = x.Context.ConnectionId
         logUserEvent "OnConnected" connId
 
         // Subscribe a new client
         // I can use this.Clients.Caller but this is demo purpose
-        tradingCoordinator.Subscribe(connId, 1000., this.Clients) 
+        tradingCoordinator.Subscribe(connId, 1000., this.Clients) // #E
         base.OnConnected()
 
-    override x.OnDisconnected(stopCalled) =
+    override x.OnDisconnected(stopCalled) =  // #D
         ignore <| System.Threading.Interlocked.Decrement(userCount)
         let connId = x.Context.ConnectionId
         logUserEvent "OnDisconnected" connId
 
         // Unsubscribe client
-        tradingCoordinator.Unsubscribe(connId)
+        tradingCoordinator.Unsubscribe(connId) // #E
         base.OnDisconnected(stopCalled)
 
-    member x.GetAllStocks() =
+    member x.GetAllStocks() = // #F
         let connId = x.Context.ConnectionId
         logUserCall connId "GetAllStocks"
 
@@ -75,23 +76,22 @@ type StockTickerHub() as this =
         for stock in stocks do
             this.Clients.Caller.SetStock stock
 
-    member x.OpenMarket() =
+    member x.OpenMarket() = // #F
         let connId = x.Context.ConnectionId
         logUserCall connId "OpenMarket"
 
         stockMarket.OpenMarket(connId)
         this.Clients.All.SetMarketState(MarketState.Open.ToString())
 
-    member x.CloseMarket() =
+    member x.CloseMarket() = // #F
         let connId = x.Context.ConnectionId
         logUserCall connId "CloseMarket"
 
         stockMarket.CloseMarket(connId)
         this.Clients.All.SetMarketState(MarketState.Closed.ToString())
 
-    member x.GetMarketState() =
+    member x.GetMarketState() = // #F
         let connId = x.Context.ConnectionId
         logUserCall connId "GetMarketState"
 
-        let state = stockMarket.GetMarketState(connId)
-        state.ToString()
+        stockMarket.GetMarketState(connId).ToString()

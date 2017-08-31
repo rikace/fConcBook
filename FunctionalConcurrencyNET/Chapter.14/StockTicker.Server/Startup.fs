@@ -30,11 +30,13 @@ open Swashbuckle.Application
 // Using Pub/Sub API of Reactive Extensions used to pipe messages to an Agent
 // The Agent only dependd on IObserver implementation reducing the dependencies
 // Hook into the Web API framework where it creates controllers
+
+// Listing 14.2 Register a Web-API controller as Observable
 type ControlActivatorPublisher(requestObserver:IObserver<CommandWrapper>) =
     interface IHttpControllerActivator with  // #A
         member this.Create(request, controllerDescriptor, controllerType) =
             if controllerType = typeof<TradingController> then   // #B
-                let obsController = 
+                let obsController =
                     let tradingCtrl = new TradingController()
                     tradingCtrl
                     |> Observable.subscribeObserver requestObserver   // #B
@@ -69,12 +71,13 @@ type ErrorHandlingPipelineModule() =
             base.OnIncomingError(exceptionContext, invokerContext)
 
 
+// Listing 14.3 Application startup to configure SignalR hub and agent message bus
 [<Sealed>]
 type Startup() =
 
-        // Controller subscriber in for of agent
-        // dispatch eterogenous message depending on the incoming
-        // Only message at the time
+    // Controller subscriber in for of agent
+    // dispatch heterogeneous message depending on the incoming
+    // Only message at the time
     let agent = new Agent<CommandWrapper>(fun inbox ->    // #A
             let rec loop () = async {
                 let! (cmd:CommandWrapper) = inbox.Receive()
@@ -119,12 +122,11 @@ type Startup() =
 
         let configSignalR = new HubConfiguration(EnableDetailedErrors = true)   // #E
         GlobalHost.HubPipeline.AddModule(new ErrorHandlingPipelineModule()) |> ignore
-        Owin.CorsExtensions.UseCors(builder, Microsoft.Owin.Cors.CorsOptions.AllowAll) |> ignore
+        Owin.CorsExtensions.UseCors(builder, Cors.CorsOptions.AllowAll) |> ignore
 
-        TradingCoordinator.Instance().AddPublisher(StockMarket.StockMarket.Instance().AsObservable())
+        TradingCoordinator.Instance().AddPublisher(StockMarket.StockMarket.Instance().AsObservable()) |> ignore
 
-        //  MapSignalR() is an extension method of IAppBuilder provided by SignalR to facilitate mapping
-        //  and configuration of the hub service.
+        //  MapSignalR() is an extension method of IAppBuilder provided by SignalR to facilitate mapping and configuration of the hub service.
         //  The generic overload MapSignalR<TConnection> is used to map persistent connections, that we do not have to specify the classes that implement the services
         builder.MapSignalR(configSignalR) |> ignore
         builder.UseWebApi(config) |> ignore

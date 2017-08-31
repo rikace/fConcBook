@@ -10,6 +10,7 @@ open StockTicker
 open StockMarket
 open Events
 
+// Listing 14.4 Command handler with async retry logic
 module CommandHandler =
     // Listing 9.4 Retry Async Builder
     let retryPublish = RetryAsyncBuilder(10, 250) // #A
@@ -19,7 +20,7 @@ module CommandHandler =
 
     let AsyncHandle (commandWrapper:CommandWrapper) =   // #D
         let connectionId = commandWrapper.ConnectionId
-        
+
         retryPublish {      // #A
             tradingCoordinator.PublishCommand(PublishCommand(connectionId, commandWrapper))   // #E
 
@@ -27,8 +28,8 @@ module CommandHandler =
                 let cmd = commandWrapper.Command
                 match cmd with     // #F
                 | BuyStockCommand(connId,trading) -> StocksBuyedEvent(commandWrapper.Id, trading)
-                | SellStockCommand(connId, trading) -> StocksSoldEvent(commandWrapper.Id, trading)   // #F                   
-                
+                | SellStockCommand(connId, trading) -> StocksSoldEvent(commandWrapper.Id, trading)   // #F
+
             let eventDescriptor = Event.Create (commandWrapper.Id, event)
             Storage.SaveEvent (Guid(connectionId)) eventDescriptor    // #G
         }

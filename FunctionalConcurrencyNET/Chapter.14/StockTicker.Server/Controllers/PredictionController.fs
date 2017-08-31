@@ -38,40 +38,6 @@ module Simulations =
             Math.Sqrt(-2.0 * Math.Log(u1)) * Math.Cos(2.0 * Math.PI * u2)
         boxMuller (rnd.NextDouble()) (rnd.NextDouble())
 
-    //let calcPriceCPU_bad (req: CalcRequest) =
-        //let generatePaths (paths:float[,]) r sigma dt =
-        //    let numSimulations, numTimesteps = paths.GetLength(0), paths.GetLength(1)
-
-        //    let drift = (r - (0.5 * sigma * sigma)) * dt
-        //    let diffusion = sigma * float(Math.Sqrt(dt))
-
-        //    Parallel.For(0, numSimulations, fun simInd ->
-        //        let rnd = Random(int(DateTime.Now.Ticks))
-        //        let mutable s = 1.0
-        //        for i=0 to numTimesteps-1 do
-        //            s <- s * float(Math.Exp(drift + (diffusion * (nextDoubleNormal rnd))))
-        //            paths.[simInd,i] <- s
-        //    ) |> ignore
-        //let computeValue (paths:float[,]) spotPrice strikePrice =
-        //    let numSimulations, numTimesteps = paths.GetLength(0), paths.GetLength(1)
-
-        //    let payoffs = Array.create numSimulations 0.0
-        //    Parallel.For(0, numSimulations, fun simInd ->
-        //        let pathSum = [0..numTimesteps-1] |> Seq.sumBy (fun i -> paths.[simInd, i])
-        //        let avg = pathSum * spotPrice / float(numTimesteps)
-
-        //        payoffs.[simInd] <- avg - strikePrice // can be negative
-        //    ) |> ignore
-        //    payoffs |> Seq.average
-
-        //let paths = Array2D.create simulationCount req.TimeSteps 0.0
-        //generatePaths paths riskFreeRate (req.Volatility) 1.0
-        //let meanPrice = computeValue paths (req.Price) (req.Price)
-
-        //let tenor = float <| req.TimeSteps // days
-        //let discountFactor = float <| Math.Exp(-1.0 * riskFreeRate * tenor)
-        //meanPrice * discountFactor // + req.Price
-
     let calcPriceCPU (req: CalcRequest) =
         let r = riskFreeRate
         let sigma = req.Volatility

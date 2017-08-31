@@ -22,3 +22,15 @@ E:\Temp\FunctionalConcurrencyNET\Chapter.08\Asynchronous.cs\obj\Debug\Asynchrono
 E:\Temp\FunctionalConcurrencyNET\Chapter.08\Asynchronous.cs\obj\Debug\Asynchronous.cs.csproj.CoreCompileInputs.cache
 E:\Temp\FunctionalConcurrencyNET\Chapter.08\Asynchronous.cs\obj\Debug\Asynchronous.cs.exe
 E:\Temp\FunctionalConcurrencyNET\Chapter.08\Asynchronous.cs\obj\Debug\Asynchronous.cs.pdb
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.08\Asynchronous.cs\bin\Debug\Asynchronous.cs.exe.config
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.08\Asynchronous.cs\bin\Debug\Asynchronous.cs.exe
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.08\Asynchronous.cs\bin\Debug\Asynchronous.cs.pdb
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.08\Asynchronous.cs\bin\Debug\Functional.dll
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.08\Asynchronous.cs\bin\Debug\FSharp.Core.dll
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.08\Asynchronous.cs\bin\Debug\Functional.pdb
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.08\Asynchronous.cs\bin\Debug\Functional.dll.config
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.08\Asynchronous.cs\bin\Debug\FSharp.Core.xml
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.08\Asynchronous.cs\obj\Debug\Asynchronous.cs.csprojResolveAssemblyReference.cache
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.08\Asynchronous.cs\obj\Debug\Asynchronous.cs.csproj.CoreCompileInputs.cache
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.08\Asynchronous.cs\obj\Debug\Asynchronous.cs.exe
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.08\Asynchronous.cs\obj\Debug\Asynchronous.cs.pdb

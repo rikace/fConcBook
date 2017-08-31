@@ -5,10 +5,10 @@ E:\GitHub\bookcode\FunctionalConcurrencyNET\Chapter.14\StockTicker.Core\bin\Debu
 E:\GitHub\bookcode\FunctionalConcurrencyNET\Chapter.14\StockTicker.Core\obj\Debug\StockTicker.Core.fsproj.CoreCompileInputs.cache
 E:\GitHub\bookcode\FunctionalConcurrencyNET\Chapter.14\StockTicker.Core\obj\Debug\StockTicker.Core.dll
 E:\GitHub\bookcode\FunctionalConcurrencyNET\Chapter.14\StockTicker.Core\obj\Debug\StockTicker.Core.pdb
-E:\Temp\FunctionalConcurrencyNET\Chapter.14\StockTicker.Core\bin\Debug\StockTicker.Core.dll
-E:\Temp\FunctionalConcurrencyNET\Chapter.14\StockTicker.Core\bin\Debug\StockTicker.Core.pdb
-E:\Temp\FunctionalConcurrencyNET\Chapter.14\StockTicker.Core\bin\Debug\FSharp.Core.dll
-E:\Temp\FunctionalConcurrencyNET\Chapter.14\StockTicker.Core\bin\Debug\FSharp.Core.xml
-E:\Temp\FunctionalConcurrencyNET\Chapter.14\StockTicker.Core\obj\Debug\StockTicker.Core.fsproj.CoreCompileInputs.cache
-E:\Temp\FunctionalConcurrencyNET\Chapter.14\StockTicker.Core\obj\Debug\StockTicker.Core.dll
-E:\Temp\FunctionalConcurrencyNET\Chapter.14\StockTicker.Core\obj\Debug\StockTicker.Core.pdb
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.14\StockTicker.Core\bin\Debug\StockTicker.Core.dll
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.14\StockTicker.Core\bin\Debug\StockTicker.Core.pdb
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.14\StockTicker.Core\bin\Debug\FSharp.Core.dll
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.14\StockTicker.Core\bin\Debug\FSharp.Core.xml
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.14\StockTicker.Core\obj\Debug\StockTicker.Core.fsproj.CoreCompileInputs.cache
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.14\StockTicker.Core\obj\Debug\StockTicker.Core.dll
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.14\StockTicker.Core\obj\Debug\StockTicker.Core.pdb

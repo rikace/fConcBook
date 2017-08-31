@@ -4,7 +4,8 @@ using StockTicker.Core;
 
 namespace StockTicker.Client
 {
-	public interface IStockTickerHub
+    // Listing 14.11 Client StockTicker interface to receive notification using SignalR
+    public interface IStockTickerHub
 	{
 		Task Init(string serverUrl, IStockTickerHubClient client);
         string ConnectionId { get; }
