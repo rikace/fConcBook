@@ -1,4 +1,4 @@
-﻿namespace ImageProcessing 
+﻿namespace ImageProcessing
 
 module ImageHelpers =
 
@@ -7,9 +7,9 @@ module ImageHelpers =
     open System.Drawing.Imaging
     open System.Drawing
     open Microsoft.FSharp.NativeInterop
-    
+
     let toImage (bytes:byte[]) =
-        use stream = new MemoryStream(bytes)      
+        use stream = new MemoryStream(bytes)
         System.Drawing.Image.FromStream(stream, true)
 
     let toImageAsync (bytes:byte[]) = async {
@@ -19,8 +19,7 @@ module ImageHelpers =
         return System.Drawing.Image.FromStream(stream, true)
         }
 
-
-    let toBytes (image:Bitmap) = 
+    let toBytes (image:Bitmap) =
         use memStream = new MemoryStream()
         image.Save(memStream, image.RawFormat)
         memStream.ToArray()
@@ -28,13 +27,12 @@ module ImageHelpers =
     // load a bitmap in array of tuples (x,y,Color)
     let toRgbArray (bmp : Bitmap) =
         [| for y in 0..bmp.Height-1 do
-            for x in 0..bmp.Width-1 -> x,y,bmp.GetPixel(x,y) |]   
+            for x in 0..bmp.Width-1 -> x,y,bmp.GetPixel(x,y) |]
 
     let imageToRgbArray (image : Image) =
         let bmp = image :?> Bitmap
         [| for y in 0..bmp.Height-1 do
-            for x in 0..bmp.Width-1 -> x,y,bmp.GetPixel(x,y) |]  
-
+            for x in 0..bmp.Width-1 -> x,y,bmp.GetPixel(x,y) |]
 
     let convertImageTo3D (sourceImage:string) (destinationImage:string) = // #A
         let bitmap = Bitmap.FromFile(sourceImage) :?> Bitmap    // #B
@@ -46,7 +44,7 @@ module ImageHelpers =
                 let color3D = Color.FromArgb(int c1.R, int c2.G, int c2.B)
                 bitmap.SetPixel(x - 20 ,y,color3D)
         bitmap.Save(destinationImage, ImageFormat.Jpeg) // #D
-            
+
     let setRedscale (sourceImage:string) (destinationImage:string) =    // #F
         let bitmap = Bitmap.FromFile(sourceImage) :?> Bitmap    // #B
         let w,h = bitmap.Width, bitmap.Height
@@ -67,7 +65,7 @@ module ImageHelpers =
     // converts an image to gray scale
     let toGrayScale (a:(int * int * Color)[]) =
         a |> Array.Parallel.map (
-            fun (x,y,c : System.Drawing.Color) -> 
+            fun (x,y,c : System.Drawing.Color) ->
                 let gscale = int((float c.R * 0.3) + (float c.G * 0.59) + (float c.B * 0.11))
                 in  x,y,Color.FromArgb(int c.A, gscale, gscale, gscale))
 
@@ -85,14 +83,14 @@ module ImageHelpers =
                 bitmap.SetPixel(x,y, Color.FromArgb(gray, gray, gray))
         bitmap
 
-    let createThumbnail (b:Bitmap) = 
+    let createThumbnail (b:Bitmap) =
         let maxPixels = 400.0
         let scaling = if(b.Width > b.Height) then maxPixels / Convert.ToDouble(b.Width)
                         else maxPixels / Convert.ToDouble(b.Height)
         let size = (Convert.ToInt32(Convert.ToDouble(b.Width) * scaling), Convert.ToInt32(Convert.ToDouble(b.Height) * scaling))
-        new System.Drawing.Bitmap(b.GetThumbnailImage(fst size, snd size, null, IntPtr.Zero))        
+        new System.Drawing.Bitmap(b.GetThumbnailImage(fst size, snd size, null, IntPtr.Zero))
 
-        
+
 //You can improve this by avoiding Color.FromArgb, and iterating over bytes instead of ints, but I thought this would be more readable for you, and easier to understand as an approach.
 //The general idea is draw the image into a bitmap of known format (32bpp ARGB), and then check whether that bitmap contains any colors.
 //Locking the bitmap's bits allows you to iterate through it's color-data many times faster than using GetPixel, using unsafe code.
@@ -102,8 +100,8 @@ module ImageHelpers =
             for w = 0 to img.Width - 1 do
                 let color = img.GetPixel(w, h)
                 yield not((color.R <> color.G || color.G <> color.B || color.R <> color.B) && color.A <> 0uy) } |> Seq.forall(id)
-          
-    let isGrayScale2 (colors:(_ * _ * Color)[]) = 
+
+    let isGrayScale2 (colors:(_ * _ * Color)[]) =
         colors |> Seq.forall(fun (_,_,color) -> not((color.R <> color.G || color.G <> color.B || color.R <> color.B) && color.A <> 0uy))
 
     let isGrayScaleAsync (colors:(_ * _ * Color)[]) = async {

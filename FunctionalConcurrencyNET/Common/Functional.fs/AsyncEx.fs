@@ -71,13 +71,11 @@ module AsyncEx =
                 (ignore),
                 (ignore))
 
-
-    //type StreamReader with
-    //    member this.AsyncReadToEnd() : Async<string> = async {
-    //        use asyncReader = new AsyncStreamReader(this.BaseStream)
-    //        return! asyncReader.ReadToEnd() }
-
-
+    type StreamReader with
+        member this.AsyncReadToEnd() : Async<string> = async {
+            use asyncReader = new AsyncStreamReader(this.BaseStream)
+            return! asyncReader.ReadToEnd() }
+            
 [<AutoOpen>]
 module AsyncBuilderEx =
     type Microsoft.FSharp.Control.AsyncBuilder with
@@ -292,8 +290,8 @@ module Async =
     let inline mapM f x = sequence (List.map f x)
 
     // xsm:Async<#seq<'b>> * f:('b -> 'c) -> Async<seq<'c>>
-    let inline asyncFor(xsm: #seq<_> Async, f:_ ->_) =
-        map (Seq.map f) xsm
+    let inline asyncFor(operations: #seq<'a> Async, f:'a -> 'b) =
+        map (Seq.map map) operations
 
         // predicate:Async<bool> -> funcA:Async<'a> -> funcB:Async<'a> -> Async<'a>
     let inline ifAsync predicate funcA funcB = async.Bind(predicate, fun p -> if p then funcA else funcB)

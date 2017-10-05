@@ -20,5 +20,7 @@ namespace Functional
         public static Func<T, R> ToFunc<T, R>(this Func<T, R> f) => f;
 
         public static Func<T, M, R> ToFunc<T, M, R>(this Func<T, M, R> f) => f;
+
+        public static Func<T, M, R, Z> ToFunc<T, M, R, Z>(this Func<T, M, R, Z> f) => f;
     }
 }

@@ -38,23 +38,26 @@ namespace ParallelCompressionCS
                                     }); //#B
 
             var compressor = new TransformBlock<CompressingDetails, CompressedDetails>(
-                async details => {
+                async details =>
+                {
                     var compressedData = await IOUtils.Compress(details.Bytes); //#C
                     return details.ToCompressedDetails(compressedData);         //#D
                 }, compressorOptions);
 
             var encryptor = new TransformBlock<CompressedDetails, EncryptDetails>(
-                async details => {
+                async details =>
+                {
                     byte[] data = IOUtils.CombineByteArrays(details.CompressedDataSize, details.ChunkSize, details.Bytes); //#E
                     var encryptedData = await IOUtils.Encrypt(data);    //#F
                     return details.ToEncryptDetails(encryptedData); //#D
                 }, compressorOptions);
 
             var asOrderedAgent = Agent.Start((new Dictionary<int, EncryptDetails>(), 0),
-                async ((Dictionary<int, EncryptDetails>, int) state, EncryptDetails msg) => { //#G
+                async ((Dictionary<int, EncryptDetails>, int) state, EncryptDetails msg) =>
+                { //#G
                     (Dictionary<int, EncryptDetails> details, int lastIndexProc) = state;
                     details.Add(msg.Sequence, msg);
-                    while (details.ContainsKey(lastIndexProc+1))
+                    while (details.ContainsKey(lastIndexProc + 1))
                     {
                         msg = details[lastIndexProc + 1];
                         await streamDestination.WriteAsync(msg.EncryptedDataSize, 0, msg.EncryptedDataSize.Length);
@@ -120,7 +123,8 @@ namespace ParallelCompressionCS
             };
 
             var inputBuffer = new BufferBlock<DecryptDetails>(
-                                    new DataflowBlockOptions {
+                                    new DataflowBlockOptions
+                                    {
                                         CancellationToken = cts.Token,
                                         BoundedCapacity = 20
                                     });
@@ -152,7 +156,8 @@ namespace ParallelCompressionCS
                 }, compressorOptions);
 
             var asOrderedAgent = Agent.Start((new Dictionary<int, DecompressionDetails>(), 0),
-                async ((Dictionary<int, DecompressionDetails>, int) state, DecompressionDetails msg) => { //#G
+                async ((Dictionary<int, DecompressionDetails>, int) state, DecompressionDetails msg) =>
+                { //#G
                     (Dictionary<int, DecompressionDetails> details, int lastIndexProc) = state;
                     details.Add(msg.Sequence, msg);
                     while (details.ContainsKey(lastIndexProc + 1))

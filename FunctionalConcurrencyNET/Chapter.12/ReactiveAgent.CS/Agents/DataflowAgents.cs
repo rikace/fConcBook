@@ -42,7 +42,7 @@ namespace ReactiveAgent.Agents.Dataflow
             state = initialState;
             var options = new ExecutionDataflowBlockOptions
             {
-                CancellationToken = cts == null ? cts.Token : CancellationToken.None
+                CancellationToken = cts != null ? cts.Token : CancellationToken.None
             };
             actionBlock = new ActionBlock<TMessage>(
                 msg => state = action(state, msg), options);

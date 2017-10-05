@@ -1,5 +1,0 @@
-E:\GitHub\bookcode\FunctionalConcurrencyNET\Chapter.14\StockTicker.Core\bin\Release\StockTicker.Core.dll
-E:\GitHub\bookcode\FunctionalConcurrencyNET\Chapter.14\StockTicker.Core\bin\Release\FSharp.Core.dll
-E:\GitHub\bookcode\FunctionalConcurrencyNET\Chapter.14\StockTicker.Core\bin\Release\FSharp.Core.xml
-E:\GitHub\bookcode\FunctionalConcurrencyNET\Chapter.14\StockTicker.Core\obj\Release\StockTicker.Core.fsproj.CoreCompileInputs.cache
-E:\GitHub\bookcode\FunctionalConcurrencyNET\Chapter.14\StockTicker.Core\obj\Release\StockTicker.Core.dll

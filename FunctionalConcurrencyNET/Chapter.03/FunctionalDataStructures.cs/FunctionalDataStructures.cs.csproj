@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Atom.cs" />
     <Compile Include="BinaryTree.cs" />
     <Compile Include="FList.cs" />
     <Compile Include="LazyList.cs" />

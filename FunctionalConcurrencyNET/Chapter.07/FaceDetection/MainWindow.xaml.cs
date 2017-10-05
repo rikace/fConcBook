@@ -173,12 +173,11 @@ namespace FaceDetection
                 faces.ForAll(face => image.Draw(face, new
                     Bgr(System.Drawing.Color.BurlyWood), 3)); // #B
                 return image.ToBitmap();
-            };
+            }; 
 
             return from image in Task.Run(() => new Image<Bgr, byte>(fileName))
                    from imageFrame in Task.Run(() => image.Convert<Gray, byte>())
-                   from bitmap in Task.Run(
-                                    () => CascadeClassifierThreadLocal.Value.DetectMultiScale(
+                   from bitmap in Task.Run(() =>   CascadeClassifierThreadLocal.Value.DetectMultiScale(
                                                 imageFrame, 1.1, 3, System.Drawing.Size.Empty)
                                   ).Select(faces => drawBoundries(faces, image))
                    select bitmap; // #A

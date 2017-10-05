@@ -12,7 +12,7 @@ type FSharpFunc =
     /// Convert an Action into an F# function returning unit
     static member FromAction (f: Action) =
         fun () -> f.Invoke()
-    
+
     /// Convert an Action into an F# function returning unit
     static member FromAction (f: Action<_>) =
         fun x -> f.Invoke x
@@ -40,25 +40,21 @@ type FSharpFunc =
 /// Extensions around Actions and Funcs
 [<Extension>]
 type Funcs =
-    /// Converts an action to a function returning Unit
-    [<Extension>]
-    static member ToFunc (a: Action) =
-        Func<_>(a.Invoke)
 
-    /// Converts an action to a function returning Unit
     [<Extension>]
-    static member ToFunc (a: Action<_>) =
-        Func<_,_>(a.Invoke)
-  
-    /// Converts an action to a function returning Unit
-    [<Extension>]
-    static member ToFunc (f: Action<_,_>) =
-        Func<_,_,_>(fun a b -> f.Invoke(a,b))
+    static member ToFunc (f: Func<_,_>) = Func<_,_>(fun a -> f.Invoke(a))
 
-    /// Converts an action to a function returning Unit
     [<Extension>]
-    static member ToFunc (f: Action<_,_,_>) =
-        Func<_,_,_,_>(fun a b c -> f.Invoke(a,b,c))
+    static member ToFunc (f: Func<_,_,_>) = Func<_,_,_>(fun a b -> f.Invoke(a,b))
+
+    [<Extension>]
+    static member ToFunc (f: Func<_,_,_,_>) = Func<_,_,_,_>(fun a b c -> f.Invoke(a,b,c))
+
+    [<Extension>]
+    static member ToFunc (f: Func<_,_,_,_,_>) = Func<_,_,_,_,_>(fun a b c d-> f.Invoke(a,b,c,d))
+
+    [<Extension>]
+    static member ToFunc (f: Func<_,_,_,_,_,_>) = Func<_,_,_,_,_,_>(fun a b c d e-> f.Invoke(a,b,c,d,e))
 
     /// Converts an uncurried function to a curried function
     [<Extension>]
@@ -111,4 +107,3 @@ type Funcs =
     [<Extension>]
     static member AndThen (f: Func<_,_>, g: Func<_,_>) =
         Func<_,_>(fun x -> g.Invoke(f.Invoke(x)))
-        

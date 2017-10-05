@@ -97,6 +97,5 @@ namespace FunctionalTechniques.cs
         {
             throw new NotImplementedException();
         }
-
     }
 }

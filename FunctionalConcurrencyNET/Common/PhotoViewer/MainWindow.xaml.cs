@@ -99,12 +99,12 @@ namespace PhotoViewer
                         {
                             var bmp = new BitmapImage(new Uri(imagePath));
                             imageList.Items.Add(bmp);
-                            done = true;                           
+                            done = true;
                         }
                         catch
                         {
                             // ignored
-                            await Task.Delay(50);
+                            await Task.Delay(50, cts);
                         }
                     }
                 }));

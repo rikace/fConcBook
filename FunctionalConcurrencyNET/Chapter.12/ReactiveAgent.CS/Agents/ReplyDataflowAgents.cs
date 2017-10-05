@@ -27,7 +27,7 @@ namespace ReactiveAgent.Agents.Dataflow
             state = initialState;
             var options = new ExecutionDataflowBlockOptions
             {
-                CancellationToken = cts == null ? cts.Token : CancellationToken.None
+                CancellationToken = cts != null ? cts.Token : CancellationToken.None
             };
             actionBlock = new ActionBlock<(TMessage, Option<TaskCompletionSource<TReply>>)>(
               async message => {
@@ -64,7 +64,7 @@ namespace ReactiveAgent.Agents.Dataflow
             state = initialState;
             var options = new ExecutionDataflowBlockOptions
             {
-                CancellationToken = cts == null ? cts.Token : CancellationToken.None
+                CancellationToken = cts != null ? cts.Token : CancellationToken.None
             };
             actionBlock = new ActionBlock<(TMessage, Option<TaskCompletionSource<TReply>>)>(
               message => {
