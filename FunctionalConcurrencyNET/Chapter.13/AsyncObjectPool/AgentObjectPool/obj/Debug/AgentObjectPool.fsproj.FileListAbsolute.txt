@@ -1,0 +1,9 @@
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.13\AsyncObjectPool\AgentObjectPool\bin\Debug\AgentObjectPool.XML
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.13\AsyncObjectPool\AgentObjectPool\bin\Debug\AgentObjectPool.dll
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.13\AsyncObjectPool\AgentObjectPool\bin\Debug\AgentObjectPool.pdb
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.13\AsyncObjectPool\AgentObjectPool\bin\Debug\FSharp.Core.dll
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.13\AsyncObjectPool\AgentObjectPool\bin\Debug\System.ValueTuple.dll
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.13\AsyncObjectPool\AgentObjectPool\bin\Debug\FSharp.Core.xml
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.13\AsyncObjectPool\AgentObjectPool\obj\Debug\AgentObjectPool.fsproj.CoreCompileInputs.cache
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.13\AsyncObjectPool\AgentObjectPool\obj\Debug\AgentObjectPool.dll
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.13\AsyncObjectPool\AgentObjectPool\obj\Debug\AgentObjectPool.pdb

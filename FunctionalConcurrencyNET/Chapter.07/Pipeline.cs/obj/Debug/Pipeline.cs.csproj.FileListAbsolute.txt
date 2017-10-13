@@ -1,0 +1,13 @@
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.07\Pipeline.cs\bin\Debug\Pipeline.cs.exe.config
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.07\Pipeline.cs\bin\Debug\Pipeline.cs.exe
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.07\Pipeline.cs\bin\Debug\Pipeline.cs.pdb
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.07\Pipeline.cs\bin\Debug\FSharp.Core.dll
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.07\Pipeline.cs\bin\Debug\FsPipeline.fs.dll
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.07\Pipeline.cs\bin\Debug\Functional.dll
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.07\Pipeline.cs\bin\Debug\Functional.pdb
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.07\Pipeline.cs\bin\Debug\Functional.dll.config
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.07\Pipeline.cs\bin\Debug\FsPipeline.fs.pdb
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.07\Pipeline.cs\obj\Debug\Pipeline.cs.csprojResolveAssemblyReference.cache
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.07\Pipeline.cs\obj\Debug\Pipeline.cs.csproj.CoreCompileInputs.cache
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.07\Pipeline.cs\obj\Debug\Pipeline.cs.exe
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.07\Pipeline.cs\obj\Debug\Pipeline.cs.pdb

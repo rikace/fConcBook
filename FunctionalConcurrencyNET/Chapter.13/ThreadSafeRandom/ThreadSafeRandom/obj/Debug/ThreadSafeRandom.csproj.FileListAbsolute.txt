@@ -1,0 +1,6 @@
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.13\ThreadSafeRandom\ThreadSafeRandom\bin\Debug\ThreadSafeRandom.exe.config
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.13\ThreadSafeRandom\ThreadSafeRandom\bin\Debug\ThreadSafeRandom.exe
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.13\ThreadSafeRandom\ThreadSafeRandom\bin\Debug\ThreadSafeRandom.pdb
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.13\ThreadSafeRandom\ThreadSafeRandom\obj\Debug\ThreadSafeRandom.csproj.CoreCompileInputs.cache
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.13\ThreadSafeRandom\ThreadSafeRandom\obj\Debug\ThreadSafeRandom.exe
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.13\ThreadSafeRandom\ThreadSafeRandom\obj\Debug\ThreadSafeRandom.pdb

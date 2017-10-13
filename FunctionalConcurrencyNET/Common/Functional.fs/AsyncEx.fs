@@ -71,11 +71,6 @@ module AsyncEx =
                 (ignore),
                 (ignore))
 
-    type StreamReader with
-        member this.AsyncReadToEnd() : Async<string> = async {
-            use asyncReader = new AsyncStreamReader(this.BaseStream)
-            return! asyncReader.ReadToEnd() }
-            
 [<AutoOpen>]
 module AsyncBuilderEx =
     type Microsoft.FSharp.Control.AsyncBuilder with

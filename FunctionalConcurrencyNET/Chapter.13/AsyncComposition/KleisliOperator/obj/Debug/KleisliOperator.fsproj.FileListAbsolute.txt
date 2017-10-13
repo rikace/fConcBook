@@ -1,0 +1,10 @@
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.13\AsyncComposition\KleisliOperator\bin\Debug\KleisliOperator.exe.config
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.13\AsyncComposition\KleisliOperator\bin\Debug\KleisliOperator.XML
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.13\AsyncComposition\KleisliOperator\bin\Debug\KleisliOperator.exe
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.13\AsyncComposition\KleisliOperator\bin\Debug\KleisliOperator.pdb
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.13\AsyncComposition\KleisliOperator\bin\Debug\FSharp.Core.dll
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.13\AsyncComposition\KleisliOperator\bin\Debug\System.ValueTuple.dll
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.13\AsyncComposition\KleisliOperator\bin\Debug\FSharp.Core.xml
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.13\AsyncComposition\KleisliOperator\obj\Debug\KleisliOperator.fsproj.CoreCompileInputs.cache
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.13\AsyncComposition\KleisliOperator\obj\Debug\KleisliOperator.exe
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.13\AsyncComposition\KleisliOperator\obj\Debug\KleisliOperator.pdb

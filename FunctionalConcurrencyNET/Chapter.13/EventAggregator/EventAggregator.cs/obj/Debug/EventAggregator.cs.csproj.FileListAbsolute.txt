@@ -1,0 +1,17 @@
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.13\EventAggregator\EventAggregator.cs\bin\Debug\EventAggregator.cs.exe.config
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.13\EventAggregator\EventAggregator.cs\bin\Debug\EventAggregator.cs.exe
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.13\EventAggregator\EventAggregator.cs\bin\Debug\EventAggregator.cs.pdb
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.13\EventAggregator\EventAggregator.cs\bin\Debug\System.Reactive.Core.dll
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.13\EventAggregator\EventAggregator.cs\bin\Debug\System.Reactive.Interfaces.dll
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.13\EventAggregator\EventAggregator.cs\bin\Debug\System.Reactive.Linq.dll
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.13\EventAggregator\EventAggregator.cs\bin\Debug\System.Reactive.PlatformServices.dll
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.13\EventAggregator\EventAggregator.cs\bin\Debug\System.Reactive.Windows.Threading.dll
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.13\EventAggregator\EventAggregator.cs\bin\Debug\System.Reactive.Core.xml
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.13\EventAggregator\EventAggregator.cs\bin\Debug\System.Reactive.Interfaces.xml
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.13\EventAggregator\EventAggregator.cs\bin\Debug\System.Reactive.Linq.xml
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.13\EventAggregator\EventAggregator.cs\bin\Debug\System.Reactive.PlatformServices.xml
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.13\EventAggregator\EventAggregator.cs\bin\Debug\System.Reactive.Windows.Threading.xml
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.13\EventAggregator\EventAggregator.cs\obj\Debug\EventAggregator.cs.csprojResolveAssemblyReference.cache
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.13\EventAggregator\EventAggregator.cs\obj\Debug\EventAggregator.cs.csproj.CoreCompileInputs.cache
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.13\EventAggregator\EventAggregator.cs\obj\Debug\EventAggregator.cs.exe
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.13\EventAggregator\EventAggregator.cs\obj\Debug\EventAggregator.cs.pdb

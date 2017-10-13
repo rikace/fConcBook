@@ -1,0 +1,1617 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+<assembly><name>FSharp.Control.Reactive</name></assembly>
+<members>
+<member name="M:FSharp.Control.Reactive.Disposables.compose``1(``0)">
+<summary>
+ Returns an IDisposable that disposes all the underlying disposables
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.zipWithSeq``3(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``1,``2}},System.Collections.Generic.IEnumerable{``1},System.IObservable{``0})">
+<summary>
+ Merges an observable sequence and an enumerable sequence into one 
+ observable sequence by using the selector function.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.zipSeqMap``2(Microsoft.FSharp.Core.FSharpFunc{System.Collections.Generic.IList{``0},``1},System.Collections.Generic.IEnumerable{System.IObservable{``0}})">
+<summary>
+ Merges the specified observable sequences into one observable sequence by using 
+ the selector function whenever all of the observable sequences have produced an 
+ element at a corresponding index.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.zipArray``1(System.IObservable{``0}[])">
+<summary>
+ Merges the specified observable sequences into one observable sequence by emitting 
+ a list with the elements of the observable sequences at corresponding indexe
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.zipSeq``1(System.Collections.Generic.IEnumerable{System.IObservable{``0}})">
+<summary>
+ Merges the specified observable sequences into one observable sequence by emitting a
+  list with the elements of the observable sequences at corresponding indexes.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.zipWith``3(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``1,``2}},System.IObservable{``0},System.IObservable{``1})">
+<summary>
+ Merges two observable sequences into one observable sequence by combining their elements through a projection function.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.zip3``3(System.IObservable{``0},System.IObservable{``1},System.IObservable{``2})">
+<summary>
+ Merges three observable sequences into one observable sequence of triples.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.zip``2(System.IObservable{``0},System.IObservable{``1})">
+<summary>
+ Merges two observable sequences into one observable sequence of pairs.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.windowTimeCount``1(System.TimeSpan,System.Int32,System.IObservable{``0})">
+<summary>
+ Projects each element of an observable sequence into a window that is completed when either it&apos;s full or 
+ a given amount of time has elapsed.
+ A useful real-world analogy of this overload is the behavior of a ferry leaving the dock when all seats are 
+ taken, or at the scheduled time of departure, whichever event occurs first
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.windowCount``1(System.Int32,System.IObservable{``0})">
+<summary>
+ Projects each element of an observable sequence into consecutive non-overlapping windows 
+ which are produced based on element count information.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.windowCountSkip``1(System.Int32,System.Int32,System.IObservable{``0})">
+<summary>
+ Projects each element of an observable sequence into zero or more windows which are produced based on element count information
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.windowBounded``2(System.IObservable{``0},System.IObservable{``1})">
+<summary>
+ Projects each element of an observable sequence into consecutive non-overlapping windows
+ windowBoundaries - Sequence of window boundary markers. The current window is closed 
+ and a new window is opened upon receiving a boundary marker
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.windowTimeShift``1(System.TimeSpan,System.TimeSpan,System.IObservable{``0})">
+<summary>
+ Projects each element of an observable sequence into consecutive non-overlapping windows.
+ windowBoundaries - Sequence of window boundary markers. The current window is closed and a new window is opened upon receiving a boundary marker.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.windowOpenClose``3(System.IObservable{``0},Microsoft.FSharp.Core.FSharpFunc{``0,System.IObservable{``1}},System.IObservable{``2})">
+<summary>
+ Projects each element of an observable sequence into zero or more windows.
+ windowOpenings - Observable sequence whose elements denote the creation of new windows.
+ windowClosingSelector - A function invoked to define the closing of each produced window.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.windowTimeSpan``1(System.TimeSpan,System.IObservable{``0})">
+<summary>
+ Projects each element of an observable sequence into consecutive non-overlapping windows 
+ which are produced based on timing information.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.window``2(Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Core.Unit,System.IObservable{``0}},System.IObservable{``1})">
+<summary>
+ Projects each element of an observable sequence into consecutive non-overlapping windows.
+ windowClosingSelector - A function invoked to define the boundaries of the produced windows. 
+ A new window is started when the previous one is closed
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.whileLoop``1(Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Core.Unit,System.Boolean},System.IObservable{``0})">
+<summary>
+ Repeats the given function as long as the specified condition holds
+ where the condition is evaluated before each repeated source is 
+ subscribed to
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.wait``1(System.IObservable{``0})">
+<summary>
+ waits for the observable sequence to complete and returns the last
+ element of the sequence. If the sequence terminates with OnError
+ notification, the exception is thrown
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.using``2(Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Core.Unit,``0},Microsoft.FSharp.Core.FSharpFunc{``0,System.IObservable{``1}})">
+<summary>
+ Constructs an observable sequence that depends on a resource object, whose 
+ lifetime is tied to the resulting observable sequence&apos;s lifetime.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.toObservable``1(System.Collections.Generic.IEnumerable{``0})">
+<summary>
+ Converts a seq into an observable
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.toLookupCompareElement``3(Microsoft.FSharp.Core.FSharpFunc{``0,``1},Microsoft.FSharp.Core.FSharpFunc{``0,``2},System.IObservable{``0})">
+<summary>
+ Creates a lookup from an observable sequence according to a specified key selector function, and an element selector function.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.toLookupElement``3(Microsoft.FSharp.Core.FSharpFunc{``0,``1},Microsoft.FSharp.Core.FSharpFunc{``0,``2},System.Collections.Generic.IEqualityComparer{``1},System.IObservable{``0})">
+<summary>
+ Creates a lookup from an observable sequence according to a specified key selector function, and an element selector function.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.toLookupCompare``2(Microsoft.FSharp.Core.FSharpFunc{``0,``1},System.Collections.Generic.IEqualityComparer{``1},System.IObservable{``0})">
+<summary>
+ Creates a lookup from an observable sequence according to a specified key selector function, and a comparer.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.toLookup``2(Microsoft.FSharp.Core.FSharpFunc{``0,``1},System.IObservable{``0})">
+<summary>
+ Creates a lookup from an observable sequence according to a specified key selector function.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.toList``1(System.IObservable{``0})">
+<summary>
+ Creates a list from an observable sequence
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.toEventType``1(System.IObservable{``0})">
+<summary>
+ Exposes an observable sequence as an object with an Action&lt;&apos;Source&gt; based .NET event.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.toEvent(System.IObservable{Microsoft.FSharp.Core.Unit})">
+<summary>
+ Exposes an observable sequence as an object with an Action based .NET event
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.toDictionaryCompareElements``3(Microsoft.FSharp.Core.FSharpFunc{``0,``1},Microsoft.FSharp.Core.FSharpFunc{``0,``2},``1,``0)">
+<summary>
+ Creates an observable sequence according to a specified key selector function
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.toDictionaryElements``3(Microsoft.FSharp.Core.FSharpFunc{``0,``1},Microsoft.FSharp.Core.FSharpFunc{``0,``2},``0)">
+<summary>
+ Creates an observable sequence according to a specified key selector function
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.toDictionaryComparer``2(Microsoft.FSharp.Core.FSharpFunc{``0,``1},``1,``0)">
+<summary>
+ Creates an observable sequence according to a specified key selector function
+ and an a comparer
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.toDictionary``2(Microsoft.FSharp.Core.FSharpFunc{``0,``1},System.IObservable{``0})">
+<summary>
+ Creates an observable sequence according to a specified key selector function
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.toArray``1(System.IObservable{``0})">
+<summary>
+ Creates an array from an observable sequence
+ Creates an array from an observable sequence.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.toEnumerable``1(System.IObservable{``0})">
+<summary>
+ Converts an observable into a seq
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.timestampOn``1(System.Reactive.Concurrency.IScheduler,System.IObservable{``0})">
+<summary>
+ Timestamps each element in an observable sequence using the supplied scheduler.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.timestamp``1(System.IObservable{``0})">
+<summary>
+ Timestamps each element in an observable sequence using the local system clock.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.timerSpanPeriod(System.TimeSpan,System.TimeSpan)">
+<summary>
+ Returns an observable sequence that periodically produces a value after the specified
+ initial relative due time has elapsed.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.timerSpan(System.TimeSpan)">
+<summary>
+ Returns an observable sequence that produces a single value after the specified relative due time has elapsed.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.timerPeriod(System.DateTimeOffset,System.TimeSpan)">
+<summary>
+ Returns an observable sequence that periodically produces a value starting at the specified initial absolute due time.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.timer(System.DateTimeOffset)">
+<summary>
+ Returns an observable sequence that produces a single value at the specified absolute due time.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.timeout2DurationOther``2(System.IObservable{``0},Microsoft.FSharp.Core.FSharpFunc{``1,System.IObservable{``0}},System.IObservable{``1},System.IObservable{``1})">
+<summary>
+ Applies a timeout policy to the observable sequence based on an initial timeout duration for the first
+ element, and a timeout duration computed for each subsequent element.
+ If the next element isn&apos;t received within the computed duration starting from its predecessor, 
+ the other observable sequence is used to produce future messages from that point on.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.timeout2Duration``2(System.IObservable{``0},Microsoft.FSharp.Core.FSharpFunc{``1,System.IObservable{``0}},System.IObservable{``1})">
+<summary>
+ Applies a timeout policy to the observable sequence based on an initial timeout duration 
+ for the first element, and a timeout duration computed for each subsequent element.
+ If the next element isn&apos;t received within the computed duration starting from its predecessor, 
+ a TimeoutException is propagated to the observer.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.timeoutDuration``2(Microsoft.FSharp.Core.FSharpFunc{``0,System.IObservable{``1}},System.IObservable{``0})">
+<summary>
+ Applies a timeout policy to the observable sequence based on a timeout duration computed for each element.
+ If the next element isn&apos;t received within the computed duration starting from its predecessor,
+ a TimeoutException is propagated to the observer.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.timeoutSpanOther``1(System.TimeSpan,System.IObservable{``0},System.IObservable{``0})">
+<summary>
+ Applies a timeout policy for each element in the observable sequence.
+ If the next element isn&apos;t received within the specified timeout duration starting from 
+ its predecessor, the other observable sequence is used to produce future messages from that point on.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.timeoutSpan``1(System.TimeSpan,System.IObservable{``0})">
+<summary>
+ Applies a timeout policy for each element in the observable sequence.
+ If the next element isn&apos;t received within the specified timeout duration starting from its
+ predecessor, a TimeoutException is propagated to the observer.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.timeoutOther``1(System.DateTimeOffset,System.IObservable{``0},System.IObservable{``0})">
+<summary>
+ Applies a timeout policy to the observable sequence based on an absolute time.
+ If the sequence doesn&apos;t terminate before the specified absolute due time, the other 
+ observable sequence is used to produce future messages from that point on.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.timeout``1(System.DateTimeOffset,System.IObservable{``0})">
+<summary>
+ Applies a timeout policy to the observable sequence based on an absolute time.
+ If the sequence doesn&apos;t terminate before the specified absolute due time, a TimeoutException is propagated to the observer.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.timeInterval``1(System.IObservable{``0})">
+<summary>
+ Records the time interval between consecutive elements in an observable sequence.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.thenMap``2(Microsoft.FSharp.Core.FSharpFunc{``0,``1},System.IObservable{``0})">
+<summary>
+ matches when the observable sequence has an available element and 
+ applies the map
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.throw``1(System.Exception)">
+<summary>
+ Returns an observable sequence that terminates with an exception.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.throttleComputed``2(Microsoft.FSharp.Core.FSharpFunc{``0,System.IObservable{``1}},System.IObservable{``0})">
+<summary>
+ Ignores elements from an observable sequence which are followed by another value within a computed throttle duration
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.throttleOn``1(System.Reactive.Concurrency.IScheduler,System.TimeSpan,System.IObservable{``0})">
+<summary>
+ Ignores elements from an observable sequence which are followed by another element within a specified relative time duration.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.throttle``1(System.TimeSpan,System.IObservable{``0})">
+<summary>
+ Ignores elements from an observable sequence which are followed by another element within a specified relative time duration.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.takeWhilei``1(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{System.Int32,System.Boolean}},System.IObservable{``0})">
+<summary>
+ Returns elements from an observable sequence as long as a specified condition is true.
+ The element&apos;s index is used in the logic of the predicate functi
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.takeWhile``1(Microsoft.FSharp.Core.FSharpFunc{``0,System.Boolean},System.IObservable{``0})">
+<summary>
+ Returns elements from an observable sequence as long as a specified condition is true.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.takeUntilTime``1(System.DateTimeOffset,System.IObservable{``0})">
+<summary>
+ Returns the elements from the source observable until the specified time
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.takeUntilOther``2(System.IObservable{``0},System.IObservable{``1})">
+<summary>
+ Returns the elements from the source observable sequence until the other produces and element
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.takeLastBufferCount``1(System.Int32,System.IObservable{``0})">
+<summary>
+ Returns a list with the specified number of contiguous elements from the end of an observable sequence.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.takeLastBuffer``1(System.TimeSpan,System.IObservable{``0})">
+<summary>
+ Returns a list with the elements within the specified duration from the end of the observable source sequence.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.takeLastSpan``1(System.TimeSpan,System.IObservable{``0})">
+<summary>
+ Returns elements within the specified duration from the end of the observable source sequence.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.takeLast``1(System.Int32,System.IObservable{``0})">
+<summary>
+ Returns a specified number of contiguous elements from the end of an obserable sequence
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.take``1(System.Int32,System.IObservable{``0})">
+<summary>
+ Takes n elements (from the beginning of an observable sequence? )
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.synchronizeGate``1(System.Object,System.IObservable{``0})">
+<summary>
+ Synchronizes the observable sequence such that observer notifications 
+ cannot be delivered concurrently, using the specified gate object.This 
+ overload is useful when writing n-ary query operators, in order to prevent 
+ concurrent callbacks from different sources by synchronizing on a common gate object.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.synchronize``1(System.IObservable{``0})">
+<summary>
+ Synchronizes the observable sequence so that notifications cannot be delivered concurrently
+ this overload is useful to &quot;fix&quot; an observable sequence that exhibits concurrent 
+ callbacks on individual observers, which is invalid behavior for the query processor
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.switchTask``1(System.IObservable{System.Threading.Tasks.Task{``0}})">
+<summary>
+ Transforms an observable sequence of tasks into an observable sequence 
+ producing values only from the most recent observable sequence.
+ Each time a new task is received, the previous task&apos;s result is ignored.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.switch``1(System.IObservable{System.IObservable{``0}})">
+<summary>
+ Transforms an observable sequence of observable sequences into an 
+ observable sequence producing values only from the most recent 
+ observable sequence.Each time a new inner observable sequnce is recieved,
+ unsubscribe from the previous inner sequence
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.subscribeOnContext``1(System.Threading.SynchronizationContext,System.IObservable{``0})">
+<summary>
+ Wraps the source sequence in order to run its subscription and unsubscription logic 
+ on the specified SynchronizationContext. This operation is not commonly used;  This only performs 
+ the side-effects of subscription and unsubscription on the specified scheduler.
+  In order to invoke observer callbacks on a scheduler, use &apos;observeOn&apos;
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.subscribeOn``1(System.Reactive.Concurrency.IScheduler,System.IObservable{``0})">
+<summary>
+ Wraps the source sequence in order to run its subscription and unsubscription logic 
+ on the specified scheduler. This operation is not commonly used;  This only performs 
+ the side-effects of subscription and unsubscription on the specified scheduler.
+  In order to invoke observer callbacks on a scheduler, use &apos;observeOn&apos;
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.subscribeObserver``1(System.IObserver{``0},System.IObservable{``0})">
+<summary>
+ Subscribes to the observable with the given observer
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.subscribeWithCallbacks``1(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.Unit},Microsoft.FSharp.Core.FSharpFunc{System.Exception,Microsoft.FSharp.Core.Unit},Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Core.Unit,Microsoft.FSharp.Core.Unit},System.IObservable{``0})">
+<summary>
+ Subscribes to the observable with all three callbacks
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.subscribeWithCompletion``1(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.Unit},Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Core.Unit,Microsoft.FSharp.Core.Unit},System.IObservable{``0})">
+<summary>
+ Subscribes to the Observable with a next and a completion callback.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.subscribeWithError``1(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.Unit},Microsoft.FSharp.Core.FSharpFunc{System.Exception,Microsoft.FSharp.Core.Unit},System.IObservable{``0})">
+<summary>
+ Subscribes to the Observable with a next and an error-function.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.subscribe``1(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.Unit},System.IObservable{``0})">
+<summary>
+ Subscribes to the Observable with a next fuction.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.startWith``2(``0,System.IObservable{``1})">
+<summary>
+ Prepends a sequence of values to an observable sequence.   
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.skipWhilei``1(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{System.Int32,System.Boolean}},System.IObservable{``0})">
+<summary>
+ Bypasses elements in an observable sequence as long as a specified condition is true and then returns the remaining elements.
+ The element&apos;s index is used in the logic of the predicate functio
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.skipWhile``1(Microsoft.FSharp.Core.FSharpFunc{``0,System.Boolean},System.IObservable{``0})">
+<summary>
+ Bypasses elements in an observable sequence as long as a specified condition is true and then returns the remaining elements.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.skipUntilOther``2(System.IObservable{``0},System.IObservable{``1})">
+<summary>
+ Returns the elements from the source observable sequence only after the other observable sequence produces an element.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.skipUntil``1(System.DateTimeOffset,System.IObservable{``0})">
+<summary>
+ Skips elements from the observable source sequence until the specified start time.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.skipLastSpan``1(System.TimeSpan,System.IObservable{``0})">
+<summary>
+ Skips elements for the specified duration from the end of the observable source sequence.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.skipLast``1(System.Int32,System.IObservable{``0})">
+<summary>
+ Bypasses a specified number of elements at the end of an observable sequence.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.skipSpan``1(System.TimeSpan,System.IObservable{``0})">
+<summary>
+ Skips elements for the specified duration from the start of the observable source sequence.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.skip``1(System.Int32,System.IObservable{``0})">
+<summary>
+ Bypasses a specified number of elements in an observable sequence and then returns the remaining elements.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.single``1(``0)">
+<summary>
+  Returns an observable sequence that contains a single element.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.selectIfElse``1(Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Core.Unit,System.Boolean},System.IObservable{``0},System.IObservable{``0})">
+<summary>
+ If the condition evaluates true, select the &quot;thenSource&quot; sequence. Otherwise, select the else source 
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.selectIf``1(Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Core.Unit,System.Boolean},System.IObservable{``0})">
+<summary>
+ If the condition evaluates true, select the &quot;thenSource&quot; sequence. Otherwise, return an empty sequence.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.scanInit``2(``0,Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``1,``0}},System.IObservable{``1})">
+<summary>
+ Applies an accumulator function over an observable sequence and returns each intermediate result. 
+ The specified init value is used as the initial accumulator value.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.scan``1(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``0,``0}},System.IObservable{``0})">
+<summary>
+ Applies an accumulator function over an observable sequence and returns each intermediate result.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.sampleWith``2(System.IObservable{``0},System.IObservable{``1})">
+<summary>
+ Samples the source observable sequence using a samper observable sequence producing sampling ticks.
+ Upon each sampling tick, the latest element (if any) in the source sequence during the 
+ last sampling interval is sent to the resulting sequence.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.sample``1(System.TimeSpan,System.IObservable{``0})">
+<summary>
+ Samples the observable at the given interval
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.retryCount``1(System.Int32,System.IObservable{``0})">
+<summary>
+ Repeats the source observable sequence the specified number of times or until it successfully terminates.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.retry``1(System.IObservable{``0})">
+<summary>
+ Repeats the source observable sequence until it successfully terminates.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.replayMapBufferWindowOn``2(System.Reactive.Concurrency.IScheduler,Microsoft.FSharp.Core.FSharpFunc{System.IObservable{``0},System.IObservable{``1}},System.Int32,System.TimeSpan,System.IObservable{``0})">
+<summary>
+ Returns an observable sequence that is the result of apply a map to a connectable observable sequence that
+ shares a single subscription to the underlying sequence replaying notifications subject to
+ a maximum time length and element count for the replay buffer.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.replayMapBufferWindow``2(Microsoft.FSharp.Core.FSharpFunc{System.IObservable{``0},System.IObservable{``1}},System.Int32,System.TimeSpan,System.IObservable{``0})">
+<summary>
+ Returns an observable sequence that is the result of apply a map to a connectable observable sequence that
+ shares a single subscription to the underlying sequence replaying notifications subject to
+ a maximum time length and element count for the replay buffer.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.replayMapWindowOn``2(System.Reactive.Concurrency.IScheduler,Microsoft.FSharp.Core.FSharpFunc{System.IObservable{``0},System.IObservable{``1}},System.TimeSpan,System.IObservable{``0})">
+<summary>
+ Returns an observable sequence that is the result of apply a map to a connectable observable sequence that
+ shares a single subscription to the underlying sequence replaying notifications subject to
+ a maximum time length.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.replayMapWindow``2(Microsoft.FSharp.Core.FSharpFunc{System.IObservable{``0},System.IObservable{``1}},System.TimeSpan,System.IObservable{``0})">
+<summary>
+ Returns an observable sequence that is the result of apply a map to a connectable observable sequence that
+ shares a single subscription to the underlying sequence replaying notifications subject to
+ a maximum time length.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.replayMapBuffer``2(Microsoft.FSharp.Core.FSharpFunc{System.IObservable{``0},System.IObservable{``1}},System.Int32,System.IObservable{``0})">
+<summary>
+ Returns an observable sequence that is the result of apply a map to a connectable observable sequence that
+ shares a single subscription to the underlying sequence replaying notifications subject to
+ a maximum element count for the replay buffer.                              
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.replayBufferWindowOn``1(System.Reactive.Concurrency.IScheduler,System.Int32,System.TimeSpan,System.IObservable{``0})">
+<summary>
+ Returns a connectable observable sequence that shares a single subscription to the underlying sequence
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.replayBufferWindow``1(System.Int32,System.TimeSpan,System.IObservable{``0})">
+<summary>
+ Returns a connectable observable sequence that shares a single subscription to the underlying sequence
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.replayWindowOn``1(System.Reactive.Concurrency.IScheduler,System.TimeSpan,System.IObservable{``0})">
+<summary>
+ Returns a connectable observable sequence that shares a single subscription to the underlying sequence 
+ replaying notifications subject to a maximum time length for the replay buffer.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.replayWindow``1(System.TimeSpan,System.IObservable{``0})">
+<summary>
+ Returns a connectable observable sequence that shares a single subscription to the underlying sequence 
+ replaying notifications subject to a maximum time length for the replay buffer.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.replayMap``2(Microsoft.FSharp.Core.FSharpFunc{System.IObservable{``0},System.IObservable{``1}},System.IObservable{``0})">
+<summary>
+ Returns an observable sequence that is the result of invoking the selector on a connectable observable 
+ sequence that shares a single subscription to the underlying sequence replaying all notifications.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.replayBuffer``1(System.Int32,System.IObservable{``0})">
+<summary>
+ Returns a connectable observable sequence that shares a single subscription to the underlying sequence 
+ replaying notifications subject to a maximum element count for the replay buffer.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.replay``1(System.IObservable{``0})">
+<summary>
+ Returns a connectable observable sequence that shares a single subscription to the 
+ underlying sequence replaying all notifications.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.repeatWhile``1(Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Core.Unit,System.Boolean},System.IObservable{``0})">
+<summary>
+ Repeats the given observable sequence as long as the specified condition holds, where the
+ condition is evaluated after each repeated source is completed.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.repeatValue``1(``0)">
+<summary>
+ Generates an observable sequence that repeats the given element infinitely.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.repeatCount``1(System.Int32,``0)">
+<summary>
+ Repeats the observable sequence a specified number of times.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.repeat``1(System.IObservable{``0})">
+<summary>
+ Repeats the observable sequence indefinitely.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.refCount``1(System.Reactive.Subjects.IConnectableObservable{``0})">
+<summary>
+ Returns an observable that remains connected to the source as long
+ as there is at least one subscription to the observable sequence 
+ ( publish an Observable to get a ConnectableObservable )
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.reduce``1(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``0,``0}},System.IObservable{``0})">
+<summary>
+ Reduces the observable
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.range(System.Int32,System.Int32)">
+<summary>
+ Creates a range as an observable
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.publishLastMap``2(Microsoft.FSharp.Core.FSharpFunc{System.IObservable{``0},System.IObservable{``1}},System.IObservable{``0})">
+<summary>
+ Returns an observable sequence that is the result of invoking 
+ the selector on a connectable observable sequence that shares a
+ a single subscription to the underlying sequence. This operator is a 
+ specialization of Multicast using a regular Subject
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.publishLast``1(System.IObservable{``0})">
+<summary>
+ Returns an observable sequence that is the result of invoking 
+ the selector on a connectable observable sequence containing 
+ only the last notification This operator is a 
+ specialization of Multicast using a regular Subject
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.publishInitialMap``2(``0,Microsoft.FSharp.Core.FSharpFunc{System.IObservable{``0},System.IObservable{``1}},System.IObservable{``0})">
+<summary>
+ Returns an observable sequence that is the result of 
+ the map on a connectable observable sequence that shares a
+ a single subscription to the underlying sequence. This operator is a 
+ specialization of Multicast using a regular Subject
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.publishMap``2(Microsoft.FSharp.Core.FSharpFunc{System.IObservable{``0},System.IObservable{``1}},System.IObservable{``0})">
+<summary>
+ Returns an observable sequence that is the result of invoking 
+ the selector on a connectable observable sequence that shares a
+ a single subscription to the underlying sequence. This operator is a 
+ specialization of Multicast using a regular Subject
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.publishInitial``1(``0,System.IObservable{``0})">
+<summary>
+ Returns a connectable observable sequence (IConnectableObsevable) that shares
+ a single subscription to the underlying sequence and starts with the value
+ initial. This operator is a specialization of Multicast using a regular Subject
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.publish``1(System.IObservable{``0})">
+<summary>
+ Returns a connectable observable sequence (IConnectableObsevable) that shares
+ a single subscription to the underlying sequence. This operator is a 
+ specialization of Multicast using a regular Subject
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.performFinally``1(Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Core.Unit,Microsoft.FSharp.Core.Unit},System.IObservable{``0})">
+<summary>
+ Invokes the finally action after source observable sequence terminates normally or by an exception.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.perform``1(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.Unit},System.IObservable{``0})">
+<summary>
+ Iterates through the observable and performs the given side-effect
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.onErrorConcatSeq``1(System.Collections.Generic.IEnumerable{System.IObservable{``0}})">
+<summary>
+ Concatenates all observable sequences in the given enumerable sequence, even if the 
+ previous observable sequence terminated exceptionally.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.onErrorConcatArray``1(System.IObservable{``0}[])">
+<summary>
+ Concatenates all of the specified observable sequences, even if the previous observable sequence terminated exceptionally.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.onErrorConcat``1(System.IObservable{``0},System.IObservable{``0})">
+<summary>
+ Concatenates the second observable sequence to the first observable sequence 
+ upon successful or exceptional termination of the first.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.ofType``1(System.IObservable{System.Object})">
+<summary>
+ Filters the elements of an observable sequence based on the specified type
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.observeOnContext``1(System.Threading.SynchronizationContext,System.IObservable{``0})">
+<summary>
+ Wraps the source sequence in order to run its observer callbacks 
+ on the specified synchronization context.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.observeOn``1(System.Reactive.Concurrency.IScheduler,System.IObservable{``0})">
+<summary>
+ Wraps the source sequence in order to run its observer callbacks on the specified scheduler.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.ofSeqOn``1(System.Reactive.Concurrency.IScheduler,System.Collections.Generic.IEnumerable{``0})">
+<summary>
+ Returns the sequence as an observable, using the specified scheduler to run the enumeration loop
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.ofSeq``1(System.Collections.Generic.IEnumerable{``0})">
+<summary>
+ Returns the sequence as an observable
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.next``1(System.IObservable{``0})">
+<summary>
+ Returns an observable sequence whose enumeration blocks until the next
+ element in the source observable sequence becomes available. 
+ Enumerators  on the resulting sequence will block until the next
+ element becomes available.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.neverWitness``1(``0)">
+<summary>
+ Returns a non-terminating observable sequence, which can be 
+ used to denote an infinite duration (e.g. when using reactive joins).
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.infinite``1">
+<summary>
+ Returns a non-terminating observable sequence, which can 
+ be used to denote an infinite duration (e.g. when using reactive joins).
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.multicastMap``3(Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Core.Unit,System.Reactive.Subjects.ISubject{``0,``1}},Microsoft.FSharp.Core.FSharpFunc{System.IObservable{``1},System.IObservable{``2}},System.IObservable{``0})">
+<summary>
+ Multicasts the source sequence notifications through an instantiated subject into
+ all uses of the sequence within a selector function. Each subscription to the 
+ resulting sequence causes a separate multicast invocation, exposing the sequence
+ resulting from the selector function&apos;s invocation. For specializations with fixed
+ subject types, see Publish, PublishLast, and Replay.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.multicast``2(System.Reactive.Subjects.ISubject{``0,``1},System.IObservable{``0})">
+<summary>
+ Multicasts the source sequence notifications through the specified subject to 
+ the resulting connectable observable. Upon connection of the connectable 
+ observable, the subject is subscribed to the source exactly one, and messages
+ are forwarded to the observers registered with the connectable observable. 
+ For specializations with fixed subject types, see Publish, PublishLast, and Replay.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.mostRecent``1(``0,System.IObservable{``0})">
+<summary>
+ Returns an enumerable sequence whose sequence whose enumeration returns the 
+ most recently observed element in the source observable sequence, using 
+ the specified 
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.maxOf``1(System.IObservable{``0})">
+<summary>
+ Returns the maximum element in an observable sequence.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.mergeTasks``1(System.IObservable{System.Threading.Tasks.Task{``0}})">
+<summary>
+ Merge results from all source tasks into a single observable sequence
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.mergeSeqMax``1(System.Int32,System.Collections.Generic.IEnumerable{System.IObservable{``0}})">
+<summary>
+ Merges an enumerable sequence of observable sequences into an observable sequence,
+  limiting the number of concurrent subscriptions to inner sequences.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.mergeSeq``1(System.Collections.Generic.IEnumerable{System.IObservable{``0}})">
+<summary>
+ Merges an enumerable sequence of observable sequences into a single observable sequence.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.mergeInnerMax``1(System.Int32,System.IObservable{System.IObservable{``0}})">
+<summary>
+ Merges elements from all inner observable sequences 
+ into a single  observable sequence limiting the number of concurrent 
+ subscriptions to inner sequences
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.mergeInner``1(System.IObservable{System.IObservable{``0}})">
+<summary>
+ Merges elements from all inner observable sequences 
+ into a single  observable sequence.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.mergeArray``1(System.IObservable{``0}[])">
+<summary>
+ Merges all the observable sequences into a single observable sequence.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.merge``1(System.IObservable{``0},System.IObservable{``0})">
+<summary>
+ Merges the two observables
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.materialize``1(System.IObservable{``0})">
+<summary>
+ Materializes the implicit notifications of an observable sequence as
+ explicit notification values
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.map2``3(System.IObservable{Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``1,``2}}},System.IObservable{``0},System.IObservable{``1})">
+<summary>
+ Maps two observables to the specified function.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.mapi``2(Microsoft.FSharp.Core.FSharpFunc{System.Int32,Microsoft.FSharp.Core.FSharpFunc{``0,``1}},System.IObservable{``0})">
+<summary>
+ Maps the given observable with the given function and the 
+ index of the element
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.map``2(Microsoft.FSharp.Core.FSharpFunc{``0,``1},System.IObservable{``0})">
+<summary>
+ Maps the given observable with the given function
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.longCountSatisfy``1(Microsoft.FSharp.Core.FSharpFunc{``0,System.Boolean},System.IObservable{``0})">
+<summary>
+ Returns an observable sequence containing an int that represents how many elements 
+ in the specified observable sequence satisfy a condition.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.longCount``1(System.IObservable{``0})">
+<summary>
+ Returns an observable sequence containing a int64 that represents 
+ the total number of elements in an observable sequence 
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.latest``1(System.IObservable{``0})">
+<summary>
+ Returns an enumerable sequence whose enumeration returns the latest observed element in the source observable sequence.
+ Enumerators on the resulting sequence will never produce the same element repeatedly, 
+ and will block until the next element becomes available.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.lastIf``1(Microsoft.FSharp.Core.FSharpFunc{``0,System.Boolean},System.IObservable{``0})">
+<summary>
+ Returns the last element of an observable sequence that satisfies the condition in the predicate 
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.last``1(System.IObservable{``0})">
+<summary>
+ Returns the last element of an observable sequence.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.joinWhen``1(System.Collections.Generic.IEnumerable{System.Reactive.Joins.Plan{``0}})">
+<summary>
+ Joins together the results from several patterns
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.iterObserver``1(System.IObserver{``0},System.IObservable{``0})">
+<summary>
+ Invokes the observer&apos;s methods for each message in the source sequence.
+ This method can be used for debugging, logging, etc. of query behavior by intercepting 
+ the message stream to run arbitrary actions for messages on the pipeline.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.iterErrorEnd``1(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.Unit},Microsoft.FSharp.Core.FSharpFunc{System.Exception,Microsoft.FSharp.Core.Unit},Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Core.Unit,Microsoft.FSharp.Core.Unit},System.IObservable{``0})">
+<summary>
+ Invokes an action for each element in the observable sequence and invokes an action 
+ upon graceful or exceptional termination of the observable sequence.
+ This method can be used for debugging, logging, etc. of query behavior by intercepting 
+ the message stream to run arbitrary actions for messages on the pipeline.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.iterError``1(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.Unit},Microsoft.FSharp.Core.FSharpFunc{System.Exception,Microsoft.FSharp.Core.Unit},System.IObservable{``0})">
+<summary>
+ Invokes an action for each element in the observable sequence and invokes an action upon 
+ exceptional termination of the observable sequence. This method can be used for debugging, 
+ logging, etc. of query behavior by intercepting the message stream to run arbitrary 
+ actions for messages on the pipeline.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.iterEnd``1(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.Unit},Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Core.Unit,Microsoft.FSharp.Core.Unit},System.IObservable{``0})">
+<summary>
+ Invokes an action for each element in the observable sequence and invokes an action 
+ upon graceful termination of the observable sequence. This method can be used for debugging,
+  logging, etc. of query behavior by intercepting the message stream to run arbitrary
+ actions for messages on the pipeline.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.iter``1(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.Unit},System.IObservable{``0})">
+<summary>
+ Invokes an action for each element in the observable sequence, and propagates all observer 
+ messages through the result sequence. This method can be used for debugging, logging, etc. of query 
+ behavior by intercepting the message stream to run arbitrary actions for messages on the pipeline.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.isEmpty``1(System.IObservable{``0})">
+<summary>
+ IsEmpty returns an Observable that emits true if and only if the 
+ source Observable completes without emitting any items. 
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.intervalOn(System.Reactive.Concurrency.IScheduler,System.TimeSpan)">
+<summary>
+ Returns an observable sequence that produces a value on the specified scheduler after each period
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.interval(System.TimeSpan)">
+<summary>
+ Returns an observable sequence that produces a value after each period
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.head``1(System.IObservable{``0})">
+<summary>
+ Takes the first element of the observable sequence
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.guard``1(Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Core.Unit,Microsoft.FSharp.Core.Unit},System.IObservable{``0})">
+<summary>
+ Creates an observable that calls the specified function (each time)
+ after an observer is attached to the observable. This is useful to 
+ make sure that events triggered by the function are handled. 
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.groupJoin``5(System.IObservable{``0},System.IObservable{``1},Microsoft.FSharp.Core.FSharpFunc{``0,System.IObservable{``2}},Microsoft.FSharp.Core.FSharpFunc{``1,System.IObservable{``3}},Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{System.IObservable{``1},``4}})">
+<summary>
+ Groups the elements of an observable sequence with the specified initial capacity according to a specified
+ key selector function and comparer and selects the resulting elements by using a specified function.
+ A duration selector function is used to control the lifetime of groups. When a group expires, it receives 
+ an OnCompleted notification. When a new element with the same
+ key value as a reclaimed group occurs, the group will be reborn with a new lifetime request.
+ Correlates the elements of two sequences based on overlapping 
+ durations and groups the results
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.groupByComparerElementUntil``4(Microsoft.FSharp.Core.FSharpFunc{``0,``1},System.Collections.Generic.IEqualityComparer{``1},Microsoft.FSharp.Core.FSharpFunc{``0,``2},Microsoft.FSharp.Core.FSharpFunc{System.Reactive.Linq.IGroupedObservable{``1,``2},System.IObservable{``3}},System.IObservable{``0})">
+<summary>
+ Groups the elements of an observable sequence with the specified initial capacity according to a specified key selector function and comparer.
+ A duration selector function is used to control the lifetime of groups. When a group expires, it receives an OnCompleted notification. When a new element with the same
+ key value as a reclaimed group occurs, the group will be reborn with a new lifetime request.
+ Groups the elements of an observable sequence with the specified initial capacity according to a specified key 
+ selector function and selects the resulting elements by using a specified function.
+ A duration selector function is used to control the lifetime of groups. When a group 
+ expires, it receives an OnCompleted notification. When a new element with the same
+ key value as a reclaimed group occurs, the group will be reborn with a new lifetime request.
+ Groups the elements of an observable sequence according to a specified key selector function and 
+ comparer and selects the resulting elements by using a specified function.
+ A duration selector function is used to control the lifetime of groups. When a group expires,
+ it receives an OnCompleted notification. When a new element with the same
+ key value as a reclaimed group occurs, the group will be reborn with a new lifetime request.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.groupByElementUntil``4(Microsoft.FSharp.Core.FSharpFunc{``0,``1},Microsoft.FSharp.Core.FSharpFunc{``0,``2},Microsoft.FSharp.Core.FSharpFunc{System.Reactive.Linq.IGroupedObservable{``1,``2},System.IObservable{``3}},System.IObservable{``0})">
+<summary>
+ Groups the elements of an observable sequence according to a specified key selector function 
+ and selects the resulting elements by using a specified function.
+ A duration selector function is used to control the lifetime of groups. When a group expires, 
+ it receives an OnCompleted notification. When a new element with the same
+ key value as a reclaimed group occurs, the group will be reborn with a new lifetime request.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.groupByComparerUntil``3(Microsoft.FSharp.Core.FSharpFunc{``0,``1},System.Collections.Generic.IEqualityComparer{``1},Microsoft.FSharp.Core.FSharpFunc{System.Reactive.Linq.IGroupedObservable{``1,``0},System.IObservable{``2}},System.IObservable{``0})">
+<summary>
+ Groups the elements of an observable sequence with the specified initial capacity according to a specified key selector function.
+ A duration selector function is used to control the lifetime of groups. When a group 
+ expires, it receives an OnCompleted notification. When a new element with the same
+ key value as a reclaimed group occurs, the group will be reborn with a new lifetime request.
+ Groups the elements of an observable sequence according to a specified key selector function and comparer.
+ A duration selector function is used to control the lifetime of groups. When a group expires, 
+ it receives an OnCompleted notification. When a new element with the same
+ key value as a reclaimed group occurs, the group will be reborn with a new lifetime request.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.groupByUntil``3(Microsoft.FSharp.Core.FSharpFunc{``0,``1},Microsoft.FSharp.Core.FSharpFunc{System.Reactive.Linq.IGroupedObservable{``1,``0},System.IObservable{``2}},System.IObservable{``0})">
+<summary>
+ Groups the elements of an observable sequence with the specified initial capacity according to a 
+ specified key selector function and comparer and selects the resulting elements by using a specified function.
+  Groups the elements of an observable sequence according to a specified key selector function.
+  A duration selector function is used to control the lifetime of groups. When a group expires, 
+  it receives an OnCompleted notification. When a new element with the same
+  key value as a reclaimed group occurs, the group will be reborn with a new lifetime request.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.groupByCompareElement``3(Microsoft.FSharp.Core.FSharpFunc{``0,``1},System.Collections.Generic.IEqualityComparer{``1},Microsoft.FSharp.Core.FSharpFunc{``0,``2},System.IObservable{``0})">
+<summary>
+ Groups the elements of an observable sequence according to a specified key selector function 
+ and comparer and selects the resulting elements by using a specified function.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.groupByCapacityElement``3(Microsoft.FSharp.Core.FSharpFunc{``0,``1},System.Int32,Microsoft.FSharp.Core.FSharpFunc{``0,``2},System.IObservable{``0})">
+<summary>
+ Groups the elements of an observable sequence with the specified initial capacity 
+ according to a specified key selector function and comparer.
+ Groups the elements of an observable sequence with the specified initial capacity
+ and selects the resulting elements by using a specified function.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.groupByElement``3(Microsoft.FSharp.Core.FSharpFunc{``0,``1},Microsoft.FSharp.Core.FSharpFunc{``0,``2},System.IObservable{``0})">
+<summary>
+ Groups the elements of an observable sequence and selects the resulting elements by using a specified function.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.groupByCompare``2(Microsoft.FSharp.Core.FSharpFunc{``0,``1},System.Collections.Generic.IEqualityComparer{``1},System.IObservable{``0})">
+<summary>
+ Groups the elements of an observable sequence with the specified initial 
+ capacity according to a specified key selector function.
+ Groups the elements of an observable sequence according to a specified key selector function and comparer.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.groupBy``2(Microsoft.FSharp.Core.FSharpFunc{``0,``1},System.IObservable{``0})">
+<summary>
+ Groups the elements of an observable sequence according to a specified key selector function.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.getEnumerator``1(System.IObservable{``0})">
+<summary>
+ Returns an enumerator that enumerates all values of the observable sequence.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.generateTimeSpan``2(``0,Microsoft.FSharp.Core.FSharpFunc{``0,System.Boolean},Microsoft.FSharp.Core.FSharpFunc{``0,``0},Microsoft.FSharp.Core.FSharpFunc{``0,``1},Microsoft.FSharp.Core.FSharpFunc{``0,System.TimeSpan})">
+<summary>
+ Generates an observable sequence by running a state-driven and temporal loop producing the sequence&apos;s elements.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.generateTimed``2(``0,Microsoft.FSharp.Core.FSharpFunc{``0,System.Boolean},Microsoft.FSharp.Core.FSharpFunc{``0,``0},Microsoft.FSharp.Core.FSharpFunc{``0,``1},Microsoft.FSharp.Core.FSharpFunc{``0,System.DateTimeOffset})">
+<summary>
+ Generates an observable sequence by running a state-driven and temporal loop producing the sequence&apos;s elements.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.generate``2(``0,Microsoft.FSharp.Core.FSharpFunc{``0,System.Boolean},Microsoft.FSharp.Core.FSharpFunc{``0,``0},Microsoft.FSharp.Core.FSharpFunc{``0,``1})">
+<summary>
+ Generates an observable sequence by running a state-driven loop producing the sequence&apos;s elements.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.fromEventPattern(System.String,System.Object)">
+<summary>
+ Generates an observable from an IEvent&lt;_&gt; as an EventPattern.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.fromEventHandler``1(Microsoft.FSharp.Core.FSharpFunc{System.EventHandler{System.Object},Microsoft.FSharp.Core.Unit},Microsoft.FSharp.Core.FSharpFunc{System.EventHandler{System.Object},Microsoft.FSharp.Core.Unit})">
+<summary>
+ Converts a .NET event to an observable sequence, using a supplied event delegate type. 
+ Each event invocation is surfaced through an OnNext message in the resulting sequence.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.fromEventConversion``2(Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.Unit},``1},Microsoft.FSharp.Core.FSharpFunc{``1,Microsoft.FSharp.Core.Unit},Microsoft.FSharp.Core.FSharpFunc{``1,Microsoft.FSharp.Core.Unit})">
+<summary>
+ Converts a .NET event to an observable sequence, using a conversion function to obtain the event delegate. 
+ Each event invocation is surfaced through an OnNext message in the resulting sequence.
+ For conversion of events conforming to the standard .NET event pattern, use any of the FromEventPattern functions instead.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.fromEventGeneric``1(Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.Unit},Microsoft.FSharp.Core.Unit},Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.Unit},Microsoft.FSharp.Core.Unit})">
+<summary>
+ Converts an generic Action-based .NET event to an observable sequence. Each event invocation is surfaced through an OnNext message in the resulting sequence.
+ For conversion of events conforming to the standard .NET event pattern, use any of the FromEventPattern overloads instead.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.fromEvent``1(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.Unit},Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.Unit})">
+<summary>
+ Converts an Action-based .NET event to an observable sequence. Each event invocation is surfaced through an OnNext message in the resulting sequence.
+ For conversion of events conforming to the standard .NET event pattern, use any of the FromEventPattern overloads instead.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.foldMap``3(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``1,``0}},``0,Microsoft.FSharp.Core.FSharpFunc{``0,``2},System.IObservable{``1})">
+<summary>
+ Applies an accumulator function over an observable sequence, returning the 
+ result of the fold as a single element in the result sequence
+ init is the initial accumulator value, map is performed after the fold
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.fold``2(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``1,``0}},``0,System.IObservable{``1})">
+<summary>
+ Projects each element of an observable sequence to a task by incorporating the element&apos;s index 
+ and merges all of the task results into one observable sequence.
+ Applies an accumulator function over an observable sequence, returning the 
+ result of the fold as a single element in the result sequence
+ init is the initial accumulator value
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.flatmapAsync``2(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Control.FSharpAsync{``1}},System.IObservable{``0})">
+<summary>
+ Projects each element of an observable sequence to a async workflow and merges all of the async worksflow results into one observable sequence.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.liftAsync``2(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Control.FSharpAsync{``1}})">
+<summary>
+Helper function for turning async workflows into observables
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.ofAsync``1(Microsoft.FSharp.Control.FSharpAsync{``0})">
+<summary>
+Turns an F# async workflow into an observable
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.flatmapTask``2(Microsoft.FSharp.Core.FSharpFunc{``0,System.Threading.Tasks.Task{``1}},System.IObservable{``0})">
+<summary>
+ Projects each element of an observable sequence to an enumerable sequence by incorporating the 
+ element&apos;s index and concatenates the resulting enumerable sequences into one observable sequence.
+ Projects each element of an observable sequence to a task and merges all of the task results into one observable sequence.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.flatmapSeq``2(Microsoft.FSharp.Core.FSharpFunc{``0,System.Collections.Generic.IEnumerable{``1}},System.IObservable{``0})">
+<summary>
+ Projects each element of an observable sequence to an enumerable sequence and concatenates 
+ the resulting enumerable sequences into one observable sequence.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.flatmapOther``2(System.IObservable{``0},System.IObservable{``1})">
+<summary>
+ Projects each element of an observable sequence to an observable sequence by incorporating the 
+ element&apos;s index and merges the resulting observable sequences into one observable sequence.
+ Projects each element of the source observable sequence to the other observable sequence 
+ and merges the resulting observable sequences into one observable sequence.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.flatmap``2(Microsoft.FSharp.Core.FSharpFunc{``0,System.IObservable{``1}},System.IObservable{``0})">
+<summary>
+ Projects each element of an observable sequence to an observable sequence 
+ and merges the resulting observable sequences into one observable sequenc
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.firstIf``1(Microsoft.FSharp.Core.FSharpFunc{``0,System.Boolean},System.IObservable{``0})">
+<summary>
+ Returns the first element of an observable sequence
+ if it satisfies the predicate
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.first``1(System.IObservable{``0})">
+<summary>
+ Returns the first element of an observable sequence
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.finallyDo``1(Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Core.Unit,Microsoft.FSharp.Core.Unit},System.IObservable{``0})">
+<summary>
+ Invokes a specified action after the source observable sequence
+ terminates gracefully of exceptionally
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.filteri``1(Microsoft.FSharp.Core.FSharpFunc{System.Int32,Microsoft.FSharp.Core.FSharpFunc{``0,System.Boolean}},System.IObservable{``0})">
+<summary>
+ Filters the observable elements of a sequence based on a predicate by 
+ incorporating the element&apos;s index
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.filter``1(Microsoft.FSharp.Core.FSharpFunc{``0,System.Boolean},System.IObservable{``0})">
+<summary>
+ Filters the observable elements of a sequence based on a predicate 
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.exists``1(Microsoft.FSharp.Core.FSharpFunc{``0,System.Boolean},System.IObservable{``0})">
+<summary>
+ Determines whether an observable sequence contains a specified value
+ which satisfies the given predicate
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.equalsSeqComparer``1(System.Collections.Generic.IEqualityComparer{``0},System.IObservable{``0},System.Collections.Generic.IEnumerable{``0})">
+<summary>
+ Determines whether an observable and enumerable sequence are equal by comparing the elements pairwise using a specified equality comparer.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.equalsSeq``1(System.IObservable{``0},System.Collections.Generic.IEnumerable{``0})">
+<summary>
+ Determines whether an observable and enumerable sequence are equal by comparing the elements pairwise.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.equalsComparer``1(System.Collections.Generic.IEqualityComparer{``0},System.IObservable{``0},System.IObservable{``0})">
+<summary>
+ Determines whether two sequences are equal by comparing the elements pairwise using a specified equality comparer.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.equals``1(System.IObservable{``0},System.IObservable{``0})">
+<summary>
+ Determines whether two sequences are equal by comparing the elements pairwise.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.emptyWitness``1(``0)">
+<summary>
+ Returns an empty Observable sequence
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.empty``1">
+<summary>
+ Returns an empty observable
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.elementAtOrDefault``1(System.Int32,System.IObservable{``0})">
+<summary>
+ Returns the element at a specified index in a sequence or a default value if the index is out of range
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.elementAt``1(System.Int32,System.IObservable{``0})">
+<summary>
+ Returns the element at a specified index in a sequence.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.distinctUntilChangedKeyCompare``2(Microsoft.FSharp.Core.FSharpFunc{``0,``1},System.Collections.Generic.IEqualityComparer{``1},System.IObservable{``0})">
+<summary>
+ Returns an observable sequence that contains only distinct contiguous elements according to the keySelector and the comparer.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.distinctUntilChangedCompare``1(System.Collections.Generic.IEqualityComparer{``0},System.IObservable{``0})">
+<summary>
+ Returns an observable sequence that contains only distinct contiguous elements according to the comparer.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.distinctUntilChangedKey``2(Microsoft.FSharp.Core.FSharpFunc{``0,``1},System.IObservable{``0})">
+<summary>
+ Returns an observable sequence that contains only distinct contiguous elements according to the keySelector.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.distinctUntilChanged``1(System.IObservable{``0})">
+<summary>
+ Returns an observable sequence that only contains distinct contiguous elements 
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.distinctKeyCompare``2(Microsoft.FSharp.Core.FSharpFunc{``0,``1},System.Collections.Generic.IEqualityComparer{``1},System.IObservable{``0})">
+<summary>
+ Returns an observable sequence that contains only distinct elements according to the keySelector and the comparer.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.distinctCompare``1(System.Collections.Generic.IEqualityComparer{``0},System.IObservable{``0})">
+<summary>
+ Returns an observable sequence that contains only distinct elements according to the comparer.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.distinctKey``2(Microsoft.FSharp.Core.FSharpFunc{``0,``1},System.IObservable{``0})">
+<summary>
+ Returns an observable sequence that contains only distinct elements according to the keySelector.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.distinct``1(System.IObservable{``0})">
+<summary>
+ Returns an observable sequence that only contains distinct elements 
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.dematerialize``1(System.IObservable{System.Reactive.Notification{``0}})">
+<summary>
+ Dematerializes the explicit notification values of an observable sequence as implicit notifications.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.delaySubscriptionUntil``1(System.DateTimeOffset,System.IObservable{``0})">
+<summary>
+ Time shifts the observable sequence by delaying the subscription to the specified absolute time.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.delaySubscription``1(System.TimeSpan,System.IObservable{``0})">
+<summary>
+ Time shifts the observable sequence by delaying the subscription with the specified relative time duration.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.delayMapFilter``2(Microsoft.FSharp.Core.FSharpFunc{``0,System.IObservable{``1}},System.IObservable{``1},System.IObservable{``0})">
+<summary>
+ Time shifts the observable sequence based on a subscription delay and a delay selector function for each element.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.delayMap``2(Microsoft.FSharp.Core.FSharpFunc{``0,System.IObservable{``1}},System.IObservable{``0})">
+<summary>
+ Time shifts the observable sequence based on a delay selector function for each element.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.delayUntil``1(System.IObservable{``0},System.DateTimeOffset)">
+<summary>
+ Time shifts the observable sequence to start propagating notifications at the specified absolute time.
+ The relative time intervals between the values are preserved.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.delay``1(System.TimeSpan,System.IObservable{``0})">
+<summary>
+ Time shifts the observable sequence by the specified relative time duration.
+ The relative time intervals between the values are preserved.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.defer``1(Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Core.Unit,System.IObservable{``0}})">
+<summary>
+ Returns an observable sequence that invokes the specified factory function whenever a new observer subscribes.    
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.defaultIfEmptyIs``1(``0,System.IObservable{``0})">
+<summary>
+ Returns the elements of the specified sequence or the specified value in a singleton sequence if the sequence is empty.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.defaultIfEmpty``1(System.IObservable{``0})">
+<summary>
+ Returns the elements of the specified sequence or the type parameter&apos;s default value 
+ in a singleton sequence if the sequence is empty.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.countSatisfy``1(Microsoft.FSharp.Core.FSharpFunc{``0,System.Boolean},System.IObservable{``0})">
+<summary>
+ Returns an observable sequence containing an int that represents how many elements 
+ in the specified observable sequence satisfy a condition.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.count``1(System.IObservable{``0})">
+<summary>
+ Counts the elements
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.containsCompare``1(System.Collections.Generic.IEqualityComparer{``0},``0,System.IObservable{``0})">
+<summary>
+ Determines whether an observable sequence contains a 
+ specified element by using a specified EqualityComparer
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.contains``1(``0,System.IObservable{``0})">
+<summary>
+ Determines whether an observable sequence contains a specified 
+ element by using the default equality comparer.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.connect``1(System.Reactive.Subjects.IConnectableObservable{``0})">
+<summary>
+ Connects the observable wrapper to its source. All subscribed
+ observers will recieve values from the underlying observable
+ sequence as long as the connection is established.    
+ ( publish an Observable to get a ConnectableObservable )
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.concatTasks``1(System.IObservable{System.Threading.Tasks.Task{``0}})">
+<summary>
+ Concatenates all task results as long as
+ the previous taskterminated successfully
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.concatInner``1(System.IObservable{System.IObservable{``0}})">
+<summary>
+ Concatenates all of the inner observable sequences as long as
+ the previous observable sequence terminated successfully 
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.concatArray``1(System.IObservable{``0}[])">
+<summary>
+ Concatenates all of the specified  observable sequences as long as
+ the previous observable sequence terminated successfully 
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.concatSeq``1(System.Collections.Generic.IEnumerable{System.IObservable{``0}})">
+<summary>
+ Concatenates all observable sequences within the sequence as long as
+ the previous observable sequence terminated successfully 
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.concat``1(System.IObservable{``0},System.IObservable{``0})">
+<summary>
+ Concatenates the second observable sequence to the first observable sequence
+ upn the successful termination of the first 
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.combineLatestSeqMap``2(Microsoft.FSharp.Core.FSharpFunc{System.Collections.Generic.IList{``0},``1},System.Collections.Generic.IEnumerable{System.IObservable{``0}})">
+<summary>
+ Merges the specified observable sequences into one observable sequence by  applying the map
+ whenever any of the observable sequences produces an element.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.combineLatestArray``1(System.IObservable{``0}[])">
+<summary>
+ Merges the specified observable sequences into one observable sequence by  applying the map
+ whenever any of the observable sequences produces an element.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.combineLatestSeq``1(System.Collections.Generic.IEnumerable{System.IObservable{``0}})">
+<summary>
+ Merges the specified observable sequences into one observable sequence by 
+ emmiting a list with the latest source elements of whenever any of the 
+ observable sequences produces an element.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.combineLatest``2(System.IObservable{``0},System.IObservable{``1})">
+<summary>
+ Merges the specified observable sequences into one observable sequence
+ whenever either of the observable sequences produces an element.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.collectMergeInit``2(Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Core.Unit,``0},Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``1,``0}},Microsoft.FSharp.Core.FSharpFunc{``0,``0},System.IObservable{``1})">
+<summary>
+ Produces an enumerable sequence that returns elements collected/aggregated from the source sequence between consecutive iterations.
+ merge - Merges a sequence element with the current collector
+ getNewCollector - Factory to replace the current collector by a new collector
+ getInitialCollector - Factory to create the initial collector object.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.collectMerge``2(Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Core.Unit,``0},Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``1,``0}},System.IObservable{``1})">
+<summary>
+ Produces an enumerable sequence that returns elements collected/aggregated from the source sequence between consecutive iterations.
+ merge - Merges a sequence element with the current collector
+ newCollector - Factory to create a new collector object.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.collect``2(Microsoft.FSharp.Core.FSharpFunc{``0,System.IObservable{``1}},System.Collections.Generic.IEnumerable{``0})">
+<summary>
+ Concatenates the observable sequences obtained by applying the map for each element in the given enumerable 
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.chunkify``1(System.IObservable{``0})">
+<summary>
+ Produces an enumerable sequence of consequtive (possibly empty) chunks of the source observable
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.catchArray``1(System.IObservable{``0}[])">
+<summary>
+ Continues an observable sequence that is terminated by an exception with the next observable sequence.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.catchSeq``1(System.Collections.Generic.IEnumerable{System.IObservable{``0}})">
+<summary>
+ Continues an observable sequence that is terminated by an exception with the next observable sequence.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.catchWith``2(Microsoft.FSharp.Core.FSharpFunc{``0,System.IObservable{``1}},System.IObservable{``1})">
+<summary>
+ Continues an observable sequence that is terminated by an exception of
+ the specified type with the observable sequence produced by the handler.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.catch``1(System.IObservable{``0},System.IObservable{``0})">
+<summary>
+ Continues an observable sequence that is terminated
+ by an exception with the next observable sequence.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.caseDefault``2(Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Core.Unit,``0},System.IObservable{``1},System.Collections.Generic.IDictionary{``0,System.IObservable{``1}})">
+<summary>
+ Uses selector to determine which source in sources to return,
+ choosing defaulSource if no match is found
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.case``2(Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Core.Unit,``0},System.Collections.Generic.IDictionary{``0,System.IObservable{``1}})">
+<summary>
+ Uses selector to determine which source in sources to return,
+ choosing an empty sequence if no match is found
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.cast``1(System.IObservable{System.Object})">
+<summary>
+ Converts the elements of the sequence to the specified type
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.bufferSpanShift``1(System.TimeSpan,System.TimeSpan,System.IObservable{``0})">
+<summary>
+ Projects each element of an observable sequence into 
+ zero or more buffers produced based on timing information
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.bufferFork``3(System.IObservable{``0},Microsoft.FSharp.Core.FSharpFunc{``0,System.IObservable{``1}},System.IObservable{``2})">
+<summary>
+ Projects each element of an observable sequence into zero of more buffers. 
+ bufferOpenings - observable sequence whose elements denote the opening of each produced buffer
+ bufferClosing - observable sequence whose elements denote the closing of each produced buffer
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.bufferSpanCount``1(System.TimeSpan,System.Int32,System.IObservable{``0})">
+<summary>
+ Projects each element of an observable sequence into a buffer that goes
+ sent out when either it&apos;s full or a specific amount of time has elapsed
+ Analogy - A boat that departs when it&apos;s full or at its scheduled time to leave
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.bufferSpan``1(System.TimeSpan,System.IObservable{``0})">
+<summary>
+ Projects each element of an observable sequence into 
+ consequtive non-overlapping buffers produced based on timing information
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.bufferCountSkip``1(System.Int32,System.Int32,System.IObservable{``0})">
+<summary>
+ Projects each element of an observable sequence into zero or more buffers
+ which are produced based on element count information
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.bufferCount``1(System.Int32,System.IObservable{``0})">
+<summary>
+ Projects each element of an observable sequence into 
+ consequtive non-overlapping buffers produced based on count information
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.bufferBounded``2(System.IObservable{``0},System.IObservable{``1})">
+<summary>
+ Projects each element of an observable sequence into 
+ consequtive non-overlapping buffers based on a sequence of boundary markers
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.both``2(System.IObservable{``0},System.IObservable{``1})">
+<summary>
+ Matches when both observable sequences have an available value
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.apply``2(System.IObservable{Microsoft.FSharp.Core.FSharpFunc{``0,``1}},System.IObservable{``0})">
+<summary>
+ Lifts the values of f and m and applies f to m, returning an IObservable of the result.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.bind``2(Microsoft.FSharp.Core.FSharpFunc{``0,System.IObservable{``1}},System.IObservable{``0})">
+<summary>
+ Binds an observable to generate a subsequent observable.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.asObservable``1(System.IObservable{``0})">
+<summary>
+ Hides the identy of an observable sequence 
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.any``1(System.IObservable{``0})">
+<summary>
+ Determines whether an observable sequence contains any elements
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.ambArray``1(System.IObservable{``0}[])">
+<summary>
+ Propagates the observable sequence that reacts first
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.ambSeq``1(System.Collections.Generic.IEnumerable{System.IObservable{``0}})">
+<summary>
+ Propagates the observable sequence that reacts first
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.amb``1(System.IObservable{``0},System.IObservable{``0})">
+<summary>
+ Returns the observable sequence that reacts first
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.all``1(Microsoft.FSharp.Core.FSharpFunc{``0,System.Boolean},System.IObservable{``0})">
+<summary>
+ Determines whether all elements of an observable satisfy a predicate
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.aggregate``1(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``0,``0}},System.IObservable{``0})">
+<summary>
+ Applies an accumulator function over an observable sequence, returning the 
+ result of the aggregation as a single element in the result sequence
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.IObservable`1.Subscribe``1(System.IObservable{``0},Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.Unit},Microsoft.FSharp.Core.FSharpFunc{System.Exception,Microsoft.FSharp.Core.Unit},Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Core.Unit,Microsoft.FSharp.Core.Unit})">
+<summary>
+ Subscribes to the Observable with all 3 callbacks.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.IObservable`1.Subscribe``1(System.IObservable{``0},Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.Unit},Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Core.Unit,Microsoft.FSharp.Core.Unit})">
+<summary>
+ Subscribes to the Observable with a next and a completion callback.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.IObservable`1.Subscribe``1(System.IObservable{``0},Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.Unit},Microsoft.FSharp.Core.FSharpFunc{System.Exception,Microsoft.FSharp.Core.Unit})">
+<summary>
+ Subscribes to the Observable with a next and an error-function.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.IObservable`1.Subscribe``1(System.IObservable{``0},Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.Unit})">
+<summary>
+ Subscribes to the Observable with just a next-function.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.Observable.Create.Static``1(Microsoft.FSharp.Core.FSharpFunc{System.IObserver{``0},System.IDisposable})">
+<summary>
+ Creates an observable sequence from the specified Subscribe method implementation.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.Observable.Create.Static``1(Microsoft.FSharp.Core.FSharpFunc{System.IObserver{``0},Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Core.Unit,Microsoft.FSharp.Core.Unit}})">
+<summary>
+ Creates an observable sequence from the specified Subscribe method implementation.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.Observer.Create.Static``1(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.Unit},Microsoft.FSharp.Core.FSharpFunc{System.Exception,Microsoft.FSharp.Core.Unit},Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Core.Unit,Microsoft.FSharp.Core.Unit})">
+<summary>
+ Creates an observer from the specified onNext, onError, and onCompleted functions.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.Observer.Create.Static``1(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.Unit},Microsoft.FSharp.Core.FSharpFunc{Microsoft.FSharp.Core.Unit,Microsoft.FSharp.Core.Unit})">
+<summary>
+ Creates an observer from the specified onNext and onCompleted functions.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.Observer.Create.Static``1(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.Unit},Microsoft.FSharp.Core.FSharpFunc{System.Exception,Microsoft.FSharp.Core.Unit})">
+<summary>
+ Creates an observer from the specified onNext and onError functions.
+</summary>
+</member>
+<member name="M:FSharp.Control.Reactive.ObservableModule.Observer.Create.Static``1(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.Unit})">
+<summary>
+ Creates an observer from the specified onNext function.
+</summary>
+</member>
+<member name="T:FSharp.Control.Reactive.ObservableModule">
+<summary>
+ The Reactive module provides operators for working with IObservable&lt;_&gt; in F#.
+</summary>
+</member>
+<member name="T:FSharp.Control.Reactive.BuildersModule.RxQueryBuilder">
+<summary>
+ A reactive query builder.
+ See http://mnajder.blogspot.com/2011/09/when-reactive-framework-meets-f-30.html
+</summary>
+</member>
+<member name="T:FSharp.Control.Reactive.BuildersModule.ObservableBuilder">
+<summary>
+ An Observable computation builder.
+</summary>
+</member>
+</members>
+</doc>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+<assembly><name>Functional.fs</name></assembly>
+<members>
+<member name="T:TaskEx.TaskResult`1.Successful">
+<summary>
+ Task completed successfully
+</summary>
+</member>
+<member name="T:TaskEx.TaskResult`1.Error">
+<summary>
+ Unhandled exception in task
+</summary>
+</member>
+<member name="T:TaskEx.TaskResult`1.Canceled">
+<summary>
+ Task was canceled
+</summary>
+</member>
+<member name="T:TaskEx.TaskResult`1">
+<summary>
+ Task result
+</summary>
+</member>
+<member name="M:TaskEx.op_LessMultiply``2(System.Threading.Tasks.Task{``0},System.Threading.Tasks.Task{``1})">
+<summary>
+ Sequence actions, discarding the value of the second argument.
+</summary>
+</member>
+<member name="M:TaskEx.op_MultiplyGreater``2(System.Threading.Tasks.Task{``0},System.Threading.Tasks.Task{``1})">
+<summary>
+ Sequence actions, discarding the value of the first argument.
+</summary>
+</member>
+<member name="M:TaskEx.op_LessBangGreater``2(Microsoft.FSharp.Core.FSharpFunc{``0,``1},System.Threading.Tasks.Task{``0})">
+<summary>
+ Infix map
+</summary>
+</member>
+<member name="M:TaskEx.op_LessMultiplyGreater``2(System.Threading.Tasks.Task{Microsoft.FSharp.Core.FSharpFunc{``0,``1}},System.Threading.Tasks.Task{``0})">
+<summary>
+ Sequential application
+</summary>
+</member>
+<member name="M:TaskEx.ap``2(System.Threading.Tasks.Task{``0},System.Threading.Tasks.Task{Microsoft.FSharp.Core.FSharpFunc{``0,``1}})">
+<summary>
+ Sequential application
+</summary>
+</member>
+<member name="M:TaskEx.lift2``3(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpFunc{``1,``2}},System.Threading.Tasks.Task{``0},System.Threading.Tasks.Task{``1})">
+<summary>
+ Promote a function to a monad/applicative, scanning the monadic/applicative arguments from left to right.
+</summary>
+</member>
+<member name="M:TaskEx.op_LessEqualsLess``4(Microsoft.FSharp.Core.FSharpFunc{``0,System.Threading.Tasks.Task{``1}})">
+<summary>
+ Right-to-left Kleisli composition
+</summary>
+</member>
+<member name="M:TaskEx.op_GreaterEqualsGreater``4(Microsoft.FSharp.Core.FSharpFunc{``0,``1},Microsoft.FSharp.Core.FSharpFunc{``2,System.Threading.Tasks.Task{``3}},``0)">
+<summary>
+ Left-to-right Kleisli composition
+</summary>
+</member>
+<member name="M:TaskEx.op_GreaterGreaterDot``2(System.Threading.Tasks.Task{``0},System.Threading.Tasks.Task{``1})">
+<summary>
+ Sequentially compose two either actions, discarding any value produced by the first
+</summary>
+</member>
+<member name="M:TaskEx.op_EqualsLessLess``2(Microsoft.FSharp.Core.FSharpFunc{``0,System.Threading.Tasks.Task{``1}},System.Threading.Tasks.Task{``0})">
+<summary>
+ Flipped &gt;&gt;=
+</summary>
+</member>
+<member name="M:TaskEx.op_GreaterGreaterEquals``2(System.Threading.Tasks.Task{``0},Microsoft.FSharp.Core.FSharpFunc{``0,System.Threading.Tasks.Task{``1}})">
+<summary>
+ Sequentially compose two actions, passing any value produced by the first as an argument to the second.
+</summary>
+</member>
+<member name="M:TaskEx.map``2(Microsoft.FSharp.Core.FSharpFunc{``0,``1},System.Threading.Tasks.Task{``0})">
+<summary>
+ Transforms a Task&apos;s first value by using a specified mapping function.
+</summary>
+</member>
+<member name="M:FunctionalConcurrency.Utilities.tee``2(Microsoft.FSharp.Core.FSharpFunc{``0,``1},``0)">
+<summary>
+ Given a value, apply a function to it, ignore the result, then return the original value.
+</summary>
+</member>
+<member name="M:FunctionalConcurrency.Async.tee``2(Microsoft.FSharp.Core.FSharpFunc{``0,``1},Microsoft.FSharp.Control.FSharpAsync{``0})">
+<summary>
+ Given a value, apply a function to it, ignore the result, then return the original value.
+</summary>
+</member>
+<member name="M:FunctionalConcurrency.AsyncEx.Async`1.StartCancelableDisposable.Static``1(Microsoft.FSharp.Control.FSharpAsync{Microsoft.FSharp.Core.Unit})">
+<summary>
+ Starts the specified operation using a new CancellationToken and returns
+ IDisposable object that cancels the computation.
+</summary>
+</member>
+<member name="M:Partitioner.splitByPartitionCountRange(System.Int32,System.Int64,System.Int64)">
+ <summary>
+     partitions an array into a predetermined number of uniformly sized chunks.
+ </summary>
+ <param name="partitions">number of partitions.</param>
+ <param name="input">Input array.</param>
+</member>
+</members>
+</doc>

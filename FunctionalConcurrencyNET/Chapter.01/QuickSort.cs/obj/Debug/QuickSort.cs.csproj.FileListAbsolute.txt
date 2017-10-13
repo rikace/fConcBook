@@ -1,0 +1,17 @@
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.01\QuickSort.cs\obj\Debug\QuickSort.cs.csproj.CoreCompileInputs.cache
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.01\QuickSort.cs\bin\Debug\QuickSort.cs.exe.config
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.01\QuickSort.cs\bin\Debug\QuickSort.cs.exe
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.01\QuickSort.cs\bin\Debug\QuickSort.cs.pdb
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.01\QuickSort.cs\bin\Debug\FSharp.Core.dll
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.01\QuickSort.cs\bin\Debug\Utilities.dll
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.01\QuickSort.cs\bin\Debug\PerfUtil.dll
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.01\QuickSort.cs\bin\Debug\FSharp.Charting.dll
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.01\QuickSort.cs\bin\Debug\Utilities.pdb
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.01\QuickSort.cs\bin\Debug\Utilities.xml
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.01\QuickSort.cs\bin\Debug\PerfUtil.pdb
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.01\QuickSort.cs\bin\Debug\PerfUtil.xml
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.01\QuickSort.cs\bin\Debug\FSharp.Charting.pdb
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.01\QuickSort.cs\bin\Debug\FSharp.Charting.xml
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.01\QuickSort.cs\obj\Debug\QuickSort.cs.csproj.QuickSort.cs.exe.config
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.01\QuickSort.cs\obj\Debug\QuickSort.cs.exe
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.01\QuickSort.cs\obj\Debug\QuickSort.cs.pdb

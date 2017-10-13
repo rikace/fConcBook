@@ -1,0 +1,11 @@
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.07\Pipeline.fs\bin\Debug\FsPipeline.XML
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.07\Pipeline.fs\bin\Debug\FsPipeline.fs.dll
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.07\Pipeline.fs\bin\Debug\FsPipeline.fs.pdb
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.07\Pipeline.fs\bin\Debug\FSharp.Core.dll
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.07\Pipeline.fs\bin\Debug\Functional.dll
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.07\Pipeline.fs\bin\Debug\Functional.pdb
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.07\Pipeline.fs\bin\Debug\Functional.dll.config
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.07\Pipeline.fs\obj\Debug\Pipeline.fs.fsprojResolveAssemblyReference.cache
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.07\Pipeline.fs\obj\Debug\Pipeline.fs.fsproj.CoreCompileInputs.cache
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.07\Pipeline.fs\obj\Debug\FsPipeline.fs.dll
+E:\GitHub\fConcBook\FunctionalConcurrencyNET\Chapter.07\Pipeline.fs\obj\Debug\FsPipeline.fs.pdb
