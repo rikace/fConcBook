@@ -47,7 +47,6 @@ namespace AsyncBlobCloud
                 using (
                         var fileStream = new FileStream(Path.Combine(folderPath, blobName), FileMode.Create,
                             FileAccess.Write, FileShare.Read, bufferSize, FileOptions.Asynchronous))
-                    // Whe file stream Async option
                 {
                     await blockBlob.DownloadToStreamAsync(fileStream, cancellationToken).ConfigureAwait(false);
                     fileStream.Close();
@@ -62,14 +61,14 @@ namespace AsyncBlobCloud
             var container = await Helpers.GetCloudBlobContainerAsync(cancellationToken);
             var blobs = container.ListBlobs();
 
-            // ***Create a query that, when executed, returns a collection of tasks.
+            // Create a query that, when executed, returns a collection of tasks.
             IEnumerable<Task> tasks =
                 blobs.Select(
                     blob =>
                         DownloadMedia(blob.Uri.Segments[blob.Uri.Segments.Length - 1], folderPath, cancellationToken));
 
 
-            // ***Use ToList to execute the query and start the tasks.
+            // Use ToList to execute the query and start the tasks.
             Task[] downloadTasks = tasks.ToArray();
 
 

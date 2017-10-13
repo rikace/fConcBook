@@ -188,15 +188,9 @@
   </Target>
   -->
   <ItemGroup>
-    <Compile Include="Infrastructure\Logging.fs" />
-    <Compile Include="Infrastructure\Functionality.fs" />
-    <Compile Include="Infrastructure\Validation.fs" />
     <Compile Include="Core\TradingAgent.fs" />
     <Compile Include="Core\TradingCoordinator.fs" />
-    <Compile Include="Core\StockMarket.fs" />
     <Compile Include="SignalR\StockTickerHub.fs" />
-    <Compile Include="EventSourcing\Events.fs" />
-    <Compile Include="EventSourcing\EventHandler.fs" />
     <Compile Include="Bus\PublishWithRetry.fs" />
     <Compile Include="Bus\CommandHandler.fs" />
     <Compile Include="Controllers\TradingController.fs" />
@@ -220,6 +214,11 @@
     <ProjectReference Include="..\StockTicker.Core\StockTicker.Core.fsproj">
       <Name>StockTicker.Core</Name>
       <Project>{7a23be9c-7ec8-44fa-ab0e-0c3ef3b1560e}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\StockTicker.Server.Common\StockTicker.Server.Common.fsproj">
+      <Name>StockTicker.Server.Common</Name>
+      <Project>{4444d004-6727-4fe4-ab2e-2447b9dff725}</Project>
       <Private>True</Private>
     </ProjectReference>
   </ItemGroup>

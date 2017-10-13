@@ -91,10 +91,6 @@
       <Project>{7c0d2eba-c0dc-4f72-a85d-766f3fb68e69}</Project>
       <Name>Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\RxNetwork\RxNetwork.fsproj">
-      <Project>{ccd8e21d-26d1-4ebb-81a8-d9d3fcfa9cd2}</Project>
-      <Name>RxNetwork</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

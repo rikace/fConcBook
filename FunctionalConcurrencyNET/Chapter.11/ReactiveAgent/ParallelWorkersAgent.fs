@@ -44,7 +44,10 @@ type AgentDisposable<'T>(f:MailboxProcessor<'T> -> Async<unit>,
                              cancelToken.Cancel()
 
 type AgentDisposable<'T> with
-    member this.reportErrorsTo (supervisor: Agent<exn>) =
+    //member this.withSupervisor (supervisor: Agent<exn>) (transform) =
+    //    this.Agent.Error.Add(fun error -> supervisor.Post(transform(error))); this
+
+    member this.withSupervisor (supervisor: Agent<exn>) =
         this.Agent.Error.Add(supervisor.Post); this
 
 
@@ -60,7 +63,7 @@ type MailboxProcessor<'a> with
         let agent = new MailboxProcessor<'a>((fun inbox ->
             let agents = Array.init workers (fun _ ->
                 (new AgentDisposable<'a>(behavior, cancelToken))
-                    .reportErrorsTo supervisor)
+                    .withSupervisor supervisor )
             thisletCancelToken.Register(fun () ->
                 agents |> Array.iter(fun agent -> (agent :> IDisposable).Dispose())
             ) |> ignore

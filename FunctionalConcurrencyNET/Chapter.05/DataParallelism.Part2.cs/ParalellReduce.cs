@@ -17,16 +17,20 @@ namespace DataParallelism.Part2.CSharp
     public static class ParalellMapReduce
     {
         // Listing 5.11 A parallel Reduce function implementation using Aggregate
-        public static TValue Reduce<TValue>(this ParallelQuery<TValue> source, Func<TValue, TValue, TValue> func) =>
+        public static TValue Reduce<TValue>(this ParallelQuery<TValue> source, Func<TValue, TValue, TValue> reduce) =>
 
             ParallelEnumerable.Aggregate(source, //#A
-          (item1, item2) => func(item1, item2)); //#B
+                    (item1, item2) => reduce(item1, item2)); //#B
 
 
-        public static TValue Reduce<TValue>(this IEnumerable<TValue> source, TValue seed, Func<TValue, TValue, TValue> reduce) =>
+        public static TValue Reduce<TValue>(this IEnumerable<TValue> source, TValue seed,
+            Func<TValue, TValue, TValue> reduce) =>
             source.AsParallel()
-            .Aggregate(seed, (local, value) => reduce(local, value),
-            (overall, local) => reduce(overall, local), overall => overall);
+                .Aggregate(
+                    seed: seed,
+                    updateAccumulatorFunc: (local, value) => reduce(local, value),
+                    combineAccumulatorsFunc: (overall, local) => reduce(overall, local),
+                    resultSelector: overall => overall);
 
         public static Func<Func<TSource, TSource, TSource>, TSource> Reduce<TSource>(this IEnumerable<TSource> source)
             => func => source.AsParallel().Aggregate((item1, item2) => func(item1, item2));

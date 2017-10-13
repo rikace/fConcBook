@@ -15,12 +15,29 @@ module AsyncResult =
     //Listing 10.13 Higher order function extending the AsyncResult type
     let retn (value:'a) : AsyncResult<'a> =  value |> Ok |> async.Return // #A
 
-    let map (selector : 'a -> 'b) (asyncResult : AsyncResult<'a>)  = async {
+    let map (selector : 'a -> Async<'b>) (asyncResult : AsyncResult<'a>) : AsyncResult<'b> = async {
         let! result = asyncResult
         match result with
-        | Ok x -> return selector x |> Ok
-        | Error err -> return (Error err)   }   // #B
+        | Ok x -> return! selector x |> handler  // #B
+        | Error err -> return (Error err)   }   // #C
 
+    let bind (selector : 'a -> AsyncResult<'b>) (asyncResult : AsyncResult<'a>) = async {
+        let! result = asyncResult
+        match result with
+        | Ok x -> return! selector x    // #B
+        | Error err -> return Error err    }    // #D
+
+    let bimap success failure operation = async {
+        let! result = operation
+        match result with
+        | Ok v -> return! success v |> handler   // #B
+        | Error x -> return! failure x |> handler }        // #E
+
+
+
+
+
+        // TODO
     let mapChoice (f:'a -> Result<'b>) (a:AsyncResult<'a>) : AsyncResult<'b> =
         a |> Async.map (function
             | Ok a' -> f a'
@@ -39,17 +56,8 @@ module AsyncResult =
         |> Async.Parallel
 
 
-    let bind (selector : 'a -> AsyncResult<'b>) (asyncResult : AsyncResult<'a>) = async {
-        let! result = asyncResult
-        match result with
-        | Ok x -> return! selector x
-        | Error err -> return Error err    }    // #C
 
-    let bimap success failure operation = async {
-        let! result = operation
-        match result with
-        | Ok v -> return! success v |> handler
-        | Error x -> return! failure x |> handler }        // #D
+
 
     let apply (ap : AsyncResult<'a -> 'b>) (asyncResult : AsyncResult<'a>) : AsyncResult<'b> = async {
         let! result = asyncResult |> Async.StartChild
@@ -65,6 +73,7 @@ module AsyncResult =
     let defaultValue value =
         Async.map (Result.defaultValue value)
 
+    // TODO             
     let inline EITHER (funcA:AsyncResult<'a>) (funcB:AsyncResult<'a>) : AsyncResult<'a> =
         let tcs = TaskCompletionSource()
         let reportResult =
@@ -168,7 +177,7 @@ module AsyncComb =
 
     //// funcA:Async<bool> -> funcB:Async<bool> -> Async<bool>
     let inline AND (funcA:Async<bool>) (funcB:Async<bool>) = ifAsync funcA funcB (async.Return false)
-    
+
     // funcA:Async<bool> -> funcB:Async<bool> -> Async<bool>
     let inline OR (funcA:Async<bool>) (funcB:Async<bool>) = ifAsync funcA (async.Return true) funcB
 
@@ -202,7 +211,7 @@ module AsyncResultCombinators =
         asyncResult {
             let! rA = funcA
             match rA with
-            | true -> return! funcB 
+            | true -> return! funcB
             | false -> return false
         }
 

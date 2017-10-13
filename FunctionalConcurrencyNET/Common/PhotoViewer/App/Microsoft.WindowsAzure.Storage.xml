@@ -2830,7 +2830,7 @@
             <summary>
             Deletes the blob.
             </summary>
-            <param name="deleteSnapshotsOption">Whether to only delete the blob, to delete the blob and all snapshots, or to only delete the snapshots.</param>
+            <param name="deleteSnapshotsOption">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.DeleteSnapshotsOption"/> object indicating whether to only delete the blob, to delete the blob and all snapshots, or to only delete the snapshots.</param>
             <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the condition that must be met in order for the request to proceed. If <c>null</c>, no condition is used.</param>
             <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request. If <c>null</c>, default options are applied to the request.</param>
             <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
@@ -2847,7 +2847,7 @@
             <summary>
             Begins an asynchronous operation to delete the blob.
             </summary>
-            <param name="deleteSnapshotsOption">Whether to only delete the blob, to delete the blob and all snapshots, or to only delete the snapshots.</param>
+            <param name="deleteSnapshotsOption">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.DeleteSnapshotsOption"/> object indicating whether to only delete the blob, to delete the blob and all snapshots, or to only delete the snapshots.</param>
             <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the condition that must be met in order for the request to proceed. If <c>null</c>, no condition is used.</param>
             <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request.</param>
             <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
@@ -2878,7 +2878,7 @@
             <summary>
             Initiates an asynchronous operation to delete the blob.
             </summary>
-            <param name="deleteSnapshotsOption">Whether to only delete the blob, to delete the blob and all snapshots, or to only delete the snapshots.</param>
+            <param name="deleteSnapshotsOption">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.DeleteSnapshotsOption"/> object indicating whether to only delete the blob, to delete the blob and all snapshots, or to only delete the snapshots.</param>
             <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the condition that must be met in order for the request to proceed. If <c>null</c>, no condition is used.</param>
             <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request.</param>
             <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
@@ -2888,7 +2888,7 @@
             <summary>
             Initiates an asynchronous operation to delete the blob.
             </summary>
-            <param name="deleteSnapshotsOption">Whether to only delete the blob, to delete the blob and all snapshots, or to only delete the snapshots.</param>
+            <param name="deleteSnapshotsOption">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.DeleteSnapshotsOption"/> object indicating whether to only delete the blob, to delete the blob and all snapshots, or to only delete the snapshots.</param>
             <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the condition that must be met in order for the request to proceed. If <c>null</c>, no condition is used.</param>
             <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request.</param>
             <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
@@ -2899,7 +2899,7 @@
             <summary>
             Deletes the blob if it already exists.
             </summary>
-            <param name="deleteSnapshotsOption">Whether to only delete the blob, to delete the blob and all snapshots, or to only delete the snapshots.</param>
+            <param name="deleteSnapshotsOption">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.DeleteSnapshotsOption"/> object indicating whether to only delete the blob, to delete the blob and all snapshots, or to only delete the snapshots.</param>
             <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the condition that must be met in order for the request to proceed. If <c>null</c>, no condition is used.</param>
             <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request. If <c>null</c>, default options are applied to the request.</param>
             <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
@@ -2917,7 +2917,7 @@
             <summary>
             Begins an asynchronous request to delete the blob if it already exists.
             </summary>
-            <param name="deleteSnapshotsOption">Whether to only delete the blob, to delete the blob and all snapshots, or to only delete the snapshots.</param>
+            <param name="deleteSnapshotsOption">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.DeleteSnapshotsOption"/> object indicating whether to only delete the blob, to delete the blob and all snapshots, or to only delete the snapshots.</param>
             <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the condition that must be met in order for the request to proceed. If <c>null</c>, no condition is used.</param>
             <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request.</param>
             <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
@@ -2949,7 +2949,7 @@
             <summary>
             Initiates an asynchronous operation to delete the blob if it already exists.
             </summary>
-            <param name="deleteSnapshotsOption">Whether to only delete the blob, to delete the blob and all snapshots, or to only delete the snapshots.</param>
+            <param name="deleteSnapshotsOption">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.DeleteSnapshotsOption"/> object indicating whether to only delete the blob, to delete the blob and all snapshots, or to only delete the snapshots.</param>
             <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the condition that must be met in order for the request to proceed. If <c>null</c>, no condition is used.</param>
             <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request.</param>
             <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
@@ -2959,7 +2959,7 @@
             <summary>
             Initiates an asynchronous operation to delete the blob if it already exists.
             </summary>
-            <param name="deleteSnapshotsOption">Whether to only delete the blob, to delete the blob and all snapshots, or to only delete the snapshots.</param>
+            <param name="deleteSnapshotsOption">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.DeleteSnapshotsOption"/> object indicating whether to only delete the blob, to delete the blob and all snapshots, or to only delete the snapshots.</param>
             <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the condition that must be met in order for the request to proceed. If <c>null</c>, no condition is used.</param>
             <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request.</param>
             <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
@@ -3377,6 +3377,22 @@
             The copy ID and copy status fields are fetched, and the rest of the copy state is cleared.
             </remarks>
         </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudBlob.StartCopy(System.Uri,System.Nullable{Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier},Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext)">
+            <summary>
+            Begins an operation to start copying another blob's contents, properties, and metadata to this blob.
+            </summary>
+            <param name="source">The <see cref="T:System.Uri"/> of the source blob.</param>
+            <param name="premiumPageBlobTier">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier"/> representing the tier to set.</param>
+            <param name="sourceAccessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the access conditions for the source blob. If <c>null</c>, no condition is used.</param>
+            <param name="destAccessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the access conditions for the destination blob. If <c>null</c>, no condition is used.</param>
+            <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request. If <c>null</c>, default options are applied to the request.</param>
+            <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
+            <returns>The copy ID associated with the copy operation.</returns>
+            <remarks>
+            This method fetches the blob's ETag, last-modified time, and part of the copy state.
+            The copy ID and copy status fields are fetched, and the rest of the copy state is cleared.
+            </remarks>
+        </member>
         <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudBlob.BeginStartCopy(System.Uri,System.AsyncCallback,System.Object)">
             <summary>
             Begins an asynchronous operation to start copying another blob's contents, properties, and metadata to this blob.
@@ -3391,6 +3407,20 @@
             Begins an asynchronous operation to start copying another blob's contents, properties, and metadata to this blob.
             </summary>
             <param name="source">The <see cref="T:System.Uri"/> of the source blob.</param>
+            <param name="sourceAccessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the access conditions for the source blob. If <c>null</c>, no condition is used.</param>
+            <param name="destAccessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the access conditions for the destination blob. If <c>null</c>, no condition is used.</param>
+            <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request.</param>
+            <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
+            <param name="callback">An <see cref="T:System.AsyncCallback"/> delegate that will receive notification when the asynchronous operation completes.</param>
+            <param name="state">A user-defined object that will be passed to the callback delegate.</param>
+            <returns>An <see cref="T:Microsoft.WindowsAzure.Storage.ICancellableAsyncResult"/> that references the asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudBlob.BeginStartCopy(System.Uri,System.Nullable{Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier},Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext,System.AsyncCallback,System.Object)">
+            <summary>
+            Begins an asynchronous operation to start copying another blob's contents, properties, and metadata to this blob.
+            </summary>
+            <param name="source">The <see cref="T:System.Uri"/> of the source blob.</param>
+            <param name="premiumPageBlobTier">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier"/> representing the tier to set.</param>
             <param name="sourceAccessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the access conditions for the source blob. If <c>null</c>, no condition is used.</param>
             <param name="destAccessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the access conditions for the destination blob. If <c>null</c>, no condition is used.</param>
             <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request.</param>
@@ -3658,7 +3688,7 @@
             Implements the DeleteBlob method.
             </summary>
             <param name="blobAttributes">The attributes.</param>
-            <param name="deleteSnapshotsOption">Whether to only delete the blob, to delete the blob and all snapshots, or to only delete the snapshots.</param>
+            <param name="deleteSnapshotsOption">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.DeleteSnapshotsOption"/> object indicating whether to only delete the blob, to delete the blob and all snapshots, or to only delete the snapshots.</param>
             <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the condition that must be met in order for the request to proceed. If <c>null</c>, no condition is used.</param>
             <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request.</param>
             <returns>
@@ -3730,13 +3760,14 @@
             A <see cref="T:Microsoft.WindowsAzure.Storage.Core.Executor.RESTCommand`1"/> implementing the break lease operation.
             </returns>
         </member>
-        <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudBlob.StartCopyImpl(Microsoft.WindowsAzure.Storage.Blob.BlobAttributes,System.Uri,System.Boolean,Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions)">
+        <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudBlob.StartCopyImpl(Microsoft.WindowsAzure.Storage.Blob.BlobAttributes,System.Uri,System.Boolean,System.Nullable{Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier},Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions)">
             <summary>
             Implementation of the StartCopy method. Result is a BlobAttributes object derived from the response headers.
             </summary>
             <param name="blobAttributes">The attributes.</param>
             <param name="source">The URI of the source blob.</param>
             <param name="incrementalCopy">A boolean indicating whether or not this is an incremental copy</param>
+            <param name="premiumPageBlobTier">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier"/> representing the tier to set.</param>
             <param name="sourceAccessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the access conditions for the source object. If <c>null</c>, no condition is used.</param>
             <param name="destAccessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the access conditions for the destination blob. If <c>null</c>, no condition is used.</param>
             <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request.</param>
@@ -3819,13 +3850,6 @@
             </summary>
             <param name="source">The source blob.</param>
             <returns>A URI addressing the source blob, using SAS if appropriate.</returns>
-        </member>
-        <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudBlob.ParseServerRequestEncrypted(System.Net.HttpWebResponse)">
-            <summary>
-            Parses the server request encrypted response header.
-            </summary>
-            <param name="response">Response to be parsed.</param>
-            <returns><c>true</c> if write content was encrypted by service or <c>false</c> if not.</returns>
         </member>
         <member name="F:Microsoft.WindowsAzure.Storage.Blob.CloudBlob.streamMinimumReadSizeInBytes">
             <summary>
@@ -5161,7 +5185,7 @@
             <summary>
             Deletes the blob.
             </summary>
-            <param name="deleteSnapshotsOption">Whether to only delete the blob, to delete the blob and all snapshots, or to only delete the snapshots.</param>
+            <param name="deleteSnapshotsOption">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.DeleteSnapshotsOption"/> object indicating whether to only delete the blob, to delete the blob and all snapshots, or to only delete the snapshots.</param>
             <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the condition that must be met in order for the request to proceed.</param>
             <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request. If <c>null</c>, default options are applied to the request.</param>
             <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
@@ -5178,7 +5202,7 @@
             <summary>
             Begins an asynchronous operation to delete the blob.
             </summary>
-            <param name="deleteSnapshotsOption">Whether to only delete the blob, to delete the blob and all snapshots, or to only delete the snapshots.</param>
+            <param name="deleteSnapshotsOption">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.DeleteSnapshotsOption"/> object indicating whether to only delete the blob, to delete the blob and all snapshots, or to only delete the snapshots.</param>
             <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the condition that must be met in order for the request to proceed.</param>
             <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request.</param>
             <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
@@ -5209,7 +5233,7 @@
             <summary>
             Initiates an asynchronous operation to delete the blob.
             </summary>
-            <param name="deleteSnapshotsOption">Whether to only delete the blob, to delete the blob and all snapshots, or to only delete the snapshots.</param>
+            <param name="deleteSnapshotsOption">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.DeleteSnapshotsOption"/> object indicating whether to only delete the blob, to delete the blob and all snapshots, or to only delete the snapshots.</param>
             <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the condition that must be met in order for the request to proceed.</param>
             <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request.</param>
             <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
@@ -5219,7 +5243,7 @@
             <summary>
             Initiates an asynchronous operation to delete the blob.
             </summary>
-            <param name="deleteSnapshotsOption">Whether to only delete the blob, to delete the blob and all snapshots, or to only delete the snapshots.</param>
+            <param name="deleteSnapshotsOption">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.DeleteSnapshotsOption"/> object indicating whether to only delete the blob, to delete the blob and all snapshots, or to only delete the snapshots.</param>
             <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the condition that must be met in order for the request to proceed.</param>
             <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request.</param>
             <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
@@ -5230,7 +5254,7 @@
             <summary>
             Deletes the blob if it already exists.
             </summary>
-            <param name="deleteSnapshotsOption">Whether to only delete the blob, to delete the blob and all snapshots, or to only delete the snapshots.</param>
+            <param name="deleteSnapshotsOption">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.DeleteSnapshotsOption"/> object indicating whether to only delete the blob, to delete the blob and all snapshots, or to only delete the snapshots.</param>
             <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the condition that must be met in order for the request to proceed.</param>
             <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request. If <c>null</c>, default options are applied to the request.</param>
             <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
@@ -5248,7 +5272,7 @@
             <summary>
             Begins an asynchronous request to delete the blob if it already exists.
             </summary>
-            <param name="deleteSnapshotsOption">Whether to only delete the blob, to delete the blob and all snapshots, or to only delete the snapshots.</param>
+            <param name="deleteSnapshotsOption">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.DeleteSnapshotsOption"/> object indicating whether to only delete the blob, to delete the blob and all snapshots, or to only delete the snapshots.</param>
             <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the condition that must be met in order for the request to proceed.</param>
             <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request.</param>
             <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
@@ -5280,7 +5304,7 @@
             <summary>
             Initiates an asynchronous operation to delete the blob if it already exists.
             </summary>
-            <param name="deleteSnapshotsOption">Whether to only delete the blob, to delete the blob and all snapshots, or to only delete the snapshots.</param>
+            <param name="deleteSnapshotsOption">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.DeleteSnapshotsOption"/> object indicating whether to only delete the blob, to delete the blob and all snapshots, or to only delete the snapshots.</param>
             <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the condition that must be met in order for the request to proceed.</param>
             <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request.</param>
             <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
@@ -5290,7 +5314,7 @@
             <summary>
             Initiates an asynchronous operation to delete the blob if it already exists.
             </summary>
-            <param name="deleteSnapshotsOption">Whether to only delete the blob, to delete the blob and all snapshots, or to only delete the snapshots.</param>
+            <param name="deleteSnapshotsOption">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.DeleteSnapshotsOption"/> object indicating whether to only delete the blob, to delete the blob and all snapshots, or to only delete the snapshots.</param>
             <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the condition that must be met in order for the request to proceed.</param>
             <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request.</param>
             <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
@@ -10926,6 +10950,78 @@
             to <c>null</c>, then the client library will calculate the MD5 value internally.
             </remarks>
         </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudBlockBlob.SetStandardBlobTier(Microsoft.WindowsAzure.Storage.Blob.StandardBlobTier,Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext)">
+            <summary>
+            Sets the tier of the blob on a standard storage account.
+            </summary>
+            <param name="standardBlobTier">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.StandardBlobTier"/> representing the tier to set.</param>
+            <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the condition that must be met in order for the request to proceed. If <c>null</c>, no condition is used.</param>
+            <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request, or <c>null</c>. If <c>null</c>, default options are applied to the request.</param>
+            <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudBlockBlob.BeginSetStandardBlobTier(Microsoft.WindowsAzure.Storage.Blob.StandardBlobTier,System.AsyncCallback,System.Object)">
+            <summary>
+            Begins an asynchronous operation to set the tier of the blob on a standard storage account.
+            </summary>
+            <param name="standardBlobTier">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.StandardBlobTier"/> representing the tier to set.</param>
+            <param name="callback">An <see cref="T:System.AsyncCallback"/> delegate that will receive notification when the asynchronous operation completes.</param>
+            <param name="state">A user-defined object that will be passed to the callback delegate.</param>
+            <returns>An <see cref="T:Microsoft.WindowsAzure.Storage.ICancellableAsyncResult"/> that references the asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudBlockBlob.BeginSetStandardBlobTier(Microsoft.WindowsAzure.Storage.Blob.StandardBlobTier,Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext,System.AsyncCallback,System.Object)">
+            <summary>
+            Begins an asynchronous operation to set the tier of the blob on a standard storage account.
+            </summary>
+            <param name="standardBlobTier">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.StandardBlobTier"/> representing the tier to set.</param>
+            <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the condition that must be met in order for the request to proceed. If <c>null</c>, no condition is used.</param>
+            <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request, or <c>null</c>.</param>
+            <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
+            <param name="callback">An <see cref="T:System.AsyncCallback"/> delegate that will receive notification when the asynchronous operation completes.</param>
+            <param name="state">A user-defined object that will be passed to the callback delegate.</param>
+            <returns>An <see cref="T:Microsoft.WindowsAzure.Storage.ICancellableAsyncResult"/> that references the asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudBlockBlob.EndSetStandardBlobTier(System.IAsyncResult)">
+            <summary>
+            Ends an asynchronous operation to set the tier of the blob on a standard storage account.
+            </summary>
+            <param name="asyncResult">An <see cref="T:System.IAsyncResult"/> that references the pending asynchronous operation.</param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudBlockBlob.SetStandardBlobTierAsync(Microsoft.WindowsAzure.Storage.Blob.StandardBlobTier)">
+            <summary>
+            Initiates an asynchronous operation to set the tier of the blob on a standard storage account.
+            </summary>
+            <param name="standardBlobTier">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.StandardBlobTier"/> representing the tier to set.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> object that represents the asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudBlockBlob.SetStandardBlobTierAsync(Microsoft.WindowsAzure.Storage.Blob.StandardBlobTier,System.Threading.CancellationToken)">
+            <summary>
+            Initiates an asynchronous operation to set the tier of the blob on a standard storage account.
+            </summary>
+            <param name="standardBlobTier">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.StandardBlobTier"/> representing the tier to set.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> to observe while waiting for a task to complete.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> object that represents the asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudBlockBlob.SetStandardBlobTierAsync(Microsoft.WindowsAzure.Storage.Blob.StandardBlobTier,Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext)">
+            <summary>
+            Initiates an asynchronous operation to set the tier of the blob on a standard storage account.
+            </summary>
+            <param name="standardBlobTier">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.StandardBlobTier"/> representing the tier to set.</param>
+            <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the condition that must be met in order for the request to proceed. If <c>null</c>, no condition is used.</param>
+            <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request.</param>
+            <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> object that represents the asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudBlockBlob.SetStandardBlobTierAsync(Microsoft.WindowsAzure.Storage.Blob.StandardBlobTier,Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext,System.Threading.CancellationToken)">
+            <summary>
+            Initiates an asynchronous operation to set the tier of the blob on a standard storage account.
+            </summary>
+            <param name="standardBlobTier">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.StandardBlobTier"/> representing the tier to set.</param>
+            <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the condition that must be met in order for the request to proceed. If <c>null</c>, no condition is used.</param>
+            <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request.</param>
+            <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> to observe while waiting for a task to complete.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> object that represents the asynchronous operation.</returns>
+        </member>
         <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudBlockBlob.StartCopy(Microsoft.WindowsAzure.Storage.File.CloudFile,Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext)">
             <summary>
             Begins an operation to start copying an Azure file's contents, properties, and metadata to this block blob.
@@ -11340,6 +11436,15 @@
             <returns>A <see cref="T:Microsoft.WindowsAzure.Storage.Core.Executor.RESTCommand`1"/> that creates the snapshot.</returns>
             <remarks>If the <c>metadata</c> parameter is <c>null</c> then no metadata is associated with the request.</remarks>
         </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudBlockBlob.SetStandardBlobTierImpl(Microsoft.WindowsAzure.Storage.Blob.StandardBlobTier,Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions)">
+            <summary>
+            Implementation method for the SetBlobTier methods.
+            </summary>
+            <param name="standardBlobTier">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.StandardBlobTier"/> representing the tier to set.</param>
+            <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the condition that must be met in order for the request to proceed. If <c>null</c>, no condition is used.</param>
+            <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request.</param>
+            <returns>A <see cref="T:Microsoft.WindowsAzure.Storage.Core.Executor.RESTCommand`1"/> that sets the blob tier.</returns>
+        </member>
         <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudBlockBlob.ContinueOpenWriteOnFailure(Microsoft.WindowsAzure.Storage.StorageException,Microsoft.WindowsAzure.Storage.AccessCondition)">
             <summary>
             Helper method to determine whether we should continue with an OpenWrite operation.
@@ -11450,6 +11555,7 @@
             </summary>
             <param name="streamLength">The length of the stream.</param>
         </member>
+        <!-- Badly formed XML comment ignored for member "M:Microsoft.WindowsAzure.Storage.Blob.CloudBlockBlob.GenerateExceptionForConflictFailure" -->
         <member name="P:Microsoft.WindowsAzure.Storage.Blob.CloudBlockBlob.StreamWriteSizeInBytes">
             <summary>
             Gets or sets the block size for writing to a block blob.
@@ -11486,6 +11592,24 @@
             object generated using <see cref="M:Microsoft.WindowsAzure.Storage.AccessCondition.GenerateIfNotExistsCondition"/>.</para>
             </remarks>
         </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob.OpenWrite(System.Nullable{System.Int64},System.Nullable{Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier},Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext)">
+            <summary>
+            Opens a stream for writing to the blob. If the blob already exists, then existing data in the blob may be overwritten.
+            </summary>
+            <param name="size">The size of the page blob, in bytes. The size must be a multiple of 512. If <c>null</c>, the page blob must already exist.</param>
+            <param name="premiumPageBlobTier">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier"/> representing the tier to set.</param>
+            <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the condition that must be met in order for the request to proceed. If <c>null</c>, no condition is used.</param>
+            <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request. If <c>null</c>, default options are applied to the request.</param>
+            <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
+            <returns>A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.CloudBlobStream"/> object.</returns>
+            <remarks>
+            <para>Note that this method always makes a call to the <see cref="M:Microsoft.WindowsAzure.Storage.Blob.CloudBlob.FetchAttributes(Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext)"/> method under the covers.</para>
+            <para>Set the <see cref="P:Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob.StreamWriteSizeInBytes"/> property before calling this method to specify the block size to write, in bytes, 
+            ranging from between 16 KB and 4 MB inclusive.</para>
+            <para>To throw an exception if the blob exists instead of overwriting it, pass in an <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/>
+            object generated using <see cref="M:Microsoft.WindowsAzure.Storage.AccessCondition.GenerateIfNotExistsCondition"/>.</para>
+            </remarks>
+        </member>
         <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob.BeginOpenWrite(System.Nullable{System.Int64},System.AsyncCallback,System.Object)">
             <summary>
             Begins an asynchronous operation to open a stream for writing to the blob. If the blob already exists, then existing data in the blob may be overwritten.
@@ -11506,6 +11630,26 @@
             Begins an asynchronous operation to open a stream for writing to the blob. If the blob already exists, then existing data in the blob may be overwritten.
             </summary>
             <param name="size">The size of the page blob, in bytes. The size must be a multiple of 512. If <c>null</c>, the page blob must already exist.</param>
+            <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the condition that must be met in order for the request to proceed. If <c>null</c>, no condition is used.</param>
+            <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request.</param>
+            <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
+            <param name="callback">An <see cref="T:System.AsyncCallback"/> delegate that will receive notification when the asynchronous operation completes.</param>
+            <param name="state">A user-defined object that will be passed to the callback delegate.</param>
+            <returns>An <see cref="T:Microsoft.WindowsAzure.Storage.ICancellableAsyncResult"/> that references the asynchronous operation.</returns>
+            <remarks>
+            <para>Note that this method always makes a call to the <see cref="M:Microsoft.WindowsAzure.Storage.Blob.CloudBlob.BeginFetchAttributes(Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext,System.AsyncCallback,System.Object)"/> method under the covers.</para>
+            <para>Set the <see cref="P:Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob.StreamWriteSizeInBytes"/> property before calling this method to specify the page size to write, in multiples of 512 bytes, 
+            ranging from between 512 and 4 MB inclusive.</para>
+            <para>To throw an exception if the blob exists instead of overwriting it, pass in an <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/>
+            object generated using <see cref="M:Microsoft.WindowsAzure.Storage.AccessCondition.GenerateIfNotExistsCondition"/>.</para>
+            </remarks>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob.BeginOpenWrite(System.Nullable{System.Int64},System.Nullable{Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier},Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext,System.AsyncCallback,System.Object)">
+            <summary>
+            Begins an asynchronous operation to open a stream for writing to the blob. If the blob already exists, then existing data in the blob may be overwritten.
+            </summary>
+            <param name="size">The size of the page blob, in bytes. The size must be a multiple of 512. If <c>null</c>, the page blob must already exist.</param>
+            <param name="premiumPageBlobTier">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier"/> representing the tier to set.</param>
             <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the condition that must be met in order for the request to proceed. If <c>null</c>, no condition is used.</param>
             <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request.</param>
             <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
@@ -11598,6 +11742,16 @@
             <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request. If <c>null</c>, default options are applied to the request.</param>
             <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
         </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob.UploadFromStream(System.IO.Stream,System.Nullable{Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier},Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext)">
+            <summary>
+            Uploads a stream to a page blob. If the blob already exists, it will be overwritten.
+            </summary>
+            <param name="source">A <see cref="T:System.IO.Stream"/> object providing the blob content.</param>
+            <param name="premiumPageBlobTier">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier"/> representing the tier to set.</param>
+            <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the condition that must be met in order for the request to proceed. If <c>null</c>, no condition is used.</param>
+            <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request. If <c>null</c>, default options are applied to the request.</param>
+            <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
+        </member>
         <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob.UploadFromStream(System.IO.Stream,System.Int64,Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext)">
             <summary>
             Uploads a stream to a page blob. If the blob already exists, it will be overwritten.
@@ -11608,12 +11762,24 @@
             <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request. If <c>null</c>, default options are applied to the request.</param>
             <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
         </member>
-        <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob.UploadFromStreamHelper(System.IO.Stream,System.Nullable{System.Int64},Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext)">
+        <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob.UploadFromStream(System.IO.Stream,System.Int64,System.Nullable{Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier},Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext)">
             <summary>
             Uploads a stream to a page blob. If the blob already exists, it will be overwritten.
             </summary>
             <param name="source">A <see cref="T:System.IO.Stream"/> object providing the blob content.</param>
             <param name="length">The number of bytes to write from the source stream at its current position.</param>
+            <param name="premiumPageBlobTier">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier"/> representing the tier to set.</param>
+            <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the condition that must be met in order for the request to proceed. If <c>null</c>, no condition is used.</param>
+            <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request. If <c>null</c>, default options are applied to the request.</param>
+            <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob.UploadFromStreamHelper(System.IO.Stream,System.Nullable{System.Int64},System.Nullable{Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier},Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext)">
+            <summary>
+            Uploads a stream to a page blob. If the blob already exists, it will be overwritten.
+            </summary>
+            <param name="source">A <see cref="T:System.IO.Stream"/> object providing the blob content.</param>
+            <param name="length">The number of bytes to write from the source stream at its current position.</param>
+            <param name="premiumPageBlobTier">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier"/> representing the tier to set.</param>
             <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the condition that must be met in order for the request to proceed. If <c>null</c>, no condition is used.</param>
             <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request.</param>
             <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
@@ -11632,6 +11798,19 @@
             Begins an asynchronous operation to upload a stream to a page blob. If the blob already exists, it will be overwritten.
             </summary>
             <param name="source">A <see cref="T:System.IO.Stream"/> object providing the blob content.</param>
+            <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the condition that must be met in order for the request to proceed. If <c>null</c>, no condition is used.</param>
+            <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request.</param>
+            <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
+            <param name="callback">An <see cref="T:System.AsyncCallback"/> delegate that will receive notification when the asynchronous operation completes.</param>
+            <param name="state">A user-defined object that will be passed to the callback delegate.</param>
+            <returns>An <see cref="T:Microsoft.WindowsAzure.Storage.ICancellableAsyncResult"/> that references the asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob.BeginUploadFromStream(System.IO.Stream,System.Nullable{Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier},Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext,System.AsyncCallback,System.Object)">
+            <summary>
+            Begins an asynchronous operation to upload a stream to a page blob. If the blob already exists, it will be overwritten.
+            </summary>
+            <param name="source">A <see cref="T:System.IO.Stream"/> object providing the blob content.</param>
+            <param name="premiumPageBlobTier">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier"/> representing the tier to set.</param>
             <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the condition that must be met in order for the request to proceed. If <c>null</c>, no condition is used.</param>
             <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request.</param>
             <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
@@ -11662,12 +11841,27 @@
             <param name="state">A user-defined object that will be passed to the callback delegate.</param>
             <returns>An <see cref="T:Microsoft.WindowsAzure.Storage.ICancellableAsyncResult"/> that references the asynchronous operation.</returns>
         </member>
-        <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob.BeginUploadFromStreamHelper(System.IO.Stream,System.Nullable{System.Int64},Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext,System.AsyncCallback,System.Object)">
+        <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob.BeginUploadFromStream(System.IO.Stream,System.Int64,System.Nullable{Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier},Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext,System.AsyncCallback,System.Object)">
             <summary>
             Begins an asynchronous operation to upload a stream to a page blob. If the blob already exists, it will be overwritten.
             </summary>
             <param name="source">A <see cref="T:System.IO.Stream"/> object providing the blob content.</param>
             <param name="length">Specifies the number of bytes from the Stream source to upload from the start position.</param>
+            <param name="premiumPageBlobTier">A <see cref="!:PageBlobTier"/> representing the tier to set.</param>
+            <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the condition that must be met in order for the request to proceed. If <c>null</c>, no condition is used.</param>
+            <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request.</param>
+            <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
+            <param name="callback">An <see cref="T:System.AsyncCallback"/> delegate that will receive notification when the asynchronous operation completes.</param>
+            <param name="state">A user-defined object that will be passed to the callback delegate.</param>
+            <returns>An <see cref="T:Microsoft.WindowsAzure.Storage.ICancellableAsyncResult"/> that references the asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob.BeginUploadFromStreamHelper(System.IO.Stream,System.Nullable{System.Int64},System.Nullable{Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier},Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext,System.AsyncCallback,System.Object)">
+            <summary>
+            Begins an asynchronous operation to upload a stream to a page blob. If the blob already exists, it will be overwritten.
+            </summary>
+            <param name="source">A <see cref="T:System.IO.Stream"/> object providing the blob content.</param>
+            <param name="length">Specifies the number of bytes from the Stream source to upload from the start position.</param>
+            <param name="premiumPageBlobTier">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier"/> representing the tier to set.</param>
             <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the condition that must be met in order for the request to proceed. If <c>null</c>, no condition is used.</param>
             <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request.</param>
             <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
@@ -11717,6 +11911,18 @@
             <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> to observe while waiting for a task to complete.</param>
             <returns>A <see cref="T:System.Threading.Tasks.Task"/> object that represents the asynchronous operation.</returns>
         </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob.UploadFromStreamAsync(System.IO.Stream,System.Nullable{Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier},Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext,System.Threading.CancellationToken)">
+            <summary>
+            Initiates an asynchronous operation to upload a stream to a page blob. If the blob already exists, it will be overwritten.
+            </summary>
+            <param name="source">A <see cref="T:System.IO.Stream"/> object providing the blob content.</param>
+            <param name="premiumPageBlobTier">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier"/> representing the tier to set.</param>
+            <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the condition that must be met in order for the request to proceed. If <c>null</c>, no condition is used.</param>
+            <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request.</param>
+            <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> to observe while waiting for a task to complete.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> object that represents the asynchronous operation.</returns>
+        </member>
         <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob.UploadFromStreamAsync(System.IO.Stream,System.Int64)">
             <summary>
             Initiates an asynchronous operation to upload a stream to a page blob. If the blob already exists, it will be overwritten.
@@ -11757,11 +11963,34 @@
             <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> to observe while waiting for a task to complete.</param>
             <returns>A <see cref="T:System.Threading.Tasks.Task"/> object that represents the asynchronous operation.</returns>
         </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob.UploadFromStreamAsync(System.IO.Stream,System.Int64,System.Nullable{Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier},Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext,System.Threading.CancellationToken)">
+            <summary>
+            Initiates an asynchronous operation to upload a stream to a page blob. If the blob already exists, it will be overwritten.
+            </summary>
+            <param name="source">A <see cref="T:System.IO.Stream"/> object providing the blob content.</param>
+            <param name="length">The number of bytes to write from the source stream at its current position.</param>
+            <param name="premiumPageBlobTier">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier"/> representing the tier to set.</param>
+            <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the condition that must be met in order for the request to proceed. If <c>null</c>, no condition is used.</param>
+            <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request.</param>
+            <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> to observe while waiting for a task to complete.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> object that represents the asynchronous operation.</returns>
+        </member>
         <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob.UploadFromFile(System.String,Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext)">
             <summary>
             Uploads a file to a page blob. If the blob already exists, it will be overwritten.
             </summary>
             <param name="path">A string containing the file path providing the blob content.</param>
+            <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the condition that must be met in order for the request to proceed.</param>
+            <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request. If <c>null</c>, default options are applied to the request.</param>
+            <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob.UploadFromFile(System.String,System.Nullable{Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier},Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext)">
+            <summary>
+            Uploads a file to a page blob. If the blob already exists, it will be overwritten.
+            </summary>
+            <param name="path">A string containing the file path providing the blob content.</param>
+            <param name="premiumPageBlobTier">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier"/> representing the tier to set.</param>
             <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the condition that must be met in order for the request to proceed.</param>
             <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request. If <c>null</c>, default options are applied to the request.</param>
             <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
@@ -11780,6 +12009,19 @@
             Begins an asynchronous operation to upload a file to a page blob. If the blob already exists, it will be overwritten.
             </summary>
             <param name="path">A string containing the file path providing the blob content.</param>
+            <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the condition that must be met in order for the request to proceed.</param>
+            <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request.</param>
+            <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
+            <param name="callback">An <see cref="T:System.AsyncCallback"/> delegate that will receive notification when the asynchronous operation completes.</param>
+            <param name="state">A user-defined object that will be passed to the callback delegate.</param>
+            <returns>An <see cref="T:Microsoft.WindowsAzure.Storage.ICancellableAsyncResult"/> that references the asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob.BeginUploadFromFile(System.String,System.Nullable{Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier},Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext,System.AsyncCallback,System.Object)">
+            <summary>
+            Begins an asynchronous operation to upload a file to a page blob. If the blob already exists, it will be overwritten.
+            </summary>
+            <param name="path">A string containing the file path providing the blob content.</param>
+            <param name="premiumPageBlobTier">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier"/> representing the tier to set.</param>
             <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the condition that must be met in order for the request to proceed.</param>
             <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request.</param>
             <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
@@ -11835,6 +12077,18 @@
             <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> to observe while waiting for a task to complete.</param>
             <returns>A <see cref="T:System.Threading.Tasks.Task"/> object that represents the asynchronous operation.</returns>
         </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob.UploadFromFileAsync(System.String,System.Nullable{Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier},Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext,System.Threading.CancellationToken)">
+            <summary>
+            Initiates an asynchronous operation to upload a file to a page blob. If the blob already exists, it will be overwritten.
+            </summary>
+            <param name="path">A string containing the file path providing the blob content.</param>
+            <param name="premiumPageBlobTier">A <see cref="!:PageBlobTier"/> representing the tier to set.</param>
+            <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the condition that must be met in order for the request to proceed.</param>
+            <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request.</param>
+            <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> to observe while waiting for a task to complete.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> object that represents the asynchronous operation.</returns>
+        </member>
         <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob.UploadFromByteArray(System.Byte[],System.Int32,System.Int32,Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext)">
             <summary>
             Uploads the contents of a byte array to a page blob. If the blob already exists, it will be overwritten.
@@ -11842,6 +12096,18 @@
             <param name="buffer">An array of bytes.</param>
             <param name="index">The zero-based byte offset in buffer at which to begin uploading bytes to the blob.</param>
             <param name="count">The number of bytes to be written to the blob.</param>
+            <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the condition that must be met in order for the request to proceed.</param>
+            <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request. If <c>null</c>, default options are applied to the request.</param>
+            <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob.UploadFromByteArray(System.Byte[],System.Int32,System.Int32,System.Nullable{Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier},Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext)">
+            <summary>
+            Uploads the contents of a byte array to a page blob. If the blob already exists, it will be overwritten.
+            </summary>
+            <param name="buffer">An array of bytes.</param>
+            <param name="index">The zero-based byte offset in buffer at which to begin uploading bytes to the blob.</param>
+            <param name="count">The number of bytes to be written to the blob.</param>
+            <param name="premiumPageBlobTier">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier"/> representing the tier to set.</param>
             <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the condition that must be met in order for the request to proceed.</param>
             <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request. If <c>null</c>, default options are applied to the request.</param>
             <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
@@ -11864,6 +12130,21 @@
             <param name="buffer">An array of bytes.</param>
             <param name="index">The zero-based byte offset in buffer at which to begin uploading bytes to the blob.</param>
             <param name="count">The number of bytes to be written to the blob.</param>
+            <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the condition that must be met in order for the request to proceed.</param>
+            <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request.</param>
+            <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
+            <param name="callback">An <see cref="T:System.AsyncCallback"/> delegate that will receive notification when the asynchronous operation completes.</param>
+            <param name="state">A user-defined object that will be passed to the callback delegate.</param>
+            <returns>An <see cref="T:Microsoft.WindowsAzure.Storage.ICancellableAsyncResult"/> that references the asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob.BeginUploadFromByteArray(System.Byte[],System.Int32,System.Int32,System.Nullable{Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier},Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext,System.AsyncCallback,System.Object)">
+            <summary>
+            Begins an asynchronous operation to upload the contents of a byte array to a page blob. If the blob already exists, it will be overwritten.
+            </summary>
+            <param name="buffer">An array of bytes.</param>
+            <param name="index">The zero-based byte offset in buffer at which to begin uploading bytes to the blob.</param>
+            <param name="count">The number of bytes to be written to the blob.</param>
+            <param name="premiumPageBlobTier">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier"/> representing the tier to set.</param>
             <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the condition that must be met in order for the request to proceed.</param>
             <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request.</param>
             <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
@@ -11921,12 +12202,37 @@
             <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> to observe while waiting for a task to complete.</param>
             <returns>A <see cref="T:System.Threading.Tasks.Task"/> object that represents the asynchronous operation.</returns>
         </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob.UploadFromByteArrayAsync(System.Byte[],System.Int32,System.Int32,System.Nullable{Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier},Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext,System.Threading.CancellationToken)">
+            <summary>
+            Initiates an asynchronous operation to upload the contents of a byte array to a page blob. If the blob already exists, it will be overwritten.
+            </summary>
+            <param name="buffer">An array of bytes.</param>
+            <param name="index">The zero-based byte offset in buffer at which to begin uploading bytes to the blob.</param>
+            <param name="count">The number of bytes to be written to the blob.</param>
+            <param name="premiumPageBlobTier">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier"/> representing the tier to set.</param>
+            <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the condition that must be met in order for the request to proceed.</param>
+            <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request.</param>
+            <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> to observe while waiting for a task to complete.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> object that represents the asynchronous operation.</returns>
+        </member>
         <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob.Create(System.Int64,Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext)">
             <summary>
             Creates a page blob. If the blob already exists, this operation will overwrite it. To throw an exception if the blob exists, instead of overwriting, pass in an <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/>
             object generated using <see cref="M:Microsoft.WindowsAzure.Storage.AccessCondition.GenerateIfNotExistsCondition"/>.
             </summary>
             <param name="size">The maximum size of the page blob, in bytes.</param>
+            <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the condition that must be met in order for the request to proceed. If <c>null</c>, no condition is used.</param>
+            <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request. If <c>null</c>, default options are applied to the request.</param>
+            <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob.Create(System.Int64,System.Nullable{Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier},Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext)">
+            <summary>
+            Creates a page blob. If the blob already exists, this operation will overwrite it. To throw an exception if the blob exists, instead of overwriting, pass in an <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/>
+            object generated using <see cref="M:Microsoft.WindowsAzure.Storage.AccessCondition.GenerateIfNotExistsCondition"/>.
+            </summary>
+            <param name="size">The maximum size of the page blob, in bytes.</param>
+            <param name="premiumPageBlobTier">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier"/> representing the tier to set.</param>
             <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the condition that must be met in order for the request to proceed. If <c>null</c>, no condition is used.</param>
             <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request. If <c>null</c>, default options are applied to the request.</param>
             <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
@@ -11947,6 +12253,20 @@
             object generated using <see cref="M:Microsoft.WindowsAzure.Storage.AccessCondition.GenerateIfNotExistsCondition"/>.
             </summary>
             <param name="size">The maximum size of the blob, in bytes.</param>
+            <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the condition that must be met in order for the request to proceed. If <c>null</c>, no condition is used.</param>
+            <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request.</param>
+            <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
+            <param name="callback">An <see cref="T:System.AsyncCallback"/> delegate that will receive notification when the asynchronous operation completes.</param>
+            <param name="state">A user-defined object that will be passed to the callback delegate.</param>
+            <returns>An <see cref="T:Microsoft.WindowsAzure.Storage.ICancellableAsyncResult"/> that references the asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob.BeginCreate(System.Int64,System.Nullable{Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier},Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext,System.AsyncCallback,System.Object)">
+            <summary>
+            Begins an asynchronous operation to create a page blob. If the blob already exists, this operation will overwrite it. To throw an exception if the blob exists, instead of overwriting, pass in an <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/>
+            object generated using <see cref="M:Microsoft.WindowsAzure.Storage.AccessCondition.GenerateIfNotExistsCondition"/>.
+            </summary>
+            <param name="size">The maximum size of the blob, in bytes.</param>
+            <param name="premiumPageBlobTier">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier"/> representing the tier to set.</param>
             <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the condition that must be met in order for the request to proceed. If <c>null</c>, no condition is used.</param>
             <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request.</param>
             <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
@@ -11994,6 +12314,19 @@
             object generated using <see cref="M:Microsoft.WindowsAzure.Storage.AccessCondition.GenerateIfNotExistsCondition"/>.
             </summary>
             <param name="size">The maximum size of the blob, in bytes.</param>
+            <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the condition that must be met in order for the request to proceed. If <c>null</c>, no condition is used.</param>
+            <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request.</param>
+            <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> to observe while waiting for a task to complete.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> object that represents the asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob.CreateAsync(System.Int64,System.Nullable{Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier},Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext,System.Threading.CancellationToken)">
+            <summary>
+            Initiates an asynchronous operation to create a page blob. If the blob already exists, this operation will overwrite it. To throw an exception if the blob exists, instead of overwriting, pass in an <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/>
+            object generated using <see cref="M:Microsoft.WindowsAzure.Storage.AccessCondition.GenerateIfNotExistsCondition"/>.
+            </summary>
+            <param name="size">The maximum size of the blob, in bytes.</param>
+            <param name="premiumPageBlobTier">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier"/> representing the tier to set.</param>
             <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the condition that must be met in order for the request to proceed. If <c>null</c>, no condition is used.</param>
             <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request.</param>
             <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
@@ -12601,6 +12934,22 @@
             The copy ID and copy status fields are fetched, and the rest of the copy state is cleared.
             </remarks>
         </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob.StartCopy(Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob,System.Nullable{Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier},Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext)">
+            <summary>
+            Begins an operation to start copying another page blob's contents, properties, and metadata to this page blob.
+            </summary>
+            <param name="source">The <see cref="T:Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob"/> that is the source blob.</param>
+            <param name="premiumPageBlobTier">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier"/> representing the tier to set.</param>
+            <param name="sourceAccessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the access conditions for the source blob. If <c>null</c>, no condition is used.</param>
+            <param name="destAccessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the access conditions for the destination blob. If <c>null</c>, no condition is used.</param>
+            <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request. If <c>null</c>, default options are applied to the request.</param>
+            <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
+            <returns>The copy ID associated with the copy operation.</returns>
+            <remarks>
+            This method fetches the blob's ETag, last-modified time, and part of the copy state.
+            The copy ID and copy status fields are fetched, and the rest of the copy state is cleared.
+            </remarks>
+        </member>
         <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob.StartIncrementalCopy(Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob,Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext)">
             <summary>
             Begins an operation to start an incremental copy of another page blob's contents, properties, and metadata to this page blob.
@@ -12652,6 +13001,20 @@
             Begins an asynchronous operation to start copying another page blob's contents, properties, and metadata to this page blob.
             </summary>
             <param name="source">The <see cref="T:Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob"/> that is the source blob.</param>
+            <param name="sourceAccessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the access conditions for the source blob. If <c>null</c>, no condition is used.</param>
+            <param name="destAccessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the access conditions for the destination blob. If <c>null</c>, no condition is used.</param>
+            <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request.</param>
+            <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
+            <param name="callback">An <see cref="T:System.AsyncCallback"/> delegate that will receive notification when the asynchronous operation completes.</param>
+            <param name="state">A user-defined object that will be passed to the callback delegate.</param>
+            <returns>An <see cref="T:Microsoft.WindowsAzure.Storage.ICancellableAsyncResult"/> that references the asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob.BeginStartCopy(Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob,System.Nullable{Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier},Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext,System.AsyncCallback,System.Object)">
+            <summary>
+            Begins an asynchronous operation to start copying another page blob's contents, properties, and metadata to this page blob.
+            </summary>
+            <param name="source">The <see cref="T:Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob"/> that is the source blob.</param>
+            <param name="premiumPageBlobTier">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier"/> representing the tier to set.</param>
             <param name="sourceAccessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the access conditions for the source blob. If <c>null</c>, no condition is used.</param>
             <param name="destAccessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the access conditions for the destination blob. If <c>null</c>, no condition is used.</param>
             <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request.</param>
@@ -12754,6 +13117,20 @@
             <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> to observe while waiting for a task to complete.</param>
             <returns>A <see cref="T:System.Threading.Tasks.Task`1"/> object of type <c>string</c> that represents the asynchronous operation.</returns>
         </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob.StartCopyAsync(Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob,System.Nullable{Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier},Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext,System.Threading.CancellationToken)">
+            <summary>
+            Initiates an asynchronous operation to start copying another blob's contents, properties, and metadata
+            to this page blob.
+            </summary>
+            <param name="source">The <see cref="T:Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob"/> that is the source blob.</param>
+            <param name="premiumPageBlobTier">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier"/> representing the tier to set.</param>
+            <param name="sourceAccessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the access conditions for the source blob. If <c>null</c>, no condition is used.</param>
+            <param name="destAccessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the access conditions for the destination blob. If <c>null</c>, no condition is used.</param>
+            <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request.</param>
+            <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> to observe while waiting for a task to complete.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task`1"/> object of type <c>string</c> that represents the asynchronous operation.</returns>
+        </member>
         <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob.StartIncrementalCopyAsync(Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob,Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext,System.Threading.CancellationToken)">
             <summary>
             Initiates an asynchronous operation to start an incremental copy of another blob's contents, properties, and metadata
@@ -12766,11 +13143,80 @@
             <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> to observe while waiting for a task to complete.</param>
             <returns>A <see cref="T:System.Threading.Tasks.Task`1"/> object of type <c>string</c> that represents the asynchronous operation.</returns>
         </member>
-        <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob.CreateImpl(System.Int64,Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions)">
+        <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob.SetPremiumBlobTier(Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier,Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext)">
+            <summary>
+            Sets the tier of the premium blob.
+            </summary>
+            <param name="premiumPageBlobTier">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier"/> representing the tier to set.</param>
+            <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request, or <c>null</c>. If <c>null</c>, default options are applied to the request.</param>
+            <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob.BeginSetPremiumBlobTier(Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier,System.AsyncCallback,System.Object)">
+            <summary>
+            Begins an asynchronous operation to set the tier of the premium blob.
+            </summary>
+            <param name="premiumPageBlobTier">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier"/> representing the tier to set.</param>
+            <param name="callback">An <see cref="T:System.AsyncCallback"/> delegate that will receive notification when the asynchronous operation completes.</param>
+            <param name="state">A user-defined object that will be passed to the callback delegate.</param>
+            <returns>An <see cref="T:Microsoft.WindowsAzure.Storage.ICancellableAsyncResult"/> that references the asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob.BeginSetPremiumBlobTier(Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier,Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext,System.AsyncCallback,System.Object)">
+            <summary>
+            Begins an asynchronous operation to set the tier of the premium blob.
+            </summary>
+            <param name="premiumPageBlobTier">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier"/> representing the tier to set.</param>
+            <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request, or <c>null</c>.</param>
+            <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
+            <param name="callback">An <see cref="T:System.AsyncCallback"/> delegate that will receive notification when the asynchronous operation completes.</param>
+            <param name="state">A user-defined object that will be passed to the callback delegate.</param>
+            <returns>An <see cref="T:Microsoft.WindowsAzure.Storage.ICancellableAsyncResult"/> that references the asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob.EndSetPremiumBlobTier(System.IAsyncResult)">
+            <summary>
+            Ends an asynchronous operation to set the tier of the premium blob.
+            </summary>
+            <param name="asyncResult">An <see cref="T:System.IAsyncResult"/> that references the pending asynchronous operation.</param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob.SetPremiumBlobTierAsync(Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier)">
+            <summary>
+            Initiates an asynchronous operation to set the tier of the premium blob.
+            </summary>
+            <param name="premiumPageBlobTier">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier"/> representing the tier to set.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> object that represents the asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob.SetPremiumBlobTierAsync(Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier,System.Threading.CancellationToken)">
+            <summary>
+            Initiates an asynchronous operation to set the tier of the premium blob.
+            </summary>
+            <param name="premiumPageBlobTier">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier"/> representing the tier to set.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> to observe while waiting for a task to complete.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> object that represents the asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob.SetPremiumBlobTierAsync(Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier,Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext)">
+            <summary>
+            Initiates an asynchronous operation to set the tier of the premium blob.
+            </summary>
+            <param name="premiumPageBlobTier">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier"/> representing the tier to set.</param>
+            <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request.</param>
+            <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> object that represents the asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob.SetPremiumBlobTierAsync(Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier,Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext,System.Threading.CancellationToken)">
+            <summary>
+            Initiates an asynchronous operation to set the premium tier of the blob.
+            </summary>
+            <param name="premiumPageBlobTier">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier"/> representing the tier to set.</param>
+            <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request.</param>
+            <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> to observe while waiting for a task to complete.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> object that represents the asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob.CreateImpl(System.Int64,System.Nullable{Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier},Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions)">
             <summary>
             Implements the Create method.
             </summary>
             <param name="sizeInBytes">The size in bytes.</param>
+            <param name="premiumPageBlobTier">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier"/> representing the tier to set.</param>
             <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the condition that must be met in order for the request to proceed. If <c>null</c>, no condition is used.</param>
             <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request.</param>
             <returns>A <see cref="T:Microsoft.WindowsAzure.Storage.Core.Executor.RESTCommand`1"/> that creates the blob.</returns>
@@ -12845,6 +13291,14 @@
             <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request.</param>
             <returns>A <see cref="T:Microsoft.WindowsAzure.Storage.Core.Executor.RESTCommand`1"/> that creates the snapshot.</returns>
             <remarks>If the <c>metadata</c> parameter is <c>null</c> then no metadata is associated with the request.</remarks>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob.SetBlobTierImpl(Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier,Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions)">
+            <summary>
+            Implementation method for the SetBlobTier methods.
+            </summary>
+            <param name="premiumPageBlobTier">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier"/> representing the tier to set.</param>
+            <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions"/> object that specifies additional options for the request.</param>
+            <returns>A <see cref="T:Microsoft.WindowsAzure.Storage.Core.Executor.RESTCommand`1"/> that sets the blob tier.</returns>
         </member>
         <member name="F:Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob.streamWriteSizeInBytes">
             <summary>
@@ -13059,6 +13513,22 @@
             <param name="header">The header to check</param>
             <returns><c>true</c> if header equals true or <c>false</c> if not.</returns>
         </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Blob.Protocol.BlobHttpResponseParsers.GetBlobTier(Microsoft.WindowsAzure.Storage.Blob.BlobType,System.String,System.Nullable{Microsoft.WindowsAzure.Storage.Blob.StandardBlobTier}@,System.Nullable{Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier}@)">
+            <summary>
+            Determines the tier of the blob.
+            </summary>
+            <param name="blobType">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobType"/> indicating the type of blob.</param>
+            <param name="blobTierString">The blob tier as a string</param>
+            <param name="standardBlobTier">A nullable <see cref="T:Microsoft.WindowsAzure.Storage.Blob.StandardBlobTier"/>. This value will be populated if the blob type is unspecified or is a block blob.</param>
+            <param name="premiumPageBlobTier">A nullable <see cref="!:PageBlobTier"/>. This value will be populated if the blob type is unspecified or is a page blob.</param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Blob.Protocol.BlobHttpResponseParsers.GetRehydrationStatus(System.String)">
+            <summary>
+            Determines the rehydration status of the blob.
+            </summary>
+            <param name="rehydrationStatus">The rehydration status as a string.</param>
+            <returns>A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.RehydrationStatus"/> representing the rehydration status of the blob.</returns>
+        </member>
         <member name="T:Microsoft.WindowsAzure.Storage.Blob.Protocol.BlobHttpWebRequestFactory">
             <summary>
             A factory class for constructing HTTP web requests for the Blob service.
@@ -13149,7 +13619,7 @@
             <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
             <returns>A <see cref="T:System.Net.HttpWebRequest"/> object.</returns>
         </member>
-        <member name="M:Microsoft.WindowsAzure.Storage.Blob.Protocol.BlobHttpWebRequestFactory.Put(System.Uri,System.Nullable{System.Int32},Microsoft.WindowsAzure.Storage.Blob.BlobProperties,Microsoft.WindowsAzure.Storage.Blob.BlobType,System.Int64,Microsoft.WindowsAzure.Storage.AccessCondition,System.Boolean,Microsoft.WindowsAzure.Storage.OperationContext)">
+        <member name="M:Microsoft.WindowsAzure.Storage.Blob.Protocol.BlobHttpWebRequestFactory.Put(System.Uri,System.Nullable{System.Int32},Microsoft.WindowsAzure.Storage.Blob.BlobProperties,Microsoft.WindowsAzure.Storage.Blob.BlobType,System.Int64,System.Nullable{Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier},Microsoft.WindowsAzure.Storage.AccessCondition,System.Boolean,Microsoft.WindowsAzure.Storage.OperationContext)">
             <summary>
             Constructs a web request to create a new block blob or page blob, or to update the content 
             of an existing block blob. 
@@ -13160,6 +13630,7 @@
             <param name="blobType">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.BlobType"/> enumeration value.</param>
             <param name="pageBlobSize">For a page blob, the size of the blob. This parameter is ignored
             for block blobs.</param>
+            <param name="premiumPageBlobTier">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier"/> representing the tier to set.</param>
             <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the condition that must be met in order for the request to proceed.</param>
             <param name="useVersionHeader">A boolean value indicating whether to set the <i>x-ms-version</i> HTTP header.</param>
             <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
@@ -13403,7 +13874,7 @@
             <param name="uri">A <see cref="T:System.Uri"/> specifying the absolute URI to the blob.</param>
             <param name="timeout">An integer specifying the server timeout interval.</param>
             <param name="snapshot">A <see cref="T:System.DateTimeOffset"/> specifying the snapshot timestamp, if the blob is a snapshot.</param>
-            <param name="deleteSnapshotsOption">A set of options indicating whether to delete only blobs, only snapshots, or both.</param>
+            <param name="deleteSnapshotsOption">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.DeleteSnapshotsOption"/> object indicating whether to delete only blobs, only snapshots, or both.</param>
             <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the condition that must be met in order for the request to proceed.</param>
             <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
             <returns>A <see cref="T:System.Net.HttpWebRequest"/> object.</returns>
@@ -13415,7 +13886,7 @@
             <param name="uri">A <see cref="T:System.Uri"/> specifying the absolute URI to the blob.</param>
             <param name="timeout">An integer specifying the server timeout interval.</param>
             <param name="snapshot">A <see cref="T:System.DateTimeOffset"/> specifying the snapshot timestamp, if the blob is a snapshot.</param>
-            <param name="deleteSnapshotsOption">A set of options indicating whether to delete only blobs, only snapshots, or both.</param>
+            <param name="deleteSnapshotsOption">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.DeleteSnapshotsOption"/> object indicating whether to delete only blobs, only snapshots, or both.</param>
             <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the condition that must be met in order for the request to proceed.</param>
             <param name="useVersionHeader">A boolean value indicating whether to set the <i>x-ms-version</i> HTTP header.</param>
             <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
@@ -13642,6 +14113,21 @@
             <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
             <returns>A <see cref="T:System.Net.HttpWebRequest"/> object.</returns>
         </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Blob.Protocol.BlobHttpWebRequestFactory.CopyFrom(System.Uri,System.Nullable{System.Int32},System.Uri,System.Boolean,System.Nullable{Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier},Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.AccessCondition,System.Boolean,Microsoft.WindowsAzure.Storage.OperationContext)">
+            <summary>
+            Generates a web request to copy a blob or file to another blob.
+            </summary>
+            <param name="uri">A <see cref="T:System.Uri"/> specifying the absolute URI to the destination blob.</param>
+            <param name="timeout">An integer specifying the server timeout interval.</param>
+            <param name="source">A <see cref="T:System.Uri"/> specifying the absolute URI to the source object, including any necessary authentication parameters.</param>
+            <param name="incrementalCopy">A boolean indicating whether or not this is an incremental copy.</param>
+            <param name="premiumPageBlobTier">A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier"/> representing the tier to set.</param>
+            <param name="sourceAccessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the condition that must be met on the source object in order for the request to proceed.</param>
+            <param name="destAccessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the condition that must be met on the destination blob in order for the request to proceed.</param>
+            <param name="useVersionHeader">A boolean value indicating whether to set the <i>x-ms-version</i> HTTP header.</param>
+            <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
+            <returns>A <see cref="T:System.Net.HttpWebRequest"/> object.</returns>
+        </member>
         <member name="M:Microsoft.WindowsAzure.Storage.Blob.Protocol.BlobHttpWebRequestFactory.AbortCopy(System.Uri,System.Nullable{System.Int32},System.String,Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.OperationContext)">
             <summary>
             Generates a web request to abort a copy operation.
@@ -13720,6 +14206,17 @@
             <returns>
             A web request to use to perform the operation.
             </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Blob.Protocol.BlobHttpWebRequestFactory.SetBlobTier(System.Uri,System.Nullable{System.Int32},System.String,System.Boolean,Microsoft.WindowsAzure.Storage.OperationContext)">
+            <summary>
+            Generates a web request to set the tier for a blob.
+            </summary>
+            <param name="uri">A <see cref="T:System.Uri"/> specifying the absolute URI to the blob.</param>
+            <param name="timeout">The server timeout interval, in seconds.</param>
+            <param name="blobTier">The blob tier to set as a string.</param>
+            <param name="useVersionHeader">A boolean value indicating whether to set the <i>x-ms-version</i> HTTP header.</param>
+            <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
+            <returns>A <see cref="T:System.Net.HttpWebRequest"/> object.</returns>
         </member>
         <member name="T:Microsoft.WindowsAzure.Storage.Blob.Protocol.ContainerHttpResponseParsers">
             <summary>
@@ -18017,6 +18514,15 @@
             <param name="options">An <see cref="T:Microsoft.WindowsAzure.Storage.File.FileRequestOptions"/> object that specifies additional options for the request.</param>
             <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
         </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.File.CloudFileShare.Delete(Microsoft.WindowsAzure.Storage.File.DeleteShareSnapshotsOption,Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.File.FileRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext)">
+            <summary>
+            Deletes the share.
+            </summary>
+            <param name="deleteSnapshotsOption">A <see cref="T:Microsoft.WindowsAzure.Storage.File.DeleteShareSnapshotsOption"/> object indicating whether to only delete the share or delete the share and all snapshots.</param>
+            <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the access conditions for the share. If <c>null</c>, no condition is used.</param>
+            <param name="options">An <see cref="T:Microsoft.WindowsAzure.Storage.File.FileRequestOptions"/> object that specifies additional options for the request.</param>
+            <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
+        </member>
         <member name="M:Microsoft.WindowsAzure.Storage.File.CloudFileShare.BeginDelete(System.AsyncCallback,System.Object)">
             <summary>
             Begins an asynchronous operation to delete a share.
@@ -18029,6 +18535,18 @@
             <summary>
             Begins an asynchronous operation to delete a share.
             </summary>
+            <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the access conditions for the share. If <c>null</c>, no condition is used.</param>
+            <param name="options">An <see cref="T:Microsoft.WindowsAzure.Storage.File.FileRequestOptions"/> object that specifies additional options for the request.</param>
+            <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
+            <param name="callback">The callback delegate that will receive notification when the asynchronous operation completes.</param>
+            <param name="state">A user-defined object that will be passed to the callback delegate.</param>
+            <returns>An <see cref="T:System.IAsyncResult"/> that references the asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.File.CloudFileShare.BeginDelete(Microsoft.WindowsAzure.Storage.File.DeleteShareSnapshotsOption,Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.File.FileRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext,System.AsyncCallback,System.Object)">
+            <summary>
+            Begins an asynchronous operation to delete a share.
+            </summary>
+            <param name="deleteSnapshotsOption">A <see cref="T:Microsoft.WindowsAzure.Storage.File.DeleteShareSnapshotsOption"/> object indicating whether to only delete the share or delete the share and all snapshots.</param>
             <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the access conditions for the share. If <c>null</c>, no condition is used.</param>
             <param name="options">An <see cref="T:Microsoft.WindowsAzure.Storage.File.FileRequestOptions"/> object that specifies additional options for the request.</param>
             <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
@@ -18074,10 +18592,31 @@
             <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> to observe while waiting for a task to complete.</param>
             <returns>A <see cref="T:System.Threading.Tasks.Task"/> object that represents the current operation.</returns>
         </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.File.CloudFileShare.DeleteAsync(Microsoft.WindowsAzure.Storage.File.DeleteShareSnapshotsOption,Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.File.FileRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext,System.Threading.CancellationToken)">
+            <summary>
+            Returns a task that performs an asynchronous operation to delete a share.
+            </summary>
+            <param name="deleteSnapshotsOption">A <see cref="T:Microsoft.WindowsAzure.Storage.File.DeleteShareSnapshotsOption"/> object indicating whether to only delete the share or delete the share and all snapshots.</param>
+            <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the access conditions for the share. If <c>null</c>, no condition is used.</param>
+            <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.File.FileRequestOptions"/> object that specifies additional options for the request.</param>
+            <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> to observe while waiting for a task to complete.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> object that represents the current operation.</returns>
+        </member>
         <member name="M:Microsoft.WindowsAzure.Storage.File.CloudFileShare.DeleteIfExists(Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.File.FileRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext)">
             <summary>
             Deletes the share if it already exists.
             </summary>
+            <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the access conditions for the share. If <c>null</c>, no condition is used.</param>
+            <param name="options">An <see cref="T:Microsoft.WindowsAzure.Storage.File.FileRequestOptions"/> object that specifies additional options for the request.</param>
+            <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
+            <returns><c>true</c> if the share did not already exist and was created; otherwise <c>false</c>.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.File.CloudFileShare.DeleteIfExists(Microsoft.WindowsAzure.Storage.File.DeleteShareSnapshotsOption,Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.File.FileRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext)">
+            <summary>
+            Deletes the share if it already exists.
+            </summary>
+            <param name="deleteSnapshotsOption">A <see cref="T:Microsoft.WindowsAzure.Storage.File.DeleteShareSnapshotsOption"/> object indicating whether to only delete the share or delete the share and all snapshots.</param>
             <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the access conditions for the share. If <c>null</c>, no condition is used.</param>
             <param name="options">An <see cref="T:Microsoft.WindowsAzure.Storage.File.FileRequestOptions"/> object that specifies additional options for the request.</param>
             <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
@@ -18095,6 +18634,18 @@
             <summary>
             Begins an asynchronous request to delete the share if it already exists.
             </summary>
+            <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the access conditions for the share. If <c>null</c>, no condition is used.</param>
+            <param name="options">An <see cref="T:Microsoft.WindowsAzure.Storage.File.FileRequestOptions"/> object that specifies additional options for the request.</param>
+            <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
+            <param name="callback">The callback delegate that will receive notification when the asynchronous operation completes.</param>
+            <param name="state">A user-defined object that will be passed to the callback delegate.</param>
+            <returns>An <see cref="T:System.IAsyncResult"/> that references the asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.File.CloudFileShare.BeginDeleteIfExists(Microsoft.WindowsAzure.Storage.File.DeleteShareSnapshotsOption,Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.File.FileRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext,System.AsyncCallback,System.Object)">
+            <summary>
+            Begins an asynchronous request to delete the share if it already exists.
+            </summary>
+            <param name="deleteSnapshotsOption">A <see cref="T:Microsoft.WindowsAzure.Storage.File.DeleteShareSnapshotsOption"/> object indicating whether to only delete the share or delete the share and all snapshots.</param>
             <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the access conditions for the share. If <c>null</c>, no condition is used.</param>
             <param name="options">An <see cref="T:Microsoft.WindowsAzure.Storage.File.FileRequestOptions"/> object that specifies additional options for the request.</param>
             <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
@@ -18135,6 +18686,17 @@
             <summary>
             Returns a task that performs an asynchronous request to delete the share if it already exists.
             </summary>
+            <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the access conditions for the share. If <c>null</c>, no condition is used.</param>
+            <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.File.FileRequestOptions"/> object that specifies additional options for the request.</param>
+            <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> to observe while waiting for a task to complete.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task`1"/> object that represents the current operation.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.File.CloudFileShare.DeleteIfExistsAsync(Microsoft.WindowsAzure.Storage.File.DeleteShareSnapshotsOption,Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.File.FileRequestOptions,Microsoft.WindowsAzure.Storage.OperationContext,System.Threading.CancellationToken)">
+            <summary>
+            Returns a task that performs an asynchronous request to delete the share if it already exists.
+            </summary>
+            <param name="deleteSnapshotsOption">A <see cref="T:Microsoft.WindowsAzure.Storage.File.DeleteShareSnapshotsOption"/> object indicating whether to only delete the share or delete the share and all snapshots.</param>
             <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the access conditions for the share. If <c>null</c>, no condition is used.</param>
             <param name="options">A <see cref="T:Microsoft.WindowsAzure.Storage.File.FileRequestOptions"/> object that specifies additional options for the request.</param>
             <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
@@ -18618,10 +19180,11 @@
             <returns>A <see cref="T:Microsoft.WindowsAzure.Storage.Core.Executor.RESTCommand`1"/> that creates the snapshot.</returns>
             <remarks>If the <c>metadata</c> parameter is <c>null</c> then no metadata is associated with the request.</remarks>
         </member>
-        <member name="M:Microsoft.WindowsAzure.Storage.File.CloudFileShare.DeleteShareImpl(Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.File.FileRequestOptions)">
+        <member name="M:Microsoft.WindowsAzure.Storage.File.CloudFileShare.DeleteShareImpl(Microsoft.WindowsAzure.Storage.File.DeleteShareSnapshotsOption,Microsoft.WindowsAzure.Storage.AccessCondition,Microsoft.WindowsAzure.Storage.File.FileRequestOptions)">
             <summary>
             Implementation for the Delete method.
             </summary>
+            <param name="deleteSnapshotsOption">A <see cref="T:Microsoft.WindowsAzure.Storage.File.DeleteShareSnapshotsOption"/> object indicating whether to only delete the share or delete the share and all snapshots.</param>
             <param name="accessCondition">An <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object that represents the access conditions for the share. If <c>null</c>, no condition is used.</param>
             <param name="options">An <see cref="T:Microsoft.WindowsAzure.Storage.File.FileRequestOptions"/> object that specifies additional options for the request.</param>
             <returns>A <see cref="T:Microsoft.WindowsAzure.Storage.Core.Executor.RESTCommand`1"/> that deletes the share.</returns>
@@ -19839,13 +20402,14 @@
             <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object for tracking the current operation.</param>
             <returns>A web request to use to perform the operation.</returns>
         </member>
-        <member name="M:Microsoft.WindowsAzure.Storage.File.Protocol.ShareHttpWebRequestFactory.Delete(System.Uri,System.Nullable{System.Int32},System.Nullable{System.DateTimeOffset},Microsoft.WindowsAzure.Storage.AccessCondition,System.Boolean,Microsoft.WindowsAzure.Storage.OperationContext)">
+        <member name="M:Microsoft.WindowsAzure.Storage.File.Protocol.ShareHttpWebRequestFactory.Delete(System.Uri,System.Nullable{System.Int32},System.Nullable{System.DateTimeOffset},Microsoft.WindowsAzure.Storage.File.DeleteShareSnapshotsOption,Microsoft.WindowsAzure.Storage.AccessCondition,System.Boolean,Microsoft.WindowsAzure.Storage.OperationContext)">
             <summary>
             Constructs a web request to delete the share and all of the files within it.
             </summary>
             <param name="uri">The absolute URI to the share.</param>
             <param name="timeout">The server timeout interval.</param>
             <param name="snapshot">A <see cref="T:System.DateTimeOffset"/> specifying the snapshot timestamp, if the share is a snapshot.</param>
+            <param name="deleteSnapshotsOption">A <see cref="T:Microsoft.WindowsAzure.Storage.File.DeleteShareSnapshotsOption"/> object indicating whether to only delete the share or delete the share and all snapshots.</param>
             <param name="accessCondition">The access condition to apply to the request.</param>
             <param name="useVersionHeader">A flag indicating whether to set the x-ms-version HTTP header.</param>
             <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object for tracking the current operation.</param>
@@ -19991,9 +20555,9 @@
             <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
             <returns>A <see cref="T:System.Net.HttpWebRequest"/> object.</returns>
         </member>
-        <member name="M:Microsoft.WindowsAzure.Storage.File.Protocol.ShareHttpWebRequestFactory.AddSnapshot(Microsoft.WindowsAzure.Storage.Core.UriQueryBuilder,System.Nullable{System.DateTimeOffset})">
+        <member name="M:Microsoft.WindowsAzure.Storage.File.Protocol.ShareHttpWebRequestFactory.AddShareSnapshot(Microsoft.WindowsAzure.Storage.Core.UriQueryBuilder,System.Nullable{System.DateTimeOffset})">
             <summary>
-            Adds the snapshot.
+            Adds the share snapshot.
             </summary>
             <param name="builder">An object of type <see cref="T:Microsoft.WindowsAzure.Storage.Core.UriQueryBuilder"/> that contains additional parameters to add to the URI query string.</param>
             <param name="snapshot">The snapshot version, if the share is a snapshot.</param>
@@ -25521,6 +26085,13 @@
             <param name="response">The response from server.</param>
             <returns>A <see cref="T:System.Collections.IDictionary"/> of the metadata.</returns>
         </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Shared.Protocol.HttpResponseParsers.ParseServerRequestEncrypted(System.Net.HttpWebResponse)">
+            <summary>
+            Parses the server request encrypted response header.
+            </summary>
+            <param name="response">Response to be parsed.</param>
+            <returns><c>true</c> if write content was encrypted by service or <c>false</c> if not.</returns>
+        </member>
         <member name="M:Microsoft.WindowsAzure.Storage.Shared.Protocol.HttpResponseParsers.GetMetadataOrProperties(System.Net.HttpWebResponse,System.String)">
             <summary>
             Gets the metadata or properties.
@@ -26339,6 +26910,7 @@
             any stored exceptions.
             </summary>
         </member>
+        <!-- Badly formed XML comment ignored for member "M:Microsoft.WindowsAzure.Storage.Core.Util.TaskExtensions.WithCancellation``1(System.Threading.Tasks.Task{``0},System.Threading.CancellationToken)" -->
         <member name="T:Microsoft.WindowsAzure.Storage.AccessCondition">
             <summary>
             Represents a set of access conditions to be used for operations against the storage services. 
@@ -26353,6 +26925,18 @@
             <summary>
             Time for IfUnmodifiedSince.
             </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.AccessCondition.RemoveIsIfNotExistsCondition">
+            <summary>
+            Remove the IfNotExists condition.
+            </summary>
+            <value>The reference to the <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> is returned, to allow chained usage</value>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.AccessCondition.Clone">
+            <summary>
+            Provide a shallow copy of the current access condition
+            </summary>
+            <returns>A shallow copy of the <see cref="T:Microsoft.WindowsAzure.Storage.AccessCondition"/> object</returns>
         </member>
         <member name="M:Microsoft.WindowsAzure.Storage.AccessCondition.GenerateEmptyCondition">
             <summary>
@@ -26539,6 +27123,12 @@
             </summary>
             <value><c>true</c> if the access condition is a conditional header; otherwise, <c>false</c>.</value>
         </member>
+        <member name="P:Microsoft.WindowsAzure.Storage.AccessCondition.IsIfNotExists">
+            <summary>
+            Determines whether the access condition is IfNotExists.
+            </summary>
+            <value><c>true</c> if the access condition is a IfNotExists; otherwise, <c>false</c>.</value>
+        </member>
         <member name="T:Microsoft.WindowsAzure.Storage.AuthenticationScheme">
             <summary>
             Specifies the authentication scheme used to sign HTTP requests.
@@ -26607,6 +27197,26 @@
         <member name="F:Microsoft.WindowsAzure.Storage.CloudStorageAccount.FileEndpointSettingString">
             <summary>
             The setting name for a custom file storage endpoint.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.CloudStorageAccount.BlobSecondaryEndpointSettingString">
+            <summary>
+            The setting name for a custom blob storage secondary endpoint.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.CloudStorageAccount.QueueSecondaryEndpointSettingString">
+            <summary>
+            The setting name for a custom queue secondary endpoint.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.CloudStorageAccount.TableSecondaryEndpointSettingString">
+            <summary>
+            The setting name for a custom table storage secondary endpoint.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.CloudStorageAccount.FileSecondaryEndpointSettingString">
+            <summary>
+            The setting name for a custom file storage secondary endpoint.
             </summary>
         </member>
         <member name="F:Microsoft.WindowsAzure.Storage.CloudStorageAccount.EndpointSuffixSettingString">
@@ -26714,6 +27324,26 @@
             Validator for the FileEndpoint setting. Must be a valid Uri.
             </summary>
         </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.CloudStorageAccount.BlobSecondaryEndpointSetting">
+            <summary>
+            Validator for the BlobSecondaryEndpoint setting. Must be a valid Uri.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.CloudStorageAccount.QueueSecondaryEndpointSetting">
+            <summary>
+            Validator for the QueueSecondaryEndpoint setting. Must be a valid Uri.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.CloudStorageAccount.TableSecondaryEndpointSetting">
+            <summary>
+            Validator for the TableSecondaryEndpoint setting. Must be a valid Uri.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.CloudStorageAccount.FileSecondaryEndpointSetting">
+            <summary>
+            Validator for the FileSecondaryEndpoint setting. Must be a valid Uri.
+            </summary>
+        </member>
         <member name="F:Microsoft.WindowsAzure.Storage.CloudStorageAccount.EndpointSuffixSetting">
             <summary>
             Validator for the EndpointSuffix setting. Must be a valid Uri.
@@ -26780,6 +27410,11 @@
             <param name="endpointSuffix">The DNS endpoint suffix for all storage services, e.g. "core.windows.net".</param>
             <param name="useHttps"><c>true</c> to use HTTPS to connect to storage service endpoints; otherwise, <c>false</c>.</param>
             <remarks>Using HTTPS to connect to the storage services is recommended.</remarks>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.CloudStorageAccount.accountName">
+            <summary>
+            Private record of the account name for use in ToString(bool).
+            </summary>
         </member>
         <member name="M:Microsoft.WindowsAzure.Storage.CloudStorageAccount.Parse(System.String)">
             <summary>
@@ -26934,7 +27569,35 @@
             <param name="atLeastOneSettings">A list of settings of which one must be present.</param>
             <returns>The remaining settings or <c>null</c> if the filter's requirement is not satisfied.</returns>
         </member>
-        <member name="M:Microsoft.WindowsAzure.Storage.CloudStorageAccount.ValidCredentials(System.Collections.Generic.IDictionary{System.String,System.String})">
+        <member name="M:Microsoft.WindowsAzure.Storage.CloudStorageAccount.None(System.Collections.Generic.KeyValuePair{System.String,System.Func{System.String,System.Boolean}}[])">
+            <summary>
+            Settings filter that ensures that none of the specified settings are present.
+            </summary>
+            <param name="atLeastOneSettings">A list of settings of which one must not be present.</param>
+            <returns>The remaining settings or <c>null</c> if the filter's requirement is not satisfied.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.CloudStorageAccount.MatchesAll(System.Func{System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.String}}[])">
+            <summary>
+            Settings filter that ensures that all of the specified filters match.
+            </summary>
+            <param name="filters">A list of filters of which all must match.</param>
+            <returns>The remaining settings or <c>null</c> if the filter's requirement is not satisfied.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.CloudStorageAccount.MatchesOne(System.Func{System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.String}}[])">
+            <summary>
+            Settings filter that ensures that exactly one filter matches.
+            </summary>
+            <param name="filters">A list of filters of which exactly one must match.</param>
+            <returns>The remaining settings or <c>null</c> if the filter's requirement is not satisfied.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.CloudStorageAccount.MatchesExactly(System.Func{System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.String}})">
+            <summary>
+            Settings filter that ensures that the specified filter is an exact match.
+            </summary>
+            <param name="filter">A list of filters of which ensures that the specified filter is an exact match.</param>
+            <returns>The remaining settings or <c>null</c> if the filter's requirement is not satisfied.</returns>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.CloudStorageAccount.ValidCredentials">
             <summary>
             Settings filter that ensures that a valid combination of credentials is present.
             </summary>
@@ -27403,6 +28066,9 @@
             Gets or sets the client request ID.
             </summary>
             <value>A string containing the client request ID.</value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Storage.OperationContext.CustomUserAgent">
+            <remarks>This value will be overridden if the UserAgent value is modified via SendingRequestEvent (per instance or global).</remarks>
         </member>
         <member name="P:Microsoft.WindowsAzure.Storage.OperationContext.DefaultLogLevel">
             <summary>
@@ -28273,7 +28939,7 @@
         </member>
         <member name="P:Microsoft.WindowsAzure.Storage.Auth.StorageCredentials.SASSignature">
             <summary>
-            Gets the value of the shared access signature token's <code>sig</code> parameter.
+            Gets the value of the shared access signature token's <c>sig</c> parameter.
             </summary>
         </member>
         <member name="T:Microsoft.WindowsAzure.Storage.Core.CanonicalizedString">
@@ -29775,21 +30441,37 @@
             <summary>
             Requests are always sent to the primary location.
             </summary>
+            <remarks>
+            If this value is used for requests that only work against a secondary location
+            (GetServiceStats, for example), the request will fail in the client.
+            </remarks>
         </member>
         <member name="F:Microsoft.WindowsAzure.Storage.RetryPolicies.LocationMode.PrimaryThenSecondary">
             <summary>
             Requests are always sent to the primary location first. If a request fails, it is sent to the secondary location.
             </summary>
+            <remarks>
+            If this value is used for requests that are only valid against one location, the client will
+            only target the allowed location.
+            </remarks>
         </member>
         <member name="F:Microsoft.WindowsAzure.Storage.RetryPolicies.LocationMode.SecondaryOnly">
             <summary>
             Requests are always sent to the secondary location.
             </summary>
+            <remarks>
+            If this value is used for requests that only work against a primary location
+            (create, modify, and delete APIs), the request will fail in the client.
+            </remarks>
         </member>
         <member name="F:Microsoft.WindowsAzure.Storage.RetryPolicies.LocationMode.SecondaryThenPrimary">
             <summary>
             Requests are always sent to the secondary location first. If a request fails, it is sent to the primary location.
             </summary>
+            <remarks>
+            If this value is used for requests that are only valid against one location, the client will
+            only target the allowed location.
+            </remarks>
         </member>
         <member name="T:Microsoft.WindowsAzure.Storage.RetryPolicies.NoRetry">
             <summary>
@@ -30262,11 +30944,34 @@
             <summary>
             Gets the blob's server-side encryption state.
             </summary>
+            <value>A bool representing the blob's server-side encryption state.</value>
         </member>
         <member name="P:Microsoft.WindowsAzure.Storage.Blob.BlobProperties.IsIncrementalCopy">
             <summary>
-            Gets a value indicating whether or not this blob is an incremental copy
+            Gets a value indicating whether or not this blob is an incremental copy.
             </summary>
+            <value>A bool representing if the blob is an incremental copy.</value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Storage.Blob.BlobProperties.StandardBlobTier">
+            <summary>
+            Gets a value indicating the tier of the block blob.
+            </summary>
+            <value>A <see cref="P:Microsoft.WindowsAzure.Storage.Blob.BlobProperties.StandardBlobTier"/> object that indicates the block blob tier.</value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Storage.Blob.BlobProperties.RehydrationStatus">
+            <summary>
+            Gets a value indicating that the blob is being rehdrated and the tier of the blob once
+            the rehydration from archive has completed.
+            </summary>
+            <value>A <see cref="P:Microsoft.WindowsAzure.Storage.Blob.BlobProperties.RehydrationStatus"/> representing the rehydration status of the blob.</value>
+            <remarks>Only applicable for block blobs in this version of the library.</remarks>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:Microsoft.WindowsAzure.Storage.Blob.BlobProperties.PremiumPageBlobTier" -->
+        <member name="P:Microsoft.WindowsAzure.Storage.Blob.BlobProperties.BlobTierInferred">
+            <summary>
+            Gets a value indicating if the tier of the premium page blob has been inferred.
+            </summary>
+            <value>A bool representing if the premium blob tier has been inferred.</value>
         </member>
         <member name="T:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions">
             <summary>
@@ -30280,7 +30985,8 @@
         </member>
         <member name="F:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions.singleBlobUploadThresholdInBytes">
             <summary>
-            Default is 32 MB.
+            Indicates the maximum size of a blob, in bytes, that may be uploaded as a single blob,
+            ranging from between 1 and 256 MB inclusive. The Default is 128 MB.
             </summary>
         </member>
         <member name="F:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions.maximumExecutionTime">
@@ -30310,10 +31016,18 @@
             </summary>
         </member>
         <member name="P:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions.RetryPolicy">
-            <summary>
-            Gets or sets the retry policy for the request.
-            </summary>
-            <value>An object of type <see cref="T:Microsoft.WindowsAzure.Storage.RetryPolicies.IRetryPolicy"/>.</value>
+             <summary>
+             Gets or sets the retry policy for the request.
+             </summary>
+             <value>An object of type <see cref="T:Microsoft.WindowsAzure.Storage.RetryPolicies.IRetryPolicy"/>.</value>
+             <remarks> Retry policies instruct the Storage Client to retry failed requests.
+             By default, only some failures are retried. For example, connection failures and 
+             throttling failures can be retried. Resource not found (404) or authentication 
+             failures are not retried, because these are not likely to succeed on retry.
+             If not set, the Storage Client uses an exponential backoff retry policy, where the wait time gets
+             exponentially longer between requests, up to a total of around 30 seconds.
+             The default retry policy is recommended for most scenarios.
+            </remarks>
         </member>
         <member name="P:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions.EncryptionPolicy">
             <summary>
@@ -30326,6 +31040,13 @@
             Gets or sets a value to indicate whether data written and read by the client library should be encrypted.
             </summary>
             <value>Use <c>true</c> to specify that data should be encrypted/decrypted for all transactions; otherwise, <c>false</c>.</value>
+            <remarks>
+            RequireEncryption here refers to Client-Side Encryption.
+            If this value is set to <c>true</c>, all calls will fail if the data
+            is not encrypted/decrypted with an encryption policy. If this value 
+            is false (the default), any data being downloaded that is not encrypted
+            will be returned as-is.
+            </remarks>
         </member>
         <member name="P:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions.SkipEncryptionPolicyValidation">
             <summary>
@@ -30339,35 +31060,72 @@
             for the request. 
             </summary>
             <remarks>
-            This option is used only by the <see cref="T:Microsoft.WindowsAzure.Storage.Blob.CloudAppendBlob"/> object in the <b>UploadFrom*</b> methods and
-            the <b>BlobWriteStream</b> methods. By default, it is set to <c>false</c>. Set this option to <c>true</c> only for single writer scenarios.
+            This option is used only by the <see cref="T:Microsoft.WindowsAzure.Storage.Blob.CloudAppendBlob"/> object in the <b>UploadFrom*</b> methods, 
+            the <b>AppendFrom*</b> methods, and the <b>BlobWriteStream</b> class. By default, it is set to <c>false</c>. 
+            Set this option to <c>true</c> only for single-writer scenarios. 
             Setting this option to <c>true</c> in a multi-writer scenario may lead to corrupted blob data.
+            
+            When calling "UploadFrom*" on an append blob, the Storage Client breaks the input data
+            up into a number of data blocks, and uploads each data block with an "append block" operation.
+            Normally, an "IfAppendPositionEqual" access condition is added to the append block operation, so that the
+            upload operation will fail if some other process somewhere has appended data in the middle of this data stream.
+            However, this can result in a false failure in a very specific case. If an append operation fails with a timeout,
+            there is a chance that the operation succeeded on the service, but the "success" response did not make it back to the client.
+            In this case, the client will retry, and then get an "append position not met" failure.
+            
+            Setting this value to <c>true</c> results in the upload operation continuing when it sees an "append position not met"
+            failure on retry - accounting for the above possibility. However, this loses protection in the multi-writer
+            scenario - if multiple threads are uploading to the blob at once, and this value is set to <c>true</c>, some data
+            may be lost, because the client thinks the data was uploaded, when in fact it was the other process' data.
             </remarks>
         </member>
         <member name="P:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions.LocationMode">
-            <summary>
-            Gets or sets the location mode of the request.
-            </summary>
-            <value>A <see cref="T:Microsoft.WindowsAzure.Storage.RetryPolicies.LocationMode"/> enumeration value indicating the location mode of the request.</value>
+             <summary>
+             Gets or sets the location mode of the request.
+             </summary>
+             <value>A <see cref="T:Microsoft.WindowsAzure.Storage.RetryPolicies.LocationMode"/> enumeration value indicating the location mode of the request.</value>
+             <remarks>The LocationMode specifies in which locations the Storage Client 
+             will attempt to make the request. This is only valid for RA-GRS accounts - accounts 
+             where data can be read from either the primary or the secondary endpoint.
+            </remarks>
         </member>
         <member name="P:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions.ServerTimeout">
             <summary>
-            Gets or sets the server timeout interval for the request.
+            Gets or sets the server timeout interval for a single HTTP request.
             </summary>
-            <value>A <see cref="T:System.TimeSpan"/> containing the server timeout interval for the request.</value>
+            <value>A <see cref="T:System.TimeSpan"/> containing the server timeout interval for each HTTP request.</value>
+            <remarks>
+            The server timeout is the timeout sent to the Azure Storage service 
+            for each REST request made. If the API called makes multiple REST calls 
+            (UploadFromStream, for example, or if the request retries), this timeout 
+            will be applied separately to each request. This value is not 
+            tracked or validated on the client, it is only passed to the Storage service.
+            </remarks>
         </member>
         <member name="P:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions.MaximumExecutionTime">
             <summary>
             Gets or sets the maximum execution time across all potential retries for the request. 
             </summary>
             <value>A <see cref="T:System.TimeSpan"/> representing the maximum execution time for retries for the request.</value>
+            <remarks>
+            The maximum execution time is the time allotted for a single API call.
+            If the total amount of time spent in the API - across all REST requests, 
+            retries, etc - exceeds this value, the client will timeout. This value 
+            is only tracked on the client, it is not sent to the service.
+            </remarks>
         </member>
         <member name="P:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions.ParallelOperationThreadCount">
-            <summary>
-            Gets or sets the number of blocks that may be simultaneously uploaded when uploading a blob that is greater than 
-            the value specified by the <see cref="P:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions.SingleBlobUploadThresholdInBytes"/> property in size.
-            </summary>
-            <value>An integer value indicating the number of parallel blob upload operations that may proceed.</value>
+             <summary>
+             Gets or sets the number of blocks that may be simultaneously uploaded.
+             </summary>
+             <value>An integer value indicating the number of parallel blob upload operations that may proceed.</value>
+             <remarks>
+             When using the UploadFrom* methods on a blob, the blob will be broken up into blocks. Setting this 
+             value limits the number of outstanding I/O "put block" requests that the library will have in-flight 
+             at a given time. Default is 1 (no parallelism). Setting this value higher may result in 
+             faster blob uploads, depending on the network between the client and the Azure Storage service.
+             If blobs are small (less than 256 MB), keeping this value equal to 1 is advised.
+            </remarks>
         </member>
         <member name="P:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions.SingleBlobUploadThresholdInBytes">
             <summary>
@@ -30381,20 +31139,46 @@
             <summary>
             Gets or sets a value to calculate and send/validate content MD5 for transactions.
             </summary>
-            <value>Use <c>true</c> to calculate and send/validate content MD5 for transactions; otherwise, <c>false</c>.</value>       
+            <value>Use <c>true</c> to calculate and send/validate content MD5 for transactions; otherwise, <c>false</c>. Default is <c>false</c>.</value>
+            <remarks>
+            The UseTransactionalMD5 option instructs the Storage Client to calculate and validate 
+            the MD5 hash of individual Storage REST operations. For a given REST operation, 
+            if this value is set, both the Storage Client and the Storage service will calculate
+            the MD5 hash of the transferred data, and will fail if the values do not match.
+            This value is not persisted on the service or the client.
+            This option applies to both upload and download operations.
+            Note that HTTPS does a similar check during transit. If you are using HTTPS, 
+            we recommend this feature be off.
+            </remarks>
         </member>
         <member name="P:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions.StoreBlobContentMD5">
             <summary>
             Gets or sets a value to indicate that an MD5 hash will be calculated and stored when uploading a blob.
             </summary>
-            <value>Use <c>true</c> to calculate and store an MD5 hash when uploading a blob; otherwise, <c>false</c>.</value>
-            <remarks>This property is not supported for the <see cref="T:Microsoft.WindowsAzure.Storage.Blob.CloudAppendBlob"/> Append* APIs.</remarks>
+            <value>Use <c>true</c> to calculate and store an MD5 hash when uploading a blob; otherwise, <c>false</c>. Defaults to <c>false</c>.</value>
+            <remarks>This property is not supported for the <see cref="T:Microsoft.WindowsAzure.Storage.Blob.CloudAppendBlob"/> Append* APIs.
+            The StoreBlobContentMD5 request option instructs the Storage Client to calculate the MD5 hash 
+            of the blob content during an upload operation. This value is then stored on the 
+            blob object as the Content-MD5 header. This option applies only to upload operations. 
+            This is useful for validating the integrity of the blob upon later download, and 
+            compatible with the Content-MD5 header as defined in the HTTP spec. If using 
+            the Storage Client for later download, if the Content-MD5 header is present, 
+            the MD5 hash of the content will be validated, unless "DisableContentMD5Validation" is set.
+            Note that this value is not validated on the Azure Storage service on either upload or download of data; 
+            it is merely stored and returned.
+            </remarks>
         </member>
         <member name="P:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions.DisableContentMD5Validation">
             <summary>
             Gets or sets a value to indicate that MD5 validation will be disabled when downloading blobs.
             </summary>
-            <value>Use <c>true</c> to disable MD5 validation; <c>false</c> to enable MD5 validation.</value>
+            <value>Use <c>true</c> to disable MD5 validation; <c>false</c> to enable MD5 validation. Default is <c>false</c>.</value>
+            <remarks>
+            When downloading a blob, if the value already exists on the blob, the Storage service 
+            will include the MD5 hash of the entire blob as a header. This option controls 
+            whether or not the Storage Client will validate that MD5 hash on download.
+            See <see cref="P:Microsoft.WindowsAzure.Storage.Blob.BlobRequestOptions.StoreBlobContentMD5"/> for more details.
+            </remarks>
         </member>
         <member name="T:Microsoft.WindowsAzure.Storage.Blob.BlobResultSegment">
             <summary>
@@ -30796,9 +31580,82 @@
             True if the page range is a cleared range, false otherwise.
             </summary>
         </member>
+        <member name="T:Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier">
+            <summary>
+            The tier of the page blob.
+            Please take a look at https://docs.microsoft.com/en-us/azure/storage/storage-premium-storage#scalability-and-performance-targets
+            for detailed information on the corresponding IOPS and throughtput per PremiumPageBlobTier.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier.Unknown">
+            <summary>
+            The tier is not recognized by this version of the library.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier.P4">
+            <summary>
+            P4 Tier
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier.P6">
+            <summary>
+            P6 Tier
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier.P10">
+            <summary>
+            P10 Tier
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier.P20">
+            <summary>
+            P20 Tier
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier.P30">
+            <summary>
+            P30 Tier
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier.P40">
+            <summary>
+            P40 Tier
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier.P50">
+            <summary>
+            P50 Tier
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier.P60">
+            <summary>
+            P60 Tier
+            </summary>
+        </member>
         <member name="T:Microsoft.WindowsAzure.Storage.Core.ReadLengthLimitingStream">
             <summary>
             Stream that will be used to limit read operations on a wrapped stream.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Storage.Blob.RehydrationStatus">
+            <summary>
+            The rehydration status for a blob that is currently archived.
+            </summary>
+            <remarks>Only applicable to block blobs for this version.</remarks>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.Blob.RehydrationStatus.Unknown">
+            <summary>
+            The rehydration status is unknown.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.Blob.RehydrationStatus.PendingToHot">
+            <summary>
+            The blob is being rehydrated to hot storage.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.Blob.RehydrationStatus.PendingToCool">
+            <summary>
+            The blob is being rehydrated to cool storage.
             </summary>
         </member>
         <member name="T:Microsoft.WindowsAzure.Storage.Blob.SequenceNumberAction">
@@ -31059,6 +31916,31 @@
             Gets or sets the permissions for a shared access signature associated with this shared access policy.
             </summary>
             <value>A <see cref="T:Microsoft.WindowsAzure.Storage.Blob.SharedAccessBlobPermissions"/> object.</value>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Storage.Blob.StandardBlobTier">
+            <summary>
+            The tier of the block blob on a standard storage account.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.Blob.StandardBlobTier.Unknown">
+            <summary>
+            The tier is not recognized by this version of the library
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.Blob.StandardBlobTier.Hot">
+            <summary>
+            Hot Storage
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.Blob.StandardBlobTier.Cool">
+            <summary>
+            Cool Storage
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.Blob.StandardBlobTier.Archive">
+            <summary>
+            Archive Storage
+            </summary>
         </member>
         <member name="T:Microsoft.WindowsAzure.Storage.Blob.SubStream">
             <summary>
@@ -32012,6 +32894,21 @@
             </summary>
             <value>A <see cref="P:Microsoft.WindowsAzure.Storage.File.CloudFileAttributes.CopyState"/> object containing the copy state, or <c>null</c> if no copy file state exists for this file.</value>
         </member>
+        <member name="T:Microsoft.WindowsAzure.Storage.File.DeleteShareSnapshotsOption">
+            <summary>
+            The set of options describing delete operation.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.File.DeleteShareSnapshotsOption.None">
+            <summary>
+            Delete the share only. If the share has snapshots, this option will result in an error from the service.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.File.DeleteShareSnapshotsOption.IncludeSnapshots">
+            <summary>
+            Delete the share and its snapshots.
+            </summary>
+        </member>
         <member name="T:Microsoft.WindowsAzure.Storage.File.FileContinuationToken">
             <summary>
             Represents a continuation token for listing operations. 
@@ -32078,6 +32975,12 @@
             Gets the directory's last-modified time.
             </summary>
             <value>The directory's last-modified time.</value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Storage.File.FileDirectoryProperties.IsServerEncrypted">
+            <summary>
+            Gets the directory's server-side encryption state.
+            </summary>
+            <value>A bool representing the directory's server-side encryption state.</value>
         </member>
         <member name="T:Microsoft.WindowsAzure.Storage.File.FileProperties">
             <summary>
@@ -32160,6 +33063,12 @@
             Gets the the last-modified time for the file, expressed as a UTC value.
             </summary>
             <value>The file's last-modified time, in UTC format.</value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Storage.File.FileProperties.IsServerEncrypted">
+            <summary>
+            Gets the file's server-side encryption state.
+            </summary>
+            <value>A bool representing the file's server-side encryption state.</value>
         </member>
         <member name="T:Microsoft.WindowsAzure.Storage.File.FileRange">
             <summary>
@@ -32593,6 +33502,11 @@
         <member name="F:Microsoft.WindowsAzure.Storage.File.ShareListingDetails.Metadata">
             <summary>
             Retrieve share metadata.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.File.ShareListingDetails.Snapshots">
+            <summary>
+            Retrieve share snapshots.
             </summary>
         </member>
         <member name="F:Microsoft.WindowsAzure.Storage.File.ShareListingDetails.All">
@@ -34777,6 +35691,65 @@
             </summary>
             <value>A <see cref="T:Microsoft.WindowsAzure.Storage.StorageLocation"/> enumeration value.</value>
         </member>
+        <member name="T:Microsoft.WindowsAzure.Storage.Table.TableEntityAdapter`1">
+            <summary>
+            Adapter class to allow reading and writing objects to Azure Table Storage without inheriting from <see cref="T:Microsoft.WindowsAzure.Storage.Table.TableEntity"/> class
+            or implementing <see cref="T:Microsoft.WindowsAzure.Storage.Table.ITableEntity"/> interface. The objects can be simple POCO objects or complex objects with nested complex properties.
+            </summary>
+            <typeparam name="T">The type of object to read and write to Azure Table Storage, it can be a class or a struct.</typeparam>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Table.TableEntityAdapter`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.WindowsAzure.Storage.Table.TableEntityAdapter`1"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Table.TableEntityAdapter`1.#ctor(`0)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.WindowsAzure.Storage.Table.TableEntityAdapter`1"/> class with the specified object.
+            </summary>
+            <param name="originalEntity">The object to write to Azure Table Storage.</param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Table.TableEntityAdapter`1.#ctor(`0,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.WindowsAzure.Storage.Table.TableEntityAdapter`1"/> class with the specified object, partition key and row key.
+            </summary>
+            <param name="originalEntity">The object to write to Azure Table Storage.</param>
+            <param name="partitionKey">A string containing the partition key value for the entity.</param>
+            <param name="rowKey">A string containing the row key value for the entity.</param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Table.TableEntityAdapter`1.ReadEntity(System.Collections.Generic.IDictionary{System.String,Microsoft.WindowsAzure.Storage.Table.EntityProperty},Microsoft.WindowsAzure.Storage.OperationContext)">
+            <summary>
+            Deserializes <see cref="T:Microsoft.WindowsAzure.Storage.Table.TableEntityAdapter`1"/> instance using the specified <see cref="T:System.Collections.Generic.IDictionary`2"/> that maps property names of the
+            <see cref="P:Microsoft.WindowsAzure.Storage.Table.TableEntityAdapter`1.OriginalEntity"/> to typed <see cref="T:Microsoft.WindowsAzure.Storage.Table.EntityProperty"/> values and stores it in the <see cref="P:Microsoft.WindowsAzure.Storage.Table.TableEntityAdapter`1.OriginalEntity"/> property.
+            </summary>
+            <param name="properties">An <see cref="T:System.Collections.Generic.IDictionary`2"/> object that maps property names to typed <see cref="T:Microsoft.WindowsAzure.Storage.Table.EntityProperty"/> values.</param>
+            <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Storage.Table.TableEntityAdapter`1.WriteEntity(Microsoft.WindowsAzure.Storage.OperationContext)">
+            <summary>
+            Serializes the <see cref="T:System.Collections.Generic.IDictionary`2"/> of property names mapped to <see cref="T:Microsoft.WindowsAzure.Storage.Table.EntityProperty"/> data values from the <see cref="P:Microsoft.WindowsAzure.Storage.Table.TableEntityAdapter`1.OriginalEntity"/> property.
+            </summary>
+            <param name="operationContext">An <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> object that represents the context for the current operation.</param>
+            <returns>An <see cref="T:System.Collections.Generic.IDictionary`2"/> object that maps string property names to <see cref="T:Microsoft.WindowsAzure.Storage.Table.EntityProperty"/> typed values created by
+            serializing this table entity instance.</returns>
+            <remarks>If <see cref="P:Microsoft.WindowsAzure.Storage.Table.TableEntityAdapter`1.OriginalEntity"/> is a simple POCO object with simple properties (primitive types, string, byte[], ...), <see cref="M:Microsoft.WindowsAzure.Storage.Table.TableEntityAdapter`1.WriteEntity(Microsoft.WindowsAzure.Storage.OperationContext)"/> method will create
+             <see cref="T:Microsoft.WindowsAzure.Storage.Table.EntityProperty"/> objects using these properties.<br/>
+            Ie. A simple POCO object A with properties of B and C with this structure A-&gt;B, A-&gt;C, will be converted to key value pairs of {"B", EntityProperty(B)}, {"C", EntityProperty(C)}.<br/>
+            If <see cref="P:Microsoft.WindowsAzure.Storage.Table.TableEntityAdapter`1.OriginalEntity"/> has complex properties (and potentially these properties having complex properties of their own), <see cref="M:Microsoft.WindowsAzure.Storage.Table.TableEntityAdapter`1.WriteEntity(Microsoft.WindowsAzure.Storage.OperationContext)"/> method will flatten <see cref="P:Microsoft.WindowsAzure.Storage.Table.TableEntityAdapter`1.OriginalEntity"/> first.<br/>
+            Ie. An object A with a simple property of B and complex properties of C and D which have their own properties of E and F with this structure A-&gt;B, A-&gt;C-&gt;E and A-&gt;D-&gt;F, will be flattened to key value pairs of:<br/>
+            {"B", EntityProperty(B)}, {"C_E", EntityProperty(E)} and {"D_F", EntityProperty(F)}.<br/>
+            For each key value pair:<br/>
+            1. The key is composed by appending the names of the properties visited from root (A) to end node property (E or F) delimited by "_".<br/>
+            2. The value is the <see cref="T:Microsoft.WindowsAzure.Storage.Table.EntityProperty"/> object, instantiated by the value of the end node property.<br/>
+            All key value pairs will be stored in the returned <see cref="T:System.Collections.Generic.IDictionary`2"/>.<br/>
+            <see cref="M:Microsoft.WindowsAzure.Storage.Table.TableEntityAdapter`1.ReadEntity(System.Collections.Generic.IDictionary{System.String,Microsoft.WindowsAzure.Storage.Table.EntityProperty},Microsoft.WindowsAzure.Storage.OperationContext)"/> method recomposes the original object (POCO or complex) using the <see cref="T:System.Collections.Generic.IDictionary`2"/> returned by this method and store it in <see cref="P:Microsoft.WindowsAzure.Storage.Table.TableEntityAdapter`1.OriginalEntity"/> property.<br/>
+            Properties that are marked with <see cref="T:Microsoft.WindowsAzure.Storage.Table.IgnorePropertyAttribute"/> in the <see cref="P:Microsoft.WindowsAzure.Storage.Table.TableEntityAdapter`1.OriginalEntity"/> object will be ignored and not processed by this method.</remarks>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Storage.Table.TableEntityAdapter`1.OriginalEntity">
+            <summary>
+            The original entity that is read and written to azure table storage.
+            </summary>
+        </member>
         <member name="T:Microsoft.WindowsAzure.Storage.Table.TableOperationType">
             <summary>
             Enumeration containing the types of operations that can be
@@ -35904,6 +36877,16 @@
             Constant for a failed copy.
             </summary>
         </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.Shared.Protocol.Constants.RehydratePendingToHot">
+            <summary>
+            Constant for rehydrating an archived blob to hot storage.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.Shared.Protocol.Constants.RehydratePendingToCool">
+            <summary>
+            Constant for rehydrating an archived blob to cool storage.
+            </summary>
+        </member>
         <member name="F:Microsoft.WindowsAzure.Storage.Shared.Protocol.Constants.GeoUnavailableValue">
             <summary>
             Constant for unavailable geo-replication status.
@@ -35917,6 +36900,16 @@
         <member name="F:Microsoft.WindowsAzure.Storage.Shared.Protocol.Constants.GeoBootstrapValue">
             <summary>
             Constant for bootstrap geo-replication status.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.Shared.Protocol.Constants.AccessTierElement">
+            <summary>
+            Constant for the blob tier.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.Shared.Protocol.Constants.ArchiveStatusElement">
+            <summary>
+            Constant for the archive status.
             </summary>
         </member>
         <member name="F:Microsoft.WindowsAzure.Storage.Shared.Protocol.Constants.BlobTypeElement">
@@ -36382,6 +37375,21 @@
         <member name="F:Microsoft.WindowsAzure.Storage.Shared.Protocol.Constants.HeaderConstants.DeleteSnapshotHeader">
             <summary>
             Header to delete snapshots.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.Shared.Protocol.Constants.HeaderConstants.AccessTierHeader">
+            <summary>
+            Header for the blob tier.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.Shared.Protocol.Constants.HeaderConstants.ArchiveStatusHeader">
+            <summary>
+            Header for the archive status.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.Shared.Protocol.Constants.HeaderConstants.AccessTierInferredHeader">
+            <summary>
+            Header for the blob tier inferred.
             </summary>
         </member>
         <member name="F:Microsoft.WindowsAzure.Storage.Shared.Protocol.Constants.HeaderConstants.BlobCacheControlHeader">

@@ -1,4 +1,5 @@
-﻿
+﻿module Program
+
 [<EntryPoint>]
 let main argv =
     Demo.benchmark "Async impl" (fun () ->

@@ -69,8 +69,8 @@ let toChartWithGCgeneration title =
 
 let fromTuples (input:System.Tuple<string,System.Action[]>[]):PerfTestInput =
     List.ofArray input
-    |> List.map (fun (tuple:System.Tuple<string,System.Action[]>) ->
-        let (name, actions) = tuple
+    |> List.map (fun (tuple : System.Tuple<string, System.Action[]>) ->
+        let (name, actions) = (tuple : System.Tuple<string, System.Action[]>)
         let implementations =
             List.ofArray actions
             |> List.map (fun action ->

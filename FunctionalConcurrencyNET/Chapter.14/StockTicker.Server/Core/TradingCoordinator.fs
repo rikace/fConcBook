@@ -33,7 +33,7 @@ type TradingCoordinator() =   // #A
                     | Subscribe(id, amount, caller) ->    // #D
                         let observer = TradingAgent(id, amount, caller)  // #E
                         let dispObsrever = subject.Subscribe(observer)
-                        observer.Agent |> reportErrorsTo id supervisor |> startAgent   // #F
+                        observer.Agent |> withSupervisor id supervisor |> startAgent   // #F
                         caller.Client(id).SetInitialAsset(amount)   // #G
                         return! loop (Map.add id (observer :> IObserver<Trading>, dispObsrever) agents)
                     | Unsubscribe(id) ->

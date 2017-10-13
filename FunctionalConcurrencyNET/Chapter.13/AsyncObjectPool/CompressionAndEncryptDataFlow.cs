@@ -149,7 +149,7 @@ namespace DataflowObjectPoolEncryption
                 async details =>
                 {
                     ChunkBytes compressedData = await Compress(details.Bytes);
-                    await Pool.Send(details.Bytes);
+                    await Pool.PutAsync(details.Bytes);
 
                     return new CompressedDetails
                     {
@@ -164,10 +164,10 @@ namespace DataflowObjectPoolEncryption
                 async details =>
                 {
                     var data = await CombineByteArrays(details.CompressedDataSize, details.ChunkSize, details.Bytes);
-                    await Pool.Send(details.Bytes);
+                    await Pool.PutAsync(details.Bytes);
 
                     var encryptedData = await Encrypt(data);
-                    await Pool.Send(data);
+                    await Pool.PutAsync(data);
 
                     return new EncryptDetails
                     {
@@ -187,7 +187,7 @@ namespace DataflowObjectPoolEncryption
                         msg = details[lastIndexProc + 1];
                         await streamDestination.WriteAsync(msg.EncryptedDataSize.Bytes, 0, msg.EncryptedDataSize.Length);
                         await streamDestination.WriteAsync(msg.Bytes.Bytes, 0, msg.Bytes.Length);
-                        await Pool.Send(msg.Bytes);
+                        await Pool.PutAsync(msg.Bytes);
                         lastIndexProc = msg.Sequence;
                         details.Remove(lastIndexProc);
                     }
@@ -256,7 +256,7 @@ namespace DataflowObjectPoolEncryption
                 async details =>
                 {
                     var decryptedData = await Decrypt(details.Bytes);
-                    await Pool.Send(details.Bytes);
+                    await Pool.PutAsync(details.Bytes);
 
                     return new DecompressionDetails
                     {
@@ -269,7 +269,7 @@ namespace DataflowObjectPoolEncryption
                 async details =>
         {
             var decompressedData = await Decompress(details.Bytes, sizeof(int) + sizeof(int));
-            await Pool.Send(details.Bytes);
+            await Pool.PutAsync(details.Bytes);
 
             return new DecompressionDetails
             {
@@ -287,7 +287,7 @@ namespace DataflowObjectPoolEncryption
                     {
                         msg = details[lastIndexProc + 1];
                         await streamDestination.WriteAsync(msg.Bytes.Bytes, 0, msg.Bytes.Length);
-                        await Pool.Send(msg.Bytes);
+                        await Pool.PutAsync(msg.Bytes);
                         lastIndexProc = msg.Sequence;
                         details.Remove(lastIndexProc);
                     }

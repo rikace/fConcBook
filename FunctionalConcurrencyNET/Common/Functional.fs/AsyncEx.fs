@@ -65,11 +65,20 @@ module AsyncEx =
             Async.Start(computation, cts.Token)
             { new IDisposable with member x.Dispose() = cts.Cancel() }
 
-        static member StartContinuations (cont: 'a -> unit) (computation:Async<'a>) =
+        static member StartContinuation (cont: 'a -> unit) (computation:Async<'a>) =
             Async.StartWithContinuations(computation,
                 (fun res-> cont(res)),
                 (ignore),
                 (ignore))
+
+        static member Map (map:'a -> 'b) (x:Async<'a>) = async {let! r = x in return map r}
+
+        static member Tap (action:'a -> 'b) (x:Async<'a>) = (Async.Map action x) |> Async.Ignore|> Async.Start; x
+
+    type StreamReader with
+        member this.AsyncReadToEnd() : Async<string> = async {
+            use asyncReader = new AsyncStreamReader(this.BaseStream)
+            return! asyncReader.ReadToEnd() }
 
 [<AutoOpen>]
 module AsyncBuilderEx =

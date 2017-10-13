@@ -1,4 +1,6 @@
-﻿open GameOfLife
+﻿module Program
+
+open GameOfLife
 open System
 open System.Windows
 open System.Threading

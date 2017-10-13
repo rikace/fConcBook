@@ -19,7 +19,7 @@ namespace Functional.IO
         public static FileStream OpenWriteAsync(string path) => new FileStream(path, FileMode.OpenOrCreate, FileAccess.Write, FileShare.None, BUFFER_SIZE, true);
 
 
-        public static async Task WriteAllBytes(string path, byte[] bytes)
+        public static async Task WriteAllBytesAsync(string path, byte[] bytes)
         {
             FileStream stream = OpenWriteAsync(path);
             await stream.WriteAsync(bytes, 0, bytes.Length)
@@ -44,7 +44,7 @@ namespace Functional.IO
 
         public static async Task WriteAllTextAsync(string path, string contents) =>
             await Task.Run(() => Encoding.UTF8.GetBytes(contents))
-                .ContinueWith(task => WriteAllBytes(path, task.Result));
+                .ContinueWith(task => WriteAllBytesAsync(path, task.Result));
 
 
     }

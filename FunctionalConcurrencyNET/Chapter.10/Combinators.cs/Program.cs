@@ -14,6 +14,8 @@ using static Functional.OptionHelpers;
 using Functional.Tasks;
 using System.Drawing.Drawing2D;
 using Functional.Async;
+using Functional.IO;
+using File = Functional.IO.File;
 
 namespace Combinators.cs
 {
@@ -75,10 +77,12 @@ namespace Combinators.cs
                 throw;
             }
 
-            //Image image = await AsyncEx.Retry(
-            //            () => DownloadImage("Bugghina001.jpg")
-            //                    .Otherwise(() => DownloadImage("Bugghina002.jpg")),
-            //            5, TimeSpan.FromSeconds(2));
+           // TODO
+//Image image = await AsyncEx.Retry(async () =>
+//                    await DownloadImageAsync("Bugghina001.jpg")
+//                .Otherwise(async () =>
+//                    await DownloadImageAsync("Bugghina002.jpg")),
+//            5, TimeSpan.FromSeconds(2));
         }
 
         private static void HandlingError(Exception ex)
@@ -181,7 +185,7 @@ namespace Combinators.cs
         }
 
         //Listing 10.9 DownloadResultImage to handle errors preserving the semantic
-        async Task<Result<Image>> DownloadResultImages(string blobReference)
+        async Task<Result<Image>> DownloadResultImage(string blobReference)
         {
             try
             {
@@ -210,9 +214,10 @@ namespace Combinators.cs
         //Listing 10.11 Composing Task<Result<T>> operations in functional style
         async Task<Result<byte[]>> ProcessImage(string nameImage, string destinationImage)
         {
-            return await DownloadResultImages(nameImage)
-                   .Map(image => ToThumbnail(image))     // #A
-                   .Bind(image => ToByteArray(image));    // #A
+            return await DownloadResultImage(nameImage)
+            .Map(async image => await ToThumbnail(image))     // #A
+            .Bind(async image => await ToByteArray(image))
+            .Tap(async bytes => await File.WriteAllBytesAsync(destinationImage, bytes));    // #A
         }
 
 

@@ -12,7 +12,7 @@ type AgentDisposable<'T> (behavior:MailboxProcessor<'T> -> Async<unit>,
     let agent = MailboxProcessor.Start(behavior, cancelToken.Token)
 
     member __.Agent = agent
-    member this.reportErrorsTo (supervisor: Agent<exn>) =
+    member this.withSupervisor (supervisor: Agent<exn>) =
         this.Agent.Error.Add(supervisor.Post); this
 
     interface IDisposable with
@@ -36,48 +36,49 @@ type SqlReadMessages =
 type SqlWriteMessages =
     | Add of person:Person * AsyncReplyChannelWithAck<int option>
 
-type ReadWriteMessages<'r,'w> =
-    | Read of r:'r
-    | Write of w:'w
 
-type ReaderWriterMag<'r,'w> =
-    | Command of r:ReadWriteMessages<'r,'w>
+// Listing 13.4  ReaderWriterAgent coordinator of asynchronous read and write operations
+type ReaderWriterMsg<'r,'w> = //#A
+    | Command of r:ReadWriteMsg<'r,'w>
     | CommandCompleted
-and ReaderWriterGateState =
+and ReaderWriterGateState = // #B
     | SendWrite
     | SendRead of cnt:int
     | Idle
+and ReadWriteMsg<'r,'w> = // #B
+    | Read of r:'r
+    | Write of w:'w
 
 type ReaderWriterAgent<'r,'w>
-            (workers:int, behavior: MailboxProcessor<ReadWriteMessages<'r,'w>> -> Async<unit>,
-             ?errorHandler, ?cts:CancellationTokenSource) =
+            (workers:int, behavior: MailboxProcessor<ReadWriteMsg<'r,'w>> -> Async<unit>,
+             ?errorHandler, ?cts:CancellationTokenSource) = // #C
 
     let cts = defaultArg cts (new System.Threading.CancellationTokenSource())
     let errorHandler = defaultArg errorHandler ignore
     let supervisor =
         Agent<Exception>.Start(fun inbox -> async {
-            while true do
+            while true do // #D
                 let! error = inbox.Receive()
                 errorHandler error })
 
-    let agent = MailboxProcessor<ReaderWriterMag<'r,'w>>.Start((fun inbox ->
-        let agents = Array.init workers (fun _ ->
-            (new AgentDisposable<ReadWriteMessages<'r,'w>>(behavior, cts))
-                .reportErrorsTo supervisor)
+    let agent = MailboxProcessor<ReaderWriterMsg<'r,'w>>.Start((fun inbox ->
+        let agents = Array.init workers (fun _ -> // #E
+            (new AgentDisposable<ReadWriteMsg<'r,'w>>(behavior, cts))
+                .withSupervisor supervisor)
 
         cts.Token.Register(fun () ->
             agents |> Array.iter(fun agent -> (agent :> IDisposable).Dispose()))
         |> ignore
 
-        let writeQueue = Queue<_>()
-        let readQueue = Queue<_>()
+        let writeQueue = Queue<_>() // #F
+        let readQueue = Queue<_>()  // #F
 
         let rec loop i state = async {
             let! msg = inbox.Receive()
-            let next = (i+1) % workers
+            let next = (i+1) % workers // #G
             match msg with
             | Command(Read(req)) ->
-                match state with
+                match state with // #H
                 | Idle ->
                     agents.[i].Agent.Post(Read(req))
                     return! loop next (SendRead 1)
@@ -87,7 +88,7 @@ type ReaderWriterAgent<'r,'w>
                 | _ ->
                     readQueue.Enqueue(req)
                     return! loop i state
-            | Command(Write(req)) ->
+            | Command(Write(req)) -> // #H
                 match state with
                 | Idle ->
                     agents.[i].Agent.Post(Write(req))
@@ -95,7 +96,7 @@ type ReaderWriterAgent<'r,'w>
                 | SendRead(_) | SendWrite ->
                     writeQueue.Enqueue(req)
                     return! loop i state
-            | CommandCompleted ->
+            | CommandCompleted -> // #I
                 match state with
                 | Idle -> failwith "Operation no possible"
                 | SendRead(n) when n > 1 ->
@@ -118,7 +119,7 @@ type ReaderWriterAgent<'r,'w>
     let postAndAsyncReply cmd createRequest =
         agent.PostAndAsyncReply(fun ch ->
             createRequest(AsyncReplyChannelWithAck(ch, fun () -> agent.Post(CommandCompleted)))
-            |> cmd |> ReaderWriterMag.Command)
+            |> cmd |> ReaderWriterMsg.Command)
 
     member this.Read(createReadRequest)   = postAndAsyncReply Read  createReadRequest
     member this.Write(createWriteRequest) = postAndAsyncReply Write createWriteRequest

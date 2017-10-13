@@ -78,12 +78,14 @@ let toThumbnail (image:Image) =
         return new Bitmap(bitmap.GetThumbnailImage(x, y, null, IntPtr.Zero)) :> Image;
     } |> AsyncResult.handler
 
-let toByteArray (image:Image) =
-    use memStream = new MemoryStream()
-    image.Save(memStream, image.RawFormat)
-    memStream.ToArray()
+open System.Drawing
 
-let toByteArrayAsync(image : Image) : AsyncResult<byte[]> =
+let toByteArrayAsync (image:Image) = async {
+    use memStream = new MemoryStream()
+    do! image.SaveImageAsync(memStream, image.RawFormat)
+    return memStream.ToArray() }
+
+let toByteArrayAsyncResult(image : Image) : AsyncResult<byte[]> =
     async {
         use memStream = new MemoryStream()
         image.Save(memStream, image.RawFormat)
@@ -95,7 +97,7 @@ type logger =
     static member Error (ex:exn) = printfn "Error Message : %s" ex.Message
 
 //Listing 10.14 Leveraging the AsyncResult higher order functions for fluent composition
-let processImage (blobReference:string) (destinationImage:string) : AsyncResult<unit> =
+let processImage (blobReference:string) (destinationImage:string) = //: AsyncResult<unit> =
     async {
         let storageAccount = CloudStorageAccount.Parse("< Azure Connection >")
         let blobClient = storageAccount.CreateCloudBlobClient()
@@ -107,7 +109,7 @@ let processImage (blobReference:string) (destinationImage:string) : AsyncResult<
         return Bitmap.FromStream(memStream) }
     |> AsyncResult.handler  // #A
     |> AsyncResult.bind(fun image -> toThumbnail(image))   // #A
-    |> AsyncResult.map(fun image -> toByteArray(image))    // #A
+    |> AsyncResult.map(fun image -> toByteArrayAsync(image))    // #A
     |> AsyncResult.bimap (fun bytes -> FileEx.WriteAllBytesAsync(destinationImage, bytes))
                          (fun ex -> logger.Error(ex) |> async.Return)  // #A
 
@@ -125,7 +127,7 @@ let processImage2 (blobReference:string) (destinationImage:string) : AsyncResult
         do! blockBlob.DownloadToStreamAsync(memStream)
         let image = Bitmap.FromStream(memStream)
         let! thumbnail = toThumbnail(image)
-        return! toByteArrayAsync thumbnail
+        return! toByteArrayAsyncResult thumbnail
       }
       |> AsyncResult.bimap (fun bytes -> FileEx.WriteAllBytesAsync(destinationImage, bytes))
                            (fun ex -> logger.Error(ex) |> async.Return)   // #B
@@ -221,3 +223,70 @@ module Listing_TEST =
         | None -> log "There was a problem downloading the image")
     |> Async.Start
 
+module ``Composing and executing heterogeneous parallel computations`` =
+    open System
+    open System.Net
+    open FunctionalConcurrency
+    open StockAnalyzer
+    open StockAnalysis
+
+
+    // Listing 10.25  Asynchronous operations to compose and run in parallel
+    let calcTransactionAmount amount (price:float) =
+        let readyToInvest = amount * 0.75
+        let cnt = Math.Floor(readyToInvest / price)
+        if (cnt < 1e-5) && (price < amount)
+        then 1 else int(cnt)               // #A
+
+    let rnd = Random()
+    let mutable bankAccount = 500.0 + float(rnd.Next(1000))
+    let getAmountOfMoney() = async {
+        return bankAccount
+    }    // #B
+
+    let getCurrentPrice symbol = async {
+            let! (_,data) = processStockHistory symbol // #H
+            return data.[0].open'
+    }  // #C
+
+    let getStockIndex index =
+        async {
+            let url = sprintf "http://download.finance.yahoo.com/d/quotes.csv?s=%s&f=snl1" index
+            let req = WebRequest.Create(url)
+            let! resp = req.AsyncGetResponse()
+            use reader = new StreamReader(resp.GetResponseStream())
+            return! reader.ReadToEndAsync()   // #D
+        } |> Async.map(fun (row:string) ->
+                let items = row.Split(',')
+                System.Double.Parse(items.[items.Length-1]))
+            |> AsyncResult.handler   // #E
+
+    let analyzeHistoricalTrend symbol =
+        asyncResult {
+            let! data = getStockHistory symbol (365/2)
+            let trend = data.[data.Length-1] - data.[0]
+            return trend
+        }   // #F
+
+    let withdraw amount = async {
+        return
+            if amount > bankAccount
+            then Error(InvalidOperationException("Not enough money"))
+            else
+                bankAccount <- bankAccount - amount
+                Ok(true)
+        }     // #G
+
+
+    // Listing 10.26  Running heterogeneous asynchronous operations using Applicative Functors
+    let howMuchToBuy stockId : AsyncResult<int> =
+        Async.lift2 (calcTransactionAmount)   // #A
+              (getAmountOfMoney())
+              (getCurrentPrice stockId)
+        |> AsyncResult.handler         // #B
+
+    let analyze stockId =      // #C
+        howMuchToBuy stockId
+        |> Async.StartContinuation(function    // #D
+            | Ok (total) -> printfn "I recommend to buy %d unit" total
+            | Error (e) -> printfn "I do not recommend to buy now")

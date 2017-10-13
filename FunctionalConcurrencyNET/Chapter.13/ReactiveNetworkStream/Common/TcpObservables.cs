@@ -14,63 +14,66 @@ namespace Common
 {
     public static class TcpObservables
     {
-public static IObservable<TcpClient> ToAcceptTcpClientObservable(this TcpListener listener, int backlog = 5)
-{
-    //start listening with a determinate clients buffer backlog
-    listener.Start(backlog);
-
-    return Observable.Create<TcpClient>(async (observer, token) =>
-    {
-        try
+        // Listing 13.9 Asynchronous and reactive ToAcceptTcpClientObservable Rx method
+        public static IObservable<TcpClient> ToAcceptTcpClientObservable(this TcpListener listener, int backlog = 5)
         {
-            while (!token.IsCancellationRequested)
+            //start listening with a determinate clients buffer backlog
+            listener.Start(backlog); // #A
+
+            return Observable.Create<TcpClient>(async (observer, token) => // #B
             {
-                //accept newly clients from the listener
-                var client = await listener.AcceptTcpClientAsync();
-                //route the client to the observer
-                //into an asynchronous task to let multiple clients connect altogether
+                try
+                {
+                    while (!token.IsCancellationRequested) // #C
+                    {
+                        //accept newly clients from the listener
+                        var client = await listener.AcceptTcpClientAsync(); // #D
+                        //route the client to the observer
+                        //into an asynchronous task to let multiple clients connect altogether
 
-                Task.Factory.StartNew(_ => observer.OnNext(client), token, TaskCreationOptions.LongRunning);
-            }
+                        Task.Factory.StartNew(_ => observer.OnNext(client), token, TaskCreationOptions.LongRunning); // #E
+                    }
+                    observer.OnCompleted();
+                }
+                catch (OperationCanceledException)
+                {
+                    observer.OnCompleted(); // #F
+                }
+                catch (Exception error)
+                {
+                    observer.OnError(error); // #F
+                }
+                finally
+                {
+                    listener.Stop();
+                }
+                return Disposable.Create(() => // #G
+                {
+                    listener.Stop();
+                    listener.Server.Dispose();
+                });
+            });
+        }
 
-        }
-        catch (OperationCanceledException)
+        // Listing 13.12 Custom Observable operator ToConnetClientObservable
+        public static IObservable<TcpClient> ToConnectClientObservable(this IPEndPoint endpoint)
         {
-            observer.OnCompleted();
+            return Observable.Create<TcpClient>(async (observer, token) =>
+            {
+                var client = new TcpClient();
+                try
+                {
+                    await client.ConnectAsync(endpoint.Address, endpoint.Port);
+                    token.ThrowIfCancellationRequested();
+                    observer.OnNext(client);
+                    //observer.OnCompleted();
+                }
+                catch (Exception error)
+                {
+                    observer.OnError(error);
+                }
+                return Disposable.Create(() => client.Dispose());
+            });
         }
-        catch (Exception error)
-        {
-            observer.OnError(error);
-        }
-        finally
-        {
-            listener.Stop();
-        }
-        return Disposable.Create(() =>
-        {
-            listener.Stop();
-            listener.Server.Dispose();
-        });
-    });
-}
-
-public static IObservable<TcpClient> ToConnectClientObservable(this IPEndPoint endpoint)
-{
-    return Observable.Create<TcpClient>(async (observer, token) =>  {
-        var client = new TcpClient();
-        try
-        {
-            await client.ConnectAsync(endpoint.Address, endpoint.Port);
-            token.ThrowIfCancellationRequested();
-            observer.OnNext(client);
-            observer.OnCompleted();
-        }
-        catch (Exception error)
-        {
-            observer.OnError(error);
-        }
-        Disposable.Create(() => client.Dispose());
-    });
-}
     }
 }

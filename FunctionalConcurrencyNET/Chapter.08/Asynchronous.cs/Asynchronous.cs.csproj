@@ -34,8 +34,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FSharp.Core, Version=4.4.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\FSharp.Core.4.2.3\lib\net45\FSharp.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -50,11 +55,20 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Common\Functional.cs\Functional.cs.csproj">
       <Project>{24d84c19-b173-4635-91a6-42328bc694ce}</Project>
       <Name>Functional.cs</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\Functional.fs\Functional.fs.fsproj">
+      <Project>{4ae3e71f-d433-448b-abfe-13491faab5a6}</Project>
+      <Name>Functional.fs</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\Utilities\Utilities.fsproj">
+      <Project>{2c133fbd-c138-43bb-9066-a9fecb1abe86}</Project>
+      <Name>Utilities</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

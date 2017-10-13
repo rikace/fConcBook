@@ -1,4 +1,4 @@
-﻿module TamingAgent
+﻿module Program
 
 open System.Collections.Generic
 open System.Collections.Concurrent
@@ -10,26 +10,14 @@ open System.Text.RegularExpressions
 open System.Drawing
 open System.Threading
 open TamingAgentModule
+open System.Net.Sockets
 
 [<AutoOpen>]
 module HelperType =
     type ImageInfo = { Path:string; Name:string; Image:Bitmap}
 
-[<EntryPoint>]
-let main argv =
 
-    let run cont op = Async.StartWithContinuations(op, cont, (ignore), (ignore))
-
-    let retn x = async { return x }
-
-    let bind (operation:'a -> Async<'b>) (xAsync:Async<'a>) = async {
-        let! x = xAsync
-        return! operation x }
-
-    let (>>=) (item:Async<'a>) (operation:'a -> Async<'b>) = bind operation item
-
-
-
+module ImageHelpers =
     let convertImageTo3D (image:Bitmap) =
         let bitmap = image.Clone() :?> Bitmap
         let w,h = bitmap.Width, bitmap.Height
@@ -41,6 +29,7 @@ let main argv =
                 bitmap.SetPixel(x - 20 ,y,color3D)
         bitmap
 
+    // Listing 13.18 The TamingAgent in action for image transformation
     let loadImage = (fun (imagePath:string) -> async {
         let bitmap = new Bitmap(imagePath)
         return { Path = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures)
@@ -58,19 +47,53 @@ let main argv =
         return imageInfo.Name})
 
 
-    let loadandApply3dImage imagePath = retn imagePath >>= loadImage >>= apply3D >>= saveImage
+module ``TamingAgent example`` =
+
+    open AsyncEx
+    open ImageHelpers
+
+    let loadandApply3dImage imagePath = Async.retn imagePath >>= loadImage >>= apply3D >>= saveImage
 
     let loadandApply3dImageAgent = TamingAgent<string, string>(2, loadandApply3dImage)
 
-    loadandApply3dImageAgent.Subsrcibe(fun imageName -> printfn "Save image %s" imageName)
+    loadandApply3dImageAgent.Subscribe(fun imageName -> printfn "Saved image %s - from subscriber" imageName)
 
 
-    let loadImages() =
+    let transformImages() =
         let images = Directory.GetFiles(@".\Images")
         for image in images do
-            loadandApply3dImageAgent.Ask(image) |> run (fun imagePath -> printfn "Complete processing image %s" imagePath)
+            loadandApply3dImageAgent.Ask(image) |> run (fun imageName -> printfn "Saved image %s - from reply back" imageName)
 
-    loadImages()
+
+module ``Composing TamingAgent with Kleisli operator example`` =
+    open Kleisli
+    open AsyncEx
+    open ImageHelpers
+
+    //Listing 13.19 The TamingAgent with Kleisli operator
+    let pipe (limit:int) (operation:'a -> Async<'b>) (job:'a) : Async<_> =
+        let agent = TamingAgent(limit, operation)
+        agent.Ask(job)
+
+    let loadImageAgent = pipe 2 loadImage
+    let apply3DEffectAgent = pipe 2 apply3D
+    let saveImageAgent = pipe 2 saveImage
+
+    let pipeline = loadImageAgent >=> apply3DEffectAgent >=> saveImageAgent
+
+    let transformImages() =
+        let images = Directory.GetFiles(@".\Images")
+        for image in images do
+            pipeline image |> run (fun imageName -> printfn "Saved image %s" imageName)
+
+
+
+[<EntryPoint>]
+let main argv =
+
+    ``TamingAgent example``.transformImages()
+
+    ``Composing TamingAgent with Kleisli operator example``.transformImages();
 
     Console.ReadLine() |> ignore
     0

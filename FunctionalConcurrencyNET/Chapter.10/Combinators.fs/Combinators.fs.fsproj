@@ -54,8 +54,8 @@
   </Choose>
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
-    <Compile Include="Listing.fs" />
     <Compile Include="StockAnalysis.fs" />
+    <Compile Include="Listing.fs" />
     <Compile Include="Program.fs" />
     <None Include="App.config" />
     <Content Include="packages.config" />

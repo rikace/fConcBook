@@ -82,7 +82,7 @@
  Transforms a Task&apos;s first value by using a specified mapping function.
 </summary>
 </member>
-<member name="M:FunctionalConcurrency.Utilities.tee``2(Microsoft.FSharp.Core.FSharpFunc{``0,``1},``0)">
+<member name="M:FunctionalConcurrency.Utilities.tap``2(Microsoft.FSharp.Core.FSharpFunc{``0,``1},``0)">
 <summary>
  Given a value, apply a function to it, ignore the result, then return the original value.
 </summary>

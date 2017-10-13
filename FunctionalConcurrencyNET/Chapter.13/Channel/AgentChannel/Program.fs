@@ -1,4 +1,6 @@
-﻿open System.Collections.Generic
+﻿module Program
+
+open System.Collections.Generic
 open System.Collections.Concurrent
 open System.Threading.Tasks
 open System.Linq
@@ -54,6 +56,4 @@ let main argv =
     loadImages()
 
     Console.ReadLine() |> ignore
-
-    TaskPool.Stop()
     0

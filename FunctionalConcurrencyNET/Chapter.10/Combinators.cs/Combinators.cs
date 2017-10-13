@@ -14,6 +14,26 @@ namespace Combinators.cs
 {
     public static class Combinators
     {
+        // TODO
+        //Listing 10.3 Task.Catch function
+
+        public static Task<T> Catch<T, TError>(this Task<T> task, Func<TError, T> onError) where TError : Exception
+        {
+            var tcs = new TaskCompletionSource<T>();    // #A
+            task.ContinueWith(innerTask =>
+            {
+                if (innerTask.IsFaulted && innerTask?.Exception?.InnerException is TError)
+                    tcs.SetResult(onError((TError)innerTask.Exception.InnerException)); // #B
+                else if (innerTask.IsCanceled)
+                    tcs.SetCanceled();      // #B
+                else if (innerTask.IsFaulted)
+                    tcs.SetException(innerTask?.Exception?.InnerException ?? throw new InvalidOperationException()); // #B
+                else
+                    tcs.SetResult(innerTask.Result);  // #B
+            });
+            return tcs.Task;
+        }
+
         public static async Task CombinatorRedundancy()
         {
             //Listing 10.16 Redundancy with Task.WhenAny

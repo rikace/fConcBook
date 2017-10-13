@@ -119,10 +119,6 @@
       <Project>{24d84c19-b173-4635-91a6-42328bc694ce}</Project>
       <Name>Functional.cs</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Combinators.fs\Combinators.fs.fsproj">
-      <Project>{384b364c-7be4-457c-a949-2c4b107bafea}</Project>
-      <Name>Combinators.fs</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

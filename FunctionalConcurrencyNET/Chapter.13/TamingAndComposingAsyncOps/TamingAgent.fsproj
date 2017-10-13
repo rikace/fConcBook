@@ -65,7 +65,9 @@
     <None Include="Images\MonaLisa.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Compile Include="AsyncEx.fs" />
     <Compile Include="TamingAgent.fs" />
+    <Compile Include="Kleisli.fs" />
     <Compile Include="Program.fs" />
     <None Include="App.config" />
     <Content Include="packages.config" />

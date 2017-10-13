@@ -13,7 +13,7 @@ namespace ParallelRecipes
         {
 
             var random = new Random();
-            
+
             Parallel.For(0, 1000, (i) =>
             {
                 if (i % 5 == 0)

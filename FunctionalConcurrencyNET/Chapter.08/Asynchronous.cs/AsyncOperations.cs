@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -8,6 +10,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Functional.Async;
+using static System.Drawing.BitmapExtensions;
 
 namespace ConsoleApplication1
 {
@@ -73,14 +76,16 @@ namespace ConsoleApplication1
         async Task DownloadIconAsync(string domain, string fileDestination)
         {
             using (FileStream stream = new FileStream(fileDestination,
-                            FileMode.Create, FileAccess.Write,
-                            FileShare.Write, 0x1000, FileOptions.Asynchronous))
+                FileMode.Create, FileAccess.Write,
+                FileShare.Write, 0x1000, FileOptions.Asynchronous))
                 await new HttpClient()
                     .GetAsync($"http://{domain}/favicon.ico")
                     .Bind(async content => await
                         content.Content.ReadAsByteArrayAsync())
-                    .Map(async bytes => await stream.WriteAsync(bytes, 0,
-                                                                bytes.Length));
+                    .Map(bytes => Image.FromStream(new MemoryStream(bytes))) // # B
+                    .Tap(async image => // #C
+                               await SaveImageAsync(fileDestination, ImageFormat.Jpeg, image));
+
         }
 
         async Task DownloadIconAsyncLINQ(string domain, string fileDestination)

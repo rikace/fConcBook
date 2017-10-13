@@ -6,12 +6,11 @@ using System.Threading.Tasks.Dataflow;
 
 namespace DataflowObjectPoolEncryption
 {
-    // Provides a thread-safe object pool
+    // Listing 13.1 Asynchronous Object-Pool
     public class ObjectPoolAsync<T> : IDisposable
     {
         private readonly BufferBlock<T> buffer;
         private readonly Func<T> factory;
-        private readonly CancellationToken ctsToken;
         private readonly int msecTimeout;
         private int currentSize;
 
@@ -19,41 +18,41 @@ namespace DataflowObjectPoolEncryption
         {
             this.msecTimeout = msecTimeout;
 
-            ctsToken = cts ?? new CancellationToken();
-            ctsToken.Register(() => this.Dispose());
+            var ctsToken = cts ?? new CancellationToken();
+            ctsToken.Register(Dispose);
 
-            buffer = new BufferBlock<T>(
+            buffer = new BufferBlock<T>( // #A
                 new DataflowBlockOptions { CancellationToken = ctsToken }
-             );
+            );
             this.factory = () =>
             {
                 Interlocked.Increment(ref currentSize);
                 return factory();
             };
             for (int i = 0; i < initialCount; i++)
-                buffer.Post(this.factory());
+                buffer.Post(this.factory()); // #B
         }
 
         public int Size => currentSize;
-        public Task<bool> Send(T item) => buffer.SendAsync(item);
+        public Task<bool> PutAsync(T item) => buffer.SendAsync(item); // #C
 
-        public Task<T> GetAsync(int timeout = 0)
+        public Task<T> GetAsync(int timeout = 0) // #D
         {
             var tcs = new TaskCompletionSource<T>();
             buffer.ReceiveAsync(TimeSpan.FromMilliseconds(msecTimeout))
-                .ContinueWith(t =>
+                .ContinueWith(task =>
                 {
-                    if (t.IsFaulted)
+                    if (task.IsFaulted)
                     {
-                        if (t.Exception.InnerException is TimeoutException)
+                        if (task.Exception.InnerException is TimeoutException)
                             tcs.SetResult(factory());
                         else
-                            tcs.SetException(t.Exception);
+                            tcs.SetException(task.Exception);
                     }
-                    else if (t.IsCanceled)
+                    else if (task.IsCanceled)
                         tcs.SetCanceled();
                     else
-                        tcs.SetResult(t.Result);
+                        tcs.SetResult(task.Result);
                 });
             return tcs.Task;
         }

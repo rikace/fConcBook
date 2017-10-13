@@ -5,40 +5,34 @@ open System.Collections.Concurrent
 open System.Threading.Tasks
 open System.Linq
 open System.Threading
+open ParallelWorkersAgent
 
+//Listing 13.16 ChannelAgent for CSP implementation using MailboxProcessor
 type private Context = {cont:unit -> unit; context:ExecutionContext}
 
-type TaskPool private () =
-    let cts = new CancellationTokenSource()
-    let queue = Array.init 2 (fun _ -> new BlockingCollection<Context>(ConcurrentQueue()))
-    let work() =
-        while queue.All(fun bc -> bc.IsCompleted) |> not && cts.IsCancellationRequested |> not do
-        let ctx = ref Unchecked.defaultof<Context>
-        if BlockingCollection<_>.TryTakeFromAny(queue, ctx) >= 0 then
-            let ctx = ctx.Value
+type TaskPool private (numWorkers) =
+    let worker (inbox: MailboxProcessor<Context>) =
+        let rec loop() = async {
+            let! ctx = inbox.Receive()
             let ec = ctx.context.CreateCopy()
             ExecutionContext.Run(ec, (fun _ -> ctx.cont()), null)
-    let long = TaskCreationOptions.LongRunning
-    let tasks = Array.init 1 (fun _ -> new Task(work, cts.Token, long))
-    do tasks |> Array.iter(fun task -> task.Start())
+            return! loop() }
+        loop()
+    let agent = MailboxProcessor<Context>.parallelWorker(numWorkers, worker)
 
-    static let self = TaskPool()
-    member private this.Stop() =
-        for bc in queue do bc.CompleteAdding()
-        cts.Cancel()
+    static let self = TaskPool(2)
     member private this.Add continutaion =
         let ctx = {cont = continutaion; context = ExecutionContext.Capture() }
-        BlockingCollection<_>.TryAddToAny(queue, ctx) |> ignore
-    static member Add(continuation:unit -> unit) = self.Add continuation
-    static member Stop() = self.Stop()
+        agent.Post(ctx)
+    static member Spawn (continuation:unit -> unit) = self.Add continuation
 
-type internal ChannleMsg<'a> =
+//Listing 13.15 ChannelAgent for CSP implementation using MailboxProcessor
+type internal ChannelMsg<'a> =
     | Recv of ('a -> unit) * AsyncReplyChannel<unit>
     | Send of 'a * (unit -> unit) * AsyncReplyChannel<unit>
 
-[<Sealed>]
-type ChannelAgent<'a>() =
-    let agent = MailboxProcessor<ChannleMsg<'a>>.Start(fun inbox ->
+type [<Sealed>] ChannelAgent<'a>() =
+    let agent = MailboxProcessor<ChannelMsg<'a>>.Start(fun inbox ->
         let readers = Queue<'a -> unit>()
         let writers = Queue<'a * (unit -> unit)>()
 
@@ -50,8 +44,8 @@ type ChannelAgent<'a>() =
                     readers.Enqueue ok
                     reply.Reply( () )
                 else
-                    let (value, cont) =writers.Dequeue()
-                    TaskPool.Add cont
+                    let (value, cont) = writers.Dequeue()
+                    TaskPool.Spawn  cont
                     reply.Reply( (ok value) )
                 return! loop()
             | Send(x, ok, reply) ->
@@ -60,7 +54,7 @@ type ChannelAgent<'a>() =
                     reply.Reply( () )
                 else
                     let cont = readers.Dequeue()
-                    TaskPool.Add ok
+                    TaskPool.Spawn ok
                     reply.Reply( (cont x) )
                 return! loop() }
         loop())

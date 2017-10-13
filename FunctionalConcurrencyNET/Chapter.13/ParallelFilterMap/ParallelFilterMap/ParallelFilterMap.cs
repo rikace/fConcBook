@@ -5,14 +5,13 @@ using System.Collections.Immutable;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-//using ConcurrencyEx;
 using PersistentDataStructures;
 
 namespace ParallelFilterMap
 {
-
     public static class ParallelEx
     {
+        // Listing 13.14 Parallel FilterMap operator
         // Executes a map operation, converting an input list into an output list, in parallel.
         // Filters an input list, running a predicate over each element of the input.
         // A new list containing all those elements from the input that passed the filter and transformed using the transform function

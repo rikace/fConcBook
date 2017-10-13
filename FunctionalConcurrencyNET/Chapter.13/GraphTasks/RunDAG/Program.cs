@@ -15,7 +15,7 @@ namespace RunDAG
 
             Func<int, int, Func<Task>> action = (id, delay) => async () =>
             {
-                Console.WriteLine($"Starting operation{id} in Thread Id {Thread.CurrentThread.ManagedThreadId}");
+                Console.WriteLine($"Starting operation{id} in Thread Id {Thread.CurrentThread.ManagedThreadId}...");
                 await Task.Delay(delay);
             };
 
@@ -25,7 +25,7 @@ namespace RunDAG
                 .OnTaskCompleted
                 .Subscribe(op =>
                     Console.WriteLine(
-                        $"Operation {op.Id} completed in Thread Id      {Thread.CurrentThread.ManagedThreadId}"));
+                        $"Operation {op.Id} completed in Thread Id {Thread.CurrentThread.ManagedThreadId}"));
 
             dagAsync.AddTask(1, action(1, 600), 4, 5);
             dagAsync.AddTask(2, action(2, 200), 5);

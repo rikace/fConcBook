@@ -6,26 +6,26 @@
     open System.Threading
     open Microsoft.FSharp.Collections
     open System.Threading.Tasks
-    open FunctionalConcurrency
 
     type MList<'a> = System.Collections.Generic.List<'a>
 
-    type TaskMessage =
+    // Listing 13.3  DAG F# Agent to parallelize the execution of operations with dependencies
+    type TaskMessage = // #A
         | AddTask of int * TaskInfo
         | QueueTask of TaskInfo
         | ExecuteTasks
-    and TaskInfo =
+    and TaskInfo = // #B
         { Context : System.Threading.ExecutionContext
           Edges : int array
           Id : int
           Task : Func<Task>
-          NumRemainingEdges : int option
+          EdgesLeft : int option
           Start : DateTimeOffset option
           End : DateTimeOffset option }
 
     type ParallelTasksDAG() =
 
-        let onTaskCompleted = new Event<TaskInfo>()
+        let onTaskCompleted = new Event<TaskInfo>() // #C
 
         let verifyThatAllOperationsHaveBeenRegistered (tasks:Dictionary<int, TaskInfo>) =
             let tasksNotRegistered =
@@ -87,73 +87,71 @@
         let rec getDependentOperation (dep : int list) (ops : Dictionary<int, TaskInfo>) acc =
             match dep with
             | [] -> acc
-            | h :: t ->     ops.[h] <- { ops.[h] with NumRemainingEdges = nrd ops.[h].NumRemainingEdges }
-                            match ops.[h].NumRemainingEdges.Value with
+            | h :: t ->     ops.[h] <- { ops.[h] with EdgesLeft = nrd ops.[h].EdgesLeft }
+                            match ops.[h].EdgesLeft.Value with
                             | 0 ->  getDependentOperation t ops (ops.[h] :: acc)
                             | _ ->  getDependentOperation t ops acc
 
         let dagAgent =
             let inbox = new MailboxProcessor<TaskMessage>(fun inbox ->
-                let rec loop (tasks : Dictionary<int, TaskInfo>)
+                let rec loop (tasks : Dictionary<int, TaskInfo>) // #D
                              (edges : Dictionary<int, int list>) = async {
                         let! msg = inbox.Receive()
                         match msg with
-                        | ExecuteTasks ->
+                        | ExecuteTasks -> // #E
                             // Verify that all operations are registered
                             verifyThatAllOperationsHaveBeenRegistered(tasks)
                             // Verify no cycles
                             verifyThereAreNoCycles(tasks)
 
-                            let dependenciesFromTo = new Dictionary<int, int list>()
-                            let queuesTasks = new Dictionary<int, TaskInfo>()
+                            let fromTo = new Dictionary<int, int list>()
+                            let ops = new Dictionary<int, TaskInfo>()
 
                             // Fill dependency data structures
-                            for KeyValue(key, value) in tasks do
-                                let task =
-                                    { value with NumRemainingEdges = Some(value.Edges.Length) }
-                                for from in task.Edges do
-                                    let exists, lstDependencies = dependenciesFromTo.TryGetValue(from)
+                            for KeyValue(key, value) in tasks do // #F
+                                let operation =
+                                    { value with EdgesLeft = Some(value.Edges.Length) }
+                                for from in operation.Edges do
+                                    let exists, lstDependencies = fromTo.TryGetValue(from)
                                     if not <| exists then
-                                        dependenciesFromTo.Add(from, [ task.Id ])
+                                        fromTo.Add(from, [ operation.Id ])
                                     else
-                                        dependenciesFromTo.[from] <- (task.Id :: lstDependencies)
-                                queuesTasks.Add(key, task)
+                                        fromTo.[from] <- (operation.Id :: lstDependencies)
+                                ops.Add(key, operation)
 
 
-                            queuesTasks |> Seq.filter (fun kv ->
-                                                   match kv.Value.NumRemainingEdges with
-                                                   | Some(n) when n = 0 -> true
-                                                   | _ -> false)
-                                        |> Seq.iter (fun op -> inbox.Post(QueueTask(op.Value)))
-                            return! loop queuesTasks dependenciesFromTo
+                            ops |> Seq.iter (fun kv ->
+                                                   match kv.Value.EdgesLeft with
+                                                   | Some(n) when n = 0 -> inbox.Post(QueueTask(kv.Value))
+                                                   | _ -> ())
+                            return! loop ops fromTo
 
-                        | QueueTask(taskInfo) ->
+                        | QueueTask(taskInfo) -> // #G
                                 Async.Start <| async {
                                     // Time and run the operation's delegate
-                                    let start' = DateTimeOffset.Now
+                                    let start = DateTimeOffset.Now
                                     match taskInfo.Context with
-                                    | null -> do! taskInfo.Task.Invoke()
+                                    | null -> do! taskInfo.Task.Invoke() |> Async.AwaitTask
                                     | ctx ->
-                                        ExecutionContext.Run(ctx.CreateCopy(),
+                                        ExecutionContext.Run(ctx.CreateCopy(), // #I
                                                                 (fun op -> let opCtx = (op :?> TaskInfo)
                                                                            opCtx.Task.Invoke().ConfigureAwait(false) |> ignore
                                                                            ), taskInfo)
                                     let end' = DateTimeOffset.Now
                                     // Raise the operation completed event
-                                    onTaskCompleted.Trigger  { taskInfo with Start = Some(start')
-                                                                             End = Some(end') }
+                                    onTaskCompleted.Trigger  { taskInfo with Start = Some(start)
+                                                                             End = Some(end') } // #L
 
                                     // Queue all the operations that depend on the completion
                                     // of this one, and potentially launch newly available
-                                    let exists, lstDependencies = edges.TryGetValue(taskInfo.Id)
-                                    if exists && lstDependencies.Length > 0 then
-                                        let dependentOperation' = getDependentOperation lstDependencies tasks []
+                                    let exists, deps = edges.TryGetValue(taskInfo.Id)
+                                    if exists && deps.Length > 0 then
+                                        let depOps = getDependentOperation deps tasks []
                                         edges.Remove(taskInfo.Id) |> ignore
-                                        dependentOperation'
-                                            |> Seq.iter (fun nestedOp -> inbox.Post(QueueTask(nestedOp))) }
+                                        depOps |> Seq.iter (fun nestedOp -> inbox.Post(QueueTask(nestedOp))) }
                                 return! loop tasks edges
 
-                        | AddTask(id, taskInfo) -> tasks.Add(id, taskInfo)
+                        | AddTask(id, taskInfo) -> tasks.Add(id, taskInfo) // #M
                                                    return! loop tasks edges
                     }
                 loop (new Dictionary<int, TaskInfo>(HashIdentity.Structural)) (new Dictionary<int, int list>(HashIdentity.Structural)))
@@ -162,18 +160,18 @@
             inbox
 
 
-        member this.OnTaskCompleted = onTaskCompleted.Publish |> Observable.map(id)
+        member this.OnTaskCompleted = onTaskCompleted.Publish |> Observable.map(id) //#L
 
-        member this.ExecuteTasks() = dagAgent.Post ExecuteTasks
+        member this.ExecuteTasks() = dagAgent.Post ExecuteTasks // #N
 
-        member this.AddTask(id, task:Func<Task>, [<ParamArrayAttribute>] edges : int array) =
+        member this.AddTask(id, task:Func<Task>, [<ParamArray>] edges : int array) =
             let data =
                 { Context = ExecutionContext.Capture()
                   Edges = edges
                   Id = id
                   Task = task
-                  NumRemainingEdges = None
+                  EdgesLeft = None
                   Start = None
                   End = None }
-            dagAgent.Post(AddTask(id, data))
+            dagAgent.Post(AddTask(id, data)) // #O
 

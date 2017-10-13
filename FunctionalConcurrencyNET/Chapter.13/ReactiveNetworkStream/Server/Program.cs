@@ -1,103 +1,55 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Net.Security;
 using System.Net.Sockets;
 using System.Reactive.Concurrency;
-using System.Reactive.Threading.Tasks;
 using System.Reactive.Linq;
-using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Security.Authentication;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using Common;
-using RxPipeServer;
-using static Common.Serialzer;
+using static Common.Serializer;
 using static Common.ColorPrint;
 using static Common.SecureStream;
 namespace Server
 {
     class Program
     {
+        // Listing 13.8 Reactive ConnectServer
         static void ConnectServer(int port, string sslName = null)
         {
             var cts = new CancellationTokenSource();
-            string[] stockFiles = new string[] { "aapl.csv", "amzn.csv", "fb.csv", "goog.csv", "msft.csv" };
+            string[] stockFiles = new string[] { "aapl.csv", "amzn.csv", "fb.csv", "goog.csv", "msft.csv" }; // #A
 
-            var formatter = new BinaryFormatter();
+            var formatter = new BinaryFormatter(); // #B
 
-            //convert a TcpListener into an observable sequence on port 23 (telnet)
             TcpListener.Create(port)
-                .ToAcceptTcpClientObservable()
-                .ObserveOn(TaskPoolScheduler.Default)
+                .ToAcceptTcpClientObservable() // #C
+                .ObserveOn(TaskPoolScheduler.Default) // #D
                 .Subscribe(client =>
                 {
-                    using (var stream = GetServerStream(client, sslName))
+                    using (var stream = GetServerStream(client, sslName)) // #E
                     {
                         stockFiles
-                            .ObservableStreams(StockData.Parse)
+                            .ObservableStreams(StockData.Parse) // #F
                             .Subscribe(async stock =>
                             {
-                                var data = Serialize(formatter, stock);
-                                await stream.WriteAsync(data, 0, data.Length, cts.Token);
+                                var data = Serialize(formatter, stock); // #G
+                                await stream.WriteAsync(data, 0, data.Length, cts.Token); // #G
                                 PrintStockInfo(stock);
                             });
                     }
                 },
-                    error => Console.WriteLine("Error: " + error.Message),
-                    () => Console.WriteLine("OnCompleted"),
+                    error => Console.WriteLine("Error: " + error.Message), // #H
+                    () => Console.WriteLine("OnCompleted"), // #H
                     cts.Token);
-
-
-
-            //while (!networkStream.EndOfStream) //still has some data
-            //{
-
-            ////convert a TcpListener into an observable sequence on port 23 (telnet)
-            ////var tcpClientsSequence = TcpListener.Create(23)
-            ////    .AcceptObservableClient()
-            ////    .AsNetworkByteSource();
-
-
-            Console.ReadLine();
         }
 
         static void Main(string[] args)
         {
-            //string[] stockFiles = new string[] { "aapl.csv", "amzn.csv", "fb.csv", "goog.csv", "msft.csv" };
-            //var formatter = new BinaryFormatter();
+            var port = 8080;
+            ConnectServer(port);
 
-            //var server = new PipeServerAsync("myPipe");
-            //var disposable = server.Connect()
-            //    .ToObservable()
-            //    .Subscribe(_ =>
-            //    {
-            //        Console.WriteLine("Client Connected...");
-
-            //        stockFiles
-            //        .ObservableStreams(StockData.Parse)
-            //        .Subscribe(stock =>
-            //            {
-            //                var data = Serialize(formatter, stock);
-            //                server.Write(data);
-            //                PrintStockInfo(stock);
-            //            });
-
-            //    });
-
-            ConnectServer(8080);
-
-
-            Console.WriteLine("Server listening...");
+            Console.WriteLine($"Server listening on '{port}' port...");
             Console.WriteLine("Press ENTER to stop the server");
             Console.ReadLine();
-            // disposable.Dispose();
         }
     }
 }

@@ -39,7 +39,7 @@ namespace ReactiveAgent.Agents.Dataflow
                               state = newState;
                               reply.SetResult(replyresult);
                           });
-              });
+              }, options);
         }
 
         public Task<TReply> Ask(TMessage message)
@@ -64,7 +64,7 @@ namespace ReactiveAgent.Agents.Dataflow
             state = initialState;
             var options = new ExecutionDataflowBlockOptions
             {
-                CancellationToken = cts != null ? cts.Token : CancellationToken.None
+                CancellationToken = cts?.Token ?? CancellationToken.None
             };
             actionBlock = new ActionBlock<(TMessage, Option<TaskCompletionSource<TReply>>)>(
               message => {
@@ -77,7 +77,7 @@ namespace ReactiveAgent.Agents.Dataflow
                                      reply.SetResult(replyresult);
                                      return state;
                                  });
-              });
+              }, options);
         }
     }
 

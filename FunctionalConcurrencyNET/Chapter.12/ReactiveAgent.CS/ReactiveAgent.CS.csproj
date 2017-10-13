@@ -82,7 +82,7 @@
     <Compile Include="Agents\Agents.cs" />
     <Compile Include="Agents\IOHelpers.cs" />
     <Compile Include="Agents\ReplyDataflowAgents.cs" />
-    <Compile Include="Agents\WordCountAgentsExample.cs" />
+    <Compile Include="WordCountAgentsExample.cs" />
     <Compile Include="Comp\DataStructures.cs" />
     <Compile Include="Comp\IOUtils.cs" />
     <Compile Include="DataflowExamples.cs" />

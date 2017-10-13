@@ -51,22 +51,22 @@ namespace Functional.Tasks
 
         //Listing 10.3 Task.Catch function
 
-        public static Task<T> Catch<T, TError>(this Task<T> task, Func<TError, T> onError) where TError : Exception
-        {
-            var tcs = new TaskCompletionSource<T>();    // #A
-            task.ContinueWith(ant =>
-            {
-                if (task.IsFaulted && task.Exception.InnerException is TError)
-                    tcs.SetResult(onError((TError)task.Exception.InnerException)); // #B
-                else if (ant.IsCanceled)
-                    tcs.SetCanceled();      // #B
-                else if (task.IsFaulted)
-                    tcs.SetException(ant.Exception.InnerException); // #B
-                else
-                    tcs.SetResult(ant.Result);  // #B
-            });
-            return tcs.Task;
-        }
+public static Task<T> Catch<T, TError>(this Task<T> task, Func<TError, T> onError) where TError : Exception
+{
+    var tcs = new TaskCompletionSource<T>();    // #A
+    task.ContinueWith(innerTask =>
+    {
+        if (innerTask.IsFaulted && innerTask?.Exception?.InnerException is TError)
+            tcs.SetResult(onError((TError)innerTask.Exception.InnerException)); // #B
+        else if (innerTask.IsCanceled)
+            tcs.SetCanceled();      // #B
+        else if (innerTask.IsFaulted)
+            tcs.SetException(innerTask?.Exception?.InnerException ?? throw new InvalidOperationException()); // #B
+        else
+            tcs.SetResult(innerTask.Result);  // #B
+    });
+    return tcs.Task;
+}
 
         //public static Task<T> Otherwise<T>
         //   (this Task<T> task, Func<Task<T>> fallback)
@@ -95,7 +95,9 @@ namespace Functional.Tasks
             return tcs.Task;
         }
 
-     static   Result<byte[]> ReadFile(string path)
+
+
+        static   Result<byte[]> ReadFile(string path)
         {
             if (File.Exists(path)) return File.ReadAllBytes(path);
             else return new FileNotFoundException(path);

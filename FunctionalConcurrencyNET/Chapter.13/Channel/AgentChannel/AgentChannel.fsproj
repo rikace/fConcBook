@@ -101,6 +101,13 @@
     <Reference Include="System.Windows" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Chapter.11\ReactiveAgent\ReactiveAgent.FS.fsproj">
+      <Name>ReactiveAgent.FS</Name>
+      <Project>{54bf4608-11bf-4764-852f-9722848f5b0f}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+  </ItemGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

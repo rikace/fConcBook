@@ -1,6 +1,5 @@
 ﻿open System
 open DirectGraphDependencies
-open Utilities.Interop
 open System.Threading.Tasks
 open System.Threading
 

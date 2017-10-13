@@ -8,7 +8,7 @@ open System.Threading
 
 [<EntryPoint>]
 let main argv =
-    let scheduler = ParallelAgentScheduler.Create(5)
+    let scheduler = ParallelAgentScheduler.Create(4)
 
     Observable.Interval(TimeSpan.FromSeconds(0.4))
         .SubscribeOn(scheduler)

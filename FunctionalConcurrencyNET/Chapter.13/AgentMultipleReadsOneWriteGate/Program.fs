@@ -1,10 +1,12 @@
-﻿open Agents4DB
+﻿module Program
+
 open System
 open System.Threading.Tasks
 open System.Configuration
 open System.Collections.Generic
+open Agents4DB
 
-let connectionString = ConfigurationManager.ConnectionStrings.["DbConnection"].ConnectionString
+let connectionString = "" //ConfigurationManager.ConnectionStrings.["DbConnection"].ConnectionString
 let maxOpenConnection = 10
 
 let myDB = Dictionary<int, Person>()
@@ -31,44 +33,33 @@ let agentSql connectionString =
 let agent =
     ReaderWriterAgent(maxOpenConnection, agentSql connectionString)
 
-let generator pref N =
-    async {
-        for i in [1..N] do
-            let person = { id = -1; firstName = i.ToString(); lastName = pref; age = i }
-            let! id = agent.Write(fun ch -> Add(person, ch))
-            printfn "Add Person(%s %s) id=%A" person.firstName person.lastName id
-            do! Async.Sleep(100)
-    }
+let write person = async {
+    let! id = agent.Write(fun ch -> Add(person, ch))
+    printfn "Add person %d" person.id
+    do! Async.Sleep(100)
+}
 
-let accessor N =
-    let rnd = Random((int)DateTime.Now.Ticks)
-    async {
-        for _ in [1..N] do
-            let total = myDB.Count * 3 / 2;
-            if total > 0  then
-                let ind = rnd.Next(total)
-                let! resp = agent.Read(fun ch -> Get(ind, ch))
-                match resp with
-                | Some (p) ->   printfn "%d => Person(%s %s)" ind p.firstName p.lastName
-                | None ->       printfn "%d => Not Found" ind
-            do! Async.Sleep(110)
-    }
+let read personId = async {
+    let! resp = agent.Read(fun ch -> Get(personId, ch))
+    printfn "Get person %d" personId
+    do! Async.Sleep(100)
+}
 
-let start () =
-    [
-        generator "A" 20
-        accessor 30
-        generator "B" 20
-        accessor 30
-        accessor 30
-        accessor 30
-        accessor 30
-    ]
-    |> Async.Parallel
-    |> Async.RunSynchronously
 
+let people =
+    [1..100] |> Seq.map (fun x->
+        { id = x; firstName = x.ToString(); lastName = x.ToString(); age = x })
+
+let demo() =
+    [ for person in people do
+        yield write person
+        yield read person.id
+        yield write  person
+        yield read person.id
+        yield read person.id ]
+        |> Async.Parallel
 
 [<EntryPoint>]
 let main argv =
-    start() |> ignore
+    demo() |> Async.RunSynchronously
     0 // return an integer exit code

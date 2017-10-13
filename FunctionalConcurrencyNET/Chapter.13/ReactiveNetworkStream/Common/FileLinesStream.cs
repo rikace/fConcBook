@@ -31,10 +31,6 @@ namespace Common
             using (var stream = File.OpenRead(Path.Combine("Tickers", _filePath)))
             using (var reader = new StreamReader(stream))
             {
-                //reader.ToLineaObservable()
-                //    .Select(_map)
-                //    .Subscribe(_data.Add);
-
                 while (!reader.EndOfStream)
                 {
                     var line = reader.ReadLine();

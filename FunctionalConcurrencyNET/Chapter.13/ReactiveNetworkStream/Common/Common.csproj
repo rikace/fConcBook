@@ -62,7 +62,7 @@
     <Compile Include="FileLinesStream.cs" />
     <Compile Include="ObservableDataStreams.cs" />
     <Compile Include="SecureStream.cs" />
-    <Compile Include="Serialzer.cs" />
+    <Compile Include="Serializer.cs" />
     <Compile Include="StockData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TcpObservables.cs" />

@@ -39,12 +39,13 @@ type ScheduleRequest(due:DateTimeOffset, action:ScheduledAction) =
     override this.GetHashCode () =
         due.GetHashCode ()
 
+// Listing 13.7  Rx Custom  Scheduler for managing degree of parallelism
 // Agent message contract
-type ScheduleMessage = ScheduleRequest * AsyncReplyChannel<IDisposable>
+type ScheduleMsg = ScheduleRequest * AsyncReplyChannel<IDisposable> // #A
 
-let schedulerAgent (inbox:MailboxProcessor<ScheduleMessage>) =
+let schedulerAgent (inbox:MailboxProcessor<ScheduleMsg>) = // #B
     let rec execute (queue:IPriorityQueue<ScheduleRequest>) =  async {
-        match queue |> PriorityQueue.tryPop with
+        match queue |> PriorityQueue.tryPop with // #C
         | None -> return! idle queue -1
         | Some(req, tail) ->
             let timeout = int <| (req.Due - DateTimeOffset.Now).TotalMilliseconds
@@ -52,17 +53,17 @@ let schedulerAgent (inbox:MailboxProcessor<ScheduleMessage>) =
             then return! idle queue timeout
             else
                 if not req.IsCanceled
-                    then req.Action.Invoke() |> ignore // TODO: Why IDisposable here?
+                    then req.Action.Invoke() |> ignore
                 return! execute tail
         }
-    and idle (queue:IPriorityQueue<_>) timeout = async {
+    and idle (queue:IPriorityQueue<_>) timeout = async { // #D
         let! msg = inbox.TryReceive(timeout)
         let queue' =
             match msg with
             | None -> queue
             | Some(request, replyChannel)->
                 replyChannel.Reply(
-                    Disposable.Create(fun () -> request.IsCanceled <- true)
+                    Disposable.Create(fun () -> request.IsCanceled <- true) //#E
                 )
                 queue |> PriorityQueue.insert request
         return! execute queue'
@@ -71,12 +72,12 @@ let schedulerAgent (inbox:MailboxProcessor<ScheduleMessage>) =
 
 
 type ParallelAgentScheduler(workers:int) =
-    let agent = MailboxProcessor<ScheduleMessage>
+    let agent = MailboxProcessor<ScheduleMsg> // #F
                     .parallelWorker(workers, schedulerAgent)
 
-    interface IScheduler with
+    interface IScheduler with // #G
         member this.Schedule(state:'a, due:DateTimeOffset, action:ScheduledAction<'a>) =
-            agent.PostAndReply(fun repl ->
+            agent.PostAndReply(fun repl -> // #H
                 let action () = action.Invoke(this :> IScheduler, state)
                 let req = ScheduleRequest(due, Func<_>(action))
                 req, repl)
@@ -90,4 +91,5 @@ type ParallelAgentScheduler(workers:int) =
             let scheduler = this :> IScheduler
             let due = scheduler.Now.Add(due)
             scheduler.Schedule(state, due, action)
+
     static member Create(workers:int) =  ParallelAgentScheduler(workers) :> IScheduler

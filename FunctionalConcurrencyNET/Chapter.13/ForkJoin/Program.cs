@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ParallelForkJoin
@@ -10,13 +8,13 @@ namespace ParallelForkJoin
     {
         static void Main(string[] args)
         {
-            // TODO: better application of forkJoin?
-            Task<long> task = Enumerable.Range(1, 100000)
+            int N = 100000;
+            Task<long> task = Enumerable.Range(1, N)
                     .ForkJoin<int, long, long>(
                         async x => new[] { (long)x * x },
                         async (state, x) => state + x, 0L);
 
-            Console.WriteLine($"Sum of squares = {task.Result}");
+            Console.WriteLine($"Sum of squares from 1 to {N} = {task.Result}");
             Console.ReadLine();
         }
     }
