@@ -40,7 +40,7 @@ namespace FunctionalTechniques.cs
             // image = null; //#A from Listing 2.7
         }
 
-        // Listing 2.8 Closure capturing variables in a multithreaded environment
+        // Listing 2.8 Closure capturing variables in a multi-threaded environment
         public void Closure_Strange_Behavior()
         {
             int iterations = 10;
@@ -62,18 +62,20 @@ namespace FunctionalTechniques.cs
             }
         }
 
-
         // Listing 2.9 Function to calculate the area of a triangle
         void CalcluateAreaFunction()
         {
             Action<int> displayNumber = n => Console.WriteLine(n);
+
             int i = 5;
+
             Task taskOne = Task.Factory.StartNew(() => displayNumber(i));
+
             i = 7;
+
             Task taskTwo = Task.Factory.StartNew(() => displayNumber(i));
 
             Task.WaitAll(taskOne, taskTwo);
         }
-
     }
 }

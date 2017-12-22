@@ -16,31 +16,30 @@ namespace PersistentDataStructures
         {
             static ConcurrentDictionary<Guid, string> onlineUsers = new ConcurrentDictionary<Guid, string>(); //#A
 
-            //public override Task OnConnected()
-            //{
-            //    string connectionId = new Guid(Context.ConnectionId); //#B
-            //    System.Security.Principal.IPrincipal user = Context.User;
-            //    string userName;
-            //    if (!onlineUsers.TryGetValue(connectionId, out userName)) { //#C
-            //        RegisterUserConnection(connectionId, user.Identity.Name);
-            //        onlineUsers.Add(connectionId, user.Identity.Name); //#D
-            //    }
-            //    return base.OnConnected();
-            //}
-            //public override Task OnDisconnected()
-            //{
-            //    string connectionId = new Guid(Context.ConnectionId);
-            //    string userName;
-            //    if (onlineUsers.TryGetValue(connectionId, out userName)) { //#C
-            //        DeregisterUserConnection(connectionId, userName);
-            //        onlineUsers.Remove(connectionId); //#D
-            //    }
-            //    return base.OnDisconnected();
-            //}
-        }
-    
+    //      public override Task OnConnected()
+    //      {
+    //          string connectionId = new Guid(Context.ConnectionId); //#B
+    //          System.Security.Principal.IPrincipal user = Context.User;
+    //          string userName;
+    //          if (!onlineUsers.TryGetValue(connectionId, out userName))
+    //          { //#C
+    //              RegisterUserConnection(connectionId, user.Identity.Name);
+    //              onlineUsers.Add(connectionId, user.Identity.Name); //#D
+    //          }
+    //          return base.OnConnected();
+    //      }
+    //      public override Task OnDisconnected()
+    //      {
+    //          string connectionId = new Guid(Context.ConnectionId);
+    //          string userName;
+    //          if (onlineUsers.TryGetValue(connectionId, out userName))
+    //          { //#C
+    //              DeregisterUserConnection(connectionId, userName);
+    //              onlineUsers.Remove(connectionId); //#D
+    //          }
+    //          return base.OnDisconnected();
+            }
         
-
         static void Main(string[] args)
         {
             // Listing 3.2 Constructing BCL immutable collections
@@ -72,7 +71,8 @@ namespace PersistentDataStructures
                     new LazyList<int>(3, LazyList<int>.Empty));
             lazyList.Iterate(Console.WriteLine);
 
-            Demo.PrintSeparator();
+            Demo.PrintSeparator()
+
             Console.WriteLine("Listing 3.16 Immutable B-tree representation");
             var tree =
                 new BinaryTree<int>(20,

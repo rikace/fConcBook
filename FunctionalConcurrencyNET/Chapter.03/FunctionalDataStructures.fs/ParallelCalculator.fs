@@ -1,5 +1,7 @@
 ﻿module ParallelCalculator
 
+open System.Threading.Tasks
+
 // Listing 3.23 Parallel Calculator
 type Operation = Add | Sub | Mul | Div | Pow
 
@@ -7,7 +9,6 @@ and Calculator =
     | Value of double
     | Expr of Operation * Calculator * Calculator
 
-open System.Threading.Tasks
 let spawn (op:unit->double) = Task.Run(op)    //#A
 
 let rec eval expr =

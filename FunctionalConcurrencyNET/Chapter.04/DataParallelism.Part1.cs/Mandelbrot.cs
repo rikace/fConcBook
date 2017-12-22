@@ -19,17 +19,13 @@ namespace DataParallelism.cs
         private const float Height = 2.5f;
 
         private static float ComputeRow(int col)
-        {
-            return Center.Real - Width/2.0f + (float) col*Width/(float) Cols;
-        }
+            => Center.Real - Width / 2.0f + (float)col * Width / (float)Cols;
+
         private static float ComputeColumn(int row)
-        {
-            return Center.Imaginary - Height/2.0f + (float) row*Height/(float) Rows;
-        }
+            => Center.Imaginary - Height / 2.0f + (float)row * Height / (float)Rows;
 
         public static Bitmap SequentialMandelbrot()
         {
-
             var bitmap = new Bitmap(Rows, Cols, PixelFormat.Format24bppRgb);
             var bitmapData =
                 bitmap.LockBits(new Rectangle(0, 0, bitmap.Width, bitmap.Height),
@@ -68,9 +64,11 @@ namespace DataParallelism.cs
 
             Marshal.Copy(pixels, 0, ptrFirstPixel, pixels.Length);
             bitmap.UnlockBits(bitmapData);
+
             var image = (Bitmap)bitmap.Clone();
             return image;
         }
+
         public static Bitmap ParallelMandelbrot()
         {
 
@@ -78,7 +76,7 @@ namespace DataParallelism.cs
             var bitmapData =
                 bitmap.LockBits(new Rectangle(0, 0, bitmap.Width, bitmap.Height),
                                 ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
-            var pixels = new byte[bitmapData.Stride*bitmap.Height];
+            var pixels = new byte[bitmapData.Stride * bitmap.Height];
             var ptrFirstPixel = bitmapData.Scan0;
             Marshal.Copy(ptrFirstPixel, pixels, 0, pixels.Length);
 
@@ -95,8 +93,10 @@ namespace DataParallelism.cs
                 return acc == iterations;
             };
 
-            Parallel.For(0, Cols - 1, col => {    //#A
-                for (int row = 0; row < Rows; row++) {
+            Parallel.For(0, Cols - 1, col =>
+            {    //#A
+                for (int row = 0; row < Rows; row++)
+                {
                     var x = ComputeRow(row);
                     var y = ComputeColumn(col);
                     var c = new Complex(x, y);
@@ -110,12 +110,12 @@ namespace DataParallelism.cs
 
             Marshal.Copy(pixels, 0, ptrFirstPixel, pixels.Length);
             bitmap.UnlockBits(bitmapData);
-            var image = (Bitmap) bitmap.Clone();
+            var image = (Bitmap)bitmap.Clone();
             return image;
         }
+
         public static Bitmap ParallelMandelbrotOversaturation()
         {
-
             var bitmap = new Bitmap(Rows, Cols, PixelFormat.Format24bppRgb);
             var bitmapData =
                  bitmap.LockBits(new Rectangle(0, 0, bitmap.Width, bitmap.Height),
@@ -157,21 +157,16 @@ namespace DataParallelism.cs
             return image;
         }
 
-
-
         private static ComplexStruct _centerStruct = new ComplexStruct(-0.75f, 0.0f);
+
         private static float ComputeRowStruct(int col)
-        {
-            return _centerStruct.Real - Width / 2.0f + (float)col * Width / (float)Cols;
-        }
+            => _centerStruct.Real - Width / 2.0f + (float)col * Width / (float)Cols;
+
         private static float ComputeColumnStruct(int row)
-        {
-            return _centerStruct.Imaginary - Height / 2.0f + (float)row * Height / (float)Rows;
-        }
+            => _centerStruct.Imaginary - Height / 2.0f + (float)row * Height / (float)Rows;
 
         public static Bitmap ParallelStructMandelbrot()
         {
-
             var bitmap = new Bitmap(Rows, Cols, PixelFormat.Format24bppRgb);
             var bitmapData =
                  bitmap.LockBits(new Rectangle(0, 0, bitmap.Width, bitmap.Height),
@@ -192,13 +187,15 @@ namespace DataParallelism.cs
                 return acc == iterations;
             };
 
-            Parallel.For(0, Cols - 1, col => {
-                for (int row = 0; row < Rows; row++) {
+            Parallel.For(0, Cols - 1, col =>
+            {
+                for (int row = 0; row < Rows; row++)
+                {
                     var x = ComputeRowStruct(row);
                     var y = ComputeColumnStruct(col);
                     var c = new ComplexStruct(x, y);
                     var color = isMandelbrot(c, 100) ? Color.DarkBlue : Color.White;
-                    var offset = (col*bitmapData.Stride) + (3*row);
+                    var offset = (col * bitmapData.Stride) + (3 * row);
                     pixels[offset + 0] = color.B; // Blue component
                     pixels[offset + 1] = color.G; // Green component
                     pixels[offset + 2] = color.R; // Red component
@@ -210,7 +207,5 @@ namespace DataParallelism.cs
             var image = (Bitmap)bitmap.Clone();
             return image;
         }
-
     }
-
 }

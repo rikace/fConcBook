@@ -55,7 +55,7 @@
   </Choose>
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
-    <Compile Include="Library.fs" />
+    <Compile Include="FunctionalTechniques.fs" />
     <None Include="App.config" />
     <Content Include="packages.config" />
   </ItemGroup>

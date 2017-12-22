@@ -10,44 +10,33 @@ namespace DataParallelism.cs
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Mandelbrot_Performance_Comparison()
         {
+            Demo.PrintSeparator();
             Console.WriteLine("Mandelbrot Performance Comparison");
             Func<Func<Bitmap>, Action[]> run = (func) =>
                     new Action[] { () => { func(); } };
 
-            //var implementations =
-            //    new[]
-            //    {
-            //        new Tuple<String, Action[]>(
-            //            "C# Sequential", run(Mandelbrot.SequentialMandelbrot)),
-            //        new Tuple<String, Action[]>(
-            //            "C# Parallel.For", run(Mandelbrot.ParallelMandelbrot)),
-            //        new Tuple<String, Action[]>(
-            //            "C# Parallel.For Saturated", run(Mandelbrot.ParallelMandelbrotOversaturation)),
-            //        new Tuple<String, Action[]>(
-            //            "C# Parallel.For Struct", run(Mandelbrot.ParallelStructMandelbrot))
-            //    };
+            var implementations =
+                new[]
+                {
+                    new Tuple<String, Action[]>(
+                        "C# Sequential", run(Mandelbrot.SequentialMandelbrot)),
+                    new Tuple<String, Action[]>(
+                        "C# Parallel.For", run(Mandelbrot.ParallelMandelbrot)),
+                    new Tuple<String, Action[]>(
+                        "C# Parallel.For Saturated", run(Mandelbrot.ParallelMandelbrotOversaturation)),
+                    new Tuple<String, Action[]>(
+                        "C# Parallel.For Struct", run(Mandelbrot.ParallelStructMandelbrot))
+                };
 
-            //Application.Run(
-            //    PerfVis.toChart("C# Mandelbrot")
-            //        .Invoke(PerfVis.fromTuples(implementations)));
+            Application.Run(
+                PerfVis.toChart("C# Mandelbrot")
+                    .Invoke(PerfVis.fromTuples(implementations)));
+        }
 
-            //// --------------------------------------------
-            //Demo.PrintSeparator();
-            //Console.WriteLine("Draw Mandelbrot");
-            //var pictureBox = new PictureBox
-            //{
-            //    Dock = DockStyle.Fill,
-            //    Image = Mandelbrot.ParallelStructMandelbrot(),
-            //    SizeMode = PictureBoxSizeMode.StretchImage
-            //};
-            //var form = new Form();
-            //form.Controls.Add(pictureBox);
-            //Application.Run(form);
-
-
-            // --------------------------------------------
+        static void Prime_Sum()
+        {
             Demo.PrintSeparator();
             Console.WriteLine("Prime Sum [0..10^7]");
             Func<Func<long>, Action[]> runSum = (func) =>
@@ -59,6 +48,7 @@ namespace DataParallelism.cs
                         Console.WriteLine($"Sum = {result}");
                     }
                 };
+
             var sumImplementations =
                 new[]
                 {
@@ -74,6 +64,14 @@ namespace DataParallelism.cs
             Application.Run(
                 PerfVis.toChart("C# Prime Sum")
                     .Invoke(PerfVis.fromTuples(sumImplementations)));
+        }
+
+        static void Main(string[] args)
+        {
+            Mandelbrot_Performance_Comparison();
+            // Prime_Sum();
+
+            Console.ReadLine();
         }
     }
 }

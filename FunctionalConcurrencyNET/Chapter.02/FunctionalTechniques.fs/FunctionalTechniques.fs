@@ -40,7 +40,6 @@ module Memoization =
         fun x ->   table.GetOrAdd(x, func)
 
 
-
 module ConsurrentSpeculation =
 
     // Listing 2.24 Fast fuzzy match in F#
@@ -54,11 +53,12 @@ module ConsurrentSpeculation =
 
         fun word -> partialFuzzyMatch word          //#C
 
-//    let words = [] // TODO: Fill the list
-//    let fastFuzzyMatch = fuzzyMatch words         //#D
-//
-//    let magicFuzzyMatch = fastFuzzyMatch "magic"
-//    let lightFuzzyMatch = fastFuzzyMatch "light”" //#E
+
+    let words = [] // TODO: Fill the list
+    let fastFuzzyMatch = fuzzyMatch words         //#D
+
+    let magicFuzzyMatch = fastFuzzyMatch "magic"
+    let lightFuzzyMatch = fastFuzzyMatch "light”" //#E
 
 
     let fuzzyMatchPSeq (words:string list) =

@@ -35,8 +35,7 @@ namespace PersistentDataStructures
             if (items.IsEmpty) return list;
             return new LazyList<T>(items.Head,
                 new Lazy<LazyList<T>>(() =>
-                            list.Append(items.Tail.Value)
-                ));
+                            list.Append(items.Tail.Value)));
         }
 
         public static void Iterate<T>

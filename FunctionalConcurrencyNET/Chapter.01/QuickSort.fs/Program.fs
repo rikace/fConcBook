@@ -23,4 +23,4 @@ let main argv =
     |> PerfVis.toChart "F# QuickSort"
     |> Application.Run
 
-    0 // return an integer exit code
+    0

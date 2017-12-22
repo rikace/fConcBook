@@ -9,9 +9,8 @@ namespace QuickSort.cs
     public class QuickSort
     {
         public static void QuickSort_Sequential<T>(T[] items) where T : IComparable<T>
-        {
-            QuickSort_Sequential(items, 0, items.Length);
-        }
+            => QuickSort_Sequential(items, 0, items.Length);
+
         private static void QuickSort_Sequential<T>(T[] items, int left, int right) where T : IComparable<T>
         {
             if (left == right) return;
@@ -19,10 +18,12 @@ namespace QuickSort.cs
             QuickSort_Sequential(items, left, pivot);
             QuickSort_Sequential(items, pivot + 1, right);
         }
+
         private static int Partition<T>(T[] items, int left, int right) where T : IComparable<T>
         {
-            int pivotPos = (right + left) / 2; //often a random index between left and right is used
+            int pivotPos = (right + left) / 2; // often a random index between left and right is used
             T pivotValue = items[pivotPos];
+
             Swap(ref items[right - 1], ref items[pivotPos]);
             int store = left;
             for (int i = left; i < right - 1; ++i)
@@ -33,9 +34,11 @@ namespace QuickSort.cs
                     ++store;
                 }
             }
+
             Swap(ref items[right - 1], ref items[store]);
             return store;
         }
+
         private static void Swap<T>(ref T a, ref T b)
         {
             T temp = a;
@@ -44,9 +47,8 @@ namespace QuickSort.cs
         }
 
         public static void QuickSort_Parallel<T>(T[] items) where T : IComparable<T>
-        {
-            QuickSort_Parallel(items, 0, items.Length);
-        }
+            => QuickSort_Parallel(items, 0, items.Length);
+
         private static void QuickSort_Parallel<T>(T[] items, int left, int right) where T : IComparable<T>
         {
             if (right - left < 2)
@@ -67,6 +69,7 @@ namespace QuickSort.cs
             int maxDepth = (int) Math.Log(Environment.ProcessorCount, 2.0);
             QuickSort_Parallel_Threshold(items, 0, items.Length, maxDepth);
         }
+
         private static void QuickSort_Parallel_Threshold<T>(T[] items, int left, int right, int depth) where T : IComparable<T>
         {
             if (right - left < 2)
