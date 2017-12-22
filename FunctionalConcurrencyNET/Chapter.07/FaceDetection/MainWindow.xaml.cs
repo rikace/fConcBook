@@ -173,11 +173,11 @@ namespace FaceDetection
                 faces.ForAll(face => image.Draw(face, new
                     Bgr(System.Drawing.Color.BurlyWood), 3)); // #B
                 return image.ToBitmap();
-            }; 
+            };
 
             return from image in Task.Run(() => new Image<Bgr, byte>(fileName))
                    from imageFrame in Task.Run(() => image.Convert<Gray, byte>())
-                   from bitmap in Task.Run(() =>   CascadeClassifierThreadLocal.Value.DetectMultiScale(
+                   from bitmap in Task.Run(() => CascadeClassifierThreadLocal.Value.DetectMultiScale(
                                                 imageFrame, 1.1, 3, System.Drawing.Size.Empty)
                                   ).Select(faces => drawBoundries(faces, image))
                    select bitmap; // #A
@@ -207,12 +207,11 @@ namespace FaceDetection
                 };
 
             var imagePipe =
-                ((Pipeline.PipelineFunc.IPipeline<string, Image<Bgr, byte>>)
-                    Pipeline.PipelineFunc.Pipeline<string, Image<Bgr, byte>>
-                    .Create(imageFn))
-                .Then(grayFn)
-                .Then(detectFn)
-                .Then(drawFn); // #A
+                Pipeline.PipelineFunc.Pipeline<string, Image<Bgr, byte>>
+                    .Create(imageFn)
+                    .Then(grayFn)
+                    .Then(detectFn)
+                    .Then(drawFn); // #A
 
             CancellationTokenSource cts = new CancellationTokenSource();
             imagePipe.Execute(4, cts.Token);  // #B
@@ -249,12 +248,11 @@ namespace FaceDetection
                 };
 
             var imagePipe =
-                ((IPipeline<string, Image<Bgr, byte>>)
-                    Pipeline<string, Image<Bgr, byte>>
-                    .Create(imageFn.ToFSharpFunc()))
-                .Then(grayFn.ToFSharpFunc())
-                .Then(detectFn.ToFSharpFunc())
-                .Then(drawFn.ToFSharpFunc()); // #A
+                Pipeline<string, Image<Bgr, byte>>
+                    .Create(imageFn.ToFSharpFunc())
+                    .Then(grayFn.ToFSharpFunc())
+                    .Then(detectFn.ToFSharpFunc())
+                    .Then(drawFn.ToFSharpFunc()); // #A
 
             CancellationTokenSource cts = new CancellationTokenSource();
             imagePipe.Execute(4, cts.Token);  // #B
@@ -301,5 +299,4 @@ namespace FaceDetection
             return array;
         }
     }
-
 }

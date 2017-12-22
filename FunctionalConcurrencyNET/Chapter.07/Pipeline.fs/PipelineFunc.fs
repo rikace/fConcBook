@@ -6,15 +6,15 @@ open System.Collections.Concurrent
 open System.Threading
 open System.Threading.Tasks
 
-// This is a version of the pipeline that uses the .NET Func delegate 
+// This is a version of the pipeline that uses the .NET Func delegate
 // in place of the F# functions.
-// This implementation is more C# friendly, because it does not require to 
+// This implementation is more C# friendly, because it does not require to
 // convert the F# functions to Func<> using the helper extension method .ToFunc()
 module PipelineFunc =
-    
+
     open Functional
 
-    // Listing 7.11  The IPipeline interface       
+    // Listing 7.11  The IPipeline interface
     [<Interface>]
     type IPipeline<'a,'b> = // #A
         abstract member Then : (Func<'b, 'c>) -> IPipeline<'a, 'c>   // #B

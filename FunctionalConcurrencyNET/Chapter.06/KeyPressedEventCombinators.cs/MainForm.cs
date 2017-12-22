@@ -19,13 +19,8 @@ namespace KeyPressedEventCombinators.cs
             InitializeComponent();
         }
 
-        
-
         private void MainForm_Load(object sender, EventArgs e)
         {
-
-            
-
             var timerInterval = 5000;
             var secretWord = "reactive";
 
@@ -33,6 +28,7 @@ namespace KeyPressedEventCombinators.cs
             var timer = new System.Timers.Timer(timerInterval);
             var timerElapsed = Observable.FromEventPattern<ElapsedEventArgs>
                                 (timer, "Elapsed").Select(_ => 'X'); //#A
+
             var keyPressed = Observable.FromEventPattern<KeyPressEventArgs>
                                 (this.textBox, nameof(this.textBox.KeyPress))
                                 .Select(kd => Char.ToLower(kd.EventArgs.KeyChar))

@@ -5,29 +5,28 @@ open System.Drawing
 open System.Windows.Forms
 
 // Listing 6.1 F# Event Combinator to manage Key-Down Events
-//type KeyPressedEventCombinators(secretWord, interval, control:#System.Windows.Forms.Control) =
-//    let evt =
-//        let timer = new System.Timers.Timer(float interval) //#A
-//        let timeElapsed = timer.Elapsed |> Event.map(fun _ -> 'X') //#B
-//        let keyPressed = control.KeyPress
-//                         |> Event.filter(fun kd -> Char.IsLetter kd.KeyChar)
-//                         |> Event.map(fun kd -> Char.ToLower kd.KeyChar) //#C
-//        timer.Start()  //#A
+type KeyPressedEventCombinators(secretWord, interval, control:#System.Windows.Forms.Control) =
+    let evt =
+        let timer = new System.Timers.Timer(float interval) //#A
+        let timeElapsed = timer.Elapsed |> Event.map(fun _ -> 'X') //#B
+        let keyPressed = control.KeyPress
+                         |> Event.filter(fun kd -> Char.IsLetter kd.KeyChar)
+                         |> Event.map(fun kd -> Char.ToLower kd.KeyChar) //#C
+        timer.Start()  //#A
 
-//        keyPressed
-//        |> Event.merge timeElapsed //#D
-//        |> Event.scan(fun acc c ->
-//            if c = 'X' then "Game Over"
-//            else
-//                let word = sprintf "%s%c" acc c
-//                if word = secretWord then "You Won!"
-//                else word
-//            ) String.Empty //#E
+        keyPressed
+        |> Event.merge timeElapsed //#D
+        |> Event.scan(fun acc c ->
+            if c = 'X' then "Game Over"
+            else
+                let word = sprintf "%s%c" acc c
+                if word = secretWord then "You Won!"
+                else word
+            ) String.Empty //#E
 
-//    [<CLIEvent>]
-//    member this.OnKeyDown = evt //#F
+    [<CLIEvent>]
+    member this.OnKeyDown = evt //#F
 
-// TODO
 type KeyPressedObservableCombinators(secretWord, interval, control:#System.Windows.Forms.Control) =
     let evt = Event<string>()
 
@@ -67,9 +66,20 @@ module Main =
     form.Controls.Add(textBox)
     form.Controls.Add(label)
 
-    (new KeyPressedObservableCombinators("reactive", 5000, textBox))
-        .OnKeyDown.Add(fun value ->
-            let assign() = label.Text <- value
-            label.BeginInvoke(Action(assign)) |> ignore)
+    let use_observable = false  // change this value to true or false
+                                // if the value use_observable is false, then are used the standard .NET event
+                                // otherwise are used the the Observable type
+
+    if use_observable then
+        (new KeyPressedObservableCombinators("reactive", 5000, textBox))
+            .OnKeyDown.Add(fun value ->
+                let assign() = label.Text <- value
+                label.BeginInvoke(Action(assign)) |> ignore)
+    else
+        (new KeyPressedEventCombinators("reactive", 5000, textBox))
+            .OnKeyDown.Add(fun value ->
+                let assign() = label.Text <- value
+                label.BeginInvoke(Action(assign)) |> ignore)
+
 
     Application.Run(form)

@@ -34,11 +34,13 @@ namespace TwitterEmotionAnalysis
                     Console.WriteLine(tweet.Tweet.Text);
             });
 
+
             var rxTweetSentiment = new RxTweetEmotion(TimeSpan.FromMilliseconds(150));
             IDisposable posTweets = rxTweetSentiment.Subscribe(tweetPositiveObserver);
 
-            //IObserver<Fs.TweetEmotion> unhappyTweetObserver = Fs.printUnhappyTweets();
-            //IDisposable disposable = rxTweetSentiment.Subscribe(unhappyTweetObserver);
+            // uncomment this code to interop with the F# implementation
+            // IObserver<Fs.TweetEmotion> unhappyTweetObserver = Fs.printUnhappyTweets();
+            // IDisposable disposable = rxTweetSentiment.Subscribe(unhappyTweetObserver);
 
             Console.WriteLine("Press `Enter` to exit.");
             Console.WriteLine("======================");

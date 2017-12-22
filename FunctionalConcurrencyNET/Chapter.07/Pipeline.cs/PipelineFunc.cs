@@ -34,14 +34,12 @@ namespace PipelineFunc
         }
 
         public void Enqueue(TInput input, Func<Tuple<TInput, TOutput>, Unit> callback)
-        {
-            BlockingCollection<Continuation>.TryAddToAny(_continuations,
+            => BlockingCollection<Continuation>.TryAddToAny(_continuations,
                 new Continuation
                 {
                     Input = input,
                     Callback = callback
                 });
-        }
 
         public void Stop()
         {

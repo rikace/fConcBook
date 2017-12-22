@@ -21,8 +21,6 @@ open edu.stanford.nlp.trees
 let jarDirectory = // Folder with Stanford NLP models
     IO.Path.Combine(__SOURCE_DIRECTORY__, "models")
 
-
-
 // Listing 6.3 Function to evaluate the emotion of a sentence using StanfordNLP library
 let properties = Properties()
 properties.setProperty("annotators", "tokenize,ssplit,pos,parse,sentiment") |> ignore
@@ -57,25 +55,17 @@ let evaluateEmotion (text:string) =
 
 
 
+//Listing 6.4 Settings to enable the Twitterinvi library
 // Create new Twitter application and copy-paste
 // keys and access tokens to module variables
-
-//Listing 6.4 Settings to enable the Twitterinvi library
-//let consumerKey = "<your Key>"
-//let consumerSecretKey = "<your secret key>"
-//let accessToken = "<your access token>"
-//let accessTokenSecret = "<your secreat access token>"
-
-// TODO: uncomment prev 4 lines and remove 4 following lines
-let consumerKey = "Kvbfb5tJwbtqzSlfWITIJOFXe"
-let consumerSecretKey = "pakPlGnnDkMFyhZyiOyV4J3K0ekglO8fxEEiI4jv5eCep3X5T8"
-let accessToken = "1073262668-sUzxPTfO4v3yk30JE2vzfZcrcOLo7vvcHWBEj8H"
-let accessTokenSecret = "5rBc1fasGdLzHBlwDQa0pDwLBYhelee2rwJBSAYOehSTJ"
+let consumerKey = "<your Key>"
+let consumerSecretKey = "<your secret key>"
+let accessToken = "<your access token>"
+let accessTokenSecret = "<your secreat access token>"
 
 let cred = new TwitterCredentials(consumerKey, consumerSecretKey, accessToken, accessTokenSecret)
 let stream = Stream.CreateSampleStream(cred)
 stream.FilterLevel <- StreamFilterLevel.Low
-
 
 let emotionMap =
     [(Unhappy, 0)
@@ -114,8 +104,6 @@ type TweetEmotion(tweet:ITweet, emotion:Emotion) =
 
     static member Create tweet emotion =
         TweetEmotion(tweet, emotion)
-
-
 
 //Listing 6.7 Implementation of Observable Tweet-Emotions
 let tweetEmotionObservable(throttle:TimeSpan) =
