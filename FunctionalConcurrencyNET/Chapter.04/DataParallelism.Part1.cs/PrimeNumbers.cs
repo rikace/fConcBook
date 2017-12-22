@@ -28,6 +28,7 @@ namespace DataParallelism.cs
                 if (isPrime(i))
                     total += i;
             }
+
             return total;
         }
 
