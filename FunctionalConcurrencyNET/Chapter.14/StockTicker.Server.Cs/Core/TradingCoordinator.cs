@@ -23,8 +23,6 @@ namespace StockTicker.Server.Cs.Core
                         if (message is CoordinatorMessage.Subscribe msgSub) {
                             var observer = new TradingAgent(msgSub.id, msgSub.initialAmount, msgSub.caller);
                             var dispObsrever = subject.Subscribe(observer);
-                            //TODO: Fix next line
-                            //observer.Agent |> reportErrorsTo id supervisor |> startAgent
                             msgSub.caller.Client(msgSub.id).SetInitialAsset(msgSub.initialAmount);
                             agents.Add(msgSub.id, (observer, dispObsrever));
                         }

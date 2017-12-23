@@ -17,9 +17,6 @@ using MahApps.Metro.Controls;
 
 namespace StockTicker.Client.WPF
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow
     {
         public MainWindow()
@@ -28,8 +25,6 @@ namespace StockTicker.Client.WPF
 
             viewModel = new MainWindowViewModel(this);
             this.DataContext = viewModel;
-
-            //this.stockGrid.DataContext = viewModel.Stocks;
         }
 
         private MainWindowViewModel viewModel;
@@ -51,6 +46,5 @@ namespace StockTicker.Client.WPF
             viewModel.Symbol = stock.Symbol;
             viewModel.Price = stock.Price;
         }
-
     }
 }

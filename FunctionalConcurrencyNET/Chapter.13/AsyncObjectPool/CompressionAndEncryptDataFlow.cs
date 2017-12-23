@@ -1,13 +1,10 @@
 ﻿using ReactiveAgent.Agents;
-using ReactiveAgent.CS;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
-using System.Linq;
 using System.Runtime;
 using System.Security.Cryptography;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
@@ -296,8 +293,7 @@ namespace DataflowObjectPoolEncryption
 
             var writer = new ActionBlock<DecompressionDetails>(async details =>
                 await asOrderedAgent.Send(details), compressorOptions);
-
-
+            
             var linkOptions = new DataflowLinkOptions() { PropagateCompletion = true };
             inputBuffer.LinkTo(decryptor, linkOptions);
             decryptor.LinkTo(decompressor, linkOptions);

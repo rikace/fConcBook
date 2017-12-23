@@ -59,6 +59,7 @@ let getCurrentPrice symbol =
         printfn "%s=%A" symbol (data.[0].open')
         return data.[0].open'
     }
+
 let getStockIndex index =
     async {
         let url = sprintf "http://download.finance.yahoo.com/d/quotes.csv?s=%s&f=snl1" index

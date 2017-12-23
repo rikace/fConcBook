@@ -22,7 +22,7 @@ namespace DataflowChannel
             cts = new CancellationTokenSource();
             var options = new ExecutionDataflowBlockOptions
             {
-                CancellationToken = cts == null ? cts.Token : CancellationToken.None,
+                CancellationToken = cts != null ? cts.Token : CancellationToken.None,
                 MaxDegreeOfParallelism = maxDegreeOfParallelism
             };
             actionBlock = new ActionBlock<Context>(ctx =>
@@ -46,7 +46,7 @@ namespace DataflowChannel
             actionBlock.Complete();
         }
 
-        public static TaskPool Instance = new TaskPool(1);
+        public static TaskPool Instance = new TaskPool(4);
         public static void Spawn(Action action, ExecutionContext ec)
             => Instance.Add(action, ec);
         public static void Stop() => Instance.Dispose();

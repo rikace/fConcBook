@@ -71,7 +71,7 @@ namespace PersistentDataStructures
                     new LazyList<int>(3, LazyList<int>.Empty));
             lazyList.Iterate(Console.WriteLine);
 
-            Demo.PrintSeparator()
+            Demo.PrintSeparator();
 
             Console.WriteLine("Listing 3.16 Immutable B-tree representation");
             var tree =

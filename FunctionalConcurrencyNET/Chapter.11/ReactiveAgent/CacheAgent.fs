@@ -4,7 +4,6 @@ open System
 open System.Collections.Generic
 open SimpleAgents
 
-
 //Listing 11.7 A Cache agent using the MailboxProcessor
 type CacheMessage<'Key> =
     | GetOrSet of 'Key * AsyncReplyChannel<obj>
@@ -48,7 +47,7 @@ type Cache<'Key when 'Key : comparison>
             loop factory )
     member this.TryGet<'a>(key : 'Key) = async {
         let! item = cacheAgent.PostAndAsyncReply(    // #H
-                        fun channel -> GetOrSet(key, channel))
+                            fun channel -> GetOrSet(key, channel))
         match item with
         | :? 'a as v -> return Some v
         | _ -> return None  }
@@ -62,14 +61,12 @@ type Cache<'Key when 'Key : comparison>
 
     member this.Clear() = cacheAgent.Post(Clear)
 
-
-
-
 open System.Threading
 
 //Listing 11.8 Cache with event notification for refreshed items
 type CacheNotification<'Key when 'Key : comparison>
         (factory : Func<'Key, obj>,  ?timeToLive : int, ?synchContext:SynchronizationContext) =
+
     let timeToLive = defaultArg timeToLive 1000
     let expiry = TimeSpan.FromMilliseconds (float timeToLive)
 
@@ -117,6 +114,7 @@ type CacheNotification<'Key when 'Key : comparison>
                 return! loop factory
             }
         loop factory )
+
     member this.TryGet<'a>(key : 'Key) = async {
         let! item = cacheAgent.PostAndAsyncReply(
                         fun channel -> GetOrSet(key, channel))

@@ -16,7 +16,6 @@ namespace ReactiveAgent.Agents
         Task<TReply> Ask(TMessage message);
     }
 
-
     public static class Agent
     {
         public static IAgent<TMessage> Start<TMessage>(Action<TMessage> action, CancellationTokenSource cts = null)

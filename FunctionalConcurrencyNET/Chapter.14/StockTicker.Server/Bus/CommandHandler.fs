@@ -13,7 +13,7 @@ open Events
 // Listing 14.4 Command handler with async retry logic
 module CommandHandler =
     // Listing 9.4 Retry Async Builder
-    let retryPublish = RetryAsyncBuilder(10, 250) // #A
+    let private retryPublish = RetryAsyncBuilder(10, 250) // #A
 
     let tradingCoordinator = TradingCoordinator.Instance()   // #B
     let Storage = new EventStorage()     // #C

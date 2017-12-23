@@ -11,7 +11,6 @@ namespace ParallelFilterMap
 {
     class Program
     {
-
         static void Main(string[] args)
         {
             bool IsPrime(int n)
@@ -27,13 +26,10 @@ namespace ParallelFilterMap
             BigInteger ToPow(int n) => (BigInteger)Math.BigMul(n, n);
 
             var numbers = Enumerable.Range(0, 100000000).ToList();
-            var number2 = numbers.Take(90000000).ToList();
-
 
             BigInteger SeqOperation() => numbers.Where(IsPrime).Select(ToPow).Aggregate(BigInteger.Add);
             BigInteger ParallelLinqOperation() => numbers.AsParallel().Where(IsPrime).Select(ToPow).Aggregate(BigInteger.Add);
-            BigInteger ParallelFilterMapInline() => number2.FilterMap(IsPrime, ToPow).Aggregate(BigInteger.Add);
-
+            BigInteger ParallelFilterMapInline() => numbers.FilterMap(IsPrime, ToPow).Aggregate(BigInteger.Add);
 
             Demo.PrintSeparator();
             Console.WriteLine("Square Prime Sum [0..10000000]");

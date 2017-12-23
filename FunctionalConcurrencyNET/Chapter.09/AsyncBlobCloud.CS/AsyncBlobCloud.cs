@@ -24,9 +24,8 @@ namespace AsyncBlobCloud
                 var blobName = blob.Uri.Segments[blob.Uri.Segments.Length - 1];
                 CloudBlockBlob blockBlob = container.GetBlockBlobReference(blobName);
 
-                using (
-                    var fileStream = new FileStream(Path.Combine(folderPath, blobName), FileMode.Create,
-                        FileAccess.Write, FileShare.None, bufferSize))
+                using (var fileStream = new FileStream(Path.Combine(folderPath, blobName),
+                                            FileMode.Create, FileAccess.Write, FileShare.None, bufferSize))
                 {
                     blockBlob.DownloadToStream(fileStream);
                 }
@@ -44,9 +43,8 @@ namespace AsyncBlobCloud
                 var blobName = blob.Uri.Segments[blob.Uri.Segments.Length - 1];
                 CloudBlockBlob blockBlob = container.GetBlockBlobReference(blobName);
 
-                using (
-                        var fileStream = new FileStream(Path.Combine(folderPath, blobName), FileMode.Create,
-                            FileAccess.Write, FileShare.Read, bufferSize, FileOptions.Asynchronous))
+                using (var fileStream = new FileStream(Path.Combine(folderPath, blobName),
+                                        FileMode.Create, FileAccess.Write, FileShare.Read, bufferSize, FileOptions.Asynchronous))
                 {
                     await blockBlob.DownloadToStreamAsync(fileStream, cancellationToken).ConfigureAwait(false);
                     fileStream.Close();
@@ -63,18 +61,14 @@ namespace AsyncBlobCloud
 
             // Create a query that, when executed, returns a collection of tasks.
             IEnumerable<Task> tasks =
-                blobs.Select(
-                    blob =>
+                blobs.Select(blob =>
                         DownloadMedia(blob.Uri.Segments[blob.Uri.Segments.Length - 1], folderPath, cancellationToken));
-
 
             // Use ToList to execute the query and start the tasks.
             Task[] downloadTasks = tasks.ToArray();
 
-
             await Task.WhenAll(tasks).ConfigureAwait(false);
         }
-
 
         public Task DownloadInParallelExecuteComplete(string folderPath,
             CancellationToken cancellationToken = default(CancellationToken))
@@ -87,14 +81,11 @@ namespace AsyncBlobCloud
 
                 // ***Create a query that, when executed, returns a collection of tasks.
                 IEnumerable<Task> tasks =
-                    blobs.Select(
-                        blob =>
+                    blobs.Select(blob =>
                             DownloadMedia(blob.Uri.Segments[blob.Uri.Segments.Length - 1], folderPath, cancellationToken));
-
 
                 // ***Use ToList to execute the query and start the tasks.
                 List<Task> downloadTasks = tasks.ToList();
-
 
                 //await Task.WhenAll(tasks).ConfigureAwait(false);
 
@@ -116,7 +107,6 @@ namespace AsyncBlobCloud
             });
         }
 
-
         public async Task DownloadInParallelAsyncUnamb(string folderPath)
         {
             CancellationTokenSource cts = new CancellationTokenSource();
@@ -125,8 +115,8 @@ namespace AsyncBlobCloud
 
             // ***Create a query that, when executed, returns a collection of tasks.
             IEnumerable<Task> tasks =
-                blobs.Select(
-                    blob => DownloadMedia(blob.Uri.Segments[blob.Uri.Segments.Length - 1], folderPath, cts.Token));
+                blobs.Select(blob =>
+                    DownloadMedia(blob.Uri.Segments[blob.Uri.Segments.Length - 1], folderPath, cts.Token));
 
             // ***Use ToList to execute the query and start the tasks.
             List<Task> downloadTasks = tasks.ToList();
@@ -164,9 +154,8 @@ namespace AsyncBlobCloud
                 await blockBlob.DownloadToStreamAsync(memStream).ConfigureAwait(false);
                 await memStream.FlushAsync().ConfigureAwait(false);
                 byte[] data = memStream.ToArray();
-                using (
-                    var fileStream = new FileStream(Path.Combine(folderPath, blobReference), FileMode.Create,
-                        FileAccess.Write, FileShare.ReadWrite, bufferSize, FileOptions.Asynchronous))
+                using (var fileStream = new FileStream(Path.Combine(folderPath, blobReference),
+                                        FileMode.Create, FileAccess.Write, FileShare.ReadWrite, bufferSize, FileOptions.Asynchronous))
                 {
                     await fileStream.WriteAsync(data, 0, data.Length).ConfigureAwait(false);
                 }

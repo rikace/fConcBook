@@ -38,6 +38,7 @@ namespace ParallelFilterMap
                     return localList;
 
                 }, localList => atomResult.Swap(r => r.Add(localList)));
+
             return atomResult.Value.SelectMany(id => id).ToArray();
         }
     }

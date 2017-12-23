@@ -9,6 +9,7 @@ let main argv =
     let x =
         StockAnalysis.doInvest symbol
         |> Async.RunSynchronously
+
     printfn "Recommendation for %s: %A" symbol x
 
-    0 // return an integer exit code
+    0

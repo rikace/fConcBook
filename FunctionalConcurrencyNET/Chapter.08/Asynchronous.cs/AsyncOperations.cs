@@ -27,7 +27,6 @@ namespace ConsoleApplication1
             }
         }
 
-
         // Listing 8.2 Read from the file system asynchronously
         IAsyncResult ReadFileNoBlocking(string filePath, Action<byte[]> process)
         {
@@ -69,8 +68,7 @@ namespace ConsoleApplication1
                 HttpClient().GetAsync($"http://{domain}/favicon.ico");
             return await response.Content.ReadAsByteArrayAsync();
         };
-
-
+        
 
         // Listing 8.3 Download an image(icon) from the network asynchronously
         async Task DownloadIconAsync(string domain, string fileDestination)
@@ -113,7 +111,6 @@ namespace ConsoleApplication1
                 ctsCompositeToken.Register(() => webClient.CancelAsync());
                 await webClient.DownloadStringTaskAsync("http://www.manning.com");
             }, ctsComposite.Token);
-
         }
     }
 }

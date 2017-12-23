@@ -93,7 +93,6 @@ type TradingController() =
                 |> log
                 |> publish connectionId
                 |> toResponse this.Request
-
         } |> Async.StartAsTask // can easily make asynchronous controller methods.
 
     // The controller behaves as Observable publisher and it can be register

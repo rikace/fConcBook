@@ -19,7 +19,7 @@ let logAccessPoint name url =
 [<EntryPoint>]
 let main argv =
     try
-        let hostAddress = "http://localhost:8735"
+        let hostAddress = "http://localhost:8935"
 
         let startup  = Startup()
         use server = WebApp.Start(hostAddress, startup.Configuration)
@@ -38,4 +38,4 @@ let main argv =
         |> Async.StartImmediate
 
         raise e
-    0 // return an integer exit code
+    0

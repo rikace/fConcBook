@@ -30,11 +30,16 @@ module AgentModel =
 
 [<AutoOpenAttribute>]
 module ThreadSafeRandom =
-    let private rand = new Random((int) DateTime.Now.Ticks)
-    let locker = obj()
+    open System.Threading
+    open System
 
-    let getThreadSafeRandom =
-        fun () -> lock locker rand.NextDouble
+    let getThreadSafeRandom = new ThreadLocal<Random>(fun () -> new Random(int DateTime.Now.Ticks))
+
+    //let private rand = new Random((int) DateTime.Now.Ticks)
+    //let locker = obj()
+
+    //let getThreadSafeRandom =
+    //    fun () -> lock locker rand.NextDouble
 
 [<AutoOpenAttribute>]
 module HelperFunctions =
@@ -184,7 +189,7 @@ module HelperFunctions =
     // little Helper to update the Stock
     // nothing Fancy, but it works
     let private updateStock (stock : Stock) =
-        let r = ThreadSafeRandom.getThreadSafeRandom()
+        let r = ThreadSafeRandom.getThreadSafeRandom.Value.NextDouble()
         if r > 0.1 then (false, stock)
         else
             let rnd = Random(int (Math.Floor(stock.Price)))

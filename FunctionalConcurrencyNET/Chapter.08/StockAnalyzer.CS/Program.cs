@@ -34,10 +34,6 @@ namespace StockAnalyzer.CS
 
             StockAnalyzer stockAnalyzer = new StockAnalyzer();
 
-            //stockAnalyzer
-            //    .AnalyzeStockHistory(StockAnalyzer.Stocks)
-            //    .Wait();
-
             Task.Factory.StartNew(async () => await stockAnalyzer.ProcessStockHistoryAsComplete(chart, ctx));
             Application.Run(form);
             Console.ReadLine();

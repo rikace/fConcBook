@@ -22,14 +22,15 @@ namespace AsyncBlobCloud
 
             var currentDir = Environment.CurrentDirectory;
             var photoViewerPathProc = System.IO.Path.Combine(currentDir, photoViewerPath);
-                   
+
             if (File.Exists(photoViewerPathProc))
             {
                 if (!Directory.Exists(tempImageFolder)) Directory.CreateDirectory(tempImageFolder);
                 DirectoryInfo di = new DirectoryInfo(tempImageFolder);
+
                 foreach (FileInfo file in di.GetFiles())
                     file.Delete();
-                
+
                 Process proc = new Process();
                 proc.StartInfo.FileName = photoViewerPathProc;
                 proc.StartInfo.WorkingDirectory = Path.GetDirectoryName(photoViewerPathProc);
@@ -40,6 +41,7 @@ namespace AsyncBlobCloud
                 //asyncBlobCloud.DownloadMedia(tempImageFolder);
                 //asyncBlobCloud.DownloadMediaAsync(tempImageFolder).Wait();
                 //asyncBlobCloud.DownloadInParallelAsync(tempImageFolder).Wait();
+
                 asyncBlobCloud.DownloadInParallelExecuteComplete(tempImageFolder).Wait();
                 Console.WriteLine("Completed!!");
                 Console.ReadLine();

@@ -14,15 +14,13 @@ namespace StockTicker.Client.iOS
 		static void Main(string[] args)
 		{
             TaskScheduler.UnobservedTaskException += UnobservedTaskException;
-            // if you want to use a different Application Delegate class from "AppDelegate"
-            // you can specify it here.
             DevExpress.Mobile.Forms.Init();
             UIApplication.Main(args, null, "AppDelegate");
 		}
 
         private static void UnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs e)
         {
-            // TODO
+            // Log error
         }
     }
 }

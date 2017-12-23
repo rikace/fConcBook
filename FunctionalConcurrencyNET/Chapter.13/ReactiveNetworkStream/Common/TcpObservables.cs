@@ -31,7 +31,7 @@ namespace Common
                         //route the client to the observer
                         //into an asynchronous task to let multiple clients connect altogether
 
-                        Task.Factory.StartNew(_ => observer.OnNext(client), token, TaskCreationOptions.LongRunning); // #E
+                        await Task.Factory.StartNew(_ => observer.OnNext(client), token, TaskCreationOptions.LongRunning); // #E
                     }
                     observer.OnCompleted();
                 }
@@ -66,7 +66,6 @@ namespace Common
                     await client.ConnectAsync(endpoint.Address, endpoint.Port);
                     token.ThrowIfCancellationRequested();
                     observer.OnNext(client);
-                    //observer.OnCompleted();
                 }
                 catch (Exception error)
                 {

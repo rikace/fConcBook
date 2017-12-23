@@ -8,7 +8,6 @@ open System.Reactive.Concurrency
 open System.Threading.Tasks
 
 // Listing 13.6  Event Aggregator using Reactive Extension
-
 type IEventAggregator = // #A
     inherit IDisposable
     abstract GetEvent<'Event> : unit -> IObservable<'Event>

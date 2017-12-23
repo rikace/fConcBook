@@ -26,7 +26,6 @@ namespace ConsoleApplication1
             }, token);
 
             tokenSource.Cancel();
-
         }
 
         void CooperativeCancellation()

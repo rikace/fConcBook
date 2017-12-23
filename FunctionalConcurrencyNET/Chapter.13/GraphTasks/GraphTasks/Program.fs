@@ -14,7 +14,6 @@ let main argv =
                 do! Async.Sleep delay
             } |> startAsPlainTask)
 
-
     let dagAsync = ParallelTasksDAG()
 
     dagAsync.AddTask(1, action(1, 600), 4, 5);
@@ -25,7 +24,6 @@ let main argv =
     dagAsync.AddTask(6, action(6, 100), 7);
     dagAsync.AddTask(7, action(7, 900));
     dagAsync.AddTask(8, action(8, 700));
-
 
     dagAsync.OnTaskCompleted
     |> Observable.add(fun op ->

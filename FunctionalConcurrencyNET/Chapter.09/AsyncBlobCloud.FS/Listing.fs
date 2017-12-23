@@ -45,7 +45,8 @@ module CodeSnippets =
         let buffer = Array.zeroCreate<byte> (int blockBlob.Properties.Length)
         let rec copyStream bytesRead = async {
             match bytesRead with
-            | 0 -> fileStream.Close(); blobStream.Close()
+            | 0 -> fileStream.Close()
+                   blobStream.Close()
             | n -> do! fileStream.AsyncWrite(buffer, 0, n)   // #F
                    let! bytesRead = blobStream.AsyncRead(buffer, 0, buffer.Length)
                    return! copyStream bytesRead }
@@ -122,7 +123,6 @@ module CodeSnippets =
 
 
     // Listing 9.6 Async.Parallel downloads all images in parallel
-
     let downloadMediaCompAsync (container:CloudBlobContainer)
                                (blobMedia:IListBlobItem) = retry { // #B
         let blobName = blobMedia.Uri.Segments.[blobMedia.Uri.Segments.Length-1]
@@ -130,6 +130,7 @@ module CodeSnippets =
         let! (blobStream : Stream) = blockBlob.OpenReadAsync()
         return Bitmap.FromStream(blobStream) // #C
     }
+
     let transormAndSaveImage (container:CloudBlobContainer)
                              (blobMedia:IListBlobItem) =
         downloadMediaCompAsync container blobMedia
@@ -169,7 +170,7 @@ module CodeSnippets =
         printfn "Size %d" manningSite.Length
         return manningSite    // #A
     }
-    Async.Ignore (computation())  // #B
+    Async.Ignore (computation())  |> Async.Start // #B
 
 
     //Listing 9.7 Async.StartWithContinuations
@@ -188,8 +189,6 @@ module CodeSnippets =
         printfn "Size %d" manningSite.Length    // #B
     }
     Async.Start(computationUnit())  // #C
-
-
 
 
     let getCloudBlobContainer() : CloudBlobContainer =
@@ -273,4 +272,5 @@ module CodeSnippets =
           |> Seq.map(fun blobMedia -> transormAndSaveImage container blobMedia)
 
         return! Async.parallelWithThrottle  // #D
+
     maxConcurrentOperations computations }

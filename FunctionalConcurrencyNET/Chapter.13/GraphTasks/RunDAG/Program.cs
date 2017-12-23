@@ -12,7 +12,6 @@ namespace RunDAG
     {
         static void Main(string[] args)
         {
-
             Func<int, int, Func<Task>> action = (id, delay) => async () =>
             {
                 Console.WriteLine($"Starting operation{id} in Thread Id {Thread.CurrentThread.ManagedThreadId}...");
@@ -35,6 +34,7 @@ namespace RunDAG
             dagAsync.AddTask(6, action(6, 100), 7);
             dagAsync.AddTask(7, action(7, 900));
             dagAsync.AddTask(8, action(8, 700));
+
             dagAsync.ExecuteTasks();
 
             Console.ReadLine();

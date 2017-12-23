@@ -48,9 +48,7 @@ type AgentSql(connectionString:string) =
 
     member this.ExecuteTask (id:int) =
         agentSql.PostAndAsyncReply(fun ch -> Command(id, ch)) |> Async.StartAsTask  // #H
-
-
-
+        
 //Listing 11.4 Interacting asynchronously with AgentSql
 let ``Listing 11.4`` () =
     let token = CancellationToken()    // #A

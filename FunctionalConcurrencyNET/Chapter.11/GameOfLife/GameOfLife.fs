@@ -13,6 +13,7 @@ type Grid = { Width:int; Height:int }
 
 [<Struct>]
 type Location = {x:int; y:int}
+
 [<Struct>]
 type UpdateView =
     | Update of bool * Location * CellAgent
@@ -23,6 +24,7 @@ and CellMessage =
     | State of cellstate:CellAgent
     | Neighbors of cells:CellAgent list
     | ResetCell    // #A
+
 and State =
     {   neighbors:CellAgent list
         wasAlive:bool
@@ -67,11 +69,9 @@ and CellAgent(location, alive, updateAgent:Agent<_>) as this =
     member this.Send(msg) = agentCell.Post msg
 
 
-
-
 let image = Controls.Image(Stretch=Stretch.Uniform)
 
-let createImage grid pixels =
+let createImage (grid:Grid) (pixels:Array) =
     BitmapSource.Create(grid.Width, grid.Height, 96., 96., PixelFormats.Gray8, null, pixels, grid.Width)
 
 

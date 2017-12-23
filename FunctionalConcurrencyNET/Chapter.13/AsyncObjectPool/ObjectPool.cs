@@ -7,7 +7,7 @@ using System.Threading.Tasks.Dataflow;
 namespace DataflowObjectPoolEncryption
 {
     // Listing 13.1 Asynchronous Object-Pool
-    public class ObjectPoolAsync<T> : IDisposable
+    public sealed class ObjectPoolAsync<T> : IDisposable
     {
         private readonly BufferBlock<T> buffer;
         private readonly Func<T> factory;

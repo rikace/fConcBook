@@ -64,7 +64,7 @@ type StockTickerHub() as this =
         let connId = x.Context.ConnectionId
         logUserEvent "OnDisconnected" connId
 
-        // Unsubscribe client
+        // un-subscribe client
         tradingCoordinator.Unsubscribe(connId) // #E
         base.OnDisconnected(stopCalled)
 

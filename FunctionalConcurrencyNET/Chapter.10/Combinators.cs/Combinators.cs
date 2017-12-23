@@ -14,12 +14,11 @@ namespace Combinators.cs
 {
     public static class Combinators
     {
-        // TODO
         //Listing 10.3 Task.Catch function
-
         public static Task<T> Catch<T, TError>(this Task<T> task, Func<TError, T> onError) where TError : Exception
         {
             var tcs = new TaskCompletionSource<T>();    // #A
+
             task.ContinueWith(innerTask =>
             {
                 if (innerTask.IsFaulted && innerTask?.Exception?.InnerException is TError)
@@ -40,9 +39,11 @@ namespace Combinators.cs
             var cts = new CancellationTokenSource(); // #A
 
             Func<string, string, string, CancellationToken, Task<string>> GetBestFlightAsync =
-                async (from, to, carrier, token) => {
+                async (from, to, carrier, token) =>
+                {
                     string url = $"flight provider {carrier}";
-                    using (var client = new HttpClient()){
+                    using (var client = new HttpClient())
+                    {
                         HttpResponseMessage response = await client.GetAsync(url, token);
                         return await response.Content.ReadAsStringAsync();
                     }
@@ -70,13 +71,10 @@ namespace Combinators.cs
                     recommendationFlights.Remove(recommendationFlight); // #E
                 }
             }
-
         }
 
         private static void BuyFlightTicket(string v1, string v2, string recommendedFlight)
-        {
-            throw new NotImplementedException();
-        }
+            => new NotImplementedException(); // implementation for buying the tickets
 
 
         //Listing 10.17 Asynchronous For-Each loop with Task.WhenAll

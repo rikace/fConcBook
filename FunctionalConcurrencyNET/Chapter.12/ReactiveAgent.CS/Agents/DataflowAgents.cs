@@ -13,7 +13,7 @@ using System.Threading.Tasks.Dataflow;
 namespace ReactiveAgent.Agents.Dataflow
 {
     //Listing 12.5 An Agent in C# using TPL Dataflow
-    public class StatefulDataflowAgent<TState, TMessage> : IAgent<TMessage>
+    public sealed class StatefulDataflowAgent<TState, TMessage> : IAgent<TMessage>
     {
         private TState state;
         private readonly ActionBlock<TMessage> actionBlock;
@@ -36,7 +36,6 @@ namespace ReactiveAgent.Agents.Dataflow
         public Task Send(TMessage message) => actionBlock.SendAsync(message);
         public void Post(TMessage message) => actionBlock.Post(message);
 
-
         public StatefulDataflowAgent(TState initialState, Func<TState, TMessage, TState> action, CancellationTokenSource cts = null)
         {
             state = initialState;
@@ -51,8 +50,7 @@ namespace ReactiveAgent.Agents.Dataflow
         public TState State => state;
     }
 
-
-    public class StatelessDataflowAgent<TMessage> : IAgent<TMessage>
+    public sealed class StatelessDataflowAgent<TMessage> : IAgent<TMessage>
     {
         private readonly ActionBlock<TMessage> actionBlock;
 
@@ -60,7 +58,7 @@ namespace ReactiveAgent.Agents.Dataflow
         {
             var options = new ExecutionDataflowBlockOptions
             {
-                CancellationToken = cts == null ? cts.Token : CancellationToken.None
+                CancellationToken = cts != null ? cts.Token : CancellationToken.None
             };
             actionBlock = new ActionBlock<TMessage>(action, options);
         }
@@ -69,15 +67,12 @@ namespace ReactiveAgent.Agents.Dataflow
         {
             var options = new ExecutionDataflowBlockOptions
             {
-                CancellationToken = cts == null ? cts.Token : CancellationToken.None
+                CancellationToken = cts != null ? cts.Token : CancellationToken.None
             };
             actionBlock = new ActionBlock<TMessage>(action, options);
         }
 
         public void Post(TMessage message) => actionBlock.Post(message);
         public Task Send(TMessage message) => actionBlock.SendAsync(message);
-
     }
-
 }
-

@@ -14,15 +14,11 @@ namespace DataflowObjectPoolEncryption
         static void Main(string[] args)
         {
             RunGcComparison(new[] { 1, 2, 3 });
-            return;
+            Console.ReadLine();
         }
 
-
-        private static string workDirectory = @"Data";
-        private static string templateFile = @"Data\Ulysses.txt";
-        private static string sourceFile = @"Data\text.txt";
-        private static string destinationFile = @"Data\text.zip";
-        private static string restoredFile = @"Data\text_restored.txt";
+        private static string workDirectory = @".\Data";
+        private static string templateFile = @".\Data\Ulysses.txt";
 
         public static void CompressAndEncrypt(string srcFile, string dstFile, string rstFile)
         {
@@ -42,7 +38,7 @@ namespace DataflowObjectPoolEncryption
                     dataflow.CompressAndEncrypt(streamSource, streamDestination).Wait();
                     streamDestination.Close();
                 }
-     //           Console.WriteLine($"Done in {sw.ElapsedMilliseconds} with {dataflow.Pool.GetAllocationObject().Result} allocated chunks");
+
                 Console.WriteLine($"Done in {sw.ElapsedMilliseconds} with {dataflow.Pool.Size} allocated chunks");
 
                 Console.WriteLine("Press Enter to continue");
@@ -56,7 +52,7 @@ namespace DataflowObjectPoolEncryption
                 using (var streamSource = new FileStream(dstFile, FileMode.OpenOrCreate, FileAccess.Read, FileShare.None, 0x1000, useAsync: true))
                 using (var streamDestination = new FileStream(rstFile, FileMode.OpenOrCreate, FileAccess.Write, FileShare.None, 0x1000, useAsync: true))
                     dataflow.DecryptAndDecompress(streamSource, streamDestination).Wait();
-//                Console.WriteLine($"Done in {sw.ElapsedMilliseconds}  with {dataflow.Pool.GetAllocationObject().Result} allocated chunks");
+
                 Console.WriteLine($"Done in {sw.ElapsedMilliseconds}  with {dataflow.Pool.Size} allocated chunks");
 
                 Console.WriteLine("Press Enter to continue");

@@ -14,7 +14,7 @@ type CoordinatorMessage =  // #N
     | Unsubscribe of id : string
     | PublishCommand of connId : string * CommandWrapper
 
-// responsible for subscribing and unsubscribing TradingAgent
+// responsible for subscribing and un-subscribing TradingAgent
 // it uses a mix of RX and Agent.Post just for demo purpose
 // (TradingAgent : IOboservable) and (TradingSuperviserAgent : IObservable)
 type TradingCoordinator() =   // #A

@@ -11,8 +11,8 @@ module Models =
     | Buy
     | Sell
 
+    // [<Struct>]
     [<CLIMutable>]
-    [<Struct>]
     // using the CLIMutable attribute the Record type
     // is serializable by other .NET languages/frameworks
     // while the type is still immutable by F#
@@ -87,6 +87,7 @@ module Models =
               DayHigh = 0.
               Index = index }
 
+        // List of arbitrary stock tickers
         // For Demo purpose
         static member InitialStocks() =
             [| ("MSFT", 58.68)
@@ -128,7 +129,6 @@ module Models =
         | CloseMarket of string
         | GetMarketState of string * AsyncReplyChannel<MarketState>
         | GetAllStocks of string * AsyncReplyChannel<Stock list>
-
 
     type Trading =
         | Kill of AsyncReplyChannel<unit>

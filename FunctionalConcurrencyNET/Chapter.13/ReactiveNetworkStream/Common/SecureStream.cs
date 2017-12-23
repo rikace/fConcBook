@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Common
 {
-    public class SecureStream
+    public static class SecureStream
     {
         public static Stream GetServerStream(TcpClient client, string nameSsl = null)
         {

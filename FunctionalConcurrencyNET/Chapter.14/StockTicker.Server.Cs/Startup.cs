@@ -18,16 +18,14 @@ using StockTicker.Server.Cs.Core;
 using StockTicker.Server.Cs.Bus;
 
 [assembly: OwinStartup(typeof(StockTicker.Server.Cs.Startup))]
-
 namespace StockTicker.Server.Cs
 {
     public class Startup
     {
         public Startup()
         {
-            agent = new ActionBlock<CommandWrapper>(cmd => {
-                CommandHandler.Handle(cmd);
-            });
+            agent = new ActionBlock<CommandWrapper>(cmd =>
+                CommandHandler.Handle(cmd));
         }
 
         private readonly ActionBlock<CommandWrapper> agent;
@@ -56,11 +54,11 @@ namespace StockTicker.Server.Cs
                 typeof(IHttpControllerActivator),
                 new ControlActivatorPublisher(
                     Observer.Create<CommandWrapper>(
-                        x=>agent.Post<CommandWrapper>(x))));
+                        x => agent.Post<CommandWrapper>(x))));
 
             // Enable Swagger and Swagger UI
             config
-                .EnableSwagger(c=>c.SingleApiVersion("v1", "StockTicker API"))
+                .EnableSwagger(c => c.SingleApiVersion("v1", "StockTicker API"))
                 .EnableSwaggerUi();
 
             var configSignalR = new HubConfiguration() { EnableDetailedErrors = true };   // #E

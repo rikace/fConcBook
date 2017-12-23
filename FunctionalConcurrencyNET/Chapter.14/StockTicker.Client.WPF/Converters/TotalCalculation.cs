@@ -14,7 +14,7 @@ namespace StockTicker.Client.WPF.Views.Converters
         public object Convert(object[] values, Type targetType,
                           object parameter, CultureInfo culture)
         {
-            var order = (Models.OrderRecord)values[0];           
+            var order = (Models.OrderRecord)values[0];
             return (order.Price * order.Quantity).ToString("N2");
         }
 

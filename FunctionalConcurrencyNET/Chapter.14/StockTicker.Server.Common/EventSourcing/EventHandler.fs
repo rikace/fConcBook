@@ -17,7 +17,6 @@ module EventBus =
 
     let public Notify (event:Event) = EventPublisher.Trigger event // #A
 
-
 module EventStorage =
 
     type EventStorageMessage =     // #B

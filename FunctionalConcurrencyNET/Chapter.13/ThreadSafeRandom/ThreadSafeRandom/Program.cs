@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -11,7 +8,6 @@ namespace ParallelRecipes
     {
         static void Main(string[] args)
         {
-
             var random = new Random();
 
             Parallel.For(0, 1000, (i) =>

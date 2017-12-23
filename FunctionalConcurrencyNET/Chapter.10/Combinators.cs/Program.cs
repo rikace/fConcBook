@@ -16,27 +16,10 @@ using System.Drawing.Drawing2D;
 using Functional.Async;
 using Functional.IO;
 using File = Functional.IO.File;
+using static Combinators.cs.Helpers;
 
 namespace Combinators.cs
 {
-    internal static class Helpers
-    {
-        public static readonly string Connection = "< Azure Connection >";
-
-        public static async Task<CloudBlobContainer> GetCloudBlobContainerAsync(CancellationToken cancellationToken = default(CancellationToken))
-        {
-
-            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(Helpers.Connection);
-            CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
-            CloudBlobContainer container = blobClient.GetContainerReference("stuff");
-
-            // Create the container if it doesn't already exist.
-            await container.CreateIfNotExistsAsync(cancellationToken);
-            return container;
-        }
-
-    }
-
     class Program
     {
         //Listing 10.1 DownloadImage with traditional imperative error handling
@@ -49,7 +32,7 @@ namespace Combinators.cs
                 using (var memStream = new MemoryStream())
                 {
                     await blockBlob.DownloadToStreamAsync(memStream).ConfigureAwait(false);  // #A
-                    return Bitmap.FromStream(memStream);
+                    return Image.FromStream(memStream);
                 }
             }
             catch (StorageException ex)
@@ -76,23 +59,17 @@ namespace Combinators.cs
                 HandlingError(ex);  // #B
                 throw;
             }
-
-           // TODO
-//Image image = await AsyncEx.Retry(async () =>
-//                    await DownloadImageAsync("Bugghina001.jpg")
-//                .Otherwise(async () =>
-//                    await DownloadImageAsync("Bugghina002.jpg")),
-//            5, TimeSpan.FromSeconds(2));
         }
 
-        private static void HandlingError(Exception ex)
+        static async Task RunDownloadImageWithRetry()   // #C
         {
-            throw new NotImplementedException();
-        }
+            Image image = await AsyncEx.Retry(async () =>
+                                await DownloadImageAsync("Bugghina001.jpg")
+                            .Otherwise(async () =>
+                                await DownloadImageAsync("Bugghina002.jpg")),
+                        5, TimeSpan.FromSeconds(2));
 
-        private static void ProcessImage(Image image)
-        {
-            throw new NotImplementedException();
+            ProcessImage(image);
         }
 
         static async Task<Image> DownloadImageAsync(string blobReference)
@@ -106,12 +83,7 @@ namespace Combinators.cs
             }
         }
 
-        public static Func<T1, Func<T2, Func<T3, R>>> Curry<T1, T2, T3, R>(Func<T1, T2, T3, R> func)
-           => (T1 a) => (T2 b) => (T3 c) => func(a, b, c);
 
-        public static Func<T1, Func<T2, Func<T3, Func<T4, R>>>> Curry<T1, T2, T3, T4, R>(
-          Func<T1, T2, T3, T4, R> func)
-         => (T1 a) => (T2 b) => (T3 c) => (T4 d) => func(a, b, c, d);
 
 
         public async Task<Image> BlendImagesFromBlobStorage(string blobReferenceOne, string blobReferenceTwo, Size size)
@@ -220,12 +192,17 @@ namespace Combinators.cs
             .Tap(async bytes => await File.WriteAllBytesAsync(destinationImage, bytes));    // #A
         }
 
-
-
-        static void Main(string[] args)
+        public static void HandlingError(Exception ex)
         {
-            Option<Image> bugghina2 = DownloadOptionImage("Bugghina002.jpg").Result;
+            throw new NotImplementedException();
         }
+
+        public static void ProcessImage(Image image)
+        {
+            throw new NotImplementedException();
+        }
+
+
 
 
         Task<Result<byte[]>> ToByteArray(Image image)
@@ -256,7 +233,6 @@ namespace Combinators.cs
             });
         }
 
-
         static Image ToThumbnail(Image bitmap, int maxPixels)
         {
             var scaling = (bitmap.Width > bitmap.Height)
@@ -266,7 +242,6 @@ namespace Combinators.cs
             var heiht = Convert.ToInt32(Convert.ToDouble(bitmap.Height) * scaling);
             return new Bitmap(bitmap.GetThumbnailImage(width, heiht, null, IntPtr.Zero));
         }
-
 
         // Listing 10.20 Better composition of asynchronous operation using Applicative Functors
         static Func<T1, Func<T2, TR>> Curry<T1, T2, TR>(Func<T1, T2, TR> func) => p1 => p2 => func(p1, p2);
@@ -281,7 +256,6 @@ namespace Combinators.cs
 
             return thumbnail;
         }
-
 
         //Listing 10.21 Parallelize chain of computation with Applicative Functors
         static Image BlendImages(Image imageOne, Image imageTwo, Size size)
@@ -314,17 +288,10 @@ namespace Combinators.cs
                         .Apply(TaskEx.Pure(size));
             return await imageBlended;
         }
-    }
 
-    class Log
-    {
-        internal static Task Error(Exception ex)
+        static void Main(string[] args)
         {
-            throw new NotImplementedException();
-        }
-
-        internal static void Error(string v, Exception ex)
-        {
+            Option<Image> bugghina2 = DownloadOptionImage("Bugghina002.jpg").Result;
         }
     }
 }

@@ -31,8 +31,7 @@ let runAsync () =
     |> Async.Parallel       // #D
     |> Async.RunSynchronously
 
-
-
+    
 
 let httpSync (url:string) =
     let req = WebRequest.Create(url)

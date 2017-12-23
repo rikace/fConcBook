@@ -44,8 +44,8 @@ type AgentDisposable<'T>(f:MailboxProcessor<'T> -> Async<unit>,
                              cancelToken.Cancel()
 
 type AgentDisposable<'T> with
-    //member this.withSupervisor (supervisor: Agent<exn>) (transform) =
-    //    this.Agent.Error.Add(fun error -> supervisor.Post(transform(error))); this
+    member inline this.withSupervisor (supervisor: Agent<exn>, transform) =
+        this.Agent.Error.Add(fun error -> supervisor.Post(transform(error))); this
 
     member this.withSupervisor (supervisor: Agent<exn>) =
         this.Agent.Error.Add(supervisor.Post); this
@@ -76,13 +76,10 @@ type MailboxProcessor<'a> with
         agent.Start()
         agent
 
-
-
 open AsyncDBAgent
 open System.Configuration
 
 //Listing 11.6 Using the agent parallelWorkers to parallelize database reads
-
 let connectionString =    // #A
     ConfigurationManager.ConnectionStrings.["DbConnection"].ConnectionString
 let maxOpenConnection = 10    // #B

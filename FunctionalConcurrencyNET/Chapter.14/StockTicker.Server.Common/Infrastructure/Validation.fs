@@ -8,10 +8,6 @@ open System.Threading.Tasks
 [<AutoOpen>]
 module Validation =
 
-     // The infix operator >>= is an alias of bind function.
-    let inline (>>=) f1 f2 = Result.bind f1 f2
-
-
     let validateTicker  (input : TradingRecord) : Result<TradingRecord, string> =
         if input.Symbol = "" then Result.Error "Ticket must not be blank"
         else Result.Ok input

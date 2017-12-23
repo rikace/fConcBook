@@ -11,13 +11,12 @@ using static Functional.OptionHelpers;
 namespace ReactiveAgent.Agents.Dataflow
 {
     //Listing 12.8  Producer/consumer using TPL Dataflow
-    class StatefulReplyDataflowAgent<TState, TMessage, TReply> : // #A
+    public sealed class StatefulReplyDataflowAgent<TState, TMessage, TReply> : // #A
                                             IReplyAgent<TMessage, TReply>
     {
         private TState state;
         private readonly ActionBlock<(TMessage,     // #B
                                       Option<TaskCompletionSource<TReply>>)> actionBlock;
-
 
         public StatefulReplyDataflowAgent(TState initialState,
                     Func<TState, TMessage, Task<TState>> projection,
@@ -55,7 +54,6 @@ namespace ReactiveAgent.Agents.Dataflow
         public void Post(TMessage message) =>
             actionBlock.Post((message, None));
 
-
         public StatefulReplyDataflowAgent(TState initialState,
                     Func<TState, TMessage, TState> projection,
                     Func<TState, TMessage, (TState, TReply)> ask,
@@ -80,5 +78,4 @@ namespace ReactiveAgent.Agents.Dataflow
               }, options);
         }
     }
-
 }

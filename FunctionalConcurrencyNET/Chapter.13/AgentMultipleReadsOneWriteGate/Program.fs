@@ -62,4 +62,4 @@ let demo() =
 [<EntryPoint>]
 let main argv =
     demo() |> Async.RunSynchronously
-    0 // return an integer exit code
+    0

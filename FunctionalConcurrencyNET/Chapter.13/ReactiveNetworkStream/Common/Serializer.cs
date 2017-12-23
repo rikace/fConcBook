@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Common
 {
-    public class Serializer
+    public static class Serializer
     {
         public static byte[] Serialize(IFormatter formatter, object data)
         {

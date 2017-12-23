@@ -3,16 +3,10 @@ namespace StockTicker
 open Owin
 open Microsoft.Owin
 open System
-open System.Collections.Generic
-open System.IO
 open System.Net.Http
-open System.Web
 open System.Web.Http
-open System.Web.Http.Owin
-open System.Threading
 open StockTicker.Controllers
 open Microsoft.AspNet.SignalR
-open Microsoft.AspNet.SignalR.Messaging
 open Microsoft.AspNet.SignalR.Hubs
 open System.Web.Http.Dispatcher
 open System.Web.Http.Controllers
@@ -24,11 +18,10 @@ open StockTicker.Core
 open StockTicker.Server
 open Swashbuckle.Application
 
-
 // Transform the web api controller in an Observable publisher,
 // register the controller to the command dispatcher.
 // Using Pub/Sub API of Reactive Extensions used to pipe messages to an Agent
-// The Agent only dependd on IObserver implementation reducing the dependencies
+// The Agent only depend on IObserver implementation reducing the dependencies
 // Hook into the Web API framework where it creates controllers
 
 // Listing 14.2 Register a Web-API controller as Observable
@@ -53,10 +46,10 @@ type ControlActivatorPublisher(requestObserver:IObserver<CommandWrapper>) =
 
 (*  Startup Class
     The server needs to know which URL to intercept and direct to SignalR. To do that,
-    I add an OWIN startup class.
+    we add an OWIN startup class.
  *)
 
-/// Route for ASP.NET Web API applications
+// Route for ASP.NET Web API applications
 type HttpRoute = {
     controller : string
     id : RouteParameter }
@@ -106,9 +99,9 @@ type Startup() =
             config.Routes.MapHttpRoute("DefaultApi", "api/{controller}/{id}",
                  { controller = "{controller}"; id = RouteParameter.Optional }) |> ignore
 
-            // replace the defaulr controller activator
+            // replace the default controller activator
             config.Services.Replace(typeof<IHttpControllerActivator>,    // #C
-                                    // I create a subscription controller to the Agent
+                                    // This is a subscription controller to the Agent
                                     // Each time a message come in (post) the publisher send the message (OnNext)
                                     // to all the subscribers, in this case the Agent
                                     ControlActivatorPublisher( Observer.Create(fun x -> agent.Post(x)) ))  // #D

@@ -11,7 +11,6 @@ namespace ReactiveAgent.Agents
     {
         public static async Task<string[]> ReadAllLinesAsync(string path)
         {
-
             using (var sourceStream = new FileStream(path,
                 FileMode.Open, FileAccess.Read, FileShare.None,
                 bufferSize: 4096, useAsync: true))

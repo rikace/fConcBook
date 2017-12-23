@@ -9,10 +9,11 @@ module Async =
     open AsyncBlobCloudFS.CodeSnippets
     open FunctionalConcurrency
 
-    let inline map (func:'a -> 'b) (operation:Async<'a>) = async {
-        let! result = operation
-        return func result
-    }
+    let inline map (func:'a -> 'b) (operation:Async<'a>) =
+        async {
+            let! result = operation
+            return func result
+        }
 
     let inline tee (fn:'a -> 'b) (x:Async<'a>) = (Async.map fn x) |> Async.Ignore |> Async.Start; x
 

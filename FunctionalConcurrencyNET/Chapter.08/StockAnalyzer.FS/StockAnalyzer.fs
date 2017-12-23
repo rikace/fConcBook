@@ -20,7 +20,7 @@ let convertStockHistory (stockHistory:string) = async {
         stockHistoryRows
         |> Seq.skip 1
         |> Seq.map(fun row -> row.Split(','))
-        // this is a guard against bad csv row formatting when for example the stock index
+        // this is a guard against bad CSV row formatting when for example the stock index
         |> Seq.filter(fun cells -> cells |> Array.forall(fun c -> not <| (String.IsNullOrWhiteSpace(c) || (c.Length = 1 && c.[0] = '-'))))
         |> Seq.map(fun cells ->
             {
@@ -75,7 +75,7 @@ let analyzeStockHistory() =
     Stocks
     |> Seq.map (processStockHistory)
     |> Async.Parallel
-    |> Async.RunSynchronously  // ok only for console app because block a better solution is Start with continuation
+    |> Async.RunSynchronously  // This is ok only for console applications, because block a better solution is Start with continuation
     |> chartSymbols
 
 

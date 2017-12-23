@@ -40,7 +40,7 @@ namespace StockTicker.Client.WPF
         }
 
         private void RegisterEventHandlers(IHubProxy proxy, IStockTickerHubClient client)
-        {            
+        {
             proxy.On<string>("SetMarketState",      (x) => BeginInvokeOnMainThread(() => client.SetMarketState(x)));
             proxy.On<Stock>("UpdateStockPrice",     (x) => BeginInvokeOnMainThread(() => client.UpdateStockPrice(x)));
             proxy.On<Stock>("SetStock",             (x) => BeginInvokeOnMainThread(() => client.SetStock(x)));
@@ -55,7 +55,7 @@ namespace StockTicker.Client.WPF
         public async Task GetAllStocks() => await stockTickerProxy.Invoke("GetAllStocks");
 
         public async Task<string> GetMarketState() => await stockTickerProxy.Invoke<string>("GetMarketState");
-        
+
         public async Task OpenMarket() => await stockTickerProxy.Invoke("OpenMarket");
 
 		public async Task CloseMarket() => await stockTickerProxy.Invoke("CloseMarket");

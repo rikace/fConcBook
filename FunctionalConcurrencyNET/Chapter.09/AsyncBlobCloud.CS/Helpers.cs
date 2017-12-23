@@ -32,7 +32,6 @@ namespace AsyncBlobCloud
 
         public static async Task<CloudBlobContainer> GetCloudBlobContainerAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-
             CloudStorageAccount storageAccount = CloudStorageAccount.Parse(Helpers.Connection);
             CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
             CloudBlobContainer container = blobClient.GetContainerReference("stuff");

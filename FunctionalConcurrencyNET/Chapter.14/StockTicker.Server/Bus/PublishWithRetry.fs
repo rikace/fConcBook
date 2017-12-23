@@ -1,16 +1,7 @@
 ﻿namespace StockTicker
 
-open System
-open StockTicker.Events
-open StockTicker.Core
-open EventStorage
-open StockMarket
-open Events
-
-
 type SendMessageWith<'a> =
     | SendMessageWith of string * 'a
-
 
 //Computation expressions in F# provide a convenient syntax for writing
 //computations that can be sequenced and combined using control flow constructs

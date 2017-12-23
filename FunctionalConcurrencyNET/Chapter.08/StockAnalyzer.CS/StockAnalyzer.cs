@@ -131,12 +131,10 @@ namespace StockAnalyzer.CS
 
         //Listing 8.10 The Bind operator in action
         async Task<Tuple<string, StockData[]>> ProcessStockHistoryBind(string symbol)
-        {
-            return await DownloadStockHistory(symbol)
+            => await DownloadStockHistory(symbol)
                     .Bind(stockHistory => ConvertStockHistory(stockHistory))  //#A
                     .Bind(stockData => Task.FromResult(Tuple.Create(symbol,
                                                                stockData)));  //#A
-        }
 
         async Task<Tuple<string, StockData[]>> ProcessStockHistoryRetry(string symbol)
         {

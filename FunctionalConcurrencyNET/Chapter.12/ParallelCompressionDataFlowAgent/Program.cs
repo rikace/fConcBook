@@ -15,21 +15,14 @@ namespace ParallelCompressionDataFlowAgent
 {
     public class Program
     {
+        static void RunPerfComparison() =>
+            RunPerfComparison(new[] { 1, 3, 9 }, new[] { 1, 2, 4 });
+
         public static void Main(string[] args)
         {
             //Play().Wait();
-            RunPerfComparison(new[] { 3, 6, 9 }, new[] { 1, 2, 4 });
-            return;
 
-            // 6 GB
-            //CreateTextFileWithSize(sourceFile_6000, sourceFile_132, 6L * 1024 * 1024 * 1024);
-
-            // 12 Gb
-            CreateTextFileWithSize(sourceFile_6000, sourceFile_132, 12L * 1024 * 1024 * 1024);
-
-
-            // 12.8, 12.9
-            CompressAndEncrypt(sourceFile_6000, destinationFile, restoredFile);
+            RunPerfComparison();
         }
 
         static async Task Play()
@@ -42,18 +35,24 @@ namespace ParallelCompressionDataFlowAgent
             await (new MultipleProducersExample()).Run();
             // 12.5, 12.6
             (new StatefulDataflowAgentSample()).Run();
-
         }
 
-        // TODO
-        private static string workDirectory = @"E:\Data";
-        private static string sourceFile_132 = @"E:\Data\text.txt";
-        private static string sourceFile_1320 = @"E:\Data\text2.txt";
-        private static string sourceFile_2500 = @"E:\Data\text3.txt";
-        private static string sourceFile_3600 = @"E:\Data\text4.txt";
-        private static string sourceFile_6000 = @"E:\Data\text5.txt";
-        private static string destinationFile = @"E:\Data\text.zip";
-        private static string restoredFile = @"E:\Data\text_restored.txt";
+        static void CreateTextFileWithSize(int size_Mb, string destination)
+        {
+            string base_filePath = Path.Combine(workDirectory, source_base_file);
+            var bytes = System.IO.File.ReadAllBytes(base_filePath);
+            int targetSize = size_Mb * 1024 * 1024;
+            using (FileStream fs = new FileStream(destination, FileMode.Append, FileAccess.Write))
+            {
+                var iterations = (targetSize - fs.Length + bytes.Length) / bytes.Length;
+
+                for (var i = 0; i < iterations; i++)
+                    fs.Write(bytes, 0, bytes.Length);
+            }
+        }
+
+        private static string workDirectory = @".\Data";
+        private static string source_base_file = "base_text.txt";
 
         public static void CompressAndEncrypt(string srcFile, string dstFile, string rstFile)
         {
@@ -131,23 +130,10 @@ namespace ParallelCompressionDataFlowAgent
             }
         }
 
-        public static void CreateTextFileWithSize(string path, string templateFilePath, long targetSize)
-        {
-            var bytes = System.IO.File.ReadAllBytes(templateFilePath);
-
-            using (FileStream fs = new FileStream(path, FileMode.Append, FileAccess.Write))
-            {
-                var iterations = (targetSize - fs.Length + bytes.Length) / bytes.Length;
-
-                for (var i = 0; i < iterations; i++)
-                    fs.Write(bytes, 0, bytes.Length);
-            }
-        }
-
         public static void RunPerfComparison(int[] fileSizesInGb, int[] degreesOfParallelism)
         {
-            const long bytesInGb = 1024L * 1024 * 1024;
-            string templateFile = sourceFile_132;
+            const int Mb_to_Gb = 1024;
+
             string inFile = Path.Combine(workDirectory, "inFile.txt");
             string outFile = Path.Combine(workDirectory, "outFile.txt");
 
@@ -158,7 +144,8 @@ namespace ParallelCompressionDataFlowAgent
                 Console.WriteLine($"Creating input file {size}GB ...");
                 if (System.IO.File.Exists(inFile))
                     System.IO.File.Delete(inFile);
-                CreateTextFileWithSize(inFile, templateFile, bytesInGb * size);
+
+                CreateTextFileWithSize(Mb_to_Gb * size, inFile);
 
                 for (var i = 0; i < degreesOfParallelism.Length; i++)
                 {
@@ -198,5 +185,22 @@ namespace ParallelCompressionDataFlowAgent
                 streamDestination.Close();
             }
         }
+
+        // 300 MB
+        static void CreateTextFileWithSize_300Mb() =>
+                CreateTextFileWithSize(300, Path.Combine(workDirectory, "txt_3Gb.text"));
+
+        // 3 GB
+        static void CreateTextFileWithSize_3Gb() =>
+                CreateTextFileWithSize(3 * 1024, Path.Combine(workDirectory, "txt_3Gb.text"));
+
+        // 6 GB
+        static void CreateTextFileWithSize_6GB() =>
+                CreateTextFileWithSize(6 * 1024, Path.Combine(workDirectory, "txt_6Gb.text"));
+
+        // 12 Gb
+        static void CreateTextFileWithSize_12GB() =>
+            CreateTextFileWithSize(12 * 1024, Path.Combine(workDirectory, "txt_12Gb.text"));
+
     }
 }

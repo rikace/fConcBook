@@ -6,26 +6,18 @@ open System.Net
 open System.Text
 open System.Text.RegularExpressions
 
-// Implements a simple agent that lets you throttle the degree of parallelism by limiting the
-// number of work items that are processed in parallel.
-
-//Agent that can be used for controlling the number of concurrently executing asynchronous workflows.
-// The agent runs a specified number of operations concurrently and queues remaining pending requests.
-// The queued work items are started as soon as one of the previous items completes.
-
 type Agent<'a> = MailboxProcessor<'a>
 
 // Listing 13.17 Implementation of the TamingAgent
-
-/// Message type used by the agent - contains queuing
-/// of work items and notification of completion
+// Message type used by the agent - contains queuing
+// of work items and notification of completion
 type JobRequest<'T, 'R> = // #A
     | Ask of 'T * AsyncReplyChannel<'R>
     | Completed
     | Quit
 
-/// Represents an agent that runs operations in concurrently. When the number
-/// of concurrent operations exceeds 'limit', they are queued and processed later
+// Implements an agent that lets you throttle the degree of parallelism by limiting the
+// number of work items that are processed in parallel.
 type TamingAgent<'T, 'R>(limit, operation:'T -> Async<'R>) =
     let jobCompleted = new Event<'R>() // #B
 

@@ -1,21 +1,13 @@
 ﻿module Program
 
-open System.Collections.Generic
-open System.Collections.Concurrent
-open System.Threading.Tasks
-open System.Linq
 open System.IO
 open System
-open System.Text.RegularExpressions
 open System.Drawing
-open System.Threading
 open TamingAgentModule
-open System.Net.Sockets
 
 [<AutoOpen>]
 module HelperType =
     type ImageInfo = { Path:string; Name:string; Image:Bitmap}
-
 
 module ImageHelpers =
     let convertImageTo3D (image:Bitmap) =
@@ -56,8 +48,7 @@ module ``TamingAgent example`` =
 
     let loadandApply3dImageAgent = TamingAgent<string, string>(2, loadandApply3dImage)
 
-    loadandApply3dImageAgent.Subscribe(fun imageName -> printfn "Saved image %s - from subscriber" imageName)
-
+    let _ = loadandApply3dImageAgent.Subscribe(fun imageName -> printfn "Saved image %s - from subscriber" imageName)
 
     let transformImages() =
         let images = Directory.GetFiles(@".\Images")

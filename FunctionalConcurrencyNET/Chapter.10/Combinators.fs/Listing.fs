@@ -78,8 +78,6 @@ let toThumbnail (image:Image) =
         return new Bitmap(bitmap.GetThumbnailImage(x, y, null, IntPtr.Zero)) :> Image;
     } |> AsyncResult.handler
 
-open System.Drawing
-
 let toByteArrayAsync (image:Image) = async {
     use memStream = new MemoryStream()
     do! image.SaveImageAsync(memStream, image.RawFormat)
@@ -168,8 +166,7 @@ module ApplicativeFunctors =
                     (downloadOptionImage(blobReferenceTwo)))
                     (Async.``pure`` size)
 
-module Listing_TEST =
-    //open System.Drawing.Drawing2D
+module ``BlendImages with async combinators`` =
 
     let blendImages (imageOne:Image) (imageTwo:Image) (size:Size) : Image =
         let bitmap = new Bitmap(size.Width, size.Height)
@@ -259,7 +256,7 @@ module ``Composing and executing heterogeneous parallel computations`` =
         } |> Async.map(fun (row:string) ->
                 let items = row.Split(',')
                 System.Double.Parse(items.[items.Length-1]))
-            |> AsyncResult.handler   // #E
+          |> AsyncResult.handler   // #E
 
     let analyzeHistoricalTrend symbol =
         asyncResult {

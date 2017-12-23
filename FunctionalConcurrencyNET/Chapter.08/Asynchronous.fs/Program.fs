@@ -7,4 +7,4 @@ let main argv =
     Demo.benchmark "Sync impl" (fun () ->
         AsyncModule.runSync() |> ignore)
 
-    0 // return an integer exit code
+    0

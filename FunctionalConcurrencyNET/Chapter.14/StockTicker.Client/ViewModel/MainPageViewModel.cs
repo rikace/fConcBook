@@ -32,7 +32,7 @@ namespace StockTicker.Client
             stockTickerHub = DependencyService.Get<IStockTickerHub>(); // #C
             hostPage = page;
 
-            var hostBase = "http://localhost:8735/";
+            var hostBase = "http://localhost:8935/";
             stockTickerHub                  // #C
                 .Init(hostBase, this)
                 .ContinueWith(async x =>

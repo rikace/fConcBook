@@ -55,7 +55,6 @@ namespace Common
                 return reader.ToLineaObservable().Select(_map);
             }
         }
-
     }
 
     public static class TextReaderExtensions
@@ -83,8 +82,7 @@ namespace Common
                 }
             });
         }
-
-
+        
         public static IObservable<string> ToLineaObservable(this StreamReader reader)
         {
             return Observable.Create<string>(async (observer, token) =>

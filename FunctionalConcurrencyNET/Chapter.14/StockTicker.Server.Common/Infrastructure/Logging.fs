@@ -169,12 +169,6 @@ type Message =
   member x.utcTicks =
     DateTimeOffset.ticksUTC x.timestamp
 
-  /// If you're looking for how to transform the Message's fields, then use the
-  /// module methods rather than instance methods, since you'll be creating new
-  /// values rather than changing an existing value.
-  member x.README =
-    ()
-
 /// The logger is the interface for calling code to use for logging. Its
 /// different functions have different semantics - read the docs for each
 /// method to choose the right one for your use-case.
