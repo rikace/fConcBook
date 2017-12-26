@@ -26,6 +26,7 @@ module Helpers =
 
 module CodeSnippets =
     open ImageProcessing
+    open FunctionalConcurrency.AsyncOperators
 
     //Listing 9.1 Asynchronous-Workflow implementation of image-download
     let getCloudBlobContainerAsync() : Async<CloudBlobContainer> = async {
@@ -134,9 +135,9 @@ module CodeSnippets =
     let transormAndSaveImage (container:CloudBlobContainer)
                              (blobMedia:IListBlobItem) =
         downloadMediaCompAsync container blobMedia
-        |> Async.map ImageHelpers.setGrayscale // #D
-        |> Async.map ImageHelpers.createThumbnail // #D
-        |> Async.tee (fun image ->    // #E
+        |> AsyncEx.map ImageHelpers.setGrayscale // #D
+        |> AsyncEx.map ImageHelpers.createThumbnail // #D
+        |> AsyncEx.tee (fun image ->    // #E
                 let mediaName =
                     blobMedia.Uri.Segments.[blobMedia.Uri.Segments.Length - 1]
                 image.Save(mediaName))

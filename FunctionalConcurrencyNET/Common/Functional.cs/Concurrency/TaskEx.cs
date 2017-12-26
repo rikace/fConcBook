@@ -9,85 +9,55 @@ namespace Functional.Tasks
 {
     public static class TaskEx
     {
-        public static Task<T2> Next<T1, T2>(this Task<T1> task, Func<T1, Task<T2>> next)
+        //Listing 10.3 Task.Catch function
+        public static Task<T> Catch<T, TError>(this Task<T> task, Func<TError, T> onError) where TError : Exception
         {
-            var tcs = new TaskCompletionSource<T2>();
-            task.ContinueWith(cont =>
+            var tcs = new TaskCompletionSource<T>();    // #A
+            task.ContinueWith(innerTask =>
             {
-                if (cont.IsFaulted) tcs.TrySetException(cont.Exception.InnerExceptions);
-                else if (cont.IsCanceled) tcs.TrySetCanceled();
+                if (innerTask.IsFaulted && innerTask?.Exception?.InnerException is TError)
+                    tcs.SetResult(onError((TError)innerTask.Exception.InnerException)); // #B
+                else if (innerTask.IsCanceled)
+                    tcs.SetCanceled();      // #B
+                else if (innerTask.IsFaulted)
+                    tcs.SetException(innerTask?.Exception?.InnerException ?? throw new InvalidOperationException()); // #B
                 else
-                {
-                    next(cont.Result).ContinueWith(nextCont =>
-                    {
-                        if (nextCont.IsFaulted) tcs.TrySetException(nextCont.Exception.InnerExceptions);
-                        else if (nextCont.IsCanceled) tcs.TrySetCanceled();
-                        else tcs.TrySetResult(nextCont.Result);
-                    });
-                }
+                    tcs.SetResult(innerTask.Result);  // #B
             });
             return tcs.Task;
         }
 
-        public static Task<TResult> Match<TInput, TResult>(this Task<TInput> task, Func<TInput, TResult> success, Action cancel, Action<AggregateException> faillure)
+        //Listing 10.24  C# asynchronous lift functions
+        public static Task<TOut> LifTMid<TIn, TMid, TOut>(Func<TIn, TMid, TOut> selector, Task<TIn> item1, Task<TMid> item2) // #A
         {
-            var tcs = new TaskCompletionSource<TResult>();
-            task.ContinueWith(cont =>
-                 {
-                     if (cont.IsFaulted)
-                     {
-                         tcs.SetException(cont.Exception.InnerException);
-                         faillure(cont.Exception);
-                     }
-                     else if (cont.IsCanceled)
-                     {
-                         tcs.SetCanceled();
-                         cancel();
-                     }
-                     else tcs.SetResult(success(cont.Result));
-                 });
-            return tcs.Task;
+            // Func<TIn, Func<TMid, R>> curry = x => y => selector(x, y);    // #B
+
+            var lifted1 = Pure(Functional.Curry(selector));              // #C
+            var lifted2 = Apply(item1, lifted1);    // #D
+            return Apply(item2, lifted2);           // #D
         }
 
-        //Listing 10.3 Task.Catch function
+        public static Task<TOut> LifTOut<TIn, TMid1, TMid2, TOut>(Func<TIn, TMid1, TMid2, TOut> selector, Task<TIn> item1, Task<TMid1> item2, Task<TMid2> item3)    // #A
+        {
+            //Func<TIn, Func<TMid1, Func<TMid2, TOut>>> curry = x => y => z => selector(x, y, z); // #B
 
-public static Task<T> Catch<T, TError>(this Task<T> task, Func<TError, T> onError) where TError : Exception
-{
-    var tcs = new TaskCompletionSource<T>();    // #A
-    task.ContinueWith(innerTask =>
-    {
-        if (innerTask.IsFaulted && innerTask?.Exception?.InnerException is TError)
-            tcs.SetResult(onError((TError)innerTask.Exception.InnerException)); // #B
-        else if (innerTask.IsCanceled)
-            tcs.SetCanceled();      // #B
-        else if (innerTask.IsFaulted)
-            tcs.SetException(innerTask?.Exception?.InnerException ?? throw new InvalidOperationException()); // #B
-        else
-            tcs.SetResult(innerTask.Result);  // #B
-    });
-    return tcs.Task;
-}
+            var lifted1 = Pure(Functional.Curry(selector));              // #C
+            var lifted2 = Apply(item1, lifted1);    // #D
+            var lifted3 = Apply(item2, lifted2);    // #D
+            return Apply(item3, lifted3);           // #D
+        }
 
-        //public static Task<T> Otherwise<T>
-        //   (this Task<T> task, Func<Task<T>> fallback)
-        //   => task.ContinueWith(t =>
-        //         t.Status == TaskStatus.Faulted
-        //            ? fallback()
-        //            : Task.FromResult(t.Result)
-        //      )
-        //      .Unwrap();
+        public static Task<TOut> Fmap<TIn, TOut>(this Task<TIn> input, Func<TIn, TOut> map) => input.ContinueWith(t => map(t.Result));
 
-        public static Task<T2> Fmap<T1, T2>(this Task<T1> input, Func<T1, T2> f) => input.ContinueWith(t => f(t.Result));
-
-        public static Task<T2> map<T1, T2>(this Func<T1, T2> f, Task<T1> input) => input.ContinueWith(t => f(t.Result));
+        public static Task<TOut> Map<TIn, TOut>(this Task<TIn> input, Func<TIn, TOut> map) => input.ContinueWith(t => map(t.Result));
 
         public static Task<T> Return<T>(this T input) => Task.FromResult(input);
 
-        public static Task<a> Pure<a>(a input) => Task.FromResult(input);
+        public static Task<T> Pure<T>(T input) => Task.FromResult(input);
 
-        public static Task<R> Apply<T, R>(this Task<Func<T, R>> liftedFn, Task<T> task)
+        public static Task<TOut> Apply<TIn, TOut>(this Task<TIn> task, Task<Func<TIn, TOut>> liftedFn)
         {
-            var tcs = new TaskCompletionSource<R>();
+            var tcs = new TaskCompletionSource<TOut>();
             liftedFn.ContinueWith(innerLiftTask =>
                 task.ContinueWith(innerTask =>
                     tcs.SetResult(innerLiftTask.Result(innerTask.Result))
@@ -95,49 +65,35 @@ public static Task<T> Catch<T, TError>(this Task<T> task, Func<TError, T> onErro
             return tcs.Task;
         }
 
+        public static Task<TOut> Apply<TIn, TOut>(this Task<Func<TIn, TOut>> liftedFn, Task<TIn> task) => task.Apply(liftedFn);
 
-
-        static   Result<byte[]> ReadFile(string path)
+        public static Task<TOut> Select<TIn, TOut>(this Task<TIn> task, Func<TIn, TOut> projection)
         {
-            if (File.Exists(path)) return File.ReadAllBytes(path);
-            else return new FileNotFoundException(path);
+            var r = new TaskCompletionSource<TOut>();
+            task.ContinueWith(self =>
+            {
+                if (self.IsFaulted) r.SetException(self.Exception.InnerExceptions);
+                else if (self.IsCanceled) r.SetCanceled();
+                else r.SetResult(projection(self.Result));
+            });
+            return r.Task;
         }
 
+        public static Task<Func<TMid, TOut>> Apply<TIn, TMid, TOut>(this Task<Func<TIn, TMid, TOut>> liftedFn, Task<TIn> input)
+            => input.Apply(liftedFn.Fmap(Functional.Curry));
 
-        static async Task<R> ApplyNew<T, R>(this Task<Func<T, R>> f, Task<T> arg)
-           => (await f.ConfigureAwait(false))(await arg.ConfigureAwait(false));
-
-
-
-        static Func<T1, Func<T2, TR>> Curry<T1, T2, TR>(this Func<T1, T2, TR> func) => p1 => p2 => func(p1, p2);
-
-        public static Task<Func<b, c>> Apply<a, b, c>(this Task<Func<a, b, c>> liftedFn, Task<a> input)
-            => Apply(liftedFn.Fmap(Curry), input);
-
-
-
-        //public static Task<b> Apply1<a, b>(this Task<a> input, Task<Func<a, b>> liftedFn)
-        //{
-        //    var tcs = new TaskCompletionSource<b>();
-        //    liftedFn.ContinueWith(f =>
-        //       input.ContinueWith(x =>
-        //          tcs.SetResult(f.Result(x.Result))
-        //   ));
-        //    return tcs.Task;
-        //}
-
-        public static Task<T2> Bind<T1, T2>(this Task<T1> input, Func<T1, Task<T2>> f)
+        public static Task<TOut> Bind<TIn, TOut>(this Task<TIn> input, Func<TIn, Task<TOut>> f)
         {
-            var tcs = new TaskCompletionSource<T2>();
+            var tcs = new TaskCompletionSource<TOut>();
             input.ContinueWith(x =>
                 f(x.Result).ContinueWith(y =>
                     tcs.SetResult(y.Result)));
             return tcs.Task;
         }
 
-        public static Task<T2> SelectMany<T1, T2>(this Task<T1> first, Func<T1, Task<T2>> next)
+        public static Task<TOut> SelectMany<TIn, TOut>(this Task<TIn> first, Func<TIn, Task<TOut>> next)
         {
-            var tcs = new TaskCompletionSource<T2>();
+            var tcs = new TaskCompletionSource<TOut>();
             first.ContinueWith(delegate
             {
                 if (first.IsFaulted) tcs.TrySetException(first.Exception.InnerExceptions);
@@ -161,115 +117,42 @@ public static Task<T> Catch<T, TError>(this Task<T> task, Func<TError, T> onErro
             return tcs.Task;
         }
 
-        /////<summary>Transforms a task's result, or propagates its exception or cancellation.</summary>
-        //public static Task<TOut> Select<TIn, TOut>(this Task<TIn> task, Func<TIn, TOut> projection)
-        //{
-        //    var r = new TaskCompletionSource<TOut>();
-        //    task.ContinueWith(self => {
-        //        if (self.IsFaulted) r.SetException(self.Exception.InnerExceptions);
-        //        else if (self.IsCanceled) r.SetCanceled();
-        //        else r.SetResult(projection(self.Result));
-        //    });
-        //    return r.Task;
-        //}
-        /////<summary>Transforms a task's result and then does a combined transform, propagating any exceptions or cancellation.</summary>
-        //public static Task<TOut> SelectMany<TIn, TMid, TOut>(
-        //        this Task<TIn> task,
-        //        Func<TIn, Task<TMid>> midProjection,
-        //        Func<TIn, TMid, TOut> outProjection)
-        //{
-        //    return task.Select(inp => midProjection(inp).Select(mid => outProjection(inp, mid))).Unwrap();
-        //}
-
-        public static Task<T> ToTaskOf<T>(this Task t)
-        {
-            if (t is Task<T>) return (Task<T>)t;
-            var tcs = new TaskCompletionSource<T>();
-            t.ContinueWith(ant =>
-            {
-                if (ant.IsCanceled) tcs.SetCanceled();
-                else if (ant.IsFaulted) tcs.SetException(ant.Exception.InnerException);
-                else tcs.SetResult(default(T));
-            });
-            return tcs.Task;
-        }
-
-        public static Task<T3> SelectMany<T1, T2, T3>(
-            this Task<T1> input, Func<T1, Task<T2>> f, Func<T1, T2, T3> projection)
+        public static Task<TOut> SelectMany<TIn, TMid, TOut>(
+          this Task<TIn> input, Func<TIn, Task<TMid>> f, Func<TIn, TMid, TOut> projection)
         {
             return Bind(input, outer =>
                    Bind(f(outer), inner =>
                    Return(projection(outer, inner))));
         }
 
-        //public static Task<T2> Next<T1, T2>(this Task<T1> first, Func<T1, Task<T2>> next)
-        //{
-        //    if (first == null) throw new ArgumentNullException("first");
-        //    if (next == null) throw new ArgumentNullException("next");
-
-        //    var tcs = new TaskCompletionSource<T2>();
-        //    first.ContinueWith(delegate
-        //    {
-        //        if (first.IsFaulted) tcs.TrySetException(first.Exception.InnerExceptions);
-        //        else if (first.IsCanceled) tcs.TrySetCanceled();
-        //        else
-        //        {
-        //            try
-        //            {
-        //                var t = next(first.Result);
-        //                if (t == null) tcs.TrySetCanceled();
-        //                else t.ContinueWith(delegate
-        //                {
-        //                    if (t.IsFaulted) tcs.TrySetException(t.Exception.InnerExceptions);
-        //                    else if (t.IsCanceled) tcs.TrySetCanceled();
-        //                    else tcs.TrySetResult(t.Result);
-        //                }, TaskContinuationOptions.ExecuteSynchronously);
-        //            }
-        //            catch (Exception exc) { tcs.TrySetException(exc); }
-        //        }
-        //    }, TaskContinuationOptions.ExecuteSynchronously);
-        //    return tcs.Task;
-        //}
-
-
-        public static Task<TOut> Select<TIn, TOut>(this Task<TIn> task, Func<TIn, TOut> projection)
+        public static Task<TOut> Next<TIn, TOut>(this Task<TIn> task, Func<TIn, Task<TOut>> next)
         {
-            var r = new TaskCompletionSource<TOut>();
-            task.ContinueWith(self =>
-            {
-                if (self.IsFaulted) r.SetException(self.Exception.InnerExceptions);
-                else if (self.IsCanceled) r.SetCanceled();
-                else r.SetResult(projection(self.Result));
-            });
-            return r.Task;
-        }
+            if (task == null) throw new ArgumentNullException("task");
+            if (next == null) throw new ArgumentNullException("next");
 
-        public static Task<T> Where<T>(this Task<T> task, Func<T, bool> predicate)
-        {
-            var r = new TaskCompletionSource<T>();
-            task.ContinueWith(self =>
+            var tcs = new TaskCompletionSource<TOut>();
+            task.ContinueWith(delegate
             {
-                if (self.IsFaulted) r.SetException(self.Exception.InnerExceptions);
-                else if (self.IsCanceled) r.SetCanceled();
+                if (task.IsFaulted) tcs.TrySetException(task.Exception.InnerExceptions);
+                else if (task.IsCanceled) tcs.TrySetCanceled();
                 else
                 {
-                    if (!predicate(self.Result)) throw new OperationCanceledException();
-                    r.SetResult(self.Result);
+                    try
+                    {
+                        var t = next(task.Result);
+                        if (t == null) tcs.TrySetCanceled();
+                        else t.ContinueWith(delegate
+                        {
+                            if (t.IsFaulted) tcs.TrySetException(t.Exception.InnerExceptions);
+                            else if (t.IsCanceled) tcs.TrySetCanceled();
+                            else tcs.TrySetResult(t.Result);
+                        }, TaskContinuationOptions.ExecuteSynchronously);
+                    }
+                    catch (Exception exc) { tcs.TrySetException(exc); }
                 }
-            });
-            return r.Task;
+            }, TaskContinuationOptions.ExecuteSynchronously);
+            return tcs.Task;
         }
-
-        public static Task<IEnumerable<T>> Traverese<T>(this IEnumerable<Task<T>> sequence)
-        {
-            return sequence.Aggregate(
-                Task.FromResult(Enumerable.Empty<T>()),
-                (eventualAccumulator, eventualItem) =>
-                    from accumulator in eventualAccumulator
-                    from item in eventualItem
-                    select accumulator.Concat(new[] { item }).ToArray().AsEnumerable());
-        }
-
 
         public static IEnumerable<Task<T>> ProcessAsComplete<T>(this IEnumerable<Task<T>> inputTasks)
         {
@@ -322,26 +205,14 @@ public static Task<T> Catch<T, TError>(this Task<T> task, Func<TError, T> onErro
             return completionSourceList.Select(source => source.Task);
         }
 
-
-        //Listing 10.24  C# asynchronous lift functions
-        public static Task<R> Lift2<T1, T2, R>(Func<T1, T2, R> selector, Task<T1> item1, Task<T2> item2) // #A
+        public static Task<IEnumerable<T>> Traverese<T>(this IEnumerable<Task<T>> sequence)
         {
-            Func<T1, Func<T2, R>> curry = x => y => selector(x, y);    // #B
-            var lifted1 = Pure(curry);              // #C
-            var lifted2 = Apply(lifted1, item1);    // #D
-            return Apply(lifted2, item2);           // #D
+            return sequence.Aggregate(
+                Task.FromResult(Enumerable.Empty<T>()),
+                (eventualAccumulator, eventualItem) =>
+                    from accumulator in eventualAccumulator
+                    from item in eventualItem
+                    select accumulator.Concat(new[] { item }).ToArray().AsEnumerable());
         }
-
-        public static Task<R> Lift3<T1, T2, T3, R>(Func<T1, T2, T3, R> selector, Task<T1> item1, Task<T2> item2, Task<T3> item3)    // #A
-        {
-            Func<T1, Func<T2, Func<T3, R>>> curry = x => y => z => selector(x, y, z); // #B
-            var lifted1 = Pure(curry);              // #C
-            var lifted2 = Apply(lifted1, item1);    // #D
-            var lifted3 = Apply(lifted2, item2);    // #D
-            return Apply(lifted3, item3);           // #D
-        }
-
     }
 }
-
-

@@ -5,7 +5,7 @@ open System.Windows
 open System.Windows.Input
 open System.Runtime.CompilerServices
 open System.Collections.Generic
-    
+
 [<RequireQualifiedAccess>]
 module Event =
       let takeUntil (takeTill:IEvent<'Del1,'T1>) (src:IEvent<'Del2,'T2>) =
@@ -63,7 +63,7 @@ module Event =
 
       let mergeAll evts =
         evts |> Seq.reduce Event.merge
-        
+
       let reduce f evt =
         let shouldPublish = ref false
         let state = ref Unchecked.defaultof<_>

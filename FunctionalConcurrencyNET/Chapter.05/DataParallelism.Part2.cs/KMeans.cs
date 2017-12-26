@@ -106,8 +106,7 @@ namespace DataParallelism.Part2.CSharp
     public class KMeansLinq : KMeans
     {
         public KMeansLinq(double[][] data) : base(data)
-        {
-        }
+        {         }
 
         protected override double[][] UpdateCentroids(double[][] centroids)
         {

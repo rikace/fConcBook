@@ -4,6 +4,7 @@ type AsyncOption<'a> = Async<Option<'a>>
 
 [<RequireQualifiedAccess>]
 module Option =
+
     let ofChoice choice =
         match choice with
         | Choice1Of2 value -> Some value

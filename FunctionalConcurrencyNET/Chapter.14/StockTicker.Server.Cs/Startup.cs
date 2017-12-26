@@ -32,7 +32,6 @@ namespace StockTicker.Server.Cs
 
         public void Configuration(IAppBuilder builder)
         {
-
             var config = new HttpConfiguration();
             // Configure routing
             config.MapHttpAttributeRoutes();

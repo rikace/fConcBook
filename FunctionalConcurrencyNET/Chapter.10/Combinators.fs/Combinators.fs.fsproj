@@ -54,6 +54,9 @@
   </Choose>
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
+    <Compile Include="..\..\Common\Functional.fs\OptionEx.fs">
+      <Link>OptionEx.fs</Link>
+    </Compile>
     <Compile Include="StockAnalysis.fs" />
     <Compile Include="Listing.fs" />
     <Compile Include="Program.fs" />

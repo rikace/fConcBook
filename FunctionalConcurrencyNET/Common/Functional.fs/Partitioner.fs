@@ -1,5 +1,5 @@
 ﻿module Partitioner
-    
+
     open System
     open System.Collections.Generic
     open System.Collections.Concurrent
@@ -7,24 +7,16 @@
     type ParallelismHelpers =
         static member TotalWorkers = int (2.0 ** float (int (Math.Log(float Environment.ProcessorCount, 2.0))))
 
-        static member GetPartitions (s : int, e : int) = 
-            let toSeq (enum : IEnumerator<_>)= 
+        static member GetPartitions (s : int, e : int) =
+            let toSeq (enum : IEnumerator<_>)=
                 seq {
                     while enum.MoveNext() do
                         yield enum.Current
                 }
             let partitioner = Partitioner.Create(s, e)
-            let partitions = partitioner.GetPartitions(ParallelismHelpers.TotalWorkers) |> Seq.collect toSeq |> Seq.toArray 
+            let partitions = partitioner.GetPartitions(ParallelismHelpers.TotalWorkers) |> Seq.collect toSeq |> Seq.toArray
             partitions
 
-
-
-
-    /// <summary>
-    ///     partitions an array into a predetermined number of uniformly sized chunks.
-    /// </summary>
-    /// <param name="partitions">number of partitions.</param>
-    /// <param name="input">Input array.</param>
     let splitByPartitionCountRange (partitions : int) (startRange : int64) (endRange : int64) : (int64 * int64) [] =
         if startRange > endRange then raise <| new ArgumentOutOfRangeException()
         elif partitions < 1 then invalidArg "partitions" "invalid number of partitions."

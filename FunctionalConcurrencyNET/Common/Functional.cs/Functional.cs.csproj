@@ -84,7 +84,7 @@
     <Compile Include="Compose.cs" />
     <Compile Include="Concurrency\AsyncEx.cs" />
     <Compile Include="Concurrency\Atom.cs" />
-    <Compile Include="Concurrency\FileIO.cs" />
+    <Compile Include="FileIO.cs" />
     <Compile Include="Concurrency\TaskEx.cs" />
     <Compile Include="Curry.cs" />
     <Compile Include="DelegateEx.cs" />
@@ -96,7 +96,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validation\Result.cs" />
     <Compile Include="FunctionalType\Unit.cs" />
-    <Compile Include="Validation\Exceptional.cs" />
     <Compile Include="Validation\ResultExn.cs" />
     <Compile Include="Validation\TaskValidation.cs" />
     <Compile Include="WeakThreadSafeMemoize.cs" />

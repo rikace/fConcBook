@@ -14,10 +14,10 @@ namespace DataParallelism.Part2.CSharp
             Func<IGrouping<TKey, TMapped>, TResult> reduce,
             int M, int R)
         {
-            var partitioner1 = Partitioner.Create(source, true);
+            var partitioner = Partitioner.Create(source, true);
 
             var mapResults =
-                partitioner1.AsParallel()
+                partitioner.AsParallel()
                 .WithExecutionMode(ParallelExecutionMode.ForceParallelism)
                 .WithDegreeOfParallelism(M)
                 .SelectMany(map)

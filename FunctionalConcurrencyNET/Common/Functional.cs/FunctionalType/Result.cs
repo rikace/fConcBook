@@ -7,13 +7,7 @@ using System.Threading.Tasks;
 namespace Functional
 {
     using System.IO;
-    using static ResultEx;
-
-    public static partial class ResultEx
-    {
-        public static Result.Ok<T> Ok<T>(T value) => new Result.Ok<T>(value);
-        public static Result.Failure Failure(Exception error) => new Result.Failure(error);
-    }
+    using static ResultExtensions;
 
     //Listing 10.8 The generic Result<T> type in C#
     public struct Result<T>
@@ -51,7 +45,6 @@ namespace Functional
               => new Result<T>(error.Error);        // #D
     }
 
-
     public static class Result
     {
         public struct Ok<L>
@@ -71,6 +64,9 @@ namespace Functional
     //Listing 10.10 Task<Result<T>> helper functions for compositional semantic
     public static class ResultExtensions
     {
+        public static Result.Ok<T> Ok<T>(T value) => new Result.Ok<T>(value);
+        public static Result.Failure Failure(Exception error) => new Result.Failure(error);
+
         public static async Task<Result<T>> TryCatch<T>(Func<Task<T>> func)
         {
             try
@@ -83,10 +79,7 @@ namespace Functional
             }
         }
 
-        public static Task<Result<T>> TryCatch<T>(Func<T> func)
-        {
-            return TryCatch(() => Task.FromResult(func()));
-        }
+        public static Task<Result<T>> TryCatch<T>(Func<T> func) => TryCatch(() => Task.FromResult(func()));
 
         public static async Task<Result<R>> SelectMany<T, R>(this Task<Result<T>> resultTask, Func<T, Task<Result<R>>> func)
         {
@@ -110,8 +103,6 @@ namespace Functional
                 return await actionError(result.Error);
             return await actionOk(result.Ok);
         }
-
-
 
         public static async Task<Result<T>> ToResult<T>(this Task<Option<T>> optionTask)
            where T : class
@@ -185,55 +176,4 @@ namespace Functional
             return result;
         }
     }
-
-    public static class ResultExt
-    {
-        public static R Match<T, R>(this Result<T> result, Func<T, R> okMap, Func<Exception, R> failureMap)
-            => result.IsOk ? okMap(result.Ok) : failureMap(result.Error);
-
-        public static Result<R> OnSuccess<T, R>(this Result<T> result, Func<T, R> map)
-        {
-            if (result.IsFailed)
-                return Failure(result.Error);
-            return Ok(map(result.Ok));
-        }
-
-        public static Result<T> OnFailure<T>(this Result<T> result, Action<Exception> action)
-        {
-            if (result.IsFailed)
-                action(result.Error);
-            return result;
-        }
-
-        public static Result<R> Bind<T, R>(this Result<T> result, Func<T, Result<R>> map)
-        {
-            if (result.IsFailed)
-                return result.Error;
-            return map(result.Ok);
-        }
-
-        public static Result<R> Map<L, R>(Result<L> result, Func<L, R> map)
-        {
-            if (result.IsOk) return map(result.Ok);
-            return result.Error;
-        }
-
-        public static Result<R> BiMap<T, R>(this Result<T> result, Func<T, R> mapOk, Func<Exception, R> mapError)
-        {
-            if (result.IsFailed)
-                return mapError(result.Error);
-            return mapOk(result.Ok);
-        }
-
-        public static Result<R> BiMap<T, R>(this Result<T> result, Func<T, R> mapOk, Action<Exception> action)
-        {
-            if (result.IsFailed)
-            {
-                action(result.Error);
-                return result.Error;
-            }
-            return mapOk(result.Ok);
-        }
-    }
-
 }

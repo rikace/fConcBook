@@ -138,6 +138,11 @@
  Transforms a function by flipping the order of its arguments.
 </summary>
 </member>
+<member name="M:System.Utilities.tap``2(Microsoft.FSharp.Core.FSharpFunc{``0,``1},``0)">
+<summary>
+ Given a value, apply a function to it, ignore the result, then return the original value.
+</summary>
+</member>
 <member name="M:FuzzyMatch.JaroWinklerModule.existsInWindow``2(System.Char,System.String,``0,``1)">
 <summary>
  Given an offset and a radius from that office, does mChar exist in that part of str?

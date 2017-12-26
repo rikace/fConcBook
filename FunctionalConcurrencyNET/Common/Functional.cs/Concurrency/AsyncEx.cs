@@ -17,7 +17,6 @@ namespace Functional.Async
         public static async Task<R> Map<T, R>(this Task<T> task, Func<T, R> map)
             => map(await task.ConfigureAwait(false));
 
-
         public static async Task<R> SelectMany<T, R>(this Task<T> task,
             Func<T, Task<R>> then) => await Bind(task, then);
 
@@ -39,20 +38,18 @@ namespace Functional.Async
                 return await Task.FromResult<T>(innerTask.Result);
             }).Unwrap();
 
-
-public static async Task<T> Retry<T>(Func<Task<T>> task, int retries,     // #B
-                        TimeSpan delay, CancellationToken cts = default(CancellationToken)) =>
-    await task().ContinueWith(async innerTask =>
-    {
-        cts.ThrowIfCancellationRequested();
-        if (innerTask.Status != TaskStatus.Faulted)
-            return innerTask.Result;
-        if (retries == 0)
-            throw innerTask.Exception ?? throw new Exception();
-        await Task.Delay(delay, cts);
-        return await Retry(task, retries - 1, delay, cts);
-    }).Unwrap();
-
+        public static async Task<T> Retry<T>(Func<Task<T>> task, int retries,     // #B
+                                TimeSpan delay, CancellationToken cts = default(CancellationToken)) =>
+            await task().ContinueWith(async innerTask =>
+            {
+                cts.ThrowIfCancellationRequested();
+                if (innerTask.Status != TaskStatus.Faulted)
+                    return innerTask.Result;
+                if (retries == 0)
+                    throw innerTask.Exception ?? throw new Exception();
+                await Task.Delay(delay, cts);
+                return await Retry(task, retries - 1, delay, cts);
+            }).Unwrap();
 
         public static async Task<T> Tap<T>(this Task<T> task, Func<Task<T>, Task> operation) // #A
         {
@@ -65,6 +62,5 @@ public static async Task<T> Retry<T>(Func<Task<T>> task, int retries,     // #B
             await action(await task);
             return await task;
         }
-
     }
 }

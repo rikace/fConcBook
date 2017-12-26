@@ -2,13 +2,14 @@
 
 open System
 open System.IO
-open Microsoft.WindowsAzure
 open Microsoft.WindowsAzure.Storage
 open Microsoft.WindowsAzure.Storage.Blob
 open System.Drawing
 open FunctionalConcurrency
 open System.Drawing.Drawing2D
+open FunctionalConcurrency.AsyncOperators
 
+[<RequireQualifiedAccess>]
 module Log =
     let Error (ex:Exception) =
         printfn "%s" (ex.Message)
@@ -42,7 +43,7 @@ let downloadOptionImage(blobReference:string) : AsyncOption<Image> = async {  //
 
 let asyncDo =
     downloadOptionImage "Bugghina001.jpg"
-    |> Async.map(fun imageOpt ->        // #D
+    |> AsyncEx.map(fun imageOpt ->        // #D
         match imageOpt with             // #E
         | Some(image) -> image.Save("ImageFolder\Bugghina.jpg")
         | None -> log "There was a problem downloading the image")
@@ -59,7 +60,7 @@ let downloadAsyncImage(blobReference:string) : Async<Image> = async {
 
 downloadAsyncImage "Bugghina001.jpg"
 |> AsyncOption.handler          // #A
-|> Async.map(fun imageOpt ->    // #B
+|> AsyncEx.map(fun imageOpt ->    // #B
     match imageOpt with         // #C
     | Some(image) -> image.Save("ImageFolder\Bugghina.jpg")
     | None -> log "There was a problem downloading the image")
@@ -110,9 +111,7 @@ let processImage (blobReference:string) (destinationImage:string) = //: AsyncRes
     |> AsyncResult.map(fun image -> toByteArrayAsync(image))    // #A
     |> AsyncResult.bimap (fun bytes -> FileEx.WriteAllBytesAsync(destinationImage, bytes))
                          (fun ex -> logger.Error(ex) |> async.Return)  // #A
-
-
-
+                         
 //Listing 10.15 Using the AsyncResultBuilder
 let processImage2 (blobReference:string) (destinationImage:string) : AsyncResult<unit> =
     asyncResult  {   // #A
@@ -129,8 +128,7 @@ let processImage2 (blobReference:string) (destinationImage:string) : AsyncResult
       }
       |> AsyncResult.bimap (fun bytes -> FileEx.WriteAllBytesAsync(destinationImage, bytes))
                            (fun ex -> logger.Error(ex) |> async.Return)   // #B
-
-
+                           
 module ApplicativeFunctors =
 
     let downloadOptionImage(blobReference:string) : Async<Image> = async {
@@ -158,13 +156,13 @@ module ApplicativeFunctors =
         bitmap :> Image
 
     let blendImagesFromBlobStorage (blobReferenceOne:string) (blobReferenceTwo:string) (size:Size) =
-        Async.apply(
-            Async.apply(
-                Async.apply(
-                    Async.``pure`` blendImages)
+        AsyncEx.apply(
+            AsyncEx.apply(
+                AsyncEx.apply(
+                    AsyncEx.``pure`` blendImages)
                     (downloadOptionImage(blobReferenceOne)))
                     (downloadOptionImage(blobReferenceTwo)))
-                    (Async.``pure`` size)
+                    (AsyncEx.``pure`` size)
 
 module ``BlendImages with async combinators`` =
 
@@ -182,8 +180,7 @@ module ``BlendImages with async combinators`` =
                             GraphicsUnit.Pixel)
         graphic.Save() |> ignore
         bitmap :> Image
-
-
+        
     let downloadOptionImage(blobReference:string) : Async<Image> = async {
             let! container = Helpers.getCloudBlobContainerAsync()
             let blockBlob = container.GetBlockBlobReference(blobReference)
@@ -192,42 +189,38 @@ module ``BlendImages with async combinators`` =
             return Bitmap.FromStream(memStream)
         }
 
-    let (<*>) = Async.apply
-    let (<!>) = Async.map
-    let (<^>) = Async.``pure``
+    // for reference only
+    // let (<*>) = AsyncEx.apply
+    // let (<!>) = AsyncEx.map
 
     let blendImagesFromBlobStorage (blobReferenceOne:string) (blobReferenceTwo:string) (size:Size) =
          blendImages
          <!> downloadOptionImage(blobReferenceOne)
          <*> downloadOptionImage(blobReferenceOne)
-         <*> Async.``pure`` size
-
+         <*> AsyncEx.``pure`` size
 
     let blendImagesFromBlobStorage2 (blobReferenceOne:string) (blobReferenceTwo:string) (size:Size) =
-        Async.apply(
-            Async.apply(
-                Async.apply(
-                    Async.``pure`` blendImages)
+        AsyncEx.apply(
+            AsyncEx.apply(
+                AsyncEx.apply(
+                    AsyncEx.``pure`` blendImages)
                     (downloadOptionImage(blobReferenceOne)))
                     (downloadOptionImage(blobReferenceOne)))
-                    (Async.``pure`` size)
+                    (AsyncEx.``pure`` size)
 
     downloadOptionImage "Bugghina001.jpg"
     |> AsyncOption.handler
-    |> Async.map(fun imageOpt ->
+    |> AsyncEx.map(fun imageOpt ->
         match imageOpt with
         | Some(image) -> image.Save("ImageFolder\Bugghina.jpg")
         | None -> log "There was a problem downloading the image")
     |> Async.Start
 
 module ``Composing and executing heterogeneous parallel computations`` =
-    open System
     open System.Net
-    open FunctionalConcurrency
     open StockAnalyzer
     open StockAnalysis
-
-
+    
     // Listing 10.25  Asynchronous operations to compose and run in parallel
     let calcTransactionAmount amount (price:float) =
         let readyToInvest = amount * 0.75
@@ -253,7 +246,7 @@ module ``Composing and executing heterogeneous parallel computations`` =
             let! resp = req.AsyncGetResponse()
             use reader = new StreamReader(resp.GetResponseStream())
             return! reader.ReadToEndAsync()   // #D
-        } |> Async.map(fun (row:string) ->
+        } |> AsyncEx.map(fun (row:string) ->
                 let items = row.Split(',')
                 System.Double.Parse(items.[items.Length-1]))
           |> AsyncResult.handler   // #E
@@ -277,7 +270,7 @@ module ``Composing and executing heterogeneous parallel computations`` =
 
     // Listing 10.26  Running heterogeneous asynchronous operations using Applicative Functors
     let howMuchToBuy stockId : AsyncResult<int> =
-        Async.lift2 (calcTransactionAmount)   // #A
+        AsyncEx.lift2 (calcTransactionAmount)   // #A
               (getAmountOfMoney())
               (getCurrentPrice stockId)
         |> AsyncResult.handler         // #B

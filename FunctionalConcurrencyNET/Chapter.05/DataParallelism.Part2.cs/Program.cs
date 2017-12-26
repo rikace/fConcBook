@@ -17,10 +17,7 @@ namespace DataParallelism.Part2.CSharp
 
             int[] source = Enumerable.Range(0, 100000).ToArray();
             int result = source.AsParallel()
-                    .Reduce((value1, value2) => value1 + value2);   
-
-
-
+                    .Reduce((value1, value2) => value1 + value2);
         }
     }
 }

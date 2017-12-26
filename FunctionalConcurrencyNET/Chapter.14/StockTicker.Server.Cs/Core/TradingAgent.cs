@@ -30,6 +30,7 @@ namespace StockTicker.Server.Cs.Core
                 BuyOrders = new Dictionary<string, List<TradingDetails>>(),
                 SellOrders = new Dictionary<string, List<TradingDetails>>()
             };
+
             agent = Agent.Start<State, Trading>(initialState,
                 (state, message)=>
                 {

@@ -5,7 +5,7 @@ open System.Threading.Tasks
 type AsyncResult<'a> = Async<Result<'a>>
 
 module AsyncResult =
-    open System.Threading.Tasks
+    open AsyncOperators
     open System.Threading
 
     let handler (operation:Async<'a>) : AsyncResult<'a> = async {
@@ -33,18 +33,13 @@ module AsyncResult =
         | Ok v -> return! success v |> handler   // #B
         | Error x -> return! failure x |> handler }        // #E
 
-
-
-
-
-        // TODO
     let mapChoice (f:'a -> Result<'b>) (a:AsyncResult<'a>) : AsyncResult<'b> =
-        a |> Async.map (function
+        a |> AsyncEx.map (function
             | Ok a' -> f a'
             | Error e -> Error e)
 
     let bindChoice (f:'a -> AsyncResult<'b>) (a:AsyncResult<'a>) : AsyncResult<'b> =
-            a |> Async.bind (function
+            a |> AsyncEx.bind (function
               | Ok a' -> f a'
               | Error e ->  Error e |> async.Return)
 
@@ -52,12 +47,14 @@ module AsyncResult =
     let parallelCatch computations  =
         computations
         |> Seq.map Async.Catch
-        |> Seq.map (Async.map Result.ofChoice)
+        |> Seq.map (AsyncEx.map Result.ofChoice)
         |> Async.Parallel
 
-
-
-
+    // The parallelCatch can be re-written using the AsyncHandler.handler as here
+    //let parallelCatch computations  =
+    //    computations
+    //    |> Seq.map AsyncHandler.handler
+    //    |> Async.Parallel
 
     let apply (ap : AsyncResult<'a -> 'b>) (asyncResult : AsyncResult<'a>) : AsyncResult<'b> = async {
         let! result = asyncResult |> Async.StartChild
@@ -71,33 +68,9 @@ module AsyncResult =
 
 
     let defaultValue value =
-        Async.map (Result.defaultValue value)
+        AsyncEx.map (Result.defaultValue value)
 
-    // TODO             
-    let inline EITHER (funcA:AsyncResult<'a>) (funcB:AsyncResult<'a>) : AsyncResult<'a> =
-        let tcs = TaskCompletionSource()
-        let reportResult =
-            let counter = ref 0
-            (fun (func:AsyncResult<'a>) ->
-                async {
-                    let! result = func
-                    match result with
-                    | Ok (x) -> tcs.TrySetResult(Ok x) |> ignore
-                    | Error(e) ->
-                        if !counter = 0
-                        then Interlocked.Increment(counter) |> ignore
-                        else tcs.SetResult(Error e)
-                })
-
-        [funcA; funcB]
-        |> List.map reportResult
-        |> Async.Parallel
-        |> Async.StartChild
-        |> ignore
-
-        Async.AwaitTask tcs.Task
-
-type AsyncResultBuilder()=
+type AsyncResultBuilder() =
     member this.Return m = AsyncResult.retn m
     member this.Bind (m, f:'a -> AsyncResult<'b>) = AsyncResult.bind f m
     member this.Bind (m:Task<'a>, f:'a -> AsyncResult<'b>) = AsyncResult.bind f (m |> Async.AwaitTask |> AsyncResult.handler)
@@ -123,63 +96,6 @@ module AsyncResultBuilder =
 
     let (<!>) = AsyncResult.map
     let (<*>) = AsyncResult.apply
-
-[<RequireQualifiedAccess>]
-module AsyncComb =
-
-    // x:'a -> Async<'a>
-    let inline retn x = async.Return x
-
-    // f:('b -> Async<'c>) -> a:Async<'b> -> Async<'c>
-    let inline bind (f:'b -> Async<'c>) (a:Async<'b>) : Async<'c> = async.Bind(a, f)
-
-    // af:Async<('a -> 'b)> -> ax:Async<'a> -> Async<'b>
-    let inline apply af ax = async {
-        let! pf = Async.StartChild af
-        let! px = Async.StartChild ax
-        let! f = pf
-        let! x = px
-        return f x
-    }
-
-    // f:('a -> 'b) -> m:Async<'a> -> Async<'b>
-    let inline map f m = async.Bind(m, f >> async.Return)
-
-    // (Async<('a -> 'b)> -> Async<'a> -> Async<'b>)
-    let (<*>)  = apply
-    // (('a -> 'b) -> Async<'a> -> Async<'b>)
-    let (<!>) = map
-
-    // f:('a -> Async<'b>) -> list:'a list -> Async<'b list>
-    let inline traverse f list =
-        let folder x xs = retn (fun x xs -> x :: xs) <*> f x <*> xs
-        List.foldBack folder list (retn [])
-
-    // f:('a -> 'b -> 'c) -> a:Async<'a> -> b:Async<'b> -> Async<'c>
-    let inline lift2 f a b = f <!> a <*> b
-    // f:('a -> 'b -> 'c -> 'd) -> A:Async<'a> -> b:Async<'b> -> c:Async<'c> -> Async<'d>
-    let inline lift3 f a b c = f <!> a <*> b <*> c
-
-    // predicate:Async<bool> -> funcA:Async<'a> -> funcB:Async<'a> -> Async<'a>
-    let inline ifAsync predicate funcA funcB =
-        async.Bind(predicate, fun p -> if p then funcA else funcB)
-
-    // (Context -> bool) -> Context -> Async<Context option>
-    let iff predicate funcA funcB value =
-        async.Bind(predicate value, fun p -> if p then funcA value else funcB value)
-
-    let iffAsync (predicate:Async<'a -> bool>) (context:Async<'a>) = async {
-        let! p = predicate <*> context
-        return if p then Some context else None }
-
-    // predicate:Async<bool> -> Async<bool>
-    let inline notAsync (predicate:Async<bool>) = async.Bind(predicate, not >> async.Return)
-
-    //// funcA:Async<bool> -> funcB:Async<bool> -> Async<bool>
-    let inline AND (funcA:Async<bool>) (funcB:Async<bool>) = ifAsync funcA funcB (async.Return false)
-
-    // funcA:Async<bool> -> funcB:Async<bool> -> Async<bool>
-    let inline OR (funcA:Async<bool>) (funcB:Async<bool>) = ifAsync funcA (async.Return true) funcB
 
 [<AutoOpen>]
 module AsyncResultCombinators =

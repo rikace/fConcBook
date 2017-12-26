@@ -5,6 +5,7 @@ open System.Net
 open System.IO
 open FunctionalConcurrency
 open StockAnalyzer
+open FunctionalConcurrency.AsyncOperators
 open FunctionalConcurrency
 
 let rnd = Random((int)DateTime.Now.Ticks)
@@ -68,7 +69,7 @@ let getStockIndex index =
         use reader = new StreamReader(resp.GetResponseStream())
         return! reader.ReadToEndAsync()
     }
-    |> Async.map (fun (row:string) ->
+    |> AsyncEx.map (fun (row:string) ->
         let items = row.Split(',')
         Double.Parse(items.[items.Length-1]))
     |> AsyncResult.handler
@@ -82,7 +83,7 @@ let calcTransactionAmount amount (price:float) =
 // ---- Running heterogeneous asynchronous operations using Applicative Functors
 
 let howMuchToBuy stockId : AsyncResult<_> =
-    Async.lift2 (calcTransactionAmount)
+    AsyncEx.lift2 (calcTransactionAmount)
           (getAmountOfMoney())
           (getCurrentPrice stockId)
     |> AsyncResult.handler
@@ -111,9 +112,9 @@ let doInvest stockId =
             let! result = withdraw (price*float(amount))
             return result |> Result.bimap (fun x -> if x then amount else 0) (fun _ -> 0)
         }
-    AsyncComb.ifAsync shouldIBuy
+    AsyncEx.ifAsync shouldIBuy
         (buy <!> (howMuchToBuy stockId))
-        (Async.retn <| Error(Exception("Do not do it now")))
+        (AsyncEx.retn <| Error(Exception("Do not do it now")))
     |> AsyncResult.handler
 
 

@@ -5,7 +5,6 @@ open System.Runtime.CompilerServices
 open System.Threading
 open System.Threading.Tasks
 
-///////////////////////////////////////////////////////////////////////////////////
 // Internal implementations.
 module private AsyncInterop =
 
@@ -43,7 +42,7 @@ module private AsyncInterop =
             token)
         |> ignore)
 
-[<Extension>] //; Sealed; AbstractClass; NoEquality; NoComparison; AutoSerializable(false)>]
+[<Extension>]
 type AsyncInteropExtensions =
   [<Extension>]
   static member AsAsync (task: Task) =

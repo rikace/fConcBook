@@ -37,13 +37,13 @@ module MapReduceFsPSeq =
         inputs |> (mapF M map >> reduceF R reduce) //#A
 
 
-    //// Code example using (map >> reduce) mapReduce function 
+    //// Code example using (map >> reduce) mapReduce function
     let runMapReduce(ranks:(string * float) seq) =
         let data = Data.loadPackages()
 
         let executeMapReduce (ranks:(string * float) seq)=
-            let M,R = 10,5        
-            let pg = MapReduce.Task.PageRank(ranks)        
+            let M,R = 10,5
+            let pg = MapReduce.Task.PageRank(ranks)
             mapReduce data (pg.Map) (pg.Reduce) M R
         executeMapReduce ranks
 

@@ -9,12 +9,6 @@ namespace Functional
     using Microsoft.FSharp.Core;
     using static OptionHelpers;
 
-    public static class OptionHelpers
-    {
-        public static Option<T> Some<T>(T value) => new Option.Some<T>(value); // wrap the given value into a Some
-        public static Option.None None => Option.None.Default;  // the None value
-    }
-
     public struct Option<T> : IEquatable<Option.None>, IEquatable<Option<T>>
     {
         public readonly T Value;
@@ -44,6 +38,25 @@ namespace Functional
 
         public bool Equals(Option.None _) => isNone;
 
+        public override int GetHashCode()
+        {
+            var hashCode = -496720002;
+            hashCode = hashCode * -1521134295 + base.GetHashCode();
+            hashCode = hashCode * -1521134295 + EqualityComparer<T>.Default.GetHashCode(Value);
+            hashCode = hashCode * -1521134295 + isSome.GetHashCode();
+            hashCode = hashCode * -1521134295 + isNone.GetHashCode();
+            return hashCode;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null || !(obj is Option<T>)) return false;
+            Option<T> opt = (Option<T>)obj;
+            if (opt.isSome && this.isSome) return opt.Value.Equals(Value);
+            else if (opt.isNone && this.isNone) return true;
+            else return false;
+        }
+
         public static bool operator ==(Option<T> @this, Option<T> other) => @this.Equals(other);
         public static bool operator !=(Option<T> @this, Option<T> other) => !(@this == other);
 
@@ -69,17 +82,18 @@ namespace Functional
         }
     }
 
-    public static class OptionExt
+    public static class OptionHelpers
     {
+
+        public static Option<T> Some<T>(T value) => new Option.Some<T>(value); // wrap the given value into a Some
+        public static Option.None None => Option.None.Default;  // the None value
 
         public static Option<T> ToOption<T>(FSharpOption<T> fsOption) =>
             FSharpOption<T>.get_IsSome(fsOption)
                 ? Some(fsOption.Value)
                 : None;
 
-        /// <summary>
-        /// Convert a LanguageExt Option into an F# Option
-        /// </summary>
+        // Convert the Option into an F# Option
         public static FSharpOption<T> ToFsOption<T>(Option<T> option) =>
             option.Match(() => FSharpOption<T>.None,
                          v => FSharpOption<T>.Some(v));
@@ -121,9 +135,6 @@ namespace Functional
            (this Option<T1> @this, Func<T1, T2, T3, R> func)
             => @this.Map(func.CurryFirst());
 
-
-        // utilities
-
         public static Unit Match<T>(this Option<T> @this, Action None, Action<T> Some)
             => @this.Match(None.ToFunc(), Some.ToFunc());
 
@@ -161,9 +172,6 @@ namespace Functional
            => left.Match(
               () => right(),
               (_) => left);
-
-
-        // LINQ
 
         public static Option<R> Select<T, R>(this Option<T> @this, Func<T, R> func)
            => @this.Map(func);

@@ -12,7 +12,7 @@ using static StockTicker.Core.Models;
 namespace StockTicker.Server.Cs.SignalR
 {
     [HubName("stockTicker")]
-    public class StockTickerHub: Hub<IStockTickerHubClient>
+    public class StockTickerHub : Hub<IStockTickerHubClient>
     {
         public StockTickerHub()
         {
@@ -37,18 +37,21 @@ namespace StockTicker.Server.Cs.SignalR
             return base.OnDisconnected(stopCalled);
         }
 
-        public void GetAllStocks() {
+        public void GetAllStocks()
+        {
             var stocks = stockMarket.GetAllStocks(Context.ConnectionId);
             foreach (var stock in stocks)
                 Clients.Caller.SetStock(stock);
         }
 
-        public void OpenMarket() {
+        public void OpenMarket()
+        {
             stockMarket.OpenMarket(Context.ConnectionId);
             Clients.All.SetMarketState(MarketState.Open.ToString());
         }
 
-        public void CloseMarket() {
+        public void CloseMarket()
+        {
             stockMarket.CloseMarket(Context.ConnectionId);
             Clients.All.SetMarketState(MarketState.Closed.ToString());
         }

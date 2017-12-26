@@ -8,6 +8,7 @@ open AsyncBlobCloudFS
 module Async =
     open AsyncBlobCloudFS.CodeSnippets
     open FunctionalConcurrency
+    open FunctionalConcurrency.AsyncOperators
 
     let inline map (func:'a -> 'b) (operation:Async<'a>) =
         async {
@@ -15,7 +16,7 @@ module Async =
             return func result
         }
 
-    let inline tee (fn:'a -> 'b) (x:Async<'a>) = (Async.map fn x) |> Async.Ignore |> Async.Start; x
+    let inline tee (fn:'a -> 'b) (x:Async<'a>) = (AsyncEx.map fn x) |> Async.Ignore |> Async.Start; x
 
     let parallelWithCatchThrottle (selector:Result<'a> -> 'b)
             (throttle:int) (computations:seq<Async<'a>>) = async {

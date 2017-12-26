@@ -1,23 +1,25 @@
-﻿module TaskEx
+﻿namespace FunctionalConcurrency
+
+module TaskEx =
 
     open System
     open System.Threading
     open System.Threading.Tasks
 
     /// Task result
-    type TaskResult<'T> = 
+    type TaskResult<'T> =
         /// Task was canceled
         | Canceled
         /// Unhandled exception in task
-        | Error of exn 
+        | Error of exn
         /// Task completed successfully
         | Successful of 'T
 
-    let run (t: unit -> Task<_>) = 
+    let run (t: unit -> Task<_>) =
         try
             let task = t()
             task.Result |> TaskResult.Successful
-        with 
+        with
         | :? OperationCanceledException -> TaskResult.Canceled
         | :? AggregateException as e ->
             match e.InnerException with
@@ -26,13 +28,13 @@
         | e -> TaskResult.Error e
 
     let toAsync (t: Task<'T>): Async<'T> =
-        let abegin (cb: AsyncCallback, state: obj) : IAsyncResult = 
+        let abegin (cb: AsyncCallback, state: obj) : IAsyncResult =
             match cb with
             | null -> upcast t
-            | cb -> 
+            | cb ->
                 t.ContinueWith(fun (_ : Task<_>) -> cb.Invoke t) |> ignore
                 upcast t
-        let aend (r: IAsyncResult) = 
+        let aend (r: IAsyncResult) =
             (r :?> Task<'T>).Result
         Async.FromBeginEnd(abegin, aend)
 
@@ -43,24 +45,19 @@
     let inline bindWithOptions (token: CancellationToken) (continuationOptions: TaskContinuationOptions) (scheduler: TaskScheduler) (f: 'T -> Task<'U>) (m: Task<'T>) =
         m.ContinueWith((fun (x: Task<_>) -> f x.Result), token, continuationOptions, scheduler).Unwrap()
 
-    let inline bind (f: 'T -> Task<'U>) (m: Task<'T>) = 
+    let inline bind (f: 'T -> Task<'U>) (m: Task<'T>) =
         m.ContinueWith(fun (x: Task<_>) -> f x.Result).Unwrap()
 
-    let inline returnM a = 
+    let inline returnM a =
         let s = TaskCompletionSource()
         s.SetResult a
         s.Task
-
-    let inline flip f a b = f b a
 
     /// Sequentially compose two actions, passing any value produced by the first as an argument to the second.
     let inline (>>=) m f = bind f m
 
     /// Flipped >>=
     let inline (=<<) f m = bind f m
-
-    /// Sequentially compose two either actions, discarding any value produced by the first
-    let inline (>>.) m1 m2 = m1 >>= (fun _ -> m2)
 
     /// Left-to-right Kleisli composition
     let inline (>=>) f g = fun x -> f x >>= g
@@ -69,14 +66,14 @@
     let inline (<=<) x = flip (>=>) x
 
     /// Promote a function to a monad/applicative, scanning the monadic/applicative arguments from left to right.
-    let inline lift2 f a b = 
+    let inline lift2 f a b =
         a >>= fun aa -> b >>= fun bb -> f aa bb |> returnM
 
     /// Sequential application
-    let inline ap x f = lift2 id f x
+    let inline apply x f = lift2 id f x
 
     /// Sequential application
-    let inline (<*>) f x = ap x f
+    let inline (<*>) f x = apply x f
 
     /// Infix map
     let inline (<!>) f x = map f x

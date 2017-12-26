@@ -5,7 +5,6 @@ open System.Threading.Tasks
 open System.Collections.Generic
 open StockTicker.Core
 
-
 // The verbs of the system (in imperfect form)
 module Events =
 
