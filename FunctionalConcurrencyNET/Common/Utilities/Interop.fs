@@ -37,9 +37,39 @@ type FSharpFunc =
     static member FromFunc (f: Func<_,_,_>) =
         fun x y -> f.Invoke(x,y)
 
+[<Extension>]
+type public FSharpFuncUtil =
+
+    [<Extension>]
+    static member ToFSharpFunc<'a,'b> (func:System.Converter<'a,'b>) = fun x -> func.Invoke(x)
+
+    [<Extension>]
+    static member ToFSharpFunc<'a,'b> (func:System.Func<'a,'b>) = fun x -> func.Invoke(x)
+
+    [<Extension>]
+    static member ToFSharpFunc<'a,'b,'c> (func:System.Func<'a,'b,'c>) = fun x y -> func.Invoke(x,y)
+
+    [<Extension>]
+    static member ToFSharpFunc<'a,'b,'c,'d> (func:System.Func<'a,'b,'c,'d>) = fun x y z -> func.Invoke(x,y,z)
+
+    [<Extension>]
+    static member ToFSharpAction<'a,'b> (func:System.Action<'a,'b>) = fun x y  -> func.Invoke(x,y)
+
+    [<Extension>]
+    static member Create<'a,'b> (func:System.Func<'a,'b>) = FSharpFuncUtil.ToFSharpFunc func
+
+    [<Extension>]
+    static member Create<'a,'b,'c> (func:System.Func<'a,'b,'c>) = FSharpFuncUtil.ToFSharpFunc func
+
+    [<Extension>]
+    static member Create<'a,'b,'c,'d> (func:System.Func<'a,'b,'c,'d>) = FSharpFuncUtil.ToFSharpFunc func
+
 /// Extensions around Actions and Funcs
 [<Extension>]
 type Funcs =
+
+    [<Extension>]
+    static member ToFunc (f: Func<_>) = Func<_>(fun () -> f.Invoke())
 
     [<Extension>]
     static member ToFunc (f: Func<_,_>) = Func<_,_>(fun a -> f.Invoke(a))
@@ -55,6 +85,18 @@ type Funcs =
 
     [<Extension>]
     static member ToFunc (f: Func<_,_,_,_,_,_>) = Func<_,_,_,_,_,_>(fun a b c d e-> f.Invoke(a,b,c,d,e))
+
+    [<Extension>]
+    static member ToAction(act :Action) = (fun () -> act.Invoke())
+
+    [<Extension>]
+    static member ToAction(act :Action<_>) = (fun a -> act.Invoke(a))
+
+    [<Extension>]
+    static member ToAction(act :Action<_, _>) = (fun a b -> act.Invoke(a,b))
+
+    [<Extension>]
+    static member ToAction(act :Action<_, _, _>) = (fun a b c -> act.Invoke(a,b,c))
 
     /// Converts an uncurried function to a curried function
     [<Extension>]

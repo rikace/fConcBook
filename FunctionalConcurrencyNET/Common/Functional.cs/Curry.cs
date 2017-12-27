@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Functional
 {
@@ -31,6 +26,5 @@ namespace Functional
            (this Func<T1, T2, T3, R> @this) => t1 => (t2, t3) => @this(t1, t2, t3);
 
         public static Func<T, T> Tap<T>(Action<T> act) => x => { act(x); return x; };
-
     }
 }

@@ -55,6 +55,9 @@
   </Choose>
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
+    <Compile Include="..\..\Common\Functional.fs\AsyncEx.fs">
+      <Link>AsyncEx.fs</Link>
+    </Compile>
     <Compile Include="Listing.fs" />
     <Compile Include="Program.fs" />
     <Content Include="App.config">
@@ -63,6 +66,12 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="FSharp.PowerPack">
+      <HintPath>..\..\packages\FSPowerPack.Core.Community.2.0.0.0\Lib\Net40\FSharp.PowerPack.dll</HintPath>
+    </Reference>
+    <Reference Include="FSharp.PowerPack.Parallel.Seq">
+      <HintPath>..\..\packages\FSPowerPack.Parallel.Seq.Community.3.0.0.0\Lib\Net40\FSharp.PowerPack.Parallel.Seq.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Azure.KeyVault.Core">
       <HintPath>..\..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
       <Private>True</Private>
@@ -103,11 +112,6 @@
     <Reference Include="System.Transactions" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Common\Functional.fs\Functional.fs.fsproj">
-      <Name>Functional.fs</Name>
-      <Project>{4ae3e71f-d433-448b-abfe-13491faab5a6}</Project>
-      <Private>True</Private>
-    </ProjectReference>
     <ProjectReference Include="..\..\Common\Utilities\Utilities.fsproj">
       <Name>Utilities</Name>
       <Project>{2c133fbd-c138-43bb-9066-a9fecb1abe86}</Project>

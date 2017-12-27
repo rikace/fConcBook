@@ -91,18 +91,15 @@ module ImageHelpers =
         new System.Drawing.Bitmap(b.GetThumbnailImage(fst size, snd size, null, IntPtr.Zero))
 
 
-//You can improve this by avoiding Color.FromArgb, and iterating over bytes instead of ints, but I thought this would be more readable for you, and easier to understand as an approach.
-//The general idea is draw the image into a bitmap of known format (32bpp ARGB), and then check whether that bitmap contains any colors.
-//Locking the bitmap's bits allows you to iterate through it's color-data many times faster than using GetPixel, using unsafe code.
-//If a pixel's alpha is 0, then it is obviously GrayScale, because alpha 0 means it's completely opaque. Other than that - if R = G = B, then it is gray (and if they = 255, it is black).
+    // You can improve this by avoiding Color.FromArgb, and iterating over bytes instead of ints, but I thought this would be more readable for you, and easier to understand as an approach.
+    // The general idea is draw the image into a bitmap of known format (32bpp ARGB), and then check whether that bitmap contains any colors.
+    // Locking the bitmap's bits allows you to iterate through it's color-data many times faster than using GetPixel, using unsafe code.
+    // If a pixel's alpha is 0, then it is obviously GrayScale, because alpha 0 means it's completely opaque. Other than that - if R = G = B, then it is gray (and if they = 255, it is black).
     let isGrayScale(img:Bitmap) = seq {
         for h = 0 to img.Height - 1 do
             for w = 0 to img.Width - 1 do
                 let color = img.GetPixel(w, h)
                 yield not((color.R <> color.G || color.G <> color.B || color.R <> color.B) && color.A <> 0uy) } |> Seq.forall(id)
-
-    let isGrayScale2 (colors:(_ * _ * Color)[]) =
-        colors |> Seq.forall(fun (_,_,color) -> not((color.R <> color.G || color.G <> color.B || color.R <> color.B) && color.A <> 0uy))
 
     let isGrayScaleAsync (colors:(_ * _ * Color)[]) = async {
         return colors |> Seq.forall(fun (_,_,color) -> not((color.R <> color.G || color.G <> color.B || color.R <> color.B) && color.A <> 0uy))

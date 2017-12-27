@@ -56,16 +56,8 @@
     <Compile Include="Interop.fs" />
     <Compile Include="Demo.fs" />
     <Compile Include="Utils.fs" />
-    <Compile Include="RecyclableMemoryStream.fs" />
     <Compile Include="JaroWinkler.fs" />
-    <Compile Include="FunInterop.fs" />
-    <Compile Include="Validation\OptionEx.fs" />
-    <Compile Include="Validation\FSharpOptionExtensions.fs" />
-    <Compile Include="Validation\ResultEx.fs" />
-    <Compile Include="Validation\ResultExtensions.fs" />
-    <Compile Include="Memoization.fs" />
     <Compile Include="ImageProcessingHelpers.fs" />
-    <None Include="Show.fsx" />
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

@@ -50,10 +50,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\Common\Functional.cs\Memoize.cs">
+      <Link>Memoize.cs</Link>
+    </Compile>
     <Compile Include="Closure.cs" />
     <Compile Include="Composition.cs" />
     <Compile Include="Laziness.cs" />
-    <Compile Include="Memoization.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="ConcurrentSpeculation.cs" />
     <Compile Include="WebCrawler.cs" />

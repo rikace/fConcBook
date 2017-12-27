@@ -6,17 +6,16 @@ using System.Threading.Tasks;
 
 namespace Functional
 {
-    public static class CollectionEx
+    public static partial class Functional
     {
         public static void ForEach<T>(this IEnumerable<T> ie, Action<T> action)
         {
-            foreach (T item in ie) action(item);
+            foreach (T item in ie)
+                action(item);
         }
-        
+
         public static IEnumerable<T> Append<T>(this IEnumerable<T> source, IEnumerable<T> other)
-        {
-            return source.Aggregate<T, Func<IEnumerable<T>, IEnumerable<T>>>(
+            => source.Aggregate<T, Func<IEnumerable<T>, IEnumerable<T>>>(
                 x => x, (f, c) => x => f((new[] { c }).Concat(x)))(other);
-        }
     }
 }

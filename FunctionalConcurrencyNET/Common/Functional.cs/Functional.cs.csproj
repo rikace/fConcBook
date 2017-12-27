@@ -80,6 +80,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AsyncInterop.cs" />
     <Compile Include="CollectionEx.cs" />
     <Compile Include="Compose.cs" />
     <Compile Include="Concurrency\AsyncEx.cs" />
@@ -88,17 +89,14 @@
     <Compile Include="Concurrency\TaskEx.cs" />
     <Compile Include="Curry.cs" />
     <Compile Include="DelegateEx.cs" />
-    <Compile Include="FpHelpers.cs" />
+    <Compile Include="Flip.cs" />
     <Compile Include="Interop.cs" />
     <Compile Include="Memoize.cs" />
     <Compile Include="FunctionalType\Option.cs" />
     <Compile Include="Partial.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Validation\Result.cs" />
+    <Compile Include="FunctionalType\Result.cs" />
     <Compile Include="FunctionalType\Unit.cs" />
-    <Compile Include="Validation\ResultExn.cs" />
-    <Compile Include="Validation\TaskValidation.cs" />
-    <Compile Include="WeakThreadSafeMemoize.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

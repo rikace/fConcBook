@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Functional.Async;
-using static System.Drawing.BitmapExtensions;
+using static System.Drawing.ImageExtensions;
 
 namespace ConsoleApplication1
 {

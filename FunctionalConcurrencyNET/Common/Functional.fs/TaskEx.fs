@@ -5,6 +5,7 @@ module TaskEx =
     open System
     open System.Threading
     open System.Threading.Tasks
+    open Utilities
 
     /// Task result
     type TaskResult<'T> =

@@ -1,14 +1,5 @@
 ﻿namespace System
 
-
-    [<AutoOpen>]
-    module Utilities =
-
-        let inline flip f a b = f b a
-
-        /// Given a value, apply a function to it, ignore the result, then return the original value.
-        let inline tap fn x = fn x |> ignore; x
-
     [<AutoOpen>]
     module LazyEx =
         let force (x: Lazy<'T>) = x.Force()
@@ -76,7 +67,7 @@ open System.Drawing
 open System.Drawing.Imaging
 
 [<Sealed; Extension>]
-type BitmapExtensions =
+type ImageExtensions =
     static member SaveImageAsync (path:string, format:ImageFormat) (image:Image) =
         async {
             use ms = new MemoryStream()
@@ -88,9 +79,7 @@ type BitmapExtensions =
 module ImageHelpers =
     type System.Drawing.Image with
         member this.SaveImageAsync (stream:Stream, format:ImageFormat) =
-            async {
-                this.Save(stream, format)
-            }
+            async { this.Save(stream, format) }
 
 namespace Utilities
 
@@ -102,6 +91,9 @@ module Utils =
 
     /// Transforms a function by flipping the order of its arguments.
     let inline flip f a b = f b a
+
+    /// Given a value, apply a function to it, ignore the result, then return the original value.
+    let inline tap fn x = fn x |> ignore; x
 
     /// Sequencing operator like Haskell's ($). Has better precedence than (<|) due to the
     /// first character used in the symbol.

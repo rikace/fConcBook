@@ -54,6 +54,7 @@
     <Compile Include="OptionEx.fs" />
     <Compile Include="AsyncEx.fs" />
     <Compile Include="ResultEx.fs" />
+    <Compile Include="Memoization.fs" />
     <Compile Include="AsyncResult.fs" />
     <Compile Include="TaskEx.fs" />
     <Compile Include="EventEx.fs" />

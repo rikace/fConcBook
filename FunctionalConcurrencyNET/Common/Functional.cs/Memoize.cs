@@ -1,96 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Concurrent;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Functional
 {
-    using static OptionHelpers;
-
-    public static class MemoizeExt
+    public static class Memoization
     {
-        public static Func<T> memo<T>(Func<T> func)
+        // Listing 2.12 A simple example that clarifies how memoization works
+        public static Func<T, R> Memoize<T, R>(Func<T, R> func) where T : IComparable //#A
         {
-            var value = new Lazy<T>(func, true);
-            return () => value.Value;
+            Dictionary<T, R> cache = new Dictionary<T, R>();    //#B
+            return arg =>                                       //#C
+            {
+                if (cache.ContainsKey(arg))                     //#D
+                    return cache[arg];                          //#E
+                return (cache[arg] = func(arg));                //#F
+            };
         }
 
-        public static Func<T, R> memo<T, R>(Func<T, R> func)
+        // Listing 2.20 Thread-safe memoization function
+        public static Func<T, R> MemoizeThreadSafe<T, R>(Func<T, R> func) where T : IComparable
         {
-            var cache = new WeakDictionary<T, R>();
-            var syncMap = new ConcurrentDictionary<T, object>();
-
-            return inp =>
-                cache.TryGetValue(inp).Match(
-                    some: x => x,
-                    none: () =>
-                    {
-                        R res;
-                        var sync = syncMap.GetOrAdd(inp, new object());
-                        lock (sync)
-                        {
-                            res = cache.GetOrAdd(inp, func);
-                        }
-                        syncMap.TryRemove(inp, out sync);
-                        return res;
-                    });
+            ConcurrentDictionary<T, R> cache = new ConcurrentDictionary<T, R>();
+            return arg => cache.GetOrAdd(arg, a => func(a));
         }
 
-        private class WeakDictionary<T, TR>
+        // Listing 2.21 Thread-Safe Memoization function with safe lazy evaluation
+        public static Func<T, R> MemoizeLazyThreadSafe<T, R>(Func<T, R> func) where T : IComparable
         {
-            readonly ConcurrentDictionary<T, WeakReference<ActionOnFinalize<TR>>> _dictionary = new ConcurrentDictionary<T, WeakReference<ActionOnFinalize<TR>>>();
-            private class ActionOnFinalize<TV>
-            {
-                public readonly TV Value;
-                readonly Action _action;
-
-                public ActionOnFinalize(Action action, TV value)
-                {
-                    this.Value = value;
-                    this._action = action;
-                }
-
-                ~ActionOnFinalize()
-                {
-                    _action();
-                }
-            }
-
-            private WeakReference<ActionOnFinalize<TR>> ReferenceValue(T key, Func<T, TR> addFunc) =>
-                new WeakReference<ActionOnFinalize<TR>>(
-                    new ActionOnFinalize<TR>(() =>
-                        {
-                            WeakReference<ActionOnFinalize<TR>> weakReference;
-                            _dictionary.TryRemove(key, out weakReference);
-                        },
-                        addFunc(key)));
-
-            public Option<TR> TryGetValue(T key)
-            {
-                WeakReference<ActionOnFinalize<TR>> res = null;
-                ActionOnFinalize<TR> target = null;
-                return _dictionary.TryGetValue(key, out res)
-                    ? res.TryGetTarget(out target)
-                        ? Some(target.Value)
-                        : None
-                    : None;
-            }
-
-            public TR GetOrAdd(T key, Func<T, TR> addFunc)
-            {
-                ActionOnFinalize<TR> target;
-                if (_dictionary.GetOrAdd(key, _ => ReferenceValue(key, addFunc)).TryGetTarget(out target))
-                    return target.Value;
-                throw new OutOfMemoryException();
-            }
-
-            public bool TryRemove(T key)
-            {
-                WeakReference<ActionOnFinalize<TR>> weakReference;
-                return _dictionary.TryRemove(key, out weakReference);
-            }
+            ConcurrentDictionary<T, Lazy<R>> cache = new ConcurrentDictionary<T, Lazy<R>>();
+            return arg => cache.GetOrAdd(arg, a => new Lazy<R>(() => func(a))).Value;
         }
     }
 }

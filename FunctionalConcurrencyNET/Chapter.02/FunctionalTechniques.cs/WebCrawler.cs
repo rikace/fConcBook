@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Functional;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -63,8 +64,6 @@ namespace FunctionalTechniques.cs
                                     from pageContent in WebCrawler(url)
                                     select ExtractWebPageTitle(pageContent);
 
-                //foreach (var webPageTitle in webPageTitles)
-                //    Console.WriteLine(webPageTitle);
                 Console.WriteLine($"Crawled {webPageTitles.Count()} page titles");
             });
 
@@ -74,8 +73,6 @@ namespace FunctionalTechniques.cs
                                     from pageContent in WebCrawlerMemoized(url)
                                     select ExtractWebPageTitle(pageContent);
 
-                //foreach (var webPageTitle in webPageTitles)
-                //    Console.WriteLine(webPageTitle);
                 Console.WriteLine($"Crawled {webPageTitles.Count()} page titles");
             });
 
@@ -97,7 +94,6 @@ namespace FunctionalTechniques.cs
                 Console.WriteLine($"Crawled {webPageTitles.Count()} page titles");
             });
         }
-
     }
 }
 

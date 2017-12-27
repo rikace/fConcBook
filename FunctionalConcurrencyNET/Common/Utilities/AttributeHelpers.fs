@@ -16,8 +16,4 @@ module AttributeHelpers =
     /// word "Module" to the end of a type. Use with caution.
     [<Literal>]
     let Suffix = CompilationRepresentationFlags.ModuleSuffix
-    
-    //NOTE: this is required to ensure compatability with other CLR languages -- DO NOT REMOVE!
-    [<assembly: Extension>]
-    do ()
 

@@ -111,7 +111,7 @@ let processImage (blobReference:string) (destinationImage:string) = //: AsyncRes
     |> AsyncResult.map(fun image -> toByteArrayAsync(image))    // #A
     |> AsyncResult.bimap (fun bytes -> FileEx.WriteAllBytesAsync(destinationImage, bytes))
                          (fun ex -> logger.Error(ex) |> async.Return)  // #A
-                         
+
 //Listing 10.15 Using the AsyncResultBuilder
 let processImage2 (blobReference:string) (destinationImage:string) : AsyncResult<unit> =
     asyncResult  {   // #A
@@ -128,7 +128,7 @@ let processImage2 (blobReference:string) (destinationImage:string) : AsyncResult
       }
       |> AsyncResult.bimap (fun bytes -> FileEx.WriteAllBytesAsync(destinationImage, bytes))
                            (fun ex -> logger.Error(ex) |> async.Return)   // #B
-                           
+
 module ApplicativeFunctors =
 
     let downloadOptionImage(blobReference:string) : Async<Image> = async {
@@ -180,7 +180,7 @@ module ``BlendImages with async combinators`` =
                             GraphicsUnit.Pixel)
         graphic.Save() |> ignore
         bitmap :> Image
-        
+
     let downloadOptionImage(blobReference:string) : Async<Image> = async {
             let! container = Helpers.getCloudBlobContainerAsync()
             let blockBlob = container.GetBlockBlobReference(blobReference)
@@ -220,7 +220,7 @@ module ``Composing and executing heterogeneous parallel computations`` =
     open System.Net
     open StockAnalyzer
     open StockAnalysis
-    
+
     // Listing 10.25  Asynchronous operations to compose and run in parallel
     let calcTransactionAmount amount (price:float) =
         let readyToInvest = amount * 0.75
