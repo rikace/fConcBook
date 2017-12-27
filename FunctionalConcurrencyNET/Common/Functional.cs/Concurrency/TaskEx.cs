@@ -188,8 +188,6 @@ namespace Functional.Tasks
                         source.TrySetResult(completedTask.Result);
                         break;
                     default:
-                        // TODO: Work out whether this is really appropriate. Could set
-                        // an exception in the completion source, of course…
                         throw new ArgumentException("Task was not completed");
                 }
             };

@@ -11,7 +11,6 @@ namespace RxPublisherSubscriber
     {
         private ISubject<T> subject; //#A
         private readonly List<IObserver<T>> observers = new List<IObserver<T>>(); //#B
-        // TODO
         private readonly List<IDisposable> observables = new List<IDisposable>(); //#C
 
         public RxPubSub(ISubject<T> subject)
