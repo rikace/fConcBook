@@ -1,5 +1,5 @@
-#Concurrency in .NET 
-##Modern patterns of concurrent and parallel programming 
+# Concurrency in .NET 
+## Modern patterns of concurrent and parallel programming 
 
 [ ] Tools and framwerok needed
 [ ] What to install for ch 14 
