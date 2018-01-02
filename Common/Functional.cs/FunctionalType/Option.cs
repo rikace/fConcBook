@@ -1,0 +1,194 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Functional
+{
+    using Microsoft.FSharp.Core;
+    using static OptionHelpers;
+
+    public struct Option<T> : IEquatable<Option.None>, IEquatable<Option<T>>
+    {
+        public readonly T Value;
+        readonly bool isSome;
+        bool isNone => !isSome;
+
+        private Option(T value)
+        {
+            if (value == null)
+                throw new ArgumentNullException();
+            this.isSome = true;
+            this.Value = value;
+        }
+
+        public static implicit operator Option<T>(Option.None _) => new Option<T>();
+        public static implicit operator Option<T>(Option.Some<T> some) => new Option<T>(some.Value);
+
+        public static implicit operator Option<T>(T value)
+           => value == null ? None : Some(value);
+
+        public R Match<R>(Func<R> none, Func<T, R> some)
+            => isSome ? some(Value) : none();
+
+        public bool Equals(Option<T> other)
+           => this.isSome == other.isSome
+           && (this.isNone || this.Value.Equals(other.Value));
+
+        public bool Equals(Option.None _) => isNone;
+
+        public override int GetHashCode()
+        {
+            var hashCode = -496720002;
+            hashCode = hashCode * -1521134295 + base.GetHashCode();
+            hashCode = hashCode * -1521134295 + EqualityComparer<T>.Default.GetHashCode(Value);
+            hashCode = hashCode * -1521134295 + isSome.GetHashCode();
+            hashCode = hashCode * -1521134295 + isNone.GetHashCode();
+            return hashCode;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null || !(obj is Option<T>)) return false;
+            Option<T> opt = (Option<T>)obj;
+            if (opt.isSome && this.isSome) return opt.Value.Equals(Value);
+            else if (opt.isNone && this.isNone) return true;
+            else return false;
+        }
+
+        public static bool operator ==(Option<T> @this, Option<T> other) => @this.Equals(other);
+        public static bool operator !=(Option<T> @this, Option<T> other) => !(@this == other);
+
+    }
+
+    namespace Option
+    {
+        public struct None
+        {
+            internal static readonly None Default = new None();
+        }
+
+        public struct Some<T>
+        {
+            internal T Value { get; }
+
+            internal Some(T value)
+            {
+                if (value == null)
+                    throw new ArgumentNullException(nameof(value));
+                Value = value;
+            }
+        }
+    }
+
+    public static class OptionHelpers
+    {
+
+        public static Option<T> Some<T>(T value) => new Option.Some<T>(value); // wrap the given value into a Some
+        public static Option.None None => Option.None.Default;  // the None value
+
+        public static Option<T> ToOption<T>(FSharpOption<T> fsOption) =>
+            FSharpOption<T>.get_IsSome(fsOption)
+                ? Some(fsOption.Value)
+                : None;
+
+        // Convert the Option into an F# Option
+        public static FSharpOption<T> ToFsOption<T>(Option<T> option) =>
+            option.Match(() => FSharpOption<T>.None,
+                         v => FSharpOption<T>.Some(v));
+
+
+        public static Option<R> Apply<T, R>
+           (this Option<Func<T, R>> @this, Option<T> arg)
+           => @this.Match(
+              () => None,
+              (func) => arg.Match(
+                 () => None,
+                 (val) => Some(func(val))));
+
+        public static Option<R> Bind<T, R>
+        (this Option<T> optT, Func<T, Option<R>> f)
+         => optT.Match(
+            () => None,
+            (t) => f(t));
+
+        public static Option<R> Map<T, R>
+           (this Option.None _, Func<T, R> f)
+           => None;
+
+        public static Option<R> Map<T, R>
+           (this Option.Some<T> some, Func<T, R> f)
+           => Some(f(some.Value));
+
+        public static Option<R> Map<T, R>
+           (this Option<T> optT, Func<T, R> f)
+           => optT.Match(
+              () => None,
+              (t) => Some(f(t)));
+
+        public static Option<Func<T2, R>> Map<T1, T2, R>
+           (this Option<T1> @this, Func<T1, T2, R> func)
+            => @this.Map(func.Curry());
+
+        public static Option<Func<T2, T3, R>> Map<T1, T2, T3, R>
+           (this Option<T1> @this, Func<T1, T2, T3, R> func)
+            => @this.Map(func.CurryFirst());
+
+        public static Unit Match<T>(this Option<T> @this, Action None, Action<T> Some)
+            => @this.Match(None.ToFunc(), Some.ToFunc());
+
+        public static bool IsSome<T>(this Option<T> @this)
+           => @this.Match(
+              () => false,
+              (_) => true);
+
+        internal static T ValueUnsafe<T>(this Option<T> @this)
+           => @this.Match(
+              () => { throw new InvalidOperationException(); },
+              (t) => t);
+
+        public static T GetOrElse<T>(this Option<T> opt, T defaultValue)
+           => opt.Match(
+              () => defaultValue,
+              (t) => t);
+
+        public static T GetOrElse<T>(this Option<T> opt, Func<T> fallback)
+           => opt.Match(
+              () => fallback(),
+              (t) => t);
+
+        public static Task<T> GetOrElse<T>(this Option<T> opt, Func<Task<T>> fallback)
+           => opt.Match(
+              () => fallback(),
+              (t) => Task.FromResult(t));
+
+        public static Option<T> OrElse<T>(this Option<T> left, Option<T> right)
+           => left.Match(
+              () => right,
+              (_) => left);
+
+        public static Option<T> OrElse<T>(this Option<T> left, Func<Option<T>> right)
+           => left.Match(
+              () => right(),
+              (_) => left);
+
+        public static Option<R> Select<T, R>(this Option<T> @this, Func<T, R> func)
+           => @this.Map(func);
+
+        public static Option<T> Where<T>
+           (this Option<T> optT, Func<T, bool> predicate)
+           => optT.Match(
+              () => None,
+              (t) => predicate(t) ? optT : None);
+
+        public static Option<RR> SelectMany<T, R, RR>
+           (this Option<T> opt, Func<T, Option<R>> bind, Func<T, R, RR> project)
+           => opt.Match(
+              () => None,
+              (t) => bind(t).Match(
+                 () => None,
+                 (r) => Some(project(t, r))));
+    }
+}
+
