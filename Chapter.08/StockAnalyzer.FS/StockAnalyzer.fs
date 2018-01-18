@@ -34,7 +34,7 @@ let convertStockHistory (stockHistory:string) = async {
 }
 
 let googleSourceUrl symbol =
-    sprintf "http://www.google.com/finance/historical?q=%s&output=csv" symbol
+    sprintf "https://finance.google.com/finance/historical?q=%s&output=csv" symbol
 
 let yahooSourceUrl symbol =
     sprintf "http://ichart.finance.yahoo.com/table.csv?s=%s" symbol

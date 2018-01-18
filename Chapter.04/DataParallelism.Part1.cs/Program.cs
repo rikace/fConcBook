@@ -20,14 +20,14 @@ namespace DataParallelism.cs
             var implementations =
                 new[]
                 {
-                    new Tuple<String, Action[]>(
-                        "C# Sequential", run(Mandelbrot.SequentialMandelbrot)),
-                    new Tuple<String, Action[]>(
-                        "C# Parallel.For", run(Mandelbrot.ParallelMandelbrot)),
-                    new Tuple<String, Action[]>(
-                        "C# Parallel.For Saturated", run(Mandelbrot.ParallelMandelbrotOversaturation)),
-                    new Tuple<String, Action[]>(
-                        "C# Parallel.For Struct", run(Mandelbrot.ParallelStructMandelbrot))
+                   new Tuple<String, Action[]>(
+                       "C# Sequential", run(Mandelbrot.SequentialMandelbrot)),
+                   new Tuple<String, Action[]>(
+                       "C# Parallel.For", run(Mandelbrot.ParallelMandelbrot)),
+                   new Tuple<String, Action[]>(
+                       "C# Parallel.For Saturated", run(Mandelbrot.ParallelMandelbrotOversaturation)),
+                   new Tuple<String, Action[]>(
+                       "C# Parallel.For Struct", run(Mandelbrot.ParallelStructMandelbrot))
                 };
 
             Application.Run(
@@ -66,6 +66,7 @@ namespace DataParallelism.cs
                     .Invoke(PerfVis.fromTuples(sumImplementations)));
         }
 
+        [STAThread]
         static void Main(string[] args)
         {
             Mandelbrot_Performance_Comparison();
