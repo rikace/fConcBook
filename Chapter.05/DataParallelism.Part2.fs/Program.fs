@@ -23,6 +23,7 @@ let kMeansDemo() =
     let methods =
         [
         "C# LINQ",              (fun data _ initialCentroids -> KMeansLinq(data).Run(initialCentroids))
+        "C# PLINQ", (fun data _ initialCentroids -> KMeansPLinq(data).Run(initialCentroids))
         "C# PLINQ Partitioner", (fun data _ initialCentroids -> KMeans(data).Run(initialCentroids))
         "F# PSeq",              (KMeans.FsPSeq.kmeans)
         ]
@@ -97,7 +98,7 @@ let pageRankDemo() =
         "F# PSeq",              (run (fsWrapper <| MapReduceFsPSeq.mapReduce))
         "C# PLINQ Partitioner", (run (csWrapper <| MapReducePLINQPartitioner.MapReduce))
     ]
-    |> PerfVis.toChart "NuGet PageRank"
+    |> PerfVis.toChart "" //NuGet PageRank"
     |> Application.Run
 
     // Do more iteration

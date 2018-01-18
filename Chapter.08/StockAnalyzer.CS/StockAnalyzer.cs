@@ -47,8 +47,8 @@ namespace StockAnalyzer.CS
                 return (from row in stockHistoryRows.Skip(1)
                         let cells = row.Split(',')
                         let date = DateTime.Parse(cells[0])
-                        let open = double.Parse(cells[1])
-                        let high = double.Parse(cells[2])
+                        let open = double.Parse(cells[1] == "-" ? cells[3]: cells[1])
+                        let high = double.Parse(cells[2] == "-" ? cells[4]: cells[2])
                         let low = double.Parse(cells[3])
                         let close = double.Parse(cells[4])
                         select new StockData(date, open, high, low, close)
@@ -59,7 +59,7 @@ namespace StockAnalyzer.CS
         async Task<string> DownloadStockHistory(string symbol)
         {
             string url =
-                $"http://www.google.com/finance/historical?q={symbol}&output=csv";
+                $"https://finance.google.com/finance/historical?q={symbol}&output=csv";
             var request = WebRequest.Create(url);       // #C
             using (var response = await request.GetResponseAsync()
                                               .ConfigureAwait(false)) // #D
@@ -95,7 +95,7 @@ namespace StockAnalyzer.CS
         async Task<string> DownloadStockHistory(string symbol,
                                                 CancellationToken token)    // #B
         {
-            string stockUrl = $"http://www.google.com/finance/historical?q={symbol}&output=csv";
+            string stockUrl = $"https://finance.google.com/finance/historical?q={symbol}&output=csv";
             var request = await new HttpClient().GetAsync(stockUrl, token); // #B
             return await request.Content.ReadAsStringAsync();
         }
@@ -111,7 +111,7 @@ namespace StockAnalyzer.CS
             List<Task<Tuple<string, StockData[]>>> stockHistoryTasks =
                 stockSymbols.Select(async symbol =>
                 {
-                    var request = HttpWebRequest.Create($"http://www.google.com/finance/historical?q={symbol}&output=csv");
+                    var request = HttpWebRequest.Create($"https://finance.google.com/finance/historical?q={symbol}&output=csv");
                     using (var response = await request.GetResponseAsync())
                     using (var reader = new StreamReader(response.GetResponseStream()))
                     {
@@ -146,7 +146,7 @@ namespace StockAnalyzer.CS
 
         //Listing 8.13 The Or combinator applies to falls back behavior
         Func<string, string> googleSourceUrl = (symbol) => // #A
-            $"http://www.google.com/finance/historical?q={symbol}&output=csv";
+            $"https://finance.google.com/finance/historical?q={symbol}&output=csv";
 
         Func<string, string> yahooSourceUrl = (symbol) => // #A
             $"http://ichart.finance.yahoo.com/table.csv?s={symbol}";
@@ -183,11 +183,8 @@ namespace StockAnalyzer.CS
         async Task ProcessStockHistoryParallel()
         {
             var sw = Stopwatch.StartNew();
-            string[] stocks = new[] { "MSFT", "FB", "AAPL", "YHOO",
-                                      "EBAY", "INTC", "GOOG", "ORCL" };
-
             List<Task<Tuple<string, StockData[]>>> stockHistoryTasks =
-              stocks.Select(ProcessStockHistory).ToList(); // #A
+              Stocks.Select(ProcessStockHistory).ToList(); // #A
 
             Tuple<string, StockData[]>[] stockHistories =
                     await Task.WhenAll(stockHistoryTasks); // #B
@@ -199,11 +196,9 @@ namespace StockAnalyzer.CS
         public async Task ProcessStockHistoryAsComplete(Chart chart, SynchronizationContext ctx)
         {
             var sw = Stopwatch.StartNew();
-            string[] stocks = new[] { "MSFT", "FB", "AAPL", "YHOO",
-                                      "EBAY", "INTC", "GOOG", "ORCL" };
 
             List<Task<Tuple<string, StockData[]>>> stockHistoryTasks =
-                stocks.Select(ProcessStockHistory).ToList();
+                Stocks.Select(ProcessStockHistory).ToList();
 
             while (stockHistoryTasks.Count > 0) // #A
             {

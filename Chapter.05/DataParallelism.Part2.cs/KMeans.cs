@@ -134,4 +134,37 @@ namespace DataParallelism.Part2.CSharp
             return result;
         }
     }
+
+    public class KMeansPLinq : KMeans
+    {
+        public KMeansPLinq(double[][] data) : base(data)
+        { }
+
+        protected override double[][] UpdateCentroids(double[][] centroids)
+        {
+            var result =
+              data.AsParallel()
+                .GroupBy(u => GetNearestCentroid(centroids, u))
+                .Select(elements => {
+                    var res = new double[N];
+                    foreach (var x in elements)
+                        for (var i = 0; i < N; i++)
+                            res[i] += x[i];
+                    var M = elements.Count();
+                    for (var i = 0; i < N; i++)
+                        res[i] /= M;
+                    return res;
+                })
+                .ToArray();
+
+            Array.Sort(result, (a, b) => {
+                for (var i = 0; i < N; i++)
+                    if (a[i] != b[i])
+                        return a[i].CompareTo(b[i]);
+                return 0;
+            });
+            return result;
+        }
+    }
+
 }
