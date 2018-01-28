@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Collections.Concurrent;
 
-namespace Functional
+namespace FunctionalTechniques.cs
 {
-    public static class Memoization
+    public static partial class Memoization
     {
         // Listing 2.12 A simple example that clarifies how memoization works
         public static Func<T, R> Memoize<T, R>(Func<T, R> func) where T : IComparable //#A

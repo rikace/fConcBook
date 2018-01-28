@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FunctionalTechniques
+namespace FunctionalTechniques.cs
 {
     // Listing 2.26 Lazy initialization of the Person object
     public class Person                     //#A
