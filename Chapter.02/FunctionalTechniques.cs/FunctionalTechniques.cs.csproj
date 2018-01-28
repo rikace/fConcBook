@@ -58,6 +58,7 @@
     <Compile Include="Laziness.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="ConcurrentSpeculation.cs" />
+    <Compile Include="WeakMemoization.cs" />
     <Compile Include="WebCrawler.cs" />
   </ItemGroup>
   <ItemGroup>

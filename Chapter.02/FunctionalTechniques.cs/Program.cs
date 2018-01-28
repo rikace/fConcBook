@@ -1,8 +1,6 @@
-﻿using Functional;
-using FunctionalTechniques.cs;
-using System;
+﻿using System;
 
-namespace FunctionalTechniques
+namespace FunctionalTechniques.cs
 {
     class Program
     {

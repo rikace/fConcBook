@@ -48,10 +48,12 @@
     <Reference Include="System.Numerics" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Atom.fs" />
     <Compile Include="FList.fs" />
     <Compile Include="LazyList.fs" />
     <Compile Include="BTree.fs" />
     <Compile Include="ParallelDownloadImages.fs" />
+    <Compile Include="WeakMemoization.fs" />
     <Compile Include="TCO_CPS.fs" />
     <Compile Include="ParallelCalculator.fs" />
     <None Include="App.config" />

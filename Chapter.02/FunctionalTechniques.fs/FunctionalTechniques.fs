@@ -70,7 +70,7 @@ module ConsurrentSpeculation =
             |> Seq.head
 
 module Laziness =
-    open FunctionalTechniques
+    open FunctionalTechniques.cs
 
     // Listing 2.28 Lazy initialization of the Person object with F#
     let barneyRubble = lazy( Person("barney", "rubble") )  //#A

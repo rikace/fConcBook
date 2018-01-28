@@ -27,7 +27,9 @@ namespace ConcurrencyEx
                 original = value;
                 temp = operation(original);
             }
+#pragma warning disable 420
             while (Interlocked.CompareExchange(ref value, temp, original) != original); //#D
+#pragma warning restore 420
             return original;
         }
     }
@@ -38,10 +40,11 @@ namespace ConcurrencyEx
 
         public override T Swap(Func<T, T> operation)
         {
-            T original, temp;
-            original = value;
-            temp = operation(original);
+            var original = value;
+            var temp = operation(original);
+#pragma warning disable 420
             if (Interlocked.CompareExchange(ref value, temp, original) != original)
+#pragma warning restore 420
             {
                 var spinner = new SpinWait();
                 do
@@ -50,7 +53,9 @@ namespace ConcurrencyEx
                     original = value;
                     temp = operation(original);
                 }
+#pragma warning disable 420
                 while (Interlocked.CompareExchange(ref value, temp, original) != original);
+#pragma warning restore 420
             }
             return original;
         }
