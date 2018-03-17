@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+<assembly><name>AsyncBlobCloud.FS</name></assembly>
+<members>
+<member name="M:FunctionalConcurrency.AsyncHelpers.Async`1.StartCancelableDisposable.Static``1(Microsoft.FSharp.Control.FSharpAsync{Microsoft.FSharp.Core.Unit})">
+<summary>
+ Starts the specified operation using a new CancellationToken and returns
+ IDisposable object that cancels the computation.
+</summary>
+</member>
+</members>
+</doc>

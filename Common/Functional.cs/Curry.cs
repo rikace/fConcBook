@@ -23,7 +23,7 @@ namespace Functional
             => (T1 a) => (T2 b) => (T3 c) => (T4 d) => (T5 e) => (T6 f) => func(a, b, c, d, e, f);
 
         public static Func<T1, Func<T2, T3, R>> CurryFirst<T1, T2, T3, R>
-           (this Func<T1, T2, T3, R> @this) => t1 => (t2, t3) => @this(t1, t2, t3);
+           (this Func<T1, T2, T3, R> func) => t1 => (t2, t3) => func(t1, t2, t3);
 
         public static Func<T, T> Tap<T>(Action<T> act) => x => { act(x); return x; };
     }

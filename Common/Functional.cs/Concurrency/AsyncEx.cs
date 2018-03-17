@@ -17,6 +17,18 @@ namespace Functional.Async
         public static async Task<R> Map<T, R>(this Task<T> task, Func<T, R> map)
             => map(await task.ConfigureAwait(false));
 
+        public static async Task<R> Apply<T, R>
+           (this Task<Func<T, R>> f, Task<T> arg)
+           => (await f.ConfigureAwait(false))(await arg.ConfigureAwait(false));
+
+        public static Task<Func<T2, R>> Apply<T1, T2, R>
+           (this Task<Func<T1, T2, R>> f, Task<T1> arg)
+           => Apply(f.Map(Functional.Curry), arg);
+
+        public static Task<Func<T2, T3, R>> Apply<T1, T2, T3, R>
+           (this Task<Func<T1, T2, T3, R>> f, Task<T1> arg)
+           => Apply(f.Map(Functional.CurryFirst), arg);
+
         public static async Task<R> SelectMany<T, R>(this Task<T> task,
             Func<T, Task<R>> then) => await Bind(task, then);
 

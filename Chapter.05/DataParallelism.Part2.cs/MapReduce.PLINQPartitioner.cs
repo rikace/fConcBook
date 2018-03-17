@@ -27,6 +27,7 @@ namespace DataParallelism.Part2.CSharp
                 .WithDegreeOfParallelism(R)
                 .Select(reduce)
                 .ToArray();
+
             return mapResults;
         }
     }
