@@ -68,14 +68,16 @@ let toChartWithGCgeneration title =
     execute >> (createChart true title)
 
 let fromTuples (input:System.Tuple<string,System.Action[]>[]):PerfTestInput =
-    List.ofArray input
-    |> List.map (fun (tuple : System.Tuple<string, System.Action[]>) ->
+    input
+    |> Array.map (fun (tuple : System.Tuple<string, System.Action[]>) ->
         let (name, actions) = (tuple : System.Tuple<string, System.Action[]>)
         let implementations =
-            List.ofArray actions
-            |> List.map (fun action ->
+            actions
+            |> Array.map (fun action ->
                 fun () -> action.Invoke())
+            |> Array.toList
         name, implementations)
+    |> Array.toList
 
 let CreateLineChart values keys title =
     let data = Seq.zip keys values

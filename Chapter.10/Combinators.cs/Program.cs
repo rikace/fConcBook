@@ -1,22 +1,17 @@
-﻿using Functional;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Blob;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
-using static Functional.OptionHelpers;
-using Functional.Tasks;
 using System.Drawing.Drawing2D;
-using Functional.Async;
-using Functional.IO;
-using File = Functional.IO.File;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Blob;
+
+using Functional;
+using static Functional.OptionHelpers;
 using static Combinators.cs.Helpers;
+using static Functional.Async.AsyncEx;
+using File = Functional.IO.File;
+using Functional.Tasks;
 
 namespace Combinators.cs
 {
@@ -63,7 +58,7 @@ namespace Combinators.cs
 
         static async Task RunDownloadImageWithRetry()   // #C
         {
-            Image image = await AsyncEx.Retry(async () =>
+            Image image = await Retry(async () =>
                                 await DownloadImageAsync("Bugghina001.jpg")
                             .Otherwise(async () =>
                                 await DownloadImageAsync("Bugghina002.jpg")),
