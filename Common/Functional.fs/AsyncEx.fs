@@ -74,12 +74,7 @@ module AsyncHelpers =
         static member Map (map:'a -> 'b) (x:Async<'a>) = async {let! r = x in return map r}
 
         static member Tap (action:'a -> 'b) (x:Async<'a>) = (Async.Map action x) |> Async.Ignore|> Async.Start; x
-
-    type StreamReader with
-        member this.AsyncReadToEnd() : Async<string> = async {
-            use asyncReader = new AsyncStreamReader(this.BaseStream)
-            return! asyncReader.ReadToEnd() }
-
+        
 module rec AsyncOperators =
 
     // ( <*> ) : f:Async<('a -> 'b)> -> m:Async<'a> -> Async<'b>
