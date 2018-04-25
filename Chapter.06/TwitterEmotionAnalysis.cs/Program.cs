@@ -30,7 +30,7 @@ namespace TwitterEmotionAnalysis
         {
             var tweetPositiveObserver = Observer.Create<Fs.TweetEmotion>(tweet =>
             {
-                if (tweet.Emotion.IsIndifferent)
+                if (tweet.Emotion.IsHappy)
                     Console.WriteLine(tweet.Tweet.Text);
             });
 
