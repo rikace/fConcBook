@@ -77,6 +77,9 @@
     <Reference Include="FSharp.Charting">
       <HintPath>..\..\packages\FSharp.Charting.0.90.14\lib\net40\FSharp.Charting.dll</HintPath>
     </Reference>
+    <Reference Include="FSharp.Core">
+      <HintPath>..\..\packages\FSharp.Core.4.3.4\lib\net45\FSharp.Core.dll</HintPath>
+    </Reference>
     <Reference Include="IKVM.AWT.WinForms">
       <HintPath>..\..\packages\IKVM.8.1.5717.0\lib\IKVM.AWT.WinForms.dll</HintPath>
     </Reference>
