@@ -1,16 +1,17 @@
-﻿using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Blob;
-using System;
+﻿using System;
 using System.Drawing;
 using System.IO;
 using System.Threading.Tasks;
-using static Functional.OptionHelpers;
 using System.Drawing.Drawing2D;
-using File = Functional.IO.File;
-using static Combinators.cs.Helpers;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Blob;
+
 using Functional;
-using Functional.Tasks;
+using static Functional.OptionHelpers;
+using static Combinators.cs.Helpers;
 using static Functional.Async.AsyncEx;
+using File = Functional.IO.File;
+using Functional.Tasks;
 
 namespace Combinators.cs
 {
