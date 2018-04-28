@@ -33,14 +33,14 @@ let convertStockHistory (stockHistory:string) = async {
         |> Seq.toArray
 }
 
-let googleSourceUrl symbol =
-    sprintf "https://finance.google.com/finance/historical?q=%s&output=csv" symbol
+let alphavantageSourceUrl symbol =
+    sprintf "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=%s&outputsize=full&apikey=W3LUV5WID6C0PV5L&datatype=csv" symbol
 
-let yahooSourceUrl symbol =
-    sprintf "http://ichart.finance.yahoo.com/table.csv?s=%s" symbol
+let stooqSourceUrl symbol =
+    sprintf "https://stooq.com/q/d/l/?s=%s.US&i=d" symbol
 
 let downloadStockHistory symbol = async {
-    let url = googleSourceUrl symbol
+    let url = alphavantageSourceUrl symbol
     let req = WebRequest.Create(url)
     let! resp = req.AsyncGetResponse()
     use reader = new StreamReader(resp.GetResponseStream())

@@ -36,6 +36,8 @@ namespace StockAnalyzer.CS
         public static readonly string[] Stocks =
             new[] { "MSFT", "FB", "AAPL", "YHOO", "EBAY", "INTC", "GOOG", "ORCL" };
 
+        private string CreateFinanceUrl(string symbol) => $"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol={symbol}&outputsize=full&apikey=W3LUV5WID6C0PV5L&datatype=csv";
+
         // Listing 8.4 Stock prices history analysis
         async Task<StockData[]> ConvertStockHistory(string stockHistory)  // #A
         {
@@ -47,8 +49,8 @@ namespace StockAnalyzer.CS
                 return (from row in stockHistoryRows.Skip(1)
                         let cells = row.Split(',')
                         let date = DateTime.Parse(cells[0])
-                        let open = double.Parse(cells[1] == "-" ? cells[3]: cells[1])
-                        let high = double.Parse(cells[2] == "-" ? cells[4]: cells[2])
+                        let open = double.Parse(cells[1] == "-" ? cells[3] : cells[1])
+                        let high = double.Parse(cells[2] == "-" ? cells[4] : cells[2])
                         let low = double.Parse(cells[3])
                         let close = double.Parse(cells[4])
                         select new StockData(date, open, high, low, close)
@@ -58,9 +60,8 @@ namespace StockAnalyzer.CS
 
         async Task<string> DownloadStockHistory(string symbol)
         {
-            string url =
-                $"https://finance.google.com/finance/historical?q={symbol}&output=csv";
-            var request = WebRequest.Create(url);       // #C
+            string stockUrl = CreateFinanceUrl(symbol);
+            var request = WebRequest.Create(stockUrl);       // #C
             using (var response = await request.GetResponseAsync()
                                               .ConfigureAwait(false)) // #D
             using (var reader = new StreamReader(response.GetResponseStream()))
@@ -88,19 +89,17 @@ namespace StockAnalyzer.CS
             ShowChart(stockHistories, sw.ElapsedMilliseconds);  // #L
         }
 
-
         // Listing 8.6 Cancellation of Asynchronous Task
         CancellationTokenSource cts = new CancellationTokenSource();  // #A
 
         async Task<string> DownloadStockHistory(string symbol,
                                                 CancellationToken token)    // #B
         {
-            string stockUrl = $"https://finance.google.com/finance/historical?q={symbol}&output=csv";
+            string stockUrl = CreateFinanceUrl(symbol);
             var request = await new HttpClient().GetAsync(stockUrl, token); // #B
             return await request.Content.ReadAsStringAsync();
         }
         //cts.Cancel();  // #C
-
 
         async Task AnalyzeStockHistory(string[] stockSymbols,
                                        CancellationToken token)
@@ -111,7 +110,8 @@ namespace StockAnalyzer.CS
             List<Task<Tuple<string, StockData[]>>> stockHistoryTasks =
                 stockSymbols.Select(async symbol =>
                 {
-                    var request = HttpWebRequest.Create($"https://finance.google.com/finance/historical?q={symbol}&output=csv");
+                    string stockUrl = CreateFinanceUrl(symbol);
+                    var request = HttpWebRequest.Create(stockUrl);
                     using (var response = await request.GetResponseAsync())
                     using (var reader = new StreamReader(response.GetResponseStream()))
                     {
@@ -145,11 +145,11 @@ namespace StockAnalyzer.CS
         }
 
         //Listing 8.13 The Or combinator applies to falls back behavior
-        Func<string, string> googleSourceUrl = (symbol) => // #A
-            $"https://finance.google.com/finance/historical?q={symbol}&output=csv";
+        Func<string, string> alphavantageSourceUrl = (symbol) => // #A
+            $"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol={symbol}&outputsize=full&apikey=W3LUV5WID6C0PV5L&datatype=csv";
 
-        Func<string, string> yahooSourceUrl = (symbol) => // #A
-            $"http://ichart.finance.yahoo.com/table.csv?s={symbol}";
+        Func<string, string> stooqSourceUrl = (symbol) => // #A
+            $"https://stooq.com/q/d/l/?s={symbol}.US&i=d";
 
         async Task<string> DownloadStockHistory(Func<string, string> sourceStock,
                                                                     string symbol)
@@ -166,18 +166,18 @@ namespace StockAnalyzer.CS
             Func<Func<string, string>, Func<string, Task<string>>> downloadStock =
                 service => stock => DownloadStockHistory(service, stock);  // #C
 
-            Func<string, Task<string>> googleService =
-                                    downloadStock(googleSourceUrl); // #D
-            Func<string, Task<string>> yahooService =
-                                    downloadStock(yahooSourceUrl);  // #D
+            Func<string, Task<string>> alphavantageService =
+                                    downloadStock(alphavantageSourceUrl); // #D
+            Func<string, Task<string>> stoodService =
+                                    downloadStock(stooqSourceUrl);  // #D
 
             return await AsyncEx.Retry( // #E
-                        () => googleService(symbol).Otherwise(() => yahooService(symbol)), //#F
+                        () => alphavantageService(symbol)
+                             .Otherwise(() => stoodService(symbol)), //#F
                         5, TimeSpan.FromSeconds(2))
                     .Bind(data => ConvertStockHistory(data))        // #G
                     .Map(prices => Tuple.Create(symbol, prices));   // #H
         }
-
 
         //Listing 8.14 Running Stock-History analysis  in parallel
         async Task ProcessStockHistoryParallel()
@@ -198,7 +198,7 @@ namespace StockAnalyzer.CS
             var sw = Stopwatch.StartNew();
 
             List<Task<Tuple<string, StockData[]>>> stockHistoryTasks =
-                Stocks.Select(ProcessStockHistory).ToList();
+                Stocks.Select(ProcessStockHistoryConditional).ToList();
 
             while (stockHistoryTasks.Count > 0) // #A
             {
