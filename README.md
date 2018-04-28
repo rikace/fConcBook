@@ -5,7 +5,8 @@ This solution is complementary to the book [url here] Concurrency in .NET, which
 Chapters 4 to 12 dive into the different concurrent programming models of the functional paradigm. These chapters explore subjects such as the Task-Parallel Library, implementing parallel patterns such as Fork/Join, divide-and-conquer and Map-Reduce.  Also discussed is declarative composition, high level abstraction in asynchronous operations, the agent programming model, and the message passing semantic.
 Then chapters 13 and 14 aim to exploit and put in practice all the functional concurrent programming techniques learned during the previous chapters. Chapter 13 contains a set of recipes to solve common parallel issues. Chapter 14 implements a full application client side (mobile iOS and windows WPF) and server side for real time stock market operations.
 
-To runs the examples you need Visual Studio ([Download here](https://www.visualstudio.com)) and .NET Framework 4.7 ([Download here](https://www.microsoft.com/en-us/download/details.aspx?id=55170)).
+**Important to run the examples**
+To runs the examples you need Visual Studio 2017 ([Download here](https://www.visualstudio.com)) and .NET Framework 4.7 ([Download here](https://www.microsoft.com/en-us/download/details.aspx?id=55170)). The examples in the code leverages the new language features that compile only with Visual Studio 2017.
 
 **A compatible version of the code that runs on .NET Core is in progress and it will be released soon.**
 
