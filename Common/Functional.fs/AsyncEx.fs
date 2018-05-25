@@ -74,7 +74,7 @@ module AsyncHelpers =
         static member Map (map:'a -> 'b) (x:Async<'a>) = async {let! r = x in return map r}
 
         static member Tap (action:'a -> 'b) (x:Async<'a>) = (Async.Map action x) |> Async.Ignore|> Async.Start; x
-        
+
 module rec AsyncOperators =
 
     // ( <*> ) : f:Async<('a -> 'b)> -> m:Async<'a> -> Async<'b>

@@ -17,7 +17,7 @@ namespace ReactiveAgent.CS
         async Task Producer(IEnumerable<int> values)
         {
             foreach (var value in values)
-                buffer.Post(value);    // #B
+                await buffer.SendAsync(value);    // #B
             buffer.Complete();         // #C
         }
         async Task Consumer(Action<int> process)

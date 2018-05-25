@@ -29,7 +29,7 @@ namespace StockTicker.Client.WPF
             stockTickerHub = new StockTickerHub();
             hostPage = page;
 
-            var hostBase = "http://localhost:8935/";
+            var hostBase = "http://localhost:8835/";
             stockTickerHub
                 .Init(hostBase, this)
                 .ContinueWith(async x =>
