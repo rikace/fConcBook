@@ -262,3 +262,8 @@ __pycache__/
 *.pyc
 /.paket/Paket.Restore.targets
 *.db
+
+# Benchmark Dot Net result
+*report.csv
+*report.html
+*report-github.md

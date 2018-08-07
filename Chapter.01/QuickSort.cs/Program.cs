@@ -1,9 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
-using System.Windows.Forms;
+using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Configs;
+using BenchmarkDotNet.Diagnosers;
+using BenchmarkDotNet.Environments;
+using BenchmarkDotNet.Horology;
+using BenchmarkDotNet.Jobs;
+using BenchmarkDotNet.Running;
 
 namespace QuickSort.cs
 {
@@ -11,35 +19,48 @@ namespace QuickSort.cs
     {
         static void Main(string[] args)
         {
+            BenchmarkRunner.Run<QuickSortRunner>();
+        }
+    }
+
+    public class QuickSortRunner
+    {
+        Action<Action<int[]>> run;
+
+        public int ItemRange { get; set; } = 1_000_000;
+
+        public QuickSortRunner()
+        {
             Random rand = new Random((int) DateTime.Now.Ticks);
-            int attempts = 5;
-            int[][] dataSamples =
-                Enumerable.Range(0, attempts)
-                    .Select(x =>
-                    {
-                        var A = new int[1000000];
-                        for (int i = 0; i < 1000000; ++i)
-                            A[i] = rand.Next();
-                        return A;
-                    }).ToArray();
 
-            Func<Action<int[]>, Action[]> run = (sortFunc) =>
-                dataSamples.Select(data => (Action)(() => sortFunc(data))).ToArray();
+            var dataSample = new int[ItemRange];
+            for (int i = 0; i < ItemRange; ++i)
+            {
+                dataSample[i] = rand.Next();
+            }
 
-            var implementations =
-                new[]
-                {
-                    new Tuple<String, Action[]>(
-                        "Sequential", run(QuickSort.QuickSort_Sequential)),
-                    new Tuple<String, Action[]>(
-                        "Parallel", run(QuickSort.QuickSort_Parallel)),
-                    new Tuple<String, Action[]>(
-                        "ParallelWithDepth", run(QuickSort.QuickSort_Parallel_Threshold)),
-                };
+            run = (sortFunc) =>
+            {
+                sortFunc(dataSample);
+            };
+        }
 
-            Application.Run(
-                PerfVis.toChart("C# QuickSort")
-                    .Invoke(PerfVis.fromTuples(implementations)));
+        [Benchmark]
+        public void QuickSortSequential()
+        { 
+            run(QuickSort.QuickSort_Sequential);
+        }
+
+        [Benchmark]
+        public void QuickSortParallel()
+        { 
+            run(QuickSort.QuickSort_Parallel);
+        }
+
+        [Benchmark]
+        public void QuickSortParallelThreshold()
+        {
+            run(QuickSort.QuickSort_Parallel_Threshold);
         }
     }
 }
