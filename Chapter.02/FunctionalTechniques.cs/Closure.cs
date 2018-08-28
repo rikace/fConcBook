@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -18,11 +19,11 @@ namespace FunctionalTechniques.cs
             Func<string, string> lambda = value => freeVariable + " " + value; //#B
         }
 
-        System.Windows.Controls.Image img;
+        Bitmap img;
         // Listing 2.6 Event register with lambda expression capturing local variable
         void UpdateImage(string url)
         {
-            System.Windows.Controls.Image image = img; //#A
+            Bitmap image = img; //#A
 
             var client = new WebClient();
             client.DownloadDataCompleted += (o, e) => //#B
@@ -30,8 +31,7 @@ namespace FunctionalTechniques.cs
                 if (image != null)
                     using (var ms = new MemoryStream(e.Result))
                     {
-                        var imageConverter = new ImageSourceConverter();
-                        image.Source = (ImageSource) imageConverter.ConvertFrom(ms);
+                        image.
                     }
             };
             client.DownloadDataAsync(new Uri(url)); //#C
@@ -62,7 +62,7 @@ namespace FunctionalTechniques.cs
         }
 
         // Listing 2.9 Function to calculate the area of a triangle
-        void CalcluateAreaFunction()
+        void CalculateAreaFunction()
         {
             Action<int> displayNumber = n => Console.WriteLine(n);
 

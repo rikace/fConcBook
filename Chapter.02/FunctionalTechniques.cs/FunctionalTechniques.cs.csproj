@@ -9,4 +9,9 @@
     <PackageReference Include="benchmarkdotnet" Version="0.11.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\Functional\Functional.csproj" />
+    <ProjectReference Include="..\..\Common\Utilities.cs\Utilities.cs.csproj" />
+  </ItemGroup>
+
 </Project>
