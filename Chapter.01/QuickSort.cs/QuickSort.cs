@@ -54,8 +54,8 @@ namespace QuickSort.cs
             if (right - left < 2)
             {
                 if (left+1 == right &&
-                    items[left].CompareTo(items[right]) > 0)
-                    Swap(ref items[left], ref items[right]);
+                    items[left].CompareTo(items[right-1]) > 0)
+                    Swap(ref items[left], ref items[right-1]);
                 return;
             }
             int pivot = Partition(items, left, right);
@@ -75,8 +75,8 @@ namespace QuickSort.cs
             if (right - left < 2)
             {
                 if (left + 1 == right &&
-                    items[left].CompareTo(items[right]) > 0)
-                    Swap(ref items[left], ref items[right]);
+                    items[left].CompareTo(items[right-1]) > 0)
+                    Swap(ref items[left], ref items[right-1]);
                 return;
             }
             int pivot = Partition(items, left, right);
