@@ -1,4 +1,4 @@
-﻿namespace Appendix.B.AssemblyInfo
+﻿namespace FSharp.Tutorial.AssemblyInfo
 
 open System.Reflection
 open System.Runtime.CompilerServices
@@ -7,11 +7,11 @@ open System.Runtime.InteropServices
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[<assembly: AssemblyTitle("Appendix.B")>]
+[<assembly: AssemblyTitle("FSharp.Tutorial")>]
 [<assembly: AssemblyDescription("")>]
 [<assembly: AssemblyConfiguration("")>]
 [<assembly: AssemblyCompany("")>]
-[<assembly: AssemblyProduct("Appendix.B")>]
+[<assembly: AssemblyProduct("FSharp.Tutorial")>]
 [<assembly: AssemblyCopyright("Copyright ©  2018")>]
 [<assembly: AssemblyTrademark("")>]
 [<assembly: AssemblyCulture("")>]
@@ -22,7 +22,7 @@ open System.Runtime.InteropServices
 [<assembly: ComVisible(false)>]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[<assembly: Guid("5637006d-a78d-492c-8665-914baf50fda0")>]
+[<assembly: Guid("41f033c7-f85b-4bd5-af28-66810b0e1110")>]
 
 // Version information for an assembly consists of the following four values:
 //
