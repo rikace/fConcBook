@@ -1,3 +1,7 @@
+# Important
+## if there are problems with build, please look into this ([issue here](https://github.com/Microsoft/visualfsharp/issues/5576))
+
+
 # Concurrency in .NET 
 ## Modern patterns of concurrent and parallel programming 
 
