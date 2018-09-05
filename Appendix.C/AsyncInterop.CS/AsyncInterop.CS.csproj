@@ -54,8 +54,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AsyncInteroperability\AsyncInteroperability.fsproj">
-      <Project>{96e03448-a202-477c-8b3a-0a04e17ff59a}</Project>
+    <ProjectReference Include="..\..\Appendix.B\AsyncInteroperability\AsyncInteroperability.fsproj">
+      <Project>{9336b874-f0b2-4923-8f4b-a0753b9eb0ba}</Project>
       <Name>AsyncInteroperability</Name>
     </ProjectReference>
   </ItemGroup>
