@@ -33,7 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="FSharp.Core, Version=4.4.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\FSharp.Core.4.3.3\lib\net45\FSharp.Core.dll</HintPath>
+      <HintPath>..\..\packages\FSharp.Core.4.3.4\lib\net45\FSharp.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -54,7 +54,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Appendix.B\AsyncInteroperability\AsyncInteroperability.fsproj">
+    <ProjectReference Include="..\AsyncInteroperability\AsyncInteroperability.fsproj">
       <Project>{9336b874-f0b2-4923-8f4b-a0753b9eb0ba}</Project>
       <Name>AsyncInteroperability</Name>
     </ProjectReference>
