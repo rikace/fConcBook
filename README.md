@@ -1,5 +1,5 @@
 # Important
-## if there are problems with build, please look into this ([issue here](https://github.com/Microsoft/visualfsharp/issues/5576))
+## if there are problems with the build, please look into this ([issue here](https://github.com/Microsoft/visualfsharp/issues/5576))
 
 
 # Concurrency in .NET 
