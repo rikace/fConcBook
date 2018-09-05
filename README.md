@@ -5,7 +5,7 @@
 # Concurrency in .NET 
 ## Modern patterns of concurrent and parallel programming 
 
-This solution is complementary to the book [url here] Concurrency in .NET, which provides an introduction to functional concurrent programming concepts, and the skills you need in order to understand the functional aspects of writing multithreaded programs.
+This solution is complementary to the book ([Concurrency in .NET](https://www.manning.com/books/concurrency-in-dot-net)), which provides an introduction to functional concurrent programming concepts, and the skills you need in order to understand the functional aspects of writing multithreaded programs.
 Chapters 4 to 12 dive into the different concurrent programming models of the functional paradigm. These chapters explore subjects such as the Task-Parallel Library, implementing parallel patterns such as Fork/Join, divide-and-conquer and Map-Reduce.  Also discussed is declarative composition, high level abstraction in asynchronous operations, the agent programming model, and the message passing semantic.
 Then chapters 13 and 14 aim to exploit and put in practice all the functional concurrent programming techniques learned during the previous chapters. Chapter 13 contains a set of recipes to solve common parallel issues. Chapter 14 implements a full application client side (mobile iOS and windows WPF) and server side for real time stock market operations.
 
