@@ -1,3 +1,9 @@
+### Build Status
+
+* Windows [![Build status](https://ci.appveyor.com/api/projects/status/uq2bru4oqhixeipg?svg=true)](https://ci.appveyor.com/project/rikace/fconcbook)
+
+
+
 # Important
 ## if there are problems with the build, please look into this ([issue here](https://github.com/Microsoft/visualfsharp/issues/5576))
 
