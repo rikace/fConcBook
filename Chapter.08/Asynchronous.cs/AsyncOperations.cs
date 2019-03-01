@@ -49,7 +49,7 @@ namespace ConsoleApplication1
         }
 
 
-        async void ReadFileNoBlockingAsync(string filePath, Action<byte[]> process)
+        async Task ReadFileNoBlockingAsync(string filePath, Func<byte[], Task> process)
         {
             using (var fileStream = new FileStream(filePath, FileMode.Open,
                                             FileAccess.Read, FileShare.Read, 0x1000,
@@ -57,7 +57,7 @@ namespace ConsoleApplication1
             {
                 byte[] buffer = new byte[fileStream.Length];
                 int bytesRead = await fileStream.ReadAsync(buffer, 0, buffer.Length);
-                await Task.Run(async () => process(buffer));
+                await process(buffer);
             }
         }
 
