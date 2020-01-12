@@ -5,7 +5,7 @@ open System.Drawing
 open System.Windows.Forms
 
 // Listing 6.1 F# Event Combinator to manage Key-Down Events
-type KeyPressedEventCombinators(secretWord, interval, control:#System.Windows.Forms.Control) =
+type KeyPressedEventCombinators(secretWord, interval, control:System.Windows.Forms.Control) =
     let evt =
         let timer = new System.Timers.Timer(float interval) //#A
         let timeElapsed = timer.Elapsed |> Event.map(fun _ -> 'X') //#B
@@ -27,7 +27,7 @@ type KeyPressedEventCombinators(secretWord, interval, control:#System.Windows.Fo
     [<CLIEvent>]
     member this.OnKeyDown = evt //#F
 
-type KeyPressedObservableCombinators(secretWord, interval, control:#System.Windows.Forms.Control) =
+type KeyPressedObservableCombinators(secretWord, interval, control:System.Windows.Forms.Control) =
     let evt = Event<string>()
 
     let timer = new System.Timers.Timer(float interval)

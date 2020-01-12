@@ -9,6 +9,7 @@ open System.Threading.Tasks
 open System.Net
 open System.Drawing
 open FunctionalConcurrency
+open Microsoft.FSharp.Control.WebExtensions
 
 [<AutoOpen>]
 module Helpers =
@@ -161,8 +162,7 @@ module CodeSnippets =
     let cancelOperation() =
         downloadMediaCompAsyncParallel()
         |> Async.StartCancelable // #L
-
-
+                
     //Listing 9.8 Async.Ignore
     let computation() = async {
         use client = new  WebClient()

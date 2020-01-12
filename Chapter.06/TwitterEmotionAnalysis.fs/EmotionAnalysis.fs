@@ -38,6 +38,7 @@ let getEmotionMeaning value =
     | 0 | 1 -> Unhappy
     | 2 -> Indifferent
     | 3 | 4 -> Happy //#C
+    | _ -> failwith "range emtion no supported"
 
 let evaluateEmotion (text:string) =
     let annotation = Annotation(text)

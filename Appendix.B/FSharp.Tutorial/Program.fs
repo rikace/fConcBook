@@ -250,7 +250,8 @@ module Interfaces =
 
     let fred = Person("Fred", "Flintstone")
 
-    (fred :> IPerson).FullName()
+    (fred :> IPerson).FullName() 
+    |> ignore
 
 // Object expressions
 module Object_expressions =

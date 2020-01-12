@@ -1,4 +1,5 @@
-﻿namespace FunctionalConcurrency
+﻿#nowarm "40"
+namespace FunctionalConcurrency
 
 open System
 open System.IO
@@ -161,7 +162,7 @@ module rec AsyncOperators =
 
         // xsm:Async<#seq<'b>> * f:('b -> 'c) -> Async<seq<'c>>
         let asyncFor(operations: #seq<'a> Async, f:'a -> 'b) =
-            map (Seq.map map) operations
+            map (Seq.map f) operations
 
         // x2yR:('a -> Async<'b>) -> y2zR:('b -> Async<'c>) -> ('a -> Async<'c>)
         let andCompose x2yR y2zR = x2yR >=> y2zR
@@ -172,9 +173,7 @@ module AsyncBuilderEx =
     type Microsoft.FSharp.Control.AsyncBuilder with
         member x.Bind(t : Task<'T>, f : 'T -> Async<'R>) : Async<'R> = async.Bind(Async.AwaitTask t, f)
         member x.ReturnFrom(computation : Task<'T>) = x.ReturnFrom(Async.AwaitTask computation)
-        member x.Bind(t : Task, f : unit -> Async<'R>) : Async<'R> = async.Bind(Async.AwaitTask t, f)
-        member x.ReturnFrom(computation : Task) = x.ReturnFrom(Async.AwaitTask computation)
-
+        
         member this.Using(disp:#System.IDisposable, (f:Task<'T> -> Async<'R>)) : Async<'R> =
             this.TryFinally(f disp, fun () ->
                 match disp with
