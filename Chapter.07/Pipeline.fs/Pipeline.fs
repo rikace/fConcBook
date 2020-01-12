@@ -21,7 +21,7 @@ type internal Continuation<'a, 'b>(input:'a, callback:('a * 'b) -> unit) =
     member this.Input with get() = input
     member this.Callback with get() = callback  // #A
 
-type Pipeline<'a, 'b> private (func:'a -> 'b) as this =
+type Pipeline<'a, 'b> private (func:'a -> 'b) =
     let continuations = Array.init 3 (fun _ -> new BlockingCollection<Continuation<'a,'b>>(100))    // #B
 
     let then' (nextFunction:'b -> 'c) =

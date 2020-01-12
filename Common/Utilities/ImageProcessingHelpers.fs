@@ -1,4 +1,5 @@
 ﻿namespace ImageProcessing
+#nowarm "9"
 
 module ImageHelpers =
 
@@ -68,7 +69,6 @@ module ImageHelpers =
             fun (x,y,c : System.Drawing.Color) ->
                 let gscale = int((float c.R * 0.3) + (float c.G * 0.59) + (float c.B * 0.11))
                 in  x,y,Color.FromArgb(int c.A, gscale, gscale, gscale))
-
 
     // Get a Color from RGB values
     let GetColor x  = Color.FromArgb(Convert.ToInt32(int16 (NativePtr.get x 0)) , Convert.ToInt32(int16 (NativePtr.get x 1)) , Convert.ToInt32(int16 (NativePtr.get x 2)))
