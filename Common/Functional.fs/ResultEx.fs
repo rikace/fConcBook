@@ -1,5 +1,12 @@
 ﻿namespace FunctionalConcurrency
 
+[<StructuralEquality; StructuralComparison>]
+[<CompiledName("FSharpResult`2")>]
+[<Struct>]
+type Result<'T,'TError> =
+    | Ok of ResultValue:'T
+    | Error of ErrorValue:'TError
+
 type Result<'TSuccess> = Result<'TSuccess, exn>
 
 //Listing 10.12 AsyncResult handler to catch and wrap asynchronous computation

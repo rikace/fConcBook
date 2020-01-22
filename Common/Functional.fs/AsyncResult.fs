@@ -1,12 +1,14 @@
 ﻿namespace FunctionalConcurrency
 
+open System
+open System.Threading
 open System.Threading.Tasks
 
 type AsyncResult<'a> = Async<Result<'a>>
 
 module AsyncResult =
     open AsyncOperators
-    open System.Threading
+
 
     let handler (operation:Async<'a>) : AsyncResult<'a> = async {
         let! result = Async.Catch operation     // #B
@@ -74,7 +76,8 @@ type AsyncResultBuilder() =
     member this.Return m = AsyncResult.retn m
     member this.Bind (m, f:'a -> AsyncResult<'b>) = AsyncResult.bind f m
     member this.Bind (m:Task<'a>, f:'a -> AsyncResult<'b>) = AsyncResult.bind f (m |> Async.AwaitTask |> AsyncResult.handler)
-    member this.Bind (m:Task, f) = AsyncResult.bind f (m |> Async.AwaitTask |> AsyncResult.handler)
+    member this.Bind (m:Task, f:_ -> AsyncResult<_>) = AsyncResult.bind f (m |> Async.AwaitTask |> AsyncResult.handler)
+
     member this.ReturnFrom m = m
     member this.Combine (funcA:AsyncResult<'a>, funcB:AsyncResult<'a>) = async {
         let! a = funcA
