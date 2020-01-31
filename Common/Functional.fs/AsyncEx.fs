@@ -9,13 +9,17 @@ open System.Threading
 [<AutoOpen>]
 module AsyncHelpers =
 
+    let private toTaskUnit (t:Task) =
+      let continuation _ = ()
+      t.ContinueWith continuation
+
     // Listing 9.9 Extending the Asynchronous-Workflow to support Task<’a>
     type Microsoft.FSharp.Control.AsyncBuilder with
         member x.Bind(t : Task<'T>, f : 'T -> Async<'R>) : Async<'R> = async.Bind(Async.AwaitTask t, f)
-        member x.ReturnFrom(computation : Task<'T>) = x.ReturnFrom(Async.AwaitTask computation)
+        member x.ReturnFrom(computation : Task<'T>) = async.ReturnFrom(Async.AwaitTask computation)
 
-        member x.Bind(t : Task, f : unit -> Async<'R>) : Async<'R> = async.Bind(Async.AwaitTask t, f)
-        member x.ReturnFrom(computation : Task) = x.ReturnFrom(Async.AwaitTask computation)
+        member x.Bind(t : Task, f : unit -> Async<'R>) : Async<'R> = async.Bind(Async.AwaitTask (t |> toTaskUnit), f)
+        member x.ReturnFrom(computation : Task) = async.ReturnFrom(Async.AwaitTask (computation |> toTaskUnit))
 
         member this.Using(disp:#System.IDisposable, (f:Task<'T> -> Async<'R>)) : Async<'R> =
             this.TryFinally(f disp, fun () ->
