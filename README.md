@@ -1,27 +1,47 @@
-### Build Status
-
-* Windows [![Build status](https://ci.appveyor.com/api/projects/status/uq2bru4oqhixeipg?svg=true)](https://ci.appveyor.com/project/rikace/fconcbook)
-
-
-
-# Important
-## if there are problems with the build, please look into this ([issue here](https://github.com/Microsoft/visualfsharp/issues/5576))
-
-
-# Concurrency in .NET 
+# Concurrency in .NET  (.NET Core)
 ## Modern patterns of concurrent and parallel programming 
 
 This solution is complementary to the book ([Concurrency in .NET](https://www.manning.com/books/concurrency-in-dot-net)), which provides an introduction to functional concurrent programming concepts, and the skills you need in order to understand the functional aspects of writing multithreaded programs.
 Chapters 4 to 12 dive into the different concurrent programming models of the functional paradigm. These chapters explore subjects such as the Task-Parallel Library, implementing parallel patterns such as Fork/Join, divide-and-conquer and Map-Reduce.  Also discussed is declarative composition, high level abstraction in asynchronous operations, the agent programming model, and the message passing semantic.
 Then chapters 13 and 14 aim to exploit and put in practice all the functional concurrent programming techniques learned during the previous chapters. Chapter 13 contains a set of recipes to solve common parallel issues. Chapter 14 implements a full application client side (mobile iOS and windows WPF) and server side for real time stock market operations.
 
-**Important to run the examples**
+##**Important to run the examples**
 
-To runs the examples you need Visual Studio 2017 ([Download here](https://www.visualstudio.com)) and .NET Framework 4.7 ([Download here](https://www.microsoft.com/en-us/download/details.aspx?id=55170)). The examples in the code leverages the new language features that compile only with Visual Studio 2017.
+To runs the examples you need Visual Studio 2017 or higher ([Download here](https://www.visualstudio.com)) and .NET Core 3.1 or higher ([Download here](https://dotnet.microsoft.com/download)).
+To be sure you have the correct version, open a terminal and run this command:
+```dotent 
+dotnet --info
+```
+in addition, to verify the .NET Core version installed on your machine, run the following command:
+```dotent 
+dotnet --list-sdks
+```
+Ultimately, check the dotnet core version set in the solution file `global.json`
 
-**A compatible version of the code that runs on .NET Core is in progress and it will be released soon.**
+The solution uses [Paket](https://fsprojects.github.io/Paket/installation.html) as dependency manager for .NET projects. It is recommended to install the Paket tool 
+```dotnet tool install --global Paket``` to restore the packages. After have installed `Paket` tool, open a terminal and then execute at the root of the solution this command:
+```paket restore``` . You are now able to build the solution.
+For more information about look this link [Paket](https://fsprojects.github.io/Paket/installation.html) .
 
-Here description of the source code by chapter:
+
+  
+### **Note**
+
+There are some changes in this branch compared to the original that runs on full .NET Framework [Original branch link](https://github.com/rikace/fConcBook).
+- The client Desktop examples that use WPF have been converted in favor of Browser based approach
+- Some of the project use [BenchmarkDotNet](https://github.com/dotnet/BenchmarkDotNet) to measure the performance. To run the Benchmark, the project has to run in `RELEASE` mode. For example, open a terminal, and from the root of the project to perform the Benchmark run this command:
+```dotnet run -c RELEASE``` . 
+
+
+### Know issue
+- in the web based projects that run for example under the url `http://localhost:5000`, if the web page is blank, then see this references: 
+	- https://github.com/aspnet/AspNetCore/issues/4587 
+	- https://docs.microsoft.com/en-us/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.2&tabs=visual-studio#trust-the-aspnet-core-https-development-certificate-on-windows-and-macos
+- Run this command  `dotnet dev-certs https --trust`
+
+
+-
+### **Here description of the source code by chapter:**
 
 - **Chapter 1** exploit different implementation of **QuickSort** algorithm to highlight the main foundations and purposes behind concurrent programming, and the reasons for using functional programming to write multithreaded applications. The code examples are both in C# and F#.
 
@@ -62,6 +82,5 @@ This chapter includes examples for **control the degree of asynchronous parallel
 	- **TamingAndComposingAsyncOps** : agent to run asynchronous operations in parallel with a specific degree of parallelism.
 	- **Kleisli** : compose monadic types. In this example, the Kleisli operator is used to compose multiple agents in a pipeline.
 	- **ThreadSafeRandom** : concurrent random number generator.
-
-- **Chapter 14** is a full application designed and implemented using the functional concurrent patterns and techniques learned in the previous chapters. This chapter implements a highly scalable and responsive server application, and a reactive client side program. Two versions are presented, one using Xamarin Visual Studio for an iOS (iPad) based program, and one using WPF. The server side application uses a combination of different programming models, such as asynchronous, agent based and reactive to ensure maximum scalability. To run this application you can either use the WPF version of the client side or the iOS version using Xamarin for Visual Studio. For the latter, you need to have installed Xamarin for visual studio, you can follow the direction [here - link](https://developer.xamarin.com/guides/cross-platform/getting_started/installation/windows/)
-	- **Note** : the StockTicker.Core has an embedded resource for Xamarin forms, which requires to run Visual Studio in admin mode 
+	
+- **Chapter 14** is a full application designed and implemented using the functional concurrent patterns and techniques learned in the previous chapters. This chapter implements a highly scalable and responsive server application, and a reactive client side program. The application is Web server based. The server side application uses a combination of different programming models, such as asynchronous, agent based and reactive to ensure maximum scalability.
