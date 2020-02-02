@@ -7,11 +7,11 @@
 ### There is a .NET Core version of the source code that you can find in this [branch](https://github.com/rikace/fConcBook/tree/dotnet_core). 
 ### Please read the [README](https://github.com/rikace/fConcBook/blob/dotnet_core/README.md) file for details.
 
--
+-------
 
 # Important
 ### if there are problems with the build, please look into this ([issue here](https://github.com/Microsoft/visualfsharp/issues/5576))
--
+-------
 
 
 # Concurrency in .NET 
