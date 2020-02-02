@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+<TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="winequality-white.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Compile Include="KMeans.Data.fs" />
+    <Content Include="nuget-latest-versions.model" />
+    <Content Include="paket.references" />
+    <Compile Include="MapReduce.Data.fs" />
+    <Compile Include="MapReduce.PageRank.fs" />
+    <Compile Include="MapReduce.FsPSeq.fs" />
+    <Compile Include="KMeans.FsPSeq.fs" />
+    <Compile Include="Benchmark.fs" />
+    <Compile Include="Program.fs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataParallelism.Part2.CSharp\DataParallelism.Part2.CSharp.csproj" />
+  </ItemGroup>
+  <Import Project="..\..\Paket.Restore.targets" />
+</Project>

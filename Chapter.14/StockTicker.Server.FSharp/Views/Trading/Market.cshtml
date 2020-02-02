@@ -1,0 +1,468 @@
+@model StockTicker.Core.Models.User
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Market</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #333;
+            font-size: .9em;
+        }
+        
+        h1 {
+            font-size: 1.5em;
+            color: #334499;
+        }
+    </style>
+</head>
+<body>
+<section class="section">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-two-thirds">
+                <div class="columns is-vcentered">
+                    <div class="column ">
+                        <div class="subtitle is-3">Market state</div>
+                    </div>
+                    <div class="column is-half">
+                        <fieldset>
+                            <div class="field is-horizontal">
+                                <div class="field-body">
+                                    <div class="field">
+                                        <div class="control">
+                                            <div class="buttons has-addons">
+                                                <span id="close_market" name="close_market" class="button is-danger is-selected" onclick="return changeMarketState(this);">Close</span>
+                                                <span id="open_market" name="open_market" class="button" onclick="return changeMarketState(this);">Open</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+
+                <h1 class="subtitle is-3">Symbols</h1>
+                <table class="table is-narrow">
+                    <thead>
+                    <tr>
+                        <th>
+                            <abbr title="Symbol">Sym</abbr>
+                        </th>
+                        <th>Price</th>
+                        <th>DayOpen</th>
+                        <th>DayHigh</th>
+                        <th>DayLow</th>
+                        <th>LastChange</th>
+                    </tr>
+                    </thead>
+                    <tbody id="stockRows" name="stockRows">
+                    </tbody>
+                </table>
+
+                <div class="columns is-vcentered">
+                    <div class="column ">
+                        <div class="subtitle is-3">@(Model.Username)'s Portfolio</div>
+                    </div>
+                    <div class="column is-half">
+                        <div class="subtitle is-5">Cash:&nbsp;<span id="cash" name="cash"></span></div>
+                    </div>
+                </div>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>
+                            <abbr title="Symbol">Sym</abbr>
+                        </th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                    </tr>
+                    </thead>
+
+                    <tbody id="portfolioRows" name="portfolioRows">
+                    </tbody>
+                </table>
+
+                <div id="outstanding" name="outstanding">
+                    <h2 class="subtitle is-3">Outstanding orders</h2>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>
+                                <abbr title="Symbol">Symbol</abbr>
+                            </th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                        </tr>
+                        </thead>
+                        <tbody id="orderRows" name="orderRows">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="column">
+                <form class="form-horizontal" autocomplete="off" onsubmit="return placeOrder(event);">
+                    <fieldset>
+
+                        <div class="field is-horizontal">
+                            <div class="field-label">
+                                <h1 class="subtitle is-4">Order</h1>
+                            </div>
+                            <div class="field-body">
+                                <div class="field">
+                                    <div class="control">
+                                        <div class="buttons has-addons">
+                                            <span id="ordertype_buy" name="ordertype_buy" class="button is-success is-selected" onclick="return updateOrderType(this);">Buy</span>
+                                            <span id="ordertype_sell" name="ordertype_sell" class="button" onclick="return updateOrderType(this);">Sell</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label" for="order_symbol">Symbol</label>
+                            </div>
+                            <div class="field-body">
+                                <div class="field">
+                                    <div class="control">
+                                        <input id="order_symbol" name="order_symbol" type="text" placeholder="Select a symbol" class="input " required="" readonly oninput="updateOrderForm();"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label" for="order_price">Price</label>
+                            </div>
+                            <div class="field-body">
+                                <div class="field ">
+                                    <div class="control">
+                                        <input id="order_price" name="order_price" type="number" placeholder="0.00" class="input " required="" step=".01" oninput="updateOrderForm();"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label" for="order_quantity">Quantity</label>
+                            </div>
+                            <div class="field-body">
+                                <div class="field ">
+                                    <div class="control">
+                                        <input id="order_quantity" name="order_quantity" type="number" placeholder="100" class="input " required="" oninput="updateOrderForm();">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field is-horizontal">
+                            <div class="field-label">
+                                <!-- Left empty for spacing -->
+                            </div>
+                            <div class="field-body">
+                                <div class="field">
+                                    <div class="control">
+                                        <button id="order_submit" name="order_submit" class="button is-primary">Place order</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>
+
+<script src="~/lib/signalr/signalr.js"></script>
+
+<script>
+  var socket;
+  var stockMarket = {};
+  var portfolio = {};
+  var orders = {};
+  var cash = @Model.Initialcash;
+  var user = '@Model.Username';
+  var connectionId;
+  
+  const connection = new signalR.HubConnectionBuilder()
+    .withUrl("/stockticker")
+    .configureLogging(signalR.LogLevel.Information)
+    .build();
+
+  async function start() {
+    try {        
+        await connection.start().then(function() {
+            console.log('INFO: SignalR opened successfully');
+            connectionId = connection.connectionId;
+            
+            // We could merge these calls in one. But for demo purpose is fin    
+            connection.invoke("Subscribe", user, cash).catch(err => console.error(err));
+            connection.invoke("GetAllStocks").catch(err => console.error(err));
+        });        
+    } catch (err) {
+        setTimeout(() => start(), 5000);
+    }
+  };  
+
+  connection.onclose(async () => {
+    console.log('INFO: SignalR closed');
+    await start();
+  });  
+    
+  connection.on("setInitialAsset", cash => {    
+    document.getElementById("cash").getElementById = cash;
+    cashMarker.textContent = "$" + cash.toFixed(2);
+    orders = {};
+    renderOrders();
+    portfolio = {};
+    renderPortfolio();    
+  });  
+
+  connection.on("setStocks", stocks => {    
+    stocks.forEach(function(stock, index, arr) {      
+      stockMarket[stock.symbol] = stock;
+    });
+    renderStockMarket();    
+  });  
+  
+
+  connection.on("updateOrderBuy", order => {
+    orders[order.orderId] = order;
+    renderOrders();
+  });      
+
+  connection.on("updateOrderSell", order => {      
+    orders[order.orderId] = order;     
+    renderOrders();
+  });
+  
+  connection.on("updateStockPrice", stock => {      
+    stockMarket[stock.symbol] = stock;
+    renderStockMarket();
+    
+    if (stock.symbol in portfolio) {        
+        portfolio[stock.symbol].price = stock.price;
+        renderPortfolio();
+    }
+  });    
+  
+  connection.on("updateAsset", asset => {      
+      cash = asset.cash;
+      cashMarker.textContent = "$" + cash.toFixed(2);
+      
+      portfolio = {};
+      for(var item in asset.portfolio) {
+          portfolio[asset.portfolio[item].symbol] = asset.portfolio[item];
+      }
+      renderPortfolio();
+      
+      var tempOrders = {};      
+      if(asset.buyOrders && Object.keys(asset.buyOrders).length > 0) {
+          for(var orderBuy in asset.buyOrders) {              
+              for(var symbolOrder in asset.buyOrders[orderBuy]) {
+                    tempOrders[asset.buyOrders[orderBuy][symbolOrder].orderId] = asset.buyOrders[orderBuy][symbolOrder];
+              }                   
+          }
+      }      
+      if(asset.sellOrders && Object.keys(asset.sellOrders).length > 0) {
+          for(var orderSell in asset.sellOrders) {              
+              for(var symbolOrder in asset.sellOrders[orderSell]) {
+                    tempOrders[asset.sellOrders[orderSell][symbolOrder].orderId] = asset.sellOrders[orderSell][symbolOrder];
+              }                   
+          }
+      }
+      if(tempOrders && Object.keys(tempOrders).length > 0) {          
+          orders = tempOrders;
+          renderOrders();    
+      }
+  });   
+  
+  start();
+
+  function setValue(el, v) {
+    el.value = v;
+    el.oninput();
+  }
+
+  var stockRows = document.getElementById('stockRows');
+  var portfolioRows = document.getElementById('portfolioRows');
+  var orderRows = document.getElementById('orderRows');
+  var orderSymbol = document.getElementById('order_symbol');
+  var orderPrice = document.getElementById('order_price');
+  var orderQuantity = document.getElementById('order_quantity');
+  var orderSubmit = document.getElementById('order_submit');
+  var orderSellButton = document.getElementById('ordertype_sell');
+  var orderBuyButton = document.getElementById('ordertype_buy');  
+  var openMarketState = document.getElementById('open_market');
+  var closeMarketState = document.getElementById('close_market');  
+  var cashMarker = document.getElementById('cash');
+  cashMarker.textContent = "$" + cash.toFixed(2);
+
+  function renderStockMarket() {
+     var sorted = [];
+     for(var key in stockMarket) {
+       sorted[sorted.length] = key;
+     }
+     sorted.sort();
+     stockRows.style.visibility = "hidden";
+     clearChildren(stockRows);
+     for(var symbol in sorted) {
+       var stock = stockMarket[sorted[symbol]];
+       var stockColor = stock.price > stock.dayOpen ? "has-text-success" : stock.price < stock.dayOpen ? "has-text-danger" : "";
+       var changeColor = stock.lastChange > 0 ? "has-text-success" : stock.lastChange < 0 ? "has-text-danger" : "";
+       var html = `<tr>
+          <th><a href="#" onclick="return selectSymbol(this.text, event);">${stock.symbol}</a></th>
+          <td class="has-text-right ${stockColor}">${stock.price.toFixed(2)}</td>          
+          <td class="has-text-right">${stock.dayOpen.toFixed(2)}</td>
+          <td class="has-text-right">${stock.dayHigh.toFixed(2)}</td>
+          <td class="has-text-right">${stock.dayLow.toFixed(2)}</td>
+          <td class="has-text-right ${changeColor}">${stock.lastChange.toFixed(2)}</td>
+        </tr>`;  
+        stockRows.insertAdjacentHTML( 'beforeend', html );  
+     }
+     stockRows.style.visibility = "";
+  }
+
+  function renderPortfolio() {
+     var sorted = [];
+     for(var key in portfolio) {
+       sorted[sorted.length] = key;
+     }
+     sorted.sort();
+     portfolioRows.style.visibility = "hidden";
+     clearChildren(portfolioRows);
+     
+     for(var symbol in sorted) {
+       var stock = portfolio[sorted[symbol]];
+     
+       var html = `<tr>
+          <td><a href="#" onclick="return selectSymbol(this.text, event);">${stock.symbol}</a></td>
+          <td class="has-text-right">${stock.price.toFixed(2)}</td>
+          <td class="has-text-right" >${stock.quantity}</td>
+          <td class="has-text-right" >${(stock.price * stock.quantity).toFixed(2)}</td>
+        </tr>`;  
+        portfolioRows.insertAdjacentHTML( 'beforeend', html );  
+     }
+     portfolioRows.style.visibility = "";    
+  }
+
+  function renderOrders() {
+     var sorted = [];
+     for(var key in orders) {
+       sorted[sorted.length] = key;
+     }
+     sorted.sort();
+     orderRows.style.visibility = "hidden";
+     clearChildren(orderRows);
+     for(var idx in sorted) {
+       var order = orders[sorted[idx]];
+       
+       var orderTypeString = order.tradingType == "buy" ? "<td class='has-text-success'>Buy</td>" : "<td class='has-text-danger'>Sell</td>";       
+       var html = `<tr>
+            ${orderTypeString}
+            <td><a href="#" onclick="return selectSymbol(this.text, event);">${order.symbol}</a></td>
+            <td class="has-text-right">${order.price.toFixed(2)}</td>
+            <td class="has-text-right">${order.quantity}</td>
+            <td class="has-text-right">${(order.price * order.quantity).toFixed(2)}</td>
+          </tr>`;  
+        orderRows.insertAdjacentHTML( 'beforeend', html );  
+     }
+     orderRows.style.visibility = "";
+  }  
+  function clearChildren(el) {
+    while (el.firstChild) {
+      el.removeChild(el.firstChild);
+    }
+  }
+
+  function selectSymbol(symbol, e) {
+    e.preventDefault();
+    setValue(orderSymbol, symbol);
+    orderPrice.focus();
+    
+    return false;
+  }
+
+  function placeOrder(e) {
+    e.preventDefault();
+    var order = {
+      connId: connectionId,  
+      userId: '@Model.UserId',
+      symbol: orderSymbol.value,
+      quantity: parseInt(orderQuantity.value, 10),
+      tradingType: orderBuyButton.classList.contains('is-selected') ? 'buy' : 'sell',     
+      price: parseFloat(orderPrice.value).toFixed(2)
+    };
+    
+    postData('/trading/placeorder', order).catch(error => console.error(error));   
+    return false;
+  }
+
+function updateOrderForm() {
+    orderSubmit.toggleAttribute('disabled', 
+       orderSymbol.value == '' ||
+       orderPrice.value == '' ||
+       orderQuantity.value == '');
+}
+
+function updateOrderType(e) {
+    var isBuy = e == orderBuyButton;
+    orderBuyButton.classList.toggle('is-success', isBuy);
+    orderBuyButton.classList.toggle('is-selected', isBuy);
+    orderSellButton.classList.toggle('is-danger', !isBuy);
+    orderSellButton.classList.toggle('is-selected', !isBuy);
+}
+
+function setMarketState(isClose) {
+    openMarketState.classList.toggle('is-success', !isClose);
+    openMarketState.classList.toggle('is-selected', !isClose);    
+    closeMarketState.classList.toggle('is-danger', isClose);
+    closeMarketState.classList.toggle('is-selected', isClose);
+      
+    if(isClose) {        
+        connection.invoke("closeMarket").catch(err => console.error(err));
+    } else {
+        connection.invoke("openMarket").catch(err => console.error(err));        
+    }
+}
+
+function changeMarketState(e) {
+    var isClose = e === closeMarketState;
+    setMarketState(isClose);
+}
+function postData(url = '', data = {}) {
+    return fetch(url, {
+        method: 'POST', // *GET, POST, PUT, DELETE, etc.
+        mode: 'cors', // no-cors, cors, *same-origin
+        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+        credentials: 'same-origin', // include, *same-origin, omit
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        redirect: 'follow', // manual, *follow, error
+        referrer: 'no-referrer', // no-referrer, *client
+        body: JSON.stringify(data), // body data type must match "Content-Type" header
+    }).then(_ => {
+            orderSymbol.value = '';
+            orderPrice.value = '';
+            orderQuantity.value = '';
+            updateOrderForm();     
+        }); // parses JSON response into native JavaScript objects 
+}
+
+updateOrderForm();
+
+</script>

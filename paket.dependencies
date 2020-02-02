@@ -1,0 +1,58 @@
+storage: none
+source https://api.nuget.org/v3/index.json
+framework: netcoreapp3.1
+
+nuget FSharp.Core
+nuget FSharp.Collections.ParallelSeq
+nuget WindowsAzure.Storage
+nuget System.Collections.Immutable
+nuget System.Threading.Tasks.Dataflow
+nuget System.Reactive
+nuget System.Reactive.Core
+nuget System.Reactive.Linq
+nuget System.Reactive.Interfaces
+nuget System.Reactive.PlatformServices
+nuget SixLabors.ImageSharp > 1.0.0-beta0006
+nuget SixLabors.ImageSharp.Drawing > 1.0.0-beta0006
+nuget BenchmarkDotNet
+nuget XPlot.GoogleCharts
+nuget System.Data.Common 
+nuget System.Data.SqlClient
+nuget System.Configuration.ConfigurationManager
+nuget Microsoft.ML
+nuget FSharp.Data
+nuget FsPickler
+nuget FsPickler.Json
+nuget Paket.Core
+nuget TweetinviAPI
+nuget Microsoft.ML
+nuget DlibDotNet
+nuget FSharpx.Collections
+nuget WindowsAzure.Storage
+nuget Microsoft.AspNetCore.SignalR    
+    
+group Gameoflife
+    source https://api.nuget.org/v3/index.json
+    framework: netcoreapp3.1
+        
+    nuget Giraffe
+    nuget TaskBuilder.fs
+    nuget Microsoft.AspNetCore.Http
+    nuget Microsoft.AspNetCore.WebSockets
+
+group CSharpWebServer
+    source https://api.nuget.org/v3/index.json
+    framework: netcoreapp3.1
+
+    nuget Microsoft.AspNetCore.App
+    nuget Microsoft.NETCore.App
+    nuget Microsoft.AspNetCore.Mvc
+    nuget Microsoft.AspNetCore.SignalR    
+    
+    
+group FSharpWebServer
+    source https://api.nuget.org/v3/index.json
+    framework: netcoreapp3.1
+
+    nuget Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation 3.1.0
+    nuget Microsoft.AspNetCore.SignalR    

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+<TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="OptionEx.fs" />
+    <Compile Include="AsyncEx.fs" />
+    <Compile Include="ResultEx.fs" />
+    <Compile Include="Memoization.fs" />
+    <Compile Include="AsyncResult.fs" />
+    <Compile Include="TaskEx.fs" />
+    <Compile Include="EventEx.fs" />
+    <Compile Include="Partitioner.fs" />
+    <Compile Include="InfrastructureTask.fs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="paket.references" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Utilities\Utilities.fsproj" />
+  </ItemGroup>
+  <Import Project="..\..\Paket.Restore.targets" />
+</Project>

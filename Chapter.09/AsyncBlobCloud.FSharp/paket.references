@@ -1,0 +1,4 @@
+FSharp.Core
+SixLabors.ImageSharp
+WindowsAzure.Storage
+BenchmarkDotNet

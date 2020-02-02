@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>QuickSort.BenchmarkQuickSort-20191015-120445</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet=v0.11.5, OS=macOS 10.15 (19A583) [Darwin 19.0.0]
+Intel Core i9-8950HK CPU 2.90GHz (Coffee Lake), 1 CPU, 12 logical and 6 physical cores
+.NET Core SDK=3.0.100
+  [Host] : .NET Core 2.2.7 (CoreCLR 4.6.28008.02, CoreFX 4.6.28008.03), 64bit RyuJIT
+  Core   : .NET Core 2.2.7 (CoreCLR 4.6.28008.02, CoreFX 4.6.28008.03), 64bit RyuJIT
+</code></pre>
+<pre><code>Job=Core  Runtime=Core  
+</code></pre>
+
+<table>
+<thead><tr><th> Method</th><th>N</th><th> Mean</th><th>Error</th><th>StdDev</th><th>Ratio</th><th>Rank</th><th>Gen 0</th><th>Gen 1</th><th>Gen 2</th><th>Allocated</th>
+</tr>
+</thead><tbody><tr><td>Sequential</td><td>1000</td><td>12.70 us</td><td>0.2473 us</td><td>0.3625 us</td><td>1.00</td><td>1</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>Parallel</td><td>1000</td><td>131.52 us</td><td>1.7309 us</td><td>1.6190 us</td><td>1.00</td><td>1</td><td>31.2500</td><td>1.2207</td><td>-</td><td>461 B</td>
+</tr><tr><td>ParallelDepth</td><td>1000</td><td>32.16 us</td><td>0.6371 us</td><td>1.4380 us</td><td>1.00</td><td>1</td><td>7.7515</td><td>0.0610</td><td>-</td><td>4690 B</td>
+</tr><tr><td>Sequential</td><td>10000</td><td>165.02 us</td><td>3.2971 us</td><td>7.0265 us</td><td>1.00</td><td>1</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>Parallel</td><td>10000</td><td>1,222.25 us</td><td>24.0429 us</td><td>33.7048 us</td><td>1.00</td><td>1</td><td>355.4688</td><td>25.3906</td><td>-</td><td>480 B</td>
+</tr><tr><td>ParallelDepth</td><td>10000</td><td>152.83 us</td><td>2.9895 us</td><td>3.7808 us</td><td>1.00</td><td>1</td><td>76.9043</td><td>1.4648</td><td>-</td><td>31715 B</td>
+</tr></tbody></table>
+</body>
+</html>

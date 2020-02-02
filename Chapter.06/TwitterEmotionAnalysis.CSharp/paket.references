@@ -1,0 +1,7 @@
+FSharp.Core
+System.Reactive
+System.Reactive.Core
+System.Reactive.Linq
+System.Reactive.Interfaces
+System.Configuration.ConfigurationManager
+TweetinviAPI

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+<TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Update="google-10000-english\google-10000-english.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="google-10000-english\LICENSE.md">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>    
+    <ProjectReference Include="..\..\Common\BenchmarkUtils\BenchmarkUtils.fsproj" />
+    <ProjectReference Include="..\..\Common\Utilities\Utilities.fsproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="paket.references" />
+  </ItemGroup>
+  <Import Project="..\..\Paket.Restore.targets" />
+</Project>

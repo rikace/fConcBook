@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <LangVersion>7</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningsAsErrors />
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Appendix.C\Appendix.C.fsproj" />
+    <ProjectReference Include="..\..\Chapter.06\TwitterEmotionAnalysis.CSharp\TwitterEmotionAnalysis.CSharp.csproj" />
+    <ProjectReference Include="..\..\Chapter.12\ReactiveAgent.CSharp\ReactiveAgent.CSharp.csproj" />
+    <ProjectReference Include="..\StockTicker.Core\StockTicker.Core.fsproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="paket.references" />
+  </ItemGroup>
+  <Import Project="..\..\Paket.Restore.targets" />
+</Project>

@@ -1,0 +1,9 @@
+FSharp.Core
+BenchmarkDotNet
+FSharp.Data
+FsPickler
+FsPickler.Json
+Paket.Core
+FSharp.Collections.ParallelSeq
+XPlot.GoogleCharts
+Microsoft.ML

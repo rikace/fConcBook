@@ -1,11 +1,11 @@
-﻿namespace StockTicker.Core
+namespace StockTicker.Core
+
+open System.Threading.Tasks
 
 // interface StockTickerHub SignalR
 type IStockTickerHubClient =
-    abstract SetMarketState : string -> unit
-    abstract UpdateStockPrice : Stock -> unit
-    abstract SetStock : Stock -> unit
-    abstract UpdateOrderBuy : OrderRecord -> unit
-    abstract UpdateOrderSell : OrderRecord -> unit
-    abstract UpdateAsset : Asset -> unit
-    abstract SetInitialAsset : float -> unit
+    abstract GetMarketState : unit -> Task<string>
+    abstract OpenMarket : unit -> unit
+    abstract CloseMarket : unit -> unit    
+    abstract GetAllStocks : unit -> Task
+    abstract Subscribe : string * decimal -> Task

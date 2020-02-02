@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Core/TradingAgent.fs" />
+    <Compile Include="Core/TradingCoordinator.fs" />
+    <Compile Include="Core/StockTickerHub.fs" />
+    <Compile Include="Bus/PublishWithRetry.fs" />
+    <Compile Include="Bus/CommandHandler.fs" />
+    <Compile Include="Controllers/TradingController.fs" />
+    <Compile Include="Controllers/PredictionController.fs" />
+    <Compile Include="Models/ErrorViewModel.fs" />
+    <Compile Include="Startup.fs" />
+    <Compile Include="Program.fs" />
+    <Content Include="paket.references" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Chapter.06\TwitterEmotionAnalysis.CSharp\TwitterEmotionAnalysis.CSharp.csproj" />
+    <ProjectReference Include="..\StockTicker.Core\StockTicker.Core.fsproj" />
+  </ItemGroup>
+  <Import Project="..\..\Paket.Restore.targets" />
+</Project>

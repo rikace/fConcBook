@@ -1,0 +1,17 @@
+FSharp.Core
+
+FSharp.Collections.ParallelSeq
+System.Reactive 
+System.Reactive.Core 
+System.Reactive.Interfaces 
+System.Reactive.Linq
+System.Reactive.PlatformServices 
+
+
+group CSharpWebServer
+    Microsoft.NETCore.App
+    Microsoft.AspNetCore.Http
+    Microsoft.AspNetCore.WebSockets
+    Microsoft.AspNetCore.SignalR
+
+

@@ -1,18 +1,7 @@
-﻿module Demo
+﻿namespace Utilities
 
-open System
-open PerfUtil
+module Demo =
 
-[<CompiledNameAttribute("PrintSeparator")>]
-let printSeparator () =
-    printfn "--------------------------------------------\n"
-
-let benchmark name func =
-    printfn "%s" name
-    let perfResult = Benchmark.Run func
-    printfn "PerfResult:\n\tElapsed=%A;\n\tCpuTime=%A;\n\tGcDelta=%A\n"
-        perfResult.Elapsed perfResult.CpuTime perfResult.GcDelta
-
-let Benchmark name (func:Action) =
-    (fun () -> func.Invoke())
-    |> benchmark name
+    [<CompiledNameAttribute("PrintSeparator")>]
+    let printSeparator () =
+        printfn "--------------------------------------------\n"

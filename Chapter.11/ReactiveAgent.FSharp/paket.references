@@ -1,0 +1,11 @@
+FSharp.Core
+System.Collections.Immutable
+System.Reactive
+System.Reactive.Core
+System.Reactive.Interfaces
+System.Reactive.Linq
+System.Reactive.PlatformServices
+System.Data.Common 
+System.Data.SqlClient
+System.Configuration.ConfigurationManager
+BenchmarkDotNet

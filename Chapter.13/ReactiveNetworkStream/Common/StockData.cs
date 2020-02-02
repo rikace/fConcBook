@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace Common
 {
@@ -17,10 +17,10 @@ namespace Common
 
         public string Symbol { get; }
         public DateTime Date { get; set; }
-        public Double Open { get; }
-        public Double High { get; }
-        public Double Low { get; }
-        public Double Close { get; }
+        public double Open { get; }
+        public double High { get; }
+        public double Low { get; }
+        public double Close { get; }
 
         public static StockData Parse(string symbol, string row)
         {
@@ -28,7 +28,7 @@ namespace Common
                 return null;
 
             var cells = row.Split(',');
-            if (!DateTime.TryParse(cells[0], out DateTime date))
+            if (!DateTime.TryParse(cells[0], out var date))
                 return null;
 
             var open = ParseDouble(cells[1]);
@@ -38,6 +38,9 @@ namespace Common
             return new StockData(symbol, date, open, high, low, close);
         }
 
-        private static double ParseDouble(string s) => double.TryParse(s, out double x) ? x : -1;
+        private static double ParseDouble(string s)
+        {
+            return double.TryParse(s, out var x) ? x : -1;
+        }
     }
 }

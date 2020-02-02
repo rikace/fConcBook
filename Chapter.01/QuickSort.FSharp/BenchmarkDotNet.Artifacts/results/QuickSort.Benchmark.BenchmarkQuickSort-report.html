@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>QuickSort.Benchmark.BenchmarkQuickSort-20191014-112202</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet=v0.11.5, OS=macOS 10.15 (19A583) [Darwin 19.0.0]
+Intel Core i9-8950HK CPU 2.90GHz (Coffee Lake), 1 CPU, 12 logical and 6 physical cores
+.NET Core SDK=3.0.100
+  [Host] : .NET Core 2.2.7 (CoreCLR 4.6.28008.02, CoreFX 4.6.28008.03), 64bit RyuJIT DEBUG
+  Core   : .NET Core 2.2.7 (CoreCLR 4.6.28008.02, CoreFX 4.6.28008.03), 64bit RyuJIT
+</code></pre>
+<pre><code>Job=Core  Runtime=Core  
+</code></pre>
+
+<table>
+<thead><tr><th> Method</th><th>N</th><th> Mean</th><th>Error</th><th>StdDev</th><th>Ratio</th><th>Rank</th><th>Gen 0</th><th>Gen 1</th><th>Gen 2</th><th>Allocated</th>
+</tr>
+</thead><tbody><tr><td>Sequential</td><td>1000</td><td>606.2 us</td><td>7.576 us</td><td>6.716 us</td><td>1.00</td><td>1</td><td>190.4297</td><td>31.2500</td><td>-</td><td>1173.19 KB</td>
+</tr><tr><td>Parallel</td><td>1000</td><td>828.9 us</td><td>8.801 us</td><td>7.802 us</td><td>1.00</td><td>1</td><td>245.1172</td><td>0.9766</td><td>-</td><td>135.85 KB</td>
+</tr><tr><td>ParallelDepth</td><td>1000</td><td>840.5 us</td><td>19.335 us</td><td>25.811 us</td><td>1.00</td><td>1</td><td>226.5625</td><td>2.9297</td><td>-</td><td>132.49 KB</td>
+</tr><tr><td>Sequential</td><td>10000</td><td>10,788.2 us</td><td>213.043 us</td><td>199.280 us</td><td>1.00</td><td>1</td><td>2484.3750</td><td>484.3750</td><td>218.7500</td><td>15281.95 KB</td>
+</tr><tr><td>Parallel</td><td>10000</td><td>23,149.9 us</td><td>668.016 us</td><td>1,927.379 us</td><td>1.00</td><td>1</td><td>3281.2500</td><td>781.2500</td><td>343.7500</td><td>1154.45 KB</td>
+</tr><tr><td>ParallelDepth</td><td>10000</td><td>19,820.5 us</td><td>389.515 us</td><td>721.990 us</td><td>1.00</td><td>1</td><td>3000.0000</td><td>687.5000</td><td>250.0000</td><td>1256.98 KB</td>
+</tr></tbody></table>
+</body>
+</html>

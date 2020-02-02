@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="columns">
+    <div class="column">
+        <form class="form-horizontal" action="trading/logportfolio" method="post">
+            <fieldset>
+
+                <!-- Form Name -->
+                <legend>User registration</legend>
+
+                <!-- Text input-->
+                <div class="field">
+                    <label class="label" for="username">User name</label>
+                    <div class="control">
+                        <input id="username" name="username" type="text" placeholder="user name" class="input " required="">
+                        <!-- <p class="help">A unique username</p> -->
+                    </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="field">
+                    <label class="label" for="initialcash">Initial cash</label>
+                    <div class="control">
+                        <input id="initialcash" name="initialcash" type="text" placeholder="$$$" class="input " required="" value="1000">
+                    </div>
+                </div>
+
+                <!-- Button -->
+                <div class="field">
+                    <label class="label" for="submit"></label>
+                    <div class="control">
+                        <button id="submit" name="submit" class="button is-primary">Get started</button>
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+
+    </div>
+    <div class="column"></div>
+</div>

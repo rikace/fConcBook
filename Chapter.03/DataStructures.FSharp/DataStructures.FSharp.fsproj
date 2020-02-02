@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+<TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Atom.fs" />
+    <Compile Include="FList.fs" />
+    <Compile Include="LazyList.fs" />
+    <Compile Include="BTree.fs" />
+    <Compile Include="ParallelDownloadImages.fs" />
+    <Compile Include="WeakMemoization.fs" />
+    <Compile Include="TCO_CPS.fs" />
+    <Compile Include="ParallelCalculator.fs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="paket.references" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Chapter.02\FunctionalTechniques.CSharp\FunctionalTechniques.CSharp.csproj" />
+  </ItemGroup>
+  <Import Project="..\..\Paket.Restore.targets" />
+</Project>

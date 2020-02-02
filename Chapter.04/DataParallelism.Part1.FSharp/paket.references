@@ -1,0 +1,4 @@
+FSharp.Core
+FSharp.Collections.ParallelSeq
+SixLabors.ImageSharp
+BenchmarkDotNet

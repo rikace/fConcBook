@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+using System;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Common
 {
@@ -22,8 +19,11 @@ namespace Common
         }
 
         public static T Deserialize<T>(IFormatter formatter, ArraySegment<byte> data) where T : class
-        {   using (var ms = new MemoryStream(data.Array, data.Offset, data.Count))
+        {
+            using (var ms = new MemoryStream(data.Array, data.Offset, data.Count))
+            {
                 return formatter.Deserialize(ms) as T;
+            }
         }
     }
 }

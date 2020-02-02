@@ -1,4 +1,4 @@
-﻿namespace FuzzyMatch
+﻿namespace Utilities
 
 [<CompilationRepresentation(CompilationRepresentationFlags.ModuleSuffix); RequireQualifiedAccess>]
 module JaroWinkler =

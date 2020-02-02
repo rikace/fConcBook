@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net.Security;
 using System.Net.Sockets;
 using System.Security.Authentication;
 using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Common
 {
@@ -20,7 +15,7 @@ namespace Common
 
             X509Certificate getSslCertificate()
             {
-                using (X509Store store = new X509Store(StoreName.My, StoreLocation.LocalMachine))
+                using (var store = new X509Store(StoreName.My, StoreLocation.LocalMachine))
                 {
                     store.Open(OpenFlags.ReadOnly);
                     X509CertificateCollection certificate =
@@ -29,7 +24,7 @@ namespace Common
                 }
             }
 
-            SslStream sslStream = new SslStream(client.GetStream());
+            var sslStream = new SslStream(client.GetStream());
             sslStream.AuthenticateAsServer(getSslCertificate(), false, SslProtocols.Default, true);
             return sslStream;
         }
@@ -39,9 +34,8 @@ namespace Common
             if (string.IsNullOrWhiteSpace(nameSsl))
                 return client.GetStream();
 
-            SslStream sslStream = new SslStream(client.GetStream(), false,
-                new RemoteCertificateValidationCallback(
-                    CertificateValidationCallback));
+            var sslStream = new SslStream(client.GetStream(), false,
+                CertificateValidationCallback);
             sslStream.AuthenticateAsClient(nameSsl);
 
             return sslStream;
@@ -50,6 +44,9 @@ namespace Common
         private static bool CertificateValidationCallback(object sender,
             X509Certificate certificate,
             X509Chain chain,
-            SslPolicyErrors sslPolicyErrors) => sslPolicyErrors == SslPolicyErrors.None;
+            SslPolicyErrors sslPolicyErrors)
+        {
+            return sslPolicyErrors == SslPolicyErrors.None;
+        }
     }
 }

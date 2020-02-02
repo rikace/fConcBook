@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System;
 using System.Net;
 using System.Net.Sockets;
-using System.Reactive.Concurrency;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace Common
@@ -31,8 +26,10 @@ namespace Common
                         //route the client to the observer
                         //into an asynchronous task to let multiple clients connect altogether
 
-                        await Task.Factory.StartNew(_ => observer.OnNext(client), token, TaskCreationOptions.LongRunning); // #E
+                        await Task.Factory.StartNew(_ => observer.OnNext(client), token,
+                            TaskCreationOptions.LongRunning); // #E
                     }
+
                     observer.OnCompleted();
                 }
                 catch (OperationCanceledException)
@@ -47,6 +44,7 @@ namespace Common
                 {
                     listener.Stop();
                 }
+
                 return Disposable.Create(() => // #G
                 {
                     listener.Stop();
@@ -71,6 +69,7 @@ namespace Common
                 {
                     observer.OnError(error);
                 }
+
                 return Disposable.Create(() => client.Dispose());
             });
         }

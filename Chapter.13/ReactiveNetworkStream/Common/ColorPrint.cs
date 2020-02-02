@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System;
 
 namespace Common
 {
     public class ColorPrint : IDisposable
     {
-        private ConsoleColor old;
+        private readonly ConsoleColor old;
 
         public ColorPrint(ConsoleColor color)
         {
@@ -42,10 +38,12 @@ namespace Common
 
         public static void PrintStockInfo(StockData stock)
         {
-            ConsoleColor symbolColor = GetColorForSymbol(stock.Symbol.Substring(0, stock.Symbol.IndexOf('.')));
+            var symbolColor = GetColorForSymbol(stock.Symbol.Substring(0, stock.Symbol.IndexOf('.')));
             using (new ColorPrint(symbolColor))
+            {
                 Console.WriteLine(
                     $"{stock.Symbol} - Date {stock.Date.ToShortDateString()} - High Price {stock.High}");
+            }
         }
     }
 }

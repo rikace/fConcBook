@@ -1,10 +1,9 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reactive.Linq;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace Common
 {
@@ -20,22 +19,23 @@ namespace Common
                     {
                         var startData = new DateTime(2001, 1, 1);
                         return Observable
-                                .Interval(TimeSpan.FromMilliseconds(delay))
-                                .Zip(fsStock.ObserveLines(), (tick, stock) =>
-                                {
-                                    stock.Date = startData + TimeSpan.FromDays(tick);
-                                    return stock;
-                                });
+                            .Interval(TimeSpan.FromMilliseconds(delay))
+                            .Zip(fsStock.ObserveLines(), (tick, stock) =>
+                            {
+                                stock.Date = startData + TimeSpan.FromDays(tick);
+                                return stock;
+                            });
                     }
                 )
                 .Aggregate((o1, o2) => o1.Merge(o2));
         }
 
         // Listing 13.13 Observable Stream Reader
-        public static IObservable<ArraySegment<byte>> ReadObservable(this Stream stream, int bufferSize, CancellationToken token = default(CancellationToken))
+        public static IObservable<ArraySegment<byte>> ReadObservable(this Stream stream, int bufferSize,
+            CancellationToken token = default)
         {
             var buffer = new byte[bufferSize];
-            var asyncRead = Observable.FromAsync<int>(async ct => // #A
+            var asyncRead = Observable.FromAsync(async ct => // #A
             {
                 await stream.ReadAsync(buffer, 0, sizeof(int), ct);
                 var size = BitConverter.ToInt32(buffer, 0);
@@ -55,7 +55,7 @@ namespace Common
                                 : Observable.Empty<int>())
 
                         // When BeginRead() or EndRead() causes an exception
-                        .Catch((Func<Exception, IObservable<int>>)(ex => Observable.Empty<int>())) // #D
+                        .Catch((Func<Exception, IObservable<int>>) (ex => Observable.Empty<int>())) // #D
                         .TakeWhile(returnBuffer => returnBuffer > 0)
                         .Select(readBytes => new ArraySegment<byte>(buffer, 0, readBytes)))
                 .Finally(stream.Dispose);

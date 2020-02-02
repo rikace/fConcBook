@@ -1,0 +1,4 @@
+FSharp.Core
+SixLabors.ImageSharp
+System.Data.Common 
+System.Data.SqlClient
