@@ -1,9 +1,4 @@
-### Build Status
-
-* Windows [![Build status](https://ci.appveyor.com/api/projects/status/uq2bru4oqhixeipg?svg=true)](https://ci.appveyor.com/project/rikace/fconcbook)
-
-
-# .NET Core version
+# .NET Core version 
 ### There is a .NET Core version of the source code that you can find in this [branch](https://github.com/rikace/fConcBook/tree/dotnet_core). 
 ### Please read the [README](https://github.com/rikace/fConcBook/blob/dotnet_core/README.md) file for details.
 
