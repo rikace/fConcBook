@@ -5,7 +5,7 @@ This solution is complementary to the book ([Concurrency in .NET](https://www.ma
 Chapters 4 to 12 dive into the different concurrent programming models of the functional paradigm. These chapters explore subjects such as the Task-Parallel Library, implementing parallel patterns such as Fork/Join, divide-and-conquer and Map-Reduce.  Also discussed is declarative composition, high level abstraction in asynchronous operations, the agent programming model, and the message passing semantic.
 Then chapters 13 and 14 aim to exploit and put in practice all the functional concurrent programming techniques learned during the previous chapters. Chapter 13 contains a set of recipes to solve common parallel issues. Chapter 14 implements a full application client side (mobile iOS and windows WPF) and server side for real time stock market operations.
 
-##**Important to run the examples**
+## **Important to run the examples**
 
 To runs the examples you need Visual Studio 2017 or higher ([Download here](https://www.visualstudio.com)) and .NET Core 3.1 or higher ([Download here](https://dotnet.microsoft.com/download)).
 To be sure you have the correct version, open a terminal and run this command:
@@ -39,8 +39,6 @@ There are some changes in this branch compared to the original that runs on full
 	- https://docs.microsoft.com/en-us/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.2&tabs=visual-studio#trust-the-aspnet-core-https-development-certificate-on-windows-and-macos
 - Run this command  `dotnet dev-certs https --trust`
 
-
--
 ### **Here description of the source code by chapter:**
 
 - **Chapter 1** exploit different implementation of **QuickSort** algorithm to highlight the main foundations and purposes behind concurrent programming, and the reasons for using functional programming to write multithreaded applications. The code examples are both in C# and F#.
