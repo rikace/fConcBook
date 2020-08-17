@@ -32,7 +32,7 @@ Then chapters 13 and 14 aim to exploit and put in practice all the functional co
 
 - **Chapter 4** covers the basics of processing a large amount of data in parallel, including patterns such as Fork/Join. The code example in this chapter include **parallel sum of Array, parallel (and memory optimized) Mandelbrot, parallel calculation of prime number and mode.** The code examples are both in C# and F#.
 
-- **Chapter 5** introduces more advanced techniques for parallel processing massive data, such as aggregating and reducing data in parallel and implementing a parallel Map-Reduce pattern. The code example in this chapter include ** parallel K-Menas, different implementations of parallel Map-Reduce and parallel Reducer.** The code examples are both in C# and F#.
+- **Chapter 5** introduces more advanced techniques for parallel processing massive data, such as aggregating and reducing data in parallel and implementing a parallel Map-Reduce pattern. The code example in this chapter include ** parallel K-Means, different implementations of parallel Map-Reduce and parallel Reducer.** The code examples are both in C# and F#.
 	
 - **Chapter 6** provides details of the functional techniques to process real-time stream of events (data), leveraging functional higher order operators, with .NET Reactive Extensions, to compose asynchronous event combinators. The techniques learned are used to implement a concurrent friendly and reactive publisher-subscriber pattern. This chapter includes examples for **real time Twitter - stream processing (sentiment analysis) and a custom reactive publisher/subscriber.** The code examples are both in C# and F#.
 
